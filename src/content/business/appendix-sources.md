@@ -161,7 +161,7 @@ All findings attributed to Clawable operating FlowWink live can be cross-checked
 
 | Claim | Source | Status |
 |-------|--------|--------|
-| FlowWink exposes 200+ MCP skills at time of writing | MCP server `tools/list` call against `https://rzhjotxffjfsdlhrdkpj.supabase.co/functions/v1/mcp-server` — response enumerated 200+ skills across Commerce/Finance, CRM, Content, Communication, Analytics, Growth, System, Search/Web, Automation, Infrastructure, and Accounting domains | `validated` — live endpoint enumeration |
+| FlowWink exposes 200+ MCP skills at time of writing | MCP server `tools/list` call against `https://<project-ref>.supabase.co/functions/v1/mcp-server` — response enumerated 200+ skills across Commerce/Finance, CRM, Content, Communication, Analytics, Growth, System, Search/Web, Automation, Infrastructure, and Accounting domains | `validated` — live endpoint enumeration |
 | Earlier references cited lower counts | Platform surface expanded continuously since original SIM runs (April 19–20, 2026); accounting modules and cross-module skills added in subsequent updates | `validated` — reflects platform evolution |
 
 ---
