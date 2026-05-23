@@ -3,7 +3,7 @@ dist/
 .astro/
 .claude/
 CLAUDE.md
-content/
+/content/
 research/
 *.DS_Store
 .DS_Store

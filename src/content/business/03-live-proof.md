@@ -351,7 +351,7 @@ The finance operator was dispatched to resolve it.
 
 It read the contract record. It found no historical text to extract. It generated a complete twelve-section förvaltningsavtal in Swedish from the information available: the counterparty's name and email, the contract value, the service description, the two-year term. Structure: parties, background, scope, term, services, pricing, payment terms, intellectual property, confidentiality, liability, termination, governing law. The contract language was correct. The liability cap was set — the only substantive error was a drafting judgment no database field could supply.
 
-The `[att infoga]` placeholders in the parties section were not a failure. They were the agent correctly representing the boundary of its knowledge. It knew the email address. It did not know the registered organisational number. It wrote what it knew and flagged what it did not — explicitly, with a bracket marker a reviewer could find in thirty seconds.
+The `[to be filled in]` placeholders in the parties section were not a failure. They were the agent correctly representing the boundary of its knowledge. It knew the email address. It did not know the registered organisational number. It wrote what it knew and flagged what it did not — explicitly, with a bracket marker a reviewer could find in thirty seconds.
 
 The operator then caught two of its own typos during a proofreading pass. It corrected them. It updated the contract. It sent it for signature.
 

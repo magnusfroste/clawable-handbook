@@ -51,13 +51,13 @@ It populated the contract record. It sent it for signature. The signing URL was 
 
 ## What the Placeholders Mean
 
-In the parties section, three fields read: `[att infoga]` — to be filled in. Registered address. Organisation number. Named signatory.
+In the parties section, three fields read: `[to be filled in]` — to be filled in. Registered address. Organisation number. Named signatory.
 
 Those are not gaps in the agent's output. They are the boundary of its knowledge, represented explicitly.
 
 The agent knew the counterparty's email address and contact name. It did not know their registered organisational number — because that field did not exist in the CRM record. It wrote what it could verify and flagged what it could not, with a marker a reviewer could find in thirty seconds.
 
-A human drafter making the same assumptions and leaving them implicit would have been more dangerous, not less. A contract with an incorrect org.nr is a legal problem. A contract with `[att infoga]` in the org.nr field is a to-do list. The agent produced the latter because it understood the difference between "I know this" and "I am inferring this."
+A human drafter making the same assumptions and leaving them implicit would have been more dangerous, not less. A contract with an incorrect org.nr is a legal problem. A contract with `[to be filled in]` in the org.nr field is a to-do list. The agent produced the latter because it understood the difference between "I know this" and "I am inferring this."
 
 The lawyer's task with this draft: confirm three fields, verify the liability cap reflects the correct contract year, sign off. Estimated time: eight minutes.
 
