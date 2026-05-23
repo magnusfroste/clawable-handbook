@@ -1,0 +1,157 @@
+---
+import { getCollection } from 'astro:content';
+
+const chapters = await getCollection('builder');
+const sorted = chapters.sort((a, b) => a.data.order - b.data.order);
+
+function stripSlug(id: string): string {
+  return id.replace(/\.md$/, '');
+}
+
+// Define chapter groups with explicit children so grouping remains stable
+// even when filenames are aligned to frontmatter order.
+const groupDefs = [
+  { parent: '00-foreword', children: [] },
+  { parent: '01-introduction', children: [] },
+  { parent: '02-evolution', children: ['03-clawable-openclaw', '04-claw-ecosystem'] },
+  { parent: '05-openclaw-architecture', children: ['06-control-plane', '07-models-lifecycle'] },
+  { parent: '08-flowwink-laws', children: [] },
+  { parent: '09-heartbeat-protocol', children: ['10-api-layer', '11-concurrency-observability'] },
+  { parent: '12-skills-ecosystem', children: ['13-skill-self-creation', '14-intent-scoring'] },
+  { parent: '15-memory-architecture', children: ['16-token-economy'] },
+  { parent: '17-feedback-loops', children: ['18-stagnation-and-drift'] },
+  { parent: '19-human-in-the-loop', children: [] },
+  { parent: '21-digital-employee', children: [] },
+  { parent: '23-a2a-communication', children: ['24-agent-driven-development', '25-federation-in-practice'] },
+  { parent: '20-agent-governance', children: [] },
+  { parent: '26-security', children: ['27-testing-agents', '28-resilience-patterns', '29-tool-hallucination-recovery'] },
+  { parent: '22-production-patterns', children: ['31-browser-operator'] },
+  { parent: '30-clawstack', children: [] },
+  { parent: '32-the-future', children: [] },
+  { parent: '33-closing', children: [] },
+  { parent: '34-sponsors', children: [] },
+];
+
+// Build groups
+const chapterMap = new Map(sorted.map(c => [stripSlug(c.id), c]));
+
+const groups = groupDefs.map(({ parent, children }) => {
+  const parentChapter = chapterMap.get(parent);
+  if (!parentChapter) return null;
+
+  const childChapters = children
+    .map((slug) => chapterMap.get(slug))
+    .filter(Boolean);
+
+  return { parent: parentChapter, children: childChapters };
+}).filter(Boolean);
+
+const appendices = sorted.filter(c => c.data.order >= 90);
+
+const icons: Record<string, string> = {
+  'book-open': '📖',
+  'rocket-launch': '🚀',
+  'cpu-chip': '🧠',
+  'cpu': '🔬',
+  'sparkles': '✨',
+  'shield-check': '🛡️',
+  'shield-exclamation': '⚠️',
+  'beaker': '🧪',
+  'heart': '💓',
+  'star': '⭐',
+  'puzzle-piece': '🧩',
+  'wrench': '🔧',
+  'globe': '🌐',
+  'globe-alt': '🌐',
+  'users': '👥',
+  'user-group': '👥',
+  'chart-bar': '📊',
+  'code-bracket': '💻',
+  'cog-6-tooth': '⚙️',
+  'brain': '🧠',
+  'arrow-trending-up': '📈',
+  'share': '🕸️',
+  'cube': '🧱',
+  'command-line': '⌨️',
+  'scale': '⚖️',
+  'arrows-right-left': '↔️',
+  'eye': '👁️',
+  'target': '🎯',
+  'calculator': '🔢',
+  'arrow-path': '🔄',
+  'exclamation-triangle': '🚨',
+  'building-office': '🏢',
+  'signal': '📡',
+  'server': '🗄️',
+  'briefcase': '💼',
+  'clipboard-document-list': '📋',
+};
+---
+
+<section id="chapters" class="py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">The Handbook</h2>
+      <p class="text-lg text-dark-400 max-w-2xl">
+        20+ chapters covering the complete architecture of agentic AI — from first principles to production operations and autonomous quality loops.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {groups.map((group) => (
+        <div class="group relative rounded-xl bg-dark-900/30 border border-dark-800/50 hover:border-claw-500/30 hover:bg-dark-900/60 transition-all duration-300 overflow-hidden">
+          <a href={`/builder/${stripSlug(group!.parent.id)}`} class="block p-5">
+            <div class="flex items-start justify-between mb-3">
+              <span class="flex items-center justify-center w-9 h-9 rounded-lg bg-claw-500/10 text-claw-400 text-lg">
+                {icons[group!.parent.data.icon ?? ''] ?? '📄'}
+              </span>
+              <svg class="w-4 h-4 text-dark-600 group-hover:text-claw-400 transition-colors transform group-hover:translate-x-1 duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+            <h3 class="text-base font-semibold text-white group-hover:text-claw-300 transition-colors mb-1">
+              {group!.parent.data.title}
+            </h3>
+            <p class="text-sm text-dark-400 leading-relaxed line-clamp-2">
+              {group!.parent.data.description}
+            </p>
+          </a>
+
+          {group!.children.length > 0 && (
+            <div class="px-5 pb-4 border-t border-dark-800/40 pt-3 flex flex-col gap-1">
+              {group!.children.map((child) => (
+                <a
+                  href={`/builder/${stripSlug(child.id)}`}
+                  class="text-sm text-dark-500 hover:text-claw-400 transition-colors truncate"
+                >
+                  → {child.data.title}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    {appendices.length > 0 && (
+      <div class="mt-12">
+        <h3 class="text-xl font-bold text-white mb-6">Appendices & Reference</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {appendices.map((chapter) => (
+            <a
+              href={`/builder/${stripSlug(chapter.id)}`}
+              class="group p-4 rounded-xl bg-dark-900/20 border border-dark-800/30 hover:border-claw-500/20 hover:bg-dark-900/40 transition-all duration-300"
+            >
+              <h3 class="text-sm font-semibold text-white group-hover:text-claw-300 transition-colors mb-1">
+                {chapter.data.title}
+              </h3>
+              <p class="text-sm text-dark-500 leading-relaxed line-clamp-2">
+                {chapter.data.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</section>

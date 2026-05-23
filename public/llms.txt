@@ -1,0 +1,86 @@
+# Clawable — The Agentic AI Handbook
+
+> An open-source, evidence-based handbook on autonomous AI agents and the Business Operating System era. Two editions: a strategic field report for business leaders (C-level, board, Agent Managers), and a technical architecture guide for builders (CTOs, engineers). Every claim is logged, timestamped, and verifiable against production session files.
+
+The handbook documents the first complete autonomous business cycle run by an external operator (Clawable) against a production B2B SaaS (FlowWink) in April 2026. €1.1 million in risk and revenue exposure was surfaced in a single unprompted pass. A full contract negotiation — inbound inquiry to signed 422,400 SEK two-year deal — was completed autonomously, with mandate-governed escalation, in hours.
+
+## Business Edition — For C-Level Leaders
+
+Strategic field report on autonomous AI agents and the Business Operating System. Evidence-based, production-verified, with sources tagged `validated`, `partial`, or `hypothesis`.
+
+- [Foreword — What this handbook proves and who it is for](https://clawable.org/business/00-foreword)
+- [The Second Digital Acceleration — Why this is moving faster than anything before](https://clawable.org/business/01-the-awakening)
+- [The Automation Ceiling — Why SaaS + workflows solved the easy 80%](https://clawable.org/business/02-the-automation-ceiling)
+- [Live Proof — What an autonomous operator actually did, logged and timestamped](https://clawable.org/business/03-live-proof)
+- [The Agent's Superpowers — Four capabilities no workflow will ever have](https://clawable.org/business/04-superpowers)
+- [Embedded vs. External — The architectural choice that determines how deep and wide your agent can go](https://clawable.org/business/05-embedded-vs-external)
+- [The Skill Audit — What your stack can already do via MCP](https://clawable.org/business/06-skill-audit)
+- [Choose Your Operator — Build, buy proprietary, or open-source](https://clawable.org/business/07-choose-operator)
+- [The Vendor Agent Trap — Why your SaaS vendor's built-in AI is the most dangerous path](https://clawable.org/business/08-vendor-agent-trap)
+- [Why Agent Programs Fail — The six failure modes that end deployments before month six](https://clawable.org/business/09-why-agent-programs-fail)
+- [The Enterprise Architecture — Five platforms, five native agents, one coordination layer](https://clawable.org/business/10-external-embedded-hybrid)
+- [Enterprise Outlook — MCP readiness map by category, process value map, B2B market 2027](https://clawable.org/business/11-enterprise-outlook)
+- [Making SaaS Agent-Ready — What to demand from your vendors](https://clawable.org/business/12-making-saas-agent-ready)
+- [Where the World Is Heading — Federation, multi-agent societies, the proliferation roadmap](https://clawable.org/business/13-where-the-world-is-heading)
+- [The Mandate Layer — The governance design every autonomous operator requires](https://clawable.org/business/14-the-mandate-layer)
+- [Your Role in This — First week, Agent Manager competencies, the jobs question](https://clawable.org/business/15-your-role-in-this)
+- [TL;DR — The whole argument in ten minutes](https://clawable.org/business/appendix-tldr)
+- [Deployment Checklist — Go-live checklist for an external operator](https://clawable.org/business/appendix-deployment-checklist)
+- [Glossary — Operator-edition vocabulary](https://clawable.org/business/appendix-glossary)
+- [Sources & Evidence — Primary sources, verification status, evidence labels](https://clawable.org/business/appendix-sources)
+
+## Builder Edition — For CTOs and Engineers
+
+Technical architecture guide for building and operating autonomous agents at scale. Covers OpenClaw internals, FlowWink/FlowPilot architecture, governance, memory, A2A federation, and production patterns.
+
+- [Foreword — Builder edition scope and how to read it](https://clawable.org/builder/00-foreword)
+- [Introduction — The architecture of the agentic era](https://clawable.org/builder/01-introduction)
+- [Evolution — From assistants to operators](https://clawable.org/builder/02-evolution)
+- [Clawable & OpenClaw — The framework and the operator](https://clawable.org/builder/03-clawable-openclaw)
+- [OpenClaw Architecture — Identity, heartbeat, memory as files](https://clawable.org/builder/04-openclaw-architecture)
+- [Control Plane — How the operator is governed](https://clawable.org/builder/05-control-plane)
+- [Claw Ecosystem — The full landscape](https://clawable.org/builder/06-claw-ecosystem)
+- [Models & Lifecycle — Model selection, token management](https://clawable.org/builder/07-models-lifecycle)
+- [API Layer — Surface design and authentication](https://clawable.org/builder/08-api-layer)
+- [FlowWink Laws — The nine laws of agentic system design](https://clawable.org/builder/09-flowwink-laws)
+- [Heartbeat Protocol — Scheduled autonomous operation](https://clawable.org/builder/10-heartbeat-protocol)
+- [Concurrency & Observability — Production-grade operator infrastructure](https://clawable.org/builder/11-concurrency-observability)
+- [MCP Deep Dive — Tool schemas, descriptions, strict validation](https://clawable.org/builder/12-mcp-deep-dive)
+- [FlowPilot Architecture — The embedded agent reference implementation](https://clawable.org/builder/14-flowpilot-architecture)
+- [Skills Ecosystem — Skill design, trust levels, approval gates](https://clawable.org/builder/15-skills-ecosystem)
+- [Memory Architecture — Four-tier memory: session, working, long-term, semantic](https://clawable.org/builder/18-memory-architecture)
+- [Stagnation and Drift — The two long-term failure modes of autonomous agents](https://clawable.org/builder/21-stagnation-and-drift)
+- [Human-in-the-Loop — Keeping humans in the chain without becoming the bottleneck](https://clawable.org/builder/22-human-in-the-loop)
+- [Agent Governance — Accountability, McKinsey four-layer model, compliance](https://clawable.org/builder/23-agent-governance)
+- [A2A Communication — Agent-to-agent federation protocol](https://clawable.org/builder/26-a2a-communication)
+- [Security — Prompt injection, tool poisoning, SSRF, scope isolation](https://clawable.org/builder/29-security)
+- [Testing Agents — OMATS framework, L1–L7 test layers, peer validation](https://clawable.org/builder/30-testing-agents)
+- [Resilience Patterns — Retry, idempotency, circuit breakers, self-healing](https://clawable.org/builder/31-resilience-patterns)
+- [ClawStack — Production deployment architecture](https://clawable.org/builder/33-clawstack)
+- [The Future — Multi-agent societies, agent-native organizations](https://clawable.org/builder/35-the-future)
+
+## Key Concepts
+
+**Business Operating System (BOS)** — The layer above SaaS that reads across all platforms via MCP, reasons about the cross-system state of a business, and acts on what matters. The successor to SaaS as the primary operational layer.
+
+**MCP (Model Context Protocol)** — The open standard that makes SaaS platforms legible to autonomous agents. Anthropic, 2024. Adopted by Salesforce (GA April 2026), HubSpot (production), Microsoft, SAP, ServiceNow, and the broader ecosystem.
+
+**External Operator** — An autonomous agent deployed outside the SaaS platforms it operates. Reads across systems via MCP. Sees the cross-system patterns no individual platform's agent can see.
+
+**Heartbeat** — The scheduled cycle an operator runs autonomously: reads objectives, sweeps the business state, acts on findings, goes back to sleep. Typical cadence: 30 minutes to several hours.
+
+**Mandate Layer** — The governance boundary every autonomous operator requires: what it is authorised to decide alone, and what it must escalate before acting. Defined in `AGENTS.md`.
+
+**Agent Manager** — The human role created by the AI revolution. Leads, develops, and gets results from AI agents. HBR, February 2026.
+
+**FlowWink** — The reference implementation of an agent-native BOS. Open source, self-hosted, 200+ MCP skills across CRM, finance, ERP, content, HR, and accounting. Available at github.com/magnusfroste/flowwink.
+
+**Clawable** — The external OpenClaw operator documented in this handbook. Runs against FlowWink's production MCP surface. All session logs are public and cross-referenced in the sources appendix.
+
+## About
+
+- Site: https://clawable.org
+- License: Open source
+- Last updated: May 2026
+- GitHub: https://github.com/magnusfroste/clawable
+- Contact: The Clawable Project, April–May 2026

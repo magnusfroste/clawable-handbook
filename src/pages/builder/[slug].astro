@@ -1,0 +1,114 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const chapters = await getCollection('builder');
+  return chapters.map((chapter) => {
+    const slug = chapter.id.replace(/\.md$/, '');
+    return {
+      params: { slug },
+      props: { chapter },
+    };
+  });
+}
+
+const { chapter } = Astro.props;
+const { Content } = await render(chapter);
+
+const chapterSlug = chapter.id.replace(/\.md$/, '');
+const chapterUrl = new URL(`/builder/${chapterSlug}`, Astro.url);
+const chapterDescription = chapter.data.description;
+
+const allChapters = await getCollection('builder');
+const sorted = allChapters.sort((a, b) => a.data.order - b.data.order);
+const currentIndex = sorted.findIndex((c) => c.id === chapter.id);
+const prev = currentIndex > 0 ? sorted[currentIndex - 1] : null;
+const next = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null;
+
+function stripSlug(id: string): string {
+  return id.replace(/\.md$/, '');
+}
+
+const breadcrumbList = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: Astro.url.origin },
+    { '@type': 'ListItem', position: 2, name: 'Builder Edition', item: new URL('/builder', Astro.url).toString() },
+    { '@type': 'ListItem', position: 3, name: chapter.data.title, item: chapterUrl.toString() },
+  ],
+};
+
+const chapterStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: chapter.data.title,
+  description: chapterDescription,
+  url: chapterUrl.toString(),
+  mainEntityOfPage: chapterUrl.toString(),
+  inLanguage: 'en',
+  author: {
+    '@type': 'Organization',
+    name: 'Clawable',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Clawable',
+    logo: { '@type': 'ImageObject', url: new URL('/favicon.svg', Astro.url).toString() },
+  },
+  image: new URL('/og-cover.svg', Astro.url).toString(),
+};
+---
+
+<Base
+  title={chapter.data.title}
+  description={chapterDescription}
+  type="article"
+  image="/og-cover.png"
+  imageWidth={1200}
+  imageHeight={630}
+  publishedDate="2026-04-01"
+  modifiedDate="2026-05-15"
+  structuredData={[chapterStructuredData, breadcrumbList]}
+>
+  <Nav edition="builder" />
+  <article class="pt-24 pb-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="mb-8">
+        <a href="/" class="text-claw-400 hover:text-claw-300 text-sm font-medium transition-colors">
+          &larr; Back to handbook
+        </a>
+      </div>
+      <div class="mb-6 flex items-center gap-3">
+        <span class="text-claw-400 font-mono text-sm">{stripSlug(chapter.id)}</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+        {chapter.data.title}
+      </h1>
+      <p class="text-xl text-dark-300 mb-12 max-w-2xl">
+        {chapter.data.description}
+      </p>
+      <div class="prose prose-invert prose-lg max-w-none">
+        <Content />
+      </div>
+      <nav class="mt-16 pt-8 border-t border-dark-800 flex justify-between gap-4">
+        {prev ? (
+          <a href={`/builder/${stripSlug(prev.id)}`} class="group flex-1">
+            <span class="text-sm text-dark-400 group-hover:text-claw-400 transition-colors">Previous</span>
+            <span class="block text-white font-medium group-hover:text-claw-300 transition-colors mt-1">{prev.data.title}</span>
+          </a>
+        ) : <div />}
+        {next ? (
+          <a href={`/builder/${stripSlug(next.id)}`} class="group flex-1 text-right">
+            <span class="text-sm text-dark-400 group-hover:text-claw-400 transition-colors">Next</span>
+            <span class="block text-white font-medium group-hover:text-claw-300 transition-colors mt-1">{next.data.title}</span>
+          </a>
+        ) : <div />}
+      </nav>
+    </div>
+  </article>
+  <Footer />
+</Base>

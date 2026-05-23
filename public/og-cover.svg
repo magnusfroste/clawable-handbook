@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">The Agentic AI Handbook | Clawable</title>
+  <desc id="desc">Open-source handbook for autonomous AI agents and digital employees.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1020" />
+      <stop offset="60%" stop-color="#121a2f" />
+      <stop offset="100%" stop-color="#1b2744" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#60a5fa" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="960" cy="120" r="280" fill="#1d4ed8" opacity="0.2" />
+  <circle cx="240" cy="540" r="260" fill="#0ea5e9" opacity="0.12" />
+
+  <!-- Logo hexagon -->
+  <g transform="translate(1030, 80)">
+    <path d="M60 4L115.42 35.5V98.5L60 130L4.58 98.5V35.5L60 4Z" fill="url(#logoGrad)"/>
+    <text x="60" y="88" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="76" fill="#FFFFFF">C</text>
+    <defs>
+      <linearGradient id="logoGrad" x1="60" y1="4" x2="60" y2="130" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#E85D4A"/>
+        <stop offset="1" stop-color="#C94A3B"/>
+      </linearGradient>
+    </defs>
+  </g>
+  <text x="90" y="180" fill="#93c5fd" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="600">Clawable</text>
+  <text x="90" y="280" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="72" font-weight="800">The Agentic AI</text>
+  <text x="90" y="360" fill="url(#accent)" font-family="Inter,Arial,sans-serif" font-size="72" font-weight="800">Handbook</text>
+
+  <text x="90" y="440" fill="#dbeafe" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="500">Open-source guide to autonomous agents</text>
+  <text x="90" y="486" fill="#dbeafe" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="500">and digital employees</text>
+
+  <rect x="90" y="530" width="330" height="56" rx="28" fill="#0ea5e9" opacity="0.25" />
+  <text x="120" y="567" fill="#ffffff" font-family="JetBrains Mono,monospace" font-size="28" font-weight="600">clawable.org</text>
+</svg>

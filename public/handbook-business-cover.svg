@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a2e;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Accent gradient for the claw path -->
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e63946;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f4a261;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Subtle grid pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+    </pattern>
+    
+    <!-- Glow filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Large soft glow -->
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+  
+  <!-- Large abstract orbital system representing the Business OS -->
+  <g filter="url(#softGlow)">
+    <!-- Central nexus -->
+    <circle cx="600" cy="380" r="4" fill="#e63946" opacity="0.8"/>
+    
+    <!-- Orbital rings -->
+    <ellipse cx="600" cy="380" rx="180" ry="60" fill="none" stroke="rgba(230,57,70,0.15)" stroke-width="0.5" transform="rotate(-15 600 380)"/>
+    <ellipse cx="600" cy="380" rx="280" ry="100" fill="none" stroke="rgba(244,162,97,0.12)" stroke-width="0.5" transform="rotate(10 600 380)"/>
+    <ellipse cx="600" cy="380" rx="380" ry="140" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5" transform="rotate(-5 600 380)"/>
+    <ellipse cx="600" cy="380" rx="480" ry="180" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5" transform="rotate(20 600 380)"/>
+  </g>
+  
+  <!-- MCP nodes connecting to center -->
+  <g opacity="0.6">
+    <!-- Node: CRM -->
+    <circle cx="350" cy="280" r="3" fill="#e63946"/>
+    <line x1="350" y1="280" x2="600" y2="380" stroke="#e63946" stroke-width="0.5" opacity="0.3"/>
+    
+    <!-- Node: Finance -->
+    <circle cx="750" cy="250" r="3" fill="#f4a261"/>
+    <line x1="750" y1="250" x2="600" y2="380" stroke="#f4a261" stroke-width="0.5" opacity="0.3"/>
+    
+    <!-- Node: Orders -->
+    <circle cx="820" cy="450" r="3" fill="#e63946"/>
+    <line x1="820" y1="450" x2="600" y2="380" stroke="#e63946" stroke-width="0.5" opacity="0.3"/>
+    
+    <!-- Node: Content -->
+    <circle cx="420" cy="500" r="3" fill="#f4a261"/>
+    <line x1="420" y1="500" x2="600" y2="380" stroke="#f4a261" stroke-width="0.5" opacity="0.3"/>
+    
+    <!-- Node: HR -->
+    <circle cx="500" cy="220" r="3" fill="#ffffff" opacity="0.5"/>
+    <line x1="500" y1="220" x2="600" y2="380" stroke="#ffffff" stroke-width="0.5" opacity="0.15"/>
+    
+    <!-- Node: Contracts -->
+    <circle cx="700" cy="520" r="3" fill="#ffffff" opacity="0.5"/>
+    <line x1="700" y1="520" x2="600" y2="380" stroke="#ffffff" stroke-width="0.5" opacity="0.15"/>
+  </g>
+  
+  <!-- Secondary connections between nodes (cross-system correlation) -->
+  <g opacity="0.25">
+    <line x1="350" y1="280" x2="750" y2="250" stroke="#ffffff" stroke-width="0.3"/>
+    <line x1="750" y1="250" x2="820" y2="450" stroke="#ffffff" stroke-width="0.3"/>
+    <line x1="820" y1="450" x2="700" y2="520" stroke="#ffffff" stroke-width="0.3"/>
+    <line x1="420" y1="500" x2="350" y2="280" stroke="#ffffff" stroke-width="0.3"/>
+    <line x1="500" y1="220" x2="350" y2="280" stroke="#ffffff" stroke-width="0.3"/>
+    <line x1="500" y1="220" x2="750" y2="250" stroke="#ffffff" stroke-width="0.3"/>
+  </g>
+  
+  <!-- The Claw Mark - three parallel slashes across the composition -->
+  <g filter="url(#glow)" opacity="0.7">
+    <path d="M 150 600 L 1050 300" stroke="url(#accent)" stroke-width="1.5" fill="none" opacity="0.6"/>
+    <path d="M 150 620 L 1050 320" stroke="url(#accent)" stroke-width="1" fill="none" opacity="0.4"/>
+    <path d="M 150 640 L 1050 340" stroke="url(#accent)" stroke-width="0.5" fill="none" opacity="0.25"/>
+  </g>
+  
+  <!-- Data pulse markers along the claw marks -->
+  <g opacity="0.5">
+    <circle cx="300" cy="550" r="2" fill="#e63946"/>
+    <circle cx="500" cy="483" r="1.5" fill="#f4a261"/>
+    <circle cx="700" cy="417" r="2" fill="#e63946"/>
+    <circle cx="900" cy="350" r="1.5" fill="#f4a261"/>
+    
+    <circle cx="350" cy="583" r="1.5" fill="#f4a261"/>
+    <circle cx="550" cy="517" r="1" fill="#ffffff"/>
+    <circle cx="750" cy="450" r="1.5" fill="#e63946"/>
+    <circle cx="950" cy="383" r="1" fill="#ffffff"/>
+    
+    <circle cx="400" cy="617" r="1" fill="#ffffff"/>
+    <circle cx="600" cy="550" r="1.5" fill="#e63946"/>
+    <circle cx="800" cy="483" r="1" fill="#f4a261"/>
+    <circle cx="1000" cy="417" r="1.5" fill="#ffffff"/>
+  </g>
+  
+  <!-- Top section: Title -->
+  <g transform="translate(80, 80)">
+    <text font-family="system-ui, -apple-system, sans-serif" font-weight="300" font-size="42" fill="#ffffff" letter-spacing="6">
+      CLAWABLE
+    </text>
+    <text y="45" font-family="system-ui, -apple-system, sans-serif" font-weight="200" font-size="18" fill="rgba(255,255,255,0.5)" letter-spacing="4">
+      THE AGENTIC HANDBOOK FOR BUSINESS
+    </text>
+    <line y1="60" y2="60" x2="60" stroke="#e63946" stroke-width="1"/>
+  </g>
+  
+  <!-- Bottom left: Edition info -->
+  <g transform="translate(80, 720)">
+    <text font-family="system-ui, -apple-system, sans-serif" font-weight="300" font-size="11" fill="rgba(255,255,255,0.35)" letter-spacing="2">
+      BUSINESS EDITION · APRIL 2026
+    </text>
+  </g>
+  
+  <!-- Bottom right: Tagline -->
+  <g transform="translate(1120, 720)">
+    <text font-family="system-ui, -apple-system, sans-serif" font-weight="200" font-size="11" fill="rgba(255,255,255,0.35)" letter-spacing="3" text-anchor="end">
+      BUSINESS RUNS ITSELF. EMPLOYEES ASSIST.
+    </text>
+  </g>
+  
+  <!-- Small decorative elements -->
+  <g opacity="0.15">
+    <!-- Corner marks -->
+    <path d="M 40 40 L 40 60 M 40 40 L 60 40" stroke="#ffffff" stroke-width="0.5" fill="none"/>
+    <path d="M 1160 40 L 1160 60 M 1160 40 L 1140 40" stroke="#ffffff" stroke-width="0.5" fill="none"/>
+    <path d="M 40 760 L 40 740 M 40 760 L 60 760" stroke="#ffffff" stroke-width="0.5" fill="none"/>
+    <path d="M 1160 760 L 1160 740 M 1160 760 L 1140 760" stroke="#ffffff" stroke-width="0.5" fill="none"/>
+  </g>
+  
+  <!-- Scattered micro-dots representing data points / findings -->
+  <g opacity="0.2">
+    <circle cx="200" cy="200" r="0.8" fill="#e63946"/>
+    <circle cx="900" cy="180" r="0.8" fill="#f4a261"/>
+    <circle cx="150" cy="400" r="0.8" fill="#ffffff"/>
+    <circle cx="1050" cy="500" r="0.8" fill="#e63946"/>
+    <circle cx="280" cy="650" r="0.8" fill="#f4a261"/>
+    <circle cx="850" cy="620" r="0.8" fill="#ffffff"/>
+    <circle cx="450" cy="150" r="0.8" fill="#e63946"/>
+    <circle cx="750" cy="120" r="0.8" fill="#f4a261"/>
+  </g>
+</svg>

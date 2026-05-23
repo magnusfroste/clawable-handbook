@@ -1,0 +1,240 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const allChapters = await getCollection('builder');
+const mainChapters = allChapters
+  .filter((c) => !c.id.startsWith('appendix'))
+  .sort((a, b) => a.data.order - b.data.order);
+const appendices = allChapters
+  .filter((c) => c.id.startsWith('appendix'))
+  .sort((a, b) => a.data.order - b.data.order);
+
+function stripSlug(id: string): string {
+  return id.replace(/\.md$/, '');
+}
+
+const icons: Record<string, string> = {
+  'book-open': '📖',
+  'document-text': '📄',
+  'arrow-trending-up': '📈',
+  'magnifying-glass': '🔍',
+  'building-office-2': '🏢',
+  'terminal': '⌨️',
+  'cog-6-tooth': '⚙️',
+  'globe-europe-africa': '🌍',
+  'beaker': '🧪',
+  'bolt': '⚡',
+  'puzzle-piece': '🧩',
+  'heart': '💓',
+  'scale': '⚖️',
+  'shield-check': '🛡️',
+  'cpu-chip': '🧠',
+  'chat-bubble-left-right': '💬',
+  'user-group': '👥',
+  'arrow-path': '🔄',
+  'lock-closed': '🔒',
+  'cloud': '☁️',
+  'browser': '🌐',
+  'wrench': '🔧',
+  'clipboard-document-list': '📋',
+  'chart-bar': '📊',
+  'sparkles': '✨',
+  'link': '🔗',
+  'light-bulb': '💡',
+  'star': '⭐',
+  'users': '👤',
+};
+
+const title = 'The Agentic AI Handbook — Builder Edition';
+const description = 'Technical architecture guide for CTOs and engineers: how to build, deploy, and govern autonomous AI agents in production.';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  name: title,
+  abstract: description,
+  url: Astro.url.toString(),
+  inLanguage: 'en',
+  author: {
+    '@type': 'Organization',
+    name: 'Clawable',
+  },
+  about: ['Agentic AI', 'Agent Architecture', 'Autonomous agents', 'Production deployment', 'Agent governance'],
+};
+---
+
+<Base title={title} description={description} image="/og-cover.png" structuredData={structuredData}>
+  <Nav edition="builder" />
+  <main>
+    <!-- Hero -->
+    <section class="relative pt-32 pb-20 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-claw-500/5 via-transparent to-transparent pointer-events-none" />
+      <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-claw-500/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div class="relative max-w-6xl mx-auto px-6">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-claw-500/10 border border-claw-500/20 text-claw-400 text-sm font-medium mb-8">
+            <span class="w-2 h-2 rounded-full bg-claw-400 animate-pulse" />
+            Builder Edition &middot; For CTOs &amp; Engineers &middot; May 2026
+          </div>
+
+          <h1 class="text-5xl md:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6">
+            The Agentic AI<br />
+            <span class="bg-gradient-to-r from-claw-400 to-claw-600 bg-clip-text text-transparent">Builder Edition</span>
+          </h1>
+
+          <p class="text-xl md:text-2xl text-white leading-relaxed mb-4 max-w-2xl">
+            Architecture, governance, and production deployment patterns for autonomous AI agents.
+            <strong class="bg-gradient-to-r from-claw-400 to-claw-600 bg-clip-text text-transparent"> From first principles to production.</strong>
+          </p>
+
+          <p class="text-base md:text-lg text-dark-400 leading-relaxed mb-4 max-w-2xl">
+            37 chapters covering OpenClaw architecture, the agentic control plane, FlowPilot/FlowWink as a production reference, Agent-Driven Development, A2A federation, and governance.
+          </p>
+
+          <p class="text-base md:text-lg text-dark-400 leading-relaxed mb-10 max-w-2xl">
+            Built on verified source code analysis and production deployment patterns. Not theory — <strong class="text-white">architecture that ships</strong>.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <a href={`/builder/${stripSlug(mainChapters[0].id)}`} class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-claw-500 hover:bg-claw-600 text-white font-semibold transition-colors">
+              Start Reading
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </a>
+            <a href="/builder/04-openclaw-architecture" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-dark-800 hover:bg-dark-700 text-white font-semibold transition-colors border border-dark-700">
+              Jump to Architecture
+            </a>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="p-4 rounded-xl bg-dark-900/50 border border-dark-800/50">
+            <div class="text-3xl font-bold text-white mb-1">37</div>
+            <div class="text-sm text-dark-400">Technical chapters</div>
+          </div>
+          <div class="p-4 rounded-xl bg-dark-900/50 border border-dark-800/50">
+            <div class="text-3xl font-bold text-white mb-1">73</div>
+            <div class="text-sm text-dark-400">FlowPilot skills analyzed</div>
+          </div>
+          <div class="p-4 rounded-xl bg-dark-900/50 border border-dark-800/50">
+            <div class="text-3xl font-bold text-white mb-1">10</div>
+            <div class="text-sm text-dark-400">FlowWink Laws</div>
+          </div>
+          <div class="p-4 rounded-xl bg-dark-900/50 border border-dark-800/50">
+            <div class="text-3xl font-bold text-white mb-1">100%</div>
+            <div class="text-sm text-dark-400">Open source &amp; free</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reading paths -->
+    <section class="py-12 border-t border-dark-800/50">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-2xl font-bold text-white mb-8">Where to Start</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="/builder/00-foreword" class="group rounded-xl bg-dark-900/30 border border-dark-800/50 hover:border-claw-500/30 p-5 transition-all">
+            <div class="text-claw-400 text-sm font-semibold mb-2">New to Agents</div>
+            <div class="text-white text-base font-medium mb-1">Start from the beginning</div>
+            <div class="text-sm text-dark-400">Foreword → Evolution → OpenClaw → Architecture (chapters 0–7)</div>
+          </a>
+          <a href="/builder/04-openclaw-architecture" class="group rounded-xl bg-dark-900/30 border border-dark-800/50 hover:border-claw-500/30 p-5 transition-all">
+            <div class="text-claw-400 text-sm font-semibold mb-2">Deploying OpenClaw</div>
+            <div class="text-white text-base font-medium mb-1">Architecture &amp; Setup</div>
+            <div class="text-sm text-dark-400">OpenClaw → Control Plane → Ecosystem → Models → API (chapters 4–8)</div>
+          </a>
+          <a href="/builder/09-flowwink-laws" class="group rounded-xl bg-dark-900/30 border border-dark-800/50 hover:border-claw-500/30 p-5 transition-all">
+            <div class="text-claw-400 text-sm font-semibold mb-2">Building Embedded Agents</div>
+            <div class="text-white text-base font-medium mb-1">Design &amp; Patterns</div>
+            <div class="text-sm text-dark-400">Laws → Heartbeat → Skills → Memory → Token Economy (chapters 9–19)</div>
+          </a>
+          <a href="/builder/23-agent-governance" class="group rounded-xl bg-dark-900/30 border border-dark-800/50 hover:border-claw-500/30 p-5 transition-all">
+            <div class="text-claw-400 text-sm font-semibold mb-2">Production &amp; Governance</div>
+            <div class="text-white text-base font-medium mb-1">Operations at Scale</div>
+            <div class="text-sm text-dark-400">Governance → A2A → ADD → Security → Testing (chapters 23–32)</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter grid -->
+    <section id="chapters" class="py-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">The Handbook</h2>
+          <p class="text-lg text-dark-400 max-w-2xl">
+            37 chapters covering the full stack of autonomous agent architecture — from OpenClaw fundamentals to A2A federation and production governance.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {mainChapters.map((chapter) => (
+            <a
+              href={`/builder/${stripSlug(chapter.id)}`}
+              class="group relative rounded-xl bg-dark-900/30 border border-dark-800/50 hover:border-claw-500/30 hover:bg-dark-900/60 transition-all duration-300 p-5"
+            >
+              <div class="flex items-start justify-between mb-3">
+                <span class="flex items-center justify-center w-9 h-9 rounded-lg bg-claw-500/10 text-claw-400 text-lg">
+                  {icons[chapter.data.icon ?? ''] ?? '📄'}
+                </span>
+                <svg class="w-4 h-4 text-dark-600 group-hover:text-claw-400 transition-colors transform group-hover:translate-x-1 duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+              <div class="mb-1 font-mono text-xs text-dark-600">{stripSlug(chapter.id)}</div>
+              <h3 class="text-base font-semibold text-white group-hover:text-claw-300 transition-colors mb-1">
+                {chapter.data.title}
+              </h3>
+              <p class="text-sm text-dark-400 leading-relaxed line-clamp-2">
+                {chapter.data.description}
+              </p>
+            </a>
+          ))}
+        </div>
+
+        {appendices.length > 0 && (
+          <div class="mt-12">
+            <h3 class="text-xl font-bold text-white mb-6">Appendices &amp; Reference</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {appendices.map((chapter) => (
+                <a
+                  href={`/builder/${stripSlug(chapter.id)}`}
+                  class="group p-4 rounded-xl bg-dark-900/20 border border-dark-800/30 hover:border-claw-500/20 hover:bg-dark-900/40 transition-all duration-300"
+                >
+                  <h3 class="text-sm font-semibold text-white group-hover:text-claw-300 transition-colors mb-1">
+                    {chapter.data.title}
+                  </h3>
+                  <p class="text-sm text-dark-500 leading-relaxed line-clamp-2">
+                    {chapter.data.description}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- Business Edition CTA -->
+    <section class="py-16 border-t border-dark-800/50">
+      <div class="max-w-3xl mx-auto px-6 text-center">
+        <p class="text-dark-400 text-sm mb-3 uppercase tracking-widest font-medium">For your CEO</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+          The <span class="bg-gradient-to-r from-biz-400 to-biz-600 bg-clip-text text-transparent">Business Edition</span>
+        </h2>
+        <p class="text-dark-300 leading-relaxed mb-8 max-w-xl mx-auto">
+          The strategic companion to this handbook. The business case for autonomous agents, live production evidence, the financial argument, and what it means for your organization.
+        </p>
+        <a href="/business" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-biz-500 hover:bg-biz-600 text-white font-semibold transition-colors">
+          Read the Business Edition
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

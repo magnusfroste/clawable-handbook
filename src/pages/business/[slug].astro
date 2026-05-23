@@ -1,0 +1,158 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const chapters = await getCollection('business');
+  return chapters.map((chapter) => {
+    const slug = chapter.id.replace(/\.md$/, '');
+    return {
+      params: { slug },
+      props: { chapter },
+    };
+  });
+}
+
+const { chapter } = Astro.props;
+const { Content } = await render(chapter);
+
+const chapterSlug = chapter.id.replace(/\.md$/, '');
+const chapterUrl = new URL(`/business/${chapterSlug}`, Astro.url);
+const chapterDescription = chapter.data.description;
+
+const allChapters = await getCollection('business');
+const mainChapters = allChapters
+  .filter((c) => !c.data.appendix)
+  .sort((a, b) => a.data.order - b.data.order);
+const appendices = allChapters
+  .filter((c) => c.data.appendix)
+  .sort((a, b) => a.data.order - b.data.order);
+const sorted = [...mainChapters, ...appendices];
+const currentIndex = sorted.findIndex((c) => c.id === chapter.id);
+const prev = currentIndex > 0 ? sorted[currentIndex - 1] : null;
+const next = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null;
+
+function stripSlug(id: string): string {
+  return id.replace(/\.md$/, '');
+}
+
+const breadcrumbList = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: Astro.url.origin },
+    { '@type': 'ListItem', position: 2, name: 'Business Edition', item: new URL('/business', Astro.url).toString() },
+    { '@type': 'ListItem', position: 3, name: chapter.data.title, item: chapterUrl.toString() },
+  ],
+};
+
+const chapterStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: chapter.data.title,
+  description: chapterDescription,
+  url: chapterUrl.toString(),
+  mainEntityOfPage: chapterUrl.toString(),
+  inLanguage: 'en',
+  author: {
+    '@type': 'Organization',
+    name: 'Clawable',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Clawable',
+    logo: { '@type': 'ImageObject', url: new URL('/favicon.svg', Astro.url).toString() },
+  },
+  image: new URL('/og-cover.svg', Astro.url).toString(),
+};
+
+const faqStructuredData = chapter.data.faq && chapter.data.faq.length > 0
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: chapter.data.faq.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    }
+  : null;
+
+const structuredDataList = [chapterStructuredData, breadcrumbList, ...(faqStructuredData ? [faqStructuredData] : [])];
+---
+
+<Base
+  title={chapter.data.title}
+  description={chapterDescription}
+  type="article"
+  image="/og-cover.png"
+  imageWidth={1200}
+  imageHeight={630}
+  publishedDate="2026-04-01"
+  modifiedDate="2026-05-15"
+  structuredData={[chapterStructuredData, breadcrumbList, ...(faqStructuredData ? [faqStructuredData] : [])]}
+>
+  <Nav edition="business" />
+  <article class="pt-24 pb-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <!-- Breadcrumb -->
+      <div class="mb-8 flex items-center gap-3">
+        <a href="/business" class="text-biz-400 hover:text-biz-300 text-sm font-medium transition-colors">
+          &larr; Business Edition
+        </a>
+        <span class="text-dark-700 text-sm">/</span>
+        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-biz-500/10 border border-biz-500/20 text-biz-400 text-xs font-medium">
+          For Business
+        </span>
+      </div>
+
+      <!-- Chapter slug label -->
+      <div class="mb-6">
+        <span class="text-dark-500 font-mono text-sm">{stripSlug(chapter.id)}</span>
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+        {chapter.data.title}
+      </h1>
+      <p class="text-xl text-dark-300 mb-12 max-w-2xl">
+        {chapter.data.description}
+      </p>
+
+      <div class="prose prose-invert prose-lg max-w-none
+        [&_a]:text-biz-400 [&_a:hover]:text-biz-300
+        [&_code]:text-biz-300
+        [&_blockquote]:border-biz-500/30">
+        <Content />
+      </div>
+
+      <!-- Prev / Next navigation -->
+      <nav class="mt-16 pt-8 border-t border-dark-800 flex justify-between gap-4">
+        {prev ? (
+          <a href={`/business/${stripSlug(prev.id)}`} class="group flex-1">
+            <span class="text-sm text-dark-400 group-hover:text-biz-400 transition-colors">Previous</span>
+            <span class="block text-white font-medium group-hover:text-biz-300 transition-colors mt-1">{prev.data.title}</span>
+          </a>
+        ) : <div />}
+        {next ? (
+          <a href={`/business/${stripSlug(next.id)}`} class="group flex-1 text-right">
+            <span class="text-sm text-dark-400 group-hover:text-biz-400 transition-colors">Next</span>
+            <span class="block text-white font-medium group-hover:text-biz-300 transition-colors mt-1">{next.data.title}</span>
+          </a>
+        ) : <div />}
+      </nav>
+
+      <!-- Cross-edition CTA -->
+      <div class="mt-12 p-6 rounded-xl bg-dark-900/40 border border-dark-800/50">
+        <p class="text-sm text-dark-400 mb-3">
+          This is the <strong class="text-white">Business Edition</strong> — strategic context for C-level leaders.
+        </p>
+        <a href="/builder/00-foreword" class="text-sm text-claw-400 hover:text-claw-300 transition-colors font-medium">
+          For your CTO: Builder Edition &rarr;
+        </a>
+      </div>
+    </div>
+  </article>
+  <Footer />
+</Base>
