@@ -1,1 +1,10 @@
 node_modules
+dist/
+.astro/
+.claude/
+CLAUDE.md
+content/
+research/
+*.DS_Store
+.DS_Store
+tsconfig.tsbuildinfo
