@@ -105,11 +105,7 @@ All findings attributed to Clawable operating FlowWink live can be cross-checked
 
 | Artifact | Location | What it contains |
 |----------|----------|------------------|
-| SIM-010 — Lead Lifecycle | `clawstack/evals/scenarios/SIM-010-lead-lifecycle.md` | Scored 90/100 lead correctly, AGENTS.md updated | `validated` |
 | April 19 heartbeat sweep | Clawable session log (April 19, 2026) — referenced in Ch03 §Day One | €1.1M surfaced in a single autonomous sweep, 44 seconds to first finding. Triggered by clock, not prompt. | `validated` |
-| SIM-019 — Revenue Risk Sweep (April 21) | `clawstack/evals/scenarios/SIM-019-revenue-risk-sweep.md` | Prescriptive prompt failure — 3 findings in 1 dimension, 0 SEK quantified. Proves that checklists kill autonomous reasoning. | `validated` |
-| SIM-020 — Open Prompt (April 22) | `clawstack/evals/scenarios/SIM-020-scene-rigged-business-health.md` | 3 of 4 planted anomalies found from open prompt ("God morgon, ge oss en genomlysning"). Westfield cross-module reasoning proven. ~€97k surfaced. | `validated` |
-| SIM-021 — Recruitment MCP Gap | `clawstack/evals/scenarios/SIM-021-new-hire-gap.md` | Schema/deployment gaps surfaced by agent use | `validated` |
 
 ---
 
