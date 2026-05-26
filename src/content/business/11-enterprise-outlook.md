@@ -190,7 +190,7 @@ This is not marketing automation. It is the integration of marketing, sales, and
 
 The CFO's version of the argument is simpler than the architecture one. Start with what is already leaking.
 
-Chapter three documented two findings from a single open prompt — no checklist, no target, forty-four seconds to first result. Westfield Consulting: €45,000 suspended between a won deal and an unsigned contract in a different module, invisible until the agent looked across both simultaneously. Apex Nordic: €22,000 on an active contract expiring in twelve days with no renewal in the pipeline. The CRM tracks what exists, not what is about to stop existing.
+Chapter three documented two findings from a single open prompt — no checklist, no target, forty-four seconds to first result. Västfjord Consulting: €45,000 suspended between a won deal and an unsigned contract in a different module, invisible until the agent looked across both simultaneously. Apexis AB: €22,000 on an active contract expiring in twelve days with no renewal in the pipeline. The CRM tracks what exists, not what is about to stop existing.
 
 Two findings. €67,000 of revenue either blocked or invisible. Not an edge case — the structural consequence of running a B2B business across systems that do not read each other. The full session log is in chapter three.
 

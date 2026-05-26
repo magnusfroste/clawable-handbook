@@ -103,13 +103,13 @@ We seeded the scenario. We did not script the outcome.
 
 ### 1. The Inbound — Cross-domain awareness in under three minutes
 
-Marcus Lindqvist — purchasing manager at Apex Nordic — appeared in INBOX as a new inbound lead: "We'd like to renew and discuss expansion. We need to move quickly."
+Marcus Lindberg — purchasing manager at Apexis AB — appeared in INBOX as a new inbound lead: "We'd like to renew and discuss expansion. We need to move quickly."
 
 No further instruction.
 
-The operator read the INBOX, put on the sales hat, and ran three parallel lookups: leads (found Sofia Karlsson, existing contact, Apex Nordic), contracts (found contract 2fb60c02 — Förvaltningsavtal 2025–2026, 240,000 SEK/year, expired two days prior), invoices (found INV-2026-001 — 23,125 SEK, six days overdue, unpaid).
+The operator read the INBOX, put on the sales hat, and ran three parallel lookups: leads (found Sofia Carlsson, existing contact, Apexis AB), contracts (found contract 2fb60c02 — Förvaltningsavtal 2025–2026, 240,000 SEK/year, expired two days prior), invoices (found INV-2026-001 — 23,125 SEK, six days overdue, unpaid).
 
-It then created a deal for 240,000 SEK, embedded the financial blocker directly in the deal notes — *"UNPAID INVOICE: INV-2026-001, 23,125 SEK, overdue 2026-04-30. Contact Sofia Karlsson regarding payment before renewal"* — sent Marcus an outreach email, filed a HIGH finding, and wrote a day log with structured recommendations for the principal.
+It then created a deal for 240,000 SEK, embedded the financial blocker directly in the deal notes — *"UNPAID INVOICE: INV-2026-001, 23,125 SEK, overdue 2026-04-30. Contact Sofia Carlsson regarding payment before renewal"* — sent Marcus an outreach email, filed a HIGH finding, and wrote a day log with structured recommendations for the principal.
 
 Time to completion: under three minutes. Tools called: `manage_leads`, `search_contracts`, `invoice_overdue_check`, `qualify_lead`, `manage_deal`, `send_email_to_lead`, `openclaw_report_finding`.
 
@@ -133,11 +133,11 @@ The counter-offer it proposed without being asked: 12% against a two-year bindin
 
 The principal approved: 12% against two-year binding, invoice in month-one payment plan, operator runs Thursday meeting.
 
-The operator implemented without asking clarifying questions. Contract created: Apex Nordic Förvaltningsavtal 2026–2028, 422,400 SEK total. Meeting booked: Thursday 10:00. CRM task created for post-meeting follow-up. Confirmation email sent to Marcus specifying terms and meeting logistics.
+The operator implemented without asking clarifying questions. Contract created: Apexis AB Förvaltningsavtal 2026–2028, 422,400 SEK total. Meeting booked: Thursday 10:00. CRM task created for post-meeting follow-up. Confirmation email sent to Marcus specifying terms and meeting logistics.
 
 INBOX marked done. Day log updated.
 
-**Apex Nordic total: 422,400 SEK over two years.**
+**Apexis AB total: 422,400 SEK over two years.**
 
 ### 4. The Proactive Sweep — Signal detection without prompting
 
@@ -145,23 +145,23 @@ The next morning, with no new inbound and no instruction beyond "run your mornin
 
 It found:
 
-**Westfield Consulting** — invoice INV-2026-002 (10,000 SEK) due the next day, and a draft contract for the same company that had been sitting unsigned for fifteen days. It connected them: *"Contract in draft since 2026-04-22 and invoice due tomorrow — this is a combined risk. The invoice may be unenforceable if the contract is never signed."* Two tasks created, one finding filed.
+**Västfjord Consulting** — invoice INV-2026-002 (10,000 SEK) due the next day, and a draft contract for the same company that had been sitting unsigned for fifteen days. It connected them: *"Contract in draft since 2026-04-22 and invoice due tomorrow — this is a combined risk. The invoice may be unenforceable if the contract is never signed."* Two tasks created, one finding filed.
 
-**Volvo Cars** — contract (1,800,000 SEK) stuck in pending_signature for twelve days. This was not planted data. The operator found it in the live database, flagged it as a blocked contract, and created a follow-up task.
+**Northway Motors** — contract (1,800,000 SEK) stuck in pending_signature for twelve days. This was not planted data. The operator found it in the live database, flagged it as a blocked contract, and created a follow-up task.
 
 It then wrote a morning report: six leads, twelve deals, two unpaid invoices, two blocked contracts. Clean, structured, actionable.
 
 ### 5. The Concurrent Pressure — Priority reasoning under load
 
-While the proactive sweep was dispatched, a second INBOX item arrived simultaneously: Thomas Berg, CEO of Berg-Tek Industri, had called. Board meeting Monday. Needed written confirmation of enterprise plan, pricing, and go-live timeline before 16:00 today.
+While the proactive sweep was dispatched, a second INBOX item arrived simultaneously: Thomas Bergman, CEO of Berglund Tech, had called. Board meeting Monday. Needed written confirmation of enterprise plan, pricing, and go-live timeline before 16:00 today.
 
-The operator's first line: *"Thomas Berg has a 16:00 deadline — priority 1 per SOUL.md (inbound customer before scheduled work). Running the sweep in the background, handling Berg-Tek first."*
+The operator's first line: *"Thomas Bergman has a 16:00 deadline — priority 1 per SOUL.md (inbound customer before scheduled work). Running the sweep in the background, handling Berglund Tech first."*
 
 It qualified the lead, checked service pricing via `browse_services`, created a deal (588,000 SEK/year), and sent Thomas a written confirmation: enterprise plan, implementation timeline (kickoff week 20, live week 22), structured pricing. Deadline met.
 
 It then returned to the sweep and completed it.
 
-**Berg-Tek: 588,000 SEK/year. New customer.**
+**Berglund Tech: 588,000 SEK/year. New customer.**
 
 ---
 
@@ -174,17 +174,17 @@ Every MCP tool call is logged in `flowwink://activity`. This is the actual recor
 | `lead_pipeline_review` | CRM | 2× | Activation + morning sweep |
 | `deal_stale_check` | CRM | 2× | Activation + morning sweep |
 | `manage_leads` | CRM | 3× | List, search, context |
-| `qualify_lead` | CRM | 2× | Apex Nordic, Berg-Tek |
-| `manage_deal` | CRM | 3× | Apex Nordic deal, Berg-Tek deal, updates |
+| `qualify_lead` | CRM | 2× | Apexis AB, Berglund Tech |
+| `manage_deal` | CRM | 3× | Apexis AB deal, Berglund Tech deal, updates |
 | `send_email_to_lead` | CRM | 4× | Sims 1, 2, 3, 5 |
 | `crm_task_create` | CRM | 3× | Post-meeting, Volvo, Westfield |
 | `manage_bookings` | CRM | 1× | Thursday meeting |
-| `browse_services` | Commerce | 1× | Berg-Tek pricing lookup |
+| `browse_services` | Commerce | 1× | Berglund Tech pricing lookup |
 | `manage_quote` | Commerce | 1× (failed) | Schema bug: `quote_number` null constraint — operator handled gracefully, delivered pricing in email instead |
 | `invoice_overdue_check` | Finance | 3× | Every sweep + Sim 1 |
 | `contract_renewal_check` | Finance | 2× | Activation + morning sweep |
 | `list_expense_reports` | Finance | 2× | Activation + morning sweep |
-| `manage_contract` | Finance | 1× | New Apex Nordic 2-year contract |
+| `manage_contract` | Finance | 1× | New Apexis AB 2-year contract |
 | `search_contracts` | Finance | 2× | Sims 1, 4 |
 | `manage_orders` | Operations | 3× | Every sweep |
 | `openclaw_report_finding` | Platform | 6× | Every scenario, every sweep |
@@ -223,10 +223,10 @@ The FlowWink MCP surface exposes 200+ skills across 60+ modules. The operator us
 
 | Outcome | Value |
 |---|---|
-| Apex Nordic renewal (2-year contract) | 422,400 SEK |
-| Berg-Tek enterprise plan (new customer) | 588,000 SEK/yr |
-| Volvo Cars blocked contract — surfaced, task created | 1,800,000 SEK |
-| Westfield Consulting invoice + draft contract risk flagged | 10,000 SEK |
+| Apexis AB renewal (2-year contract) | 422,400 SEK |
+| Berglund Tech enterprise plan (new customer) | 588,000 SEK/yr |
+| Northway Motors blocked contract — surfaced, task created | 1,800,000 SEK |
+| Västfjord Consulting invoice + draft contract risk flagged | 10,000 SEK |
 | **Revenue leak detected** — 62 billable hours, no contract, no invoice | **~100,000 SEK** |
 
 Three million SEK in pipeline movement and new business — plus a revenue leak the business did not know existed. No humans initiated any of these outcomes. No workflow ran. No automation triggered. The operator read its standing objectives, read the business, and acted.
@@ -245,9 +245,9 @@ The proof above was a single operator in a single session. The question it leave
 
 On a Tuesday morning in May 2026, we ran that test.
 
-The standing situation when the operators started their sweep: a 1.8 million SEK contract at Volvo Cars had been stuck in pending signature for seventeen days with no follow-up. A 58.8 million SEK deal with Berg-Tek Industri had a board meeting the day before — the deadline for written confirmation had already passed. Lindström Gruppen's service contract expired in eight days with no renewal conversation started, no deal in the pipeline, no contact made.
+The standing situation when the operators started their sweep: a 1.8 million SEK contract at Northway Motors had been stuck in pending signature for seventeen days with no follow-up. A 58.8 million SEK deal with Berglund Tech had a board meeting the day before — the deadline for written confirmation had already passed. Lindvall Systems's service contract expired in eight days with no renewal conversation started, no deal in the pipeline, no contact made.
 
-At 07:17, an inbound arrived: Erik Söderström, CEO of Kraftstad Energi AB, 180 employees, former state utility recently privatised. Old system being decommissioned June 1. He needed a written enterprise proposal — pricing, implementation timeline, SLA — by 14:00 for a 15:00 board meeting. He added: *budget is not the constraint if the solution is right.*
+At 07:17, an inbound arrived: Erik Sjöberg, CEO of Strömkraft AB, 180 employees, former state utility recently privatised. Old system being decommissioned June 1. He needed a written enterprise proposal — pricing, implementation timeline, SLA — by 14:00 for a 15:00 board meeting. He added: *budget is not the constraint if the solution is right.*
 
 Three legacy failures. One live opportunity. Six hours.
 
@@ -255,11 +255,11 @@ The sales operator identified the Kraftstad inbound as the highest priority and 
 
 What followed was not a sweep. It was a recovery operation.
 
-The Volvo Cars contract had been pending for seventeen days because nobody had followed up. The operator created a lead for the Volvo contact who had gone silent, sent a direct follow-up email, and created a task due the next morning. CRITICAL finding filed. The Berg-Tek deal was harder. The board meeting had happened without a written confirmation from the vendor's side. Most sales processes would write this off — the moment had passed. The operator sent the recovery email anyway, referenced the board meeting explicitly, offered to provide any additional information the board had requested, and set a follow-up task for the next morning. CRITICAL finding filed. Lindström Gruppen: a contract renewal email, a task, a HIGH finding.
+The Northway Motors contract had been pending for seventeen days because nobody had followed up. The operator created a lead for the Volvo contact who had gone silent, sent a direct follow-up email, and created a task due the next morning. CRITICAL finding filed. The Berglund Tech deal was harder. The board meeting had happened without a written confirmation from the vendor's side. Most sales processes would write this off — the moment had passed. The operator sent the recovery email anyway, referenced the board meeting explicitly, offered to provide any additional information the board had requested, and set a follow-up task for the next morning. CRITICAL finding filed. Lindvall Systems: a contract renewal email, a task, a HIGH finding.
 
 Three emails. Three tasks. Three findings. No human instruction on where to look or what to do. The operator read the business, identified what was wrong, and acted.
 
-The Berg-Tek recovery email is worth pausing on. The board meeting had already happened. In human terms, that often means the opportunity to shape the decision has closed. The operator's logic was different: *the deadline has passed, but we have not received a no. The correct action is to follow up.* That is not a rule written into any workflow. It is a judgment call — and it was the right one.
+The Berglund Tech recovery email is worth pausing on. The board meeting had already happened. In human terms, that often means the opportunity to shape the decision has closed. The operator's logic was different: *the deadline has passed, but we have not received a no. The correct action is to follow up.* That is not a rule written into any workflow. It is a judgment call — and it was the right one.
 
 All three proofs are logged, timestamped, and verifiable on a live production system.
 
@@ -273,13 +273,13 @@ In May 2026, we got the answer. We did not plan it. It emerged.
 
 ---
 
-The invoice was unremarkable. INV-2026-001. Apex Nordic. 23,125 SEK. Nineteen days overdue.
+The invoice was unremarkable. INV-2026-001. Apexis AB. 23,125 SEK. Nineteen days overdue.
 
-It first appeared in a month-end finance sweep. The finance operator flagged it, noted it was blocking the Apex Nordic renewal conversation, and filed a finding. Standard procedure.
+It first appeared in a month-end finance sweep. The finance operator flagged it, noted it was blocking the Apexis AB renewal conversation, and filed a finding. Standard procedure.
 
 Three simulations later, the sales operator ran an independent pipeline triage. It had no memory of the finance sweep. It had never seen the finding. It read the CRM, connected the overdue invoice to the stalled renewal deal, and flagged it again. Same invoice. Same analysis. Different operator. No coordination.
 
-Two simulations after that, the coordination operator — tasked with a full business sweep, no specific brief — worked through the pipeline systematically. It reached Apex Nordic, read the contract history, read the invoice ledger, and filed a third independent finding on the same invoice. By this point, INV-2026-001 had appeared in five separate simulation runs across seven weeks, been flagged by three different operators, none of whom had spoken to each other.
+Two simulations after that, the coordination operator — tasked with a full business sweep, no specific brief — worked through the pipeline systematically. It reached Apexis AB, read the contract history, read the invoice ledger, and filed a third independent finding on the same invoice. By this point, INV-2026-001 had appeared in five separate simulation runs across seven weeks, been flagged by three different operators, none of whom had spoken to each other.
 
 That convergence is not a coincidence. It is a signal.
 
@@ -293,9 +293,9 @@ No workflow would have connected those three findings. Each one lived in a diffe
 
 The coordination operator did not just flag the invoice. It mapped the downstream.
 
-In a single sweep, it traced the full consequence chain: INV-2026-001 unpaid → Apex Nordic relationship at risk → renewal contract 674b4819 (422,400 SEK, two years) cannot proceed → 18.3x return on a 23,125 SEK payment blocked by inaction.
+In a single sweep, it traced the full consequence chain: INV-2026-001 unpaid → Apexis AB relationship at risk → renewal contract 674b4819 (422,400 SEK, two years) cannot proceed → 18.3x return on a 23,125 SEK payment blocked by inaction.
 
-It then kept going. While in Apex Nordic's records, it found the Volvo Cars contract — 1,800,000 SEK, stuck in pending signature for seventeen days. Not assigned, not followed up, not on anyone's radar. It found Lindström Gruppen's service contract expiring in eight days with no renewal deal, no conversation, no contact made. Three separate revenue risks. One sweep. Under four minutes.
+It then kept going. While in Apexis AB's records, it found the Northway Motors contract — 1,800,000 SEK, stuck in pending signature for seventeen days. Not assigned, not followed up, not on anyone's radar. It found Lindvall Systems's service contract expiring in eight days with no renewal deal, no conversation, no contact made. Three separate revenue risks. One sweep. Under four minutes.
 
 The cascade the operator described was precise: *"Resolving INV-2026-001 does not just close a receivable. It unblocks a 422,400 SEK renewal that has been sitting idle since the invoice went overdue. The downstream is approximately 18.3x the outstanding amount."*
 
@@ -335,7 +335,7 @@ With the platform bugs fixed, the cascade ran again.
 
 But the signing URL pointed to an empty document.
 
-The renewal contract — 674b4819, 422,400 SEK, Apex Nordic Förvaltningsavtal 2026–2028 — had a title, a value, a counterparty, and a status. It had no body. The contract had been created as a metadata record when the deal was won. No one had ever written the actual agreement text. Neither had any prior operator — the same was true for the two historical Apex Nordic contracts in the system. Every contract the company held with this customer was an empty shell.
+The renewal contract — 674b4819, 422,400 SEK, Apexis AB Förvaltningsavtal 2026–2028 — had a title, a value, a counterparty, and a status. It had no body. The contract had been created as a metadata record when the deal was won. No one had ever written the actual agreement text. Neither had any prior operator — the same was true for the two historical Apexis AB contracts in the system. Every contract the company held with this customer was an empty shell.
 
 This was not a platform bug. Platform bugs have a fix: the vendor ships a patch. This was a process gap — a failure of the business itself to create the documents it needed. The platform had faithfully stored what it was given. It had been given nothing.
 

@@ -7,17 +7,17 @@ icon: "zap"
 
 ## Four Minutes
 
-Lindström Gruppen had a service contract expiring in eight days. No renewal deal in the pipeline. No contact made. No email sent. The situation had been visible in the system for weeks. Nobody had acted.
+Lindvall Systems had a service contract expiring in eight days. No renewal deal in the pipeline. No contact made. No email sent. The situation had been visible in the system for weeks. Nobody had acted.
 
 One sentence dispatched to the operator: handle the Lindström renewal.
 
 Four minutes later:
 
-The operator had run a KYC check on the company — found the existing lead record, created a missing company record to complete the profile. It had written and sent a personal renewal email to Johan Lindström, referencing the contract expiry date and proposing continuation terms. It had created a renewal deal in the CRM with the estimated contract value. It had filed a CRITICAL finding: contract expires in eight days, no buffer, renewal conversation not started. And it had written a follow-up plan: call on May 16, escalate to principal on May 18 if no response.
+The operator had run a KYC check on the company — found the existing lead record, created a missing company record to complete the profile. It had written and sent a personal renewal email to Johan Lindvall, referencing the contract expiry date and proposing continuation terms. It had created a renewal deal in the CRM with the estimated contract value. It had filed a CRITICAL finding: contract expires in eight days, no buffer, renewal conversation not started. And it had written a follow-up plan: call on May 16, escalate to principal on May 18 if no response.
 
 Five actions. Four minutes. No instructions beyond the situation.
 
-The chapter that follows explains how this is possible — four structural capabilities that produced each of those five actions. But the number to hold onto is not four minutes. It is eight days. That is how close Lindström Gruppen was to an expired contract with no renewal in place. The operator found the gap, named it, and started the clock — not because anyone triggered it, but because it read the business and understood what eight days means.
+The chapter that follows explains how this is possible — four structural capabilities that produced each of those five actions. But the number to hold onto is not four minutes. It is eight days. That is how close Lindvall Systems was to an expired contract with no renewal in place. The operator found the gap, named it, and started the clock — not because anyone triggered it, but because it read the business and understood what eight days means.
 
 ---
 
@@ -69,9 +69,9 @@ These are not pattern-matching rules. They are semantic judgments. They require 
 
 The sharpest production proof of this capability is not a VAT rounding error. It is a fraud signal.
 
-In May 2026, an invoice arrived in the system from a vendor called Grossist Nord AB: 60,937 SEK for packaging materials, referencing a purchase order that did not exist. It had been sitting unreviewed for fourteen days. Three operators were dispatched independently — finance, CRM, and a coordination layer — with no instruction beyond "investigate this invoice."
+In May 2026, an invoice arrived in the system from a vendor called PackNord AB: 60,937 SEK for packaging materials, referencing a purchase order that did not exist. It had been sitting unreviewed for fourteen days. Three operators were dispatched independently — finance, CRM, and a coordination layer — with no instruction beyond "investigate this invoice."
 
-Each one found a different piece of the picture. The finance operator confirmed the PO did not exist, that no one had approved the invoice internally, and that no goods receipt had been registered. The CRM operator found zero companies, zero contacts, and zero deal history for Grossist Nord — a supplier nobody in the business had ever worked with. The coordination operator cross-referenced vendor metadata against the invoice date and found that the vendor account had been created on the same day as the invoice. It then noticed something no one had asked it to look for: the purchase order reference — APX-0033 — matched the internal naming format of an existing customer, Apex Nordic.
+Each one found a different piece of the picture. The finance operator confirmed the PO did not exist, that no one had approved the invoice internally, and that no goods receipt had been registered. The CRM operator found zero companies, zero contacts, and zero deal history for Grossist Nord — a supplier nobody in the business had ever worked with. The coordination operator cross-referenced vendor metadata against the invoice date and found that the vendor account had been created on the same day as the invoice. It then noticed something no one had asked it to look for: the purchase order reference — APX-0033 — matched the internal naming format of an existing customer, Apexis AB.
 
 No single operator had the full picture. No single module contained enough information to raise the finding. The invoice was either a test of whether the company pays invoices without checking, a fabricated document exploiting a known PO format, or an off-system transaction that bypassed procurement entirely. The operators could not determine which. But they stopped the payment, filed a CRITICAL finding, and produced a coordinated assessment before any money moved.
 

@@ -47,11 +47,11 @@ The abstract problem — five agents, five silos — is easy to accept in theory
 
 In May 2026 we ran a test with three specialist operators deployed in parallel: one for sales (CRM, leads, deals), one for operations (orders, inventory, fulfilment), and one for finance (invoices, contracts, expenses). Each had a domain-specific mandate and a clear brief. Each ran its morning sweep independently.
 
-Both the sales operator and the finance operator flagged the same customer — Apex Nordic — within the same cycle. The sales operator had found an active renewal inquiry, sent outreach to the customer's purchasing manager, and created a deal for 422,400 SEK. The finance operator had found an overdue invoice (23,125 SEK, six days late, never opened by the recipient) and asked: *"Shall I send a dunning notice? The customer has not even opened the invoice — it may be a delivery problem rather than unwillingness to pay."*
+Both the sales operator and the finance operator flagged the same customer — Apexis AB — within the same cycle. The sales operator had found an active renewal inquiry, sent outreach to the customer's purchasing manager, and created a deal for 422,400 SEK. The finance operator had found an overdue invoice (23,125 SEK, six days late, never opened by the recipient) and asked: *"Shall I send a dunning notice? The customer has not even opened the invoice — it may be a delivery problem rather than unwillingness to pay."*
 
 Neither agent knew what the other had done.
 
-Had both acted without a coordination layer, Apex Nordic would have received a renewal outreach email and a dunning notice on the same day, from what would appear to be different parts of the same business. The finance operator's caution was correct — it escalated rather than acted unilaterally. But the escalation went to a human, not to the sales operator. The cross-system awareness that would have made the right action obvious — *the customer is mid-renewal conversation, hold the dunning, coordinate with sales first* — existed nowhere in the system.
+Had both acted without a coordination layer, Apexis AB would have received a renewal outreach email and a dunning notice on the same day, from what would appear to be different parts of the same business. The finance operator's caution was correct — it escalated rather than acted unilaterally. But the escalation went to a human, not to the sales operator. The cross-system awareness that would have made the right action obvious — *the customer is mid-renewal conversation, hold the dunning, coordinate with sales first* — existed nowhere in the system.
 
 This is the coordination gap made concrete. Three locally reasonable agents. One customer experience that would have been incoherent if they had all acted without a layer above them. The orchestrator is not an architectural luxury. It is the thing that turns three correct domain decisions into one coherent customer moment.
 
@@ -65,11 +65,11 @@ Two findings from that run were not anticipated in the design. First, the financ
 
 The coordination gap discussion above is about operators that *should* coordinate but do not. There is a related question that the literature has not yet addressed: what happens when two operators both *do* act on the same situation — not because anyone planned it, but because both independently determined it was the right thing to do?
 
-In May 2026, a high-value inbound arrived at 07:17. Kraftstad Energi AB: 180 employees, board meeting at 15:00, asking for a written enterprise proposal before 14:00. The information landed in two places simultaneously — in the sales operator's inbox and in the COO orchestrator's morning sweep queue.
+In May 2026, a high-value inbound arrived at 07:17. Strömkraft AB: 180 employees, board meeting at 15:00, asking for a written enterprise proposal before 14:00. The information landed in two places simultaneously — in the sales operator's inbox and in the COO orchestrator's morning sweep queue.
 
 Both operators acted.
 
-The sales operator handled it first, per its mandate (inbound customers take priority over scheduled sweep work). It qualified the lead, created a deal, benchmarked pricing against comparable enterprise deals, and sent Erik Söderström a written proposal before 09:00.
+The sales operator handled it first, per its mandate (inbound customers take priority over scheduled sweep work). It qualified the lead, created a deal, benchmarked pricing against comparable enterprise deals, and sent Erik Sjöberg a written proposal before 09:00.
 
 The COO orchestrator, running its own cross-domain sweep, found the freshly created Kraftstad Energi lead in FlowWink, identified the 14:00 deadline, and independently sent its own proposal email — without knowing the sales operator had already done so two hours earlier.
 

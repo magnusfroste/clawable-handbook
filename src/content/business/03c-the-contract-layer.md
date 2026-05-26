@@ -35,7 +35,7 @@ The agent's role in this model is not to replace legal judgment. It is to ensure
 
 In May 2026, we deliberately removed the contract templates from the system.
 
-The scenario was a standard renewal: Apex Nordic, an existing managed-services customer, two-year extension at 211,200 SEK per year. The renewal contract existed in the database as a metadata record — counterparty, value, dates, status — but the body was empty. No template was linked. The previous contracts for the same customer were also empty, created as records at deal close but never populated with text.
+The scenario was a standard renewal: Apexis AB, an existing managed-services customer, two-year extension at 211,200 SEK per year. The renewal contract existed in the database as a metadata record — counterparty, value, dates, status — but the body was empty. No template was linked. The previous contracts for the same customer were also empty, created as records at deal close but never populated with text.
 
 We sent one operator in with a mandate to complete the renewal.
 

@@ -130,13 +130,13 @@ That is mandate governance at its most useful: not a dramatic intervention, but 
 
 **The domain wall.**
 
-The sales operator was running its pipeline sweep. It found the Volvo Cars contract — 1,800,000 SEK, stuck in pending signature for seventeen days. It had flagged this contract before. It filed another finding and created a follow-up task for a human.
+The sales operator was running its pipeline sweep. It found the Northway Motors contract — 1,800,000 SEK, stuck in pending signature for seventeen days. It had flagged this contract before. It filed another finding and created a follow-up task for a human.
 
 But it did not send the contract.
 
 Not because it chose not to. Because `send_contract_for_signature` was not in its tool inventory. The operator's MCP access was scoped to CRM: leads, deals, outreach, tasks, bookings. Contract execution was Finance territory, with its own operator and its own access surface.
 
-The operator recognised the boundary. It escalated: *"Volvo Cars contract 79ea47c9 pending 17 days, no follow-up logged. Outside my tool scope — requires Finance or principal action."*
+The operator recognised the boundary. It escalated: *"Northway Motors contract 79ea47c9 pending 17 days, no follow-up logged. Outside my tool scope — requires Finance or principal action."*
 
 A salesperson reading that finding would know exactly what to do. The information was correct. The diagnosis was correct. The escalation was correct.
 
