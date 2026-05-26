@@ -71,9 +71,9 @@ Both operators acted.
 
 The sales operator handled it first, per its mandate (inbound customers take priority over scheduled sweep work). It qualified the lead, created a deal, benchmarked pricing against comparable enterprise deals, and sent Erik Sjöberg a written proposal before 09:00.
 
-The COO orchestrator, running its own cross-domain sweep, found the freshly created Kraftstad Energi lead in FlowWink, identified the 14:00 deadline, and independently sent its own proposal email — without knowing the sales operator had already done so two hours earlier.
+The COO orchestrator, running its own cross-domain sweep, found the freshly created Strömkraft AB lead in FlowWink, identified the 14:00 deadline, and independently sent its own proposal email — without knowing the sales operator had already done so two hours earlier.
 
-Kraftstad Energi received two emails from two different operator personas, in the same morning.
+Strömkraft AB received two emails from two different operator personas, in the same morning.
 
 The information in both was consistent. Same pricing range, same implementation timeline, same platform value proposition. There was no contradiction because both operators had drawn from the same source: the company profile, the deal record, and the CRM data all shared in FlowWink. The MCP surface, identical for both operators, acted as an implicit coordination layer — not because it was designed to, but because a shared data model makes consistent output the path of least resistance.
 

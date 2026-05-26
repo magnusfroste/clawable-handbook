@@ -177,7 +177,7 @@ Every MCP tool call is logged in `flowwink://activity`. This is the actual recor
 | `qualify_lead` | CRM | 2× | Apexis AB, Berglund Tech |
 | `manage_deal` | CRM | 3× | Apexis AB deal, Berglund Tech deal, updates |
 | `send_email_to_lead` | CRM | 4× | Sims 1, 2, 3, 5 |
-| `crm_task_create` | CRM | 3× | Post-meeting, Volvo, Westfield |
+| `crm_task_create` | CRM | 3× | Post-meeting, Northway, Västfjord |
 | `manage_bookings` | CRM | 1× | Thursday meeting |
 | `browse_services` | Commerce | 1× | Berglund Tech pricing lookup |
 | `manage_quote` | Commerce | 1× (failed) | Schema bug: `quote_number` null constraint — operator handled gracefully, delivered pricing in email instead |
@@ -251,11 +251,11 @@ At 07:17, an inbound arrived: Erik Sjöberg, CEO of Strömkraft AB, 180 employee
 
 Three legacy failures. One live opportunity. Six hours.
 
-The sales operator identified the Kraftstad inbound as the highest priority and handled it first, per its mandate. It qualified the lead against existing deal benchmarks, created the deal, and drafted an enterprise offer calibrated to the customer's size and urgency: implementation kickoff in three weeks, go-live in eight, full SLA coverage. The email reached Erik's inbox before 09:00. The sales operator then turned to the backlog.
+The sales operator identified the Strömkraft inbound as the highest priority and handled it first, per its mandate. It qualified the lead against existing deal benchmarks, created the deal, and drafted an enterprise offer calibrated to the customer's size and urgency: implementation kickoff in three weeks, go-live in eight, full SLA coverage. The email reached Erik's inbox before 09:00. The sales operator then turned to the backlog.
 
 What followed was not a sweep. It was a recovery operation.
 
-The Northway Motors contract had been pending for seventeen days because nobody had followed up. The operator created a lead for the Volvo contact who had gone silent, sent a direct follow-up email, and created a task due the next morning. CRITICAL finding filed. The Berglund Tech deal was harder. The board meeting had happened without a written confirmation from the vendor's side. Most sales processes would write this off — the moment had passed. The operator sent the recovery email anyway, referenced the board meeting explicitly, offered to provide any additional information the board had requested, and set a follow-up task for the next morning. CRITICAL finding filed. Lindvall Systems: a contract renewal email, a task, a HIGH finding.
+The Northway Motors contract had been pending for seventeen days because nobody had followed up. The operator created a lead for the Northway contact who had gone silent, sent a direct follow-up email, and created a task due the next morning. CRITICAL finding filed. The Berglund Tech deal was harder. The board meeting had happened without a written confirmation from the vendor's side. Most sales processes would write this off — the moment had passed. The operator sent the recovery email anyway, referenced the board meeting explicitly, offered to provide any additional information the board had requested, and set a follow-up task for the next morning. CRITICAL finding filed. Lindvall Systems: a contract renewal email, a task, a HIGH finding.
 
 Three emails. Three tasks. Three findings. No human instruction on where to look or what to do. The operator read the business, identified what was wrong, and acted.
 

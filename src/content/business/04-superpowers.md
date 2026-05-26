@@ -9,7 +9,7 @@ icon: "zap"
 
 Lindvall Systems had a service contract expiring in eight days. No renewal deal in the pipeline. No contact made. No email sent. The situation had been visible in the system for weeks. Nobody had acted.
 
-One sentence dispatched to the operator: handle the Lindström renewal.
+One sentence dispatched to the operator: handle the Lindvall Systems renewal.
 
 Four minutes later:
 
@@ -71,7 +71,7 @@ The sharpest production proof of this capability is not a VAT rounding error. It
 
 In May 2026, an invoice arrived in the system from a vendor called PackNord AB: 60,937 SEK for packaging materials, referencing a purchase order that did not exist. It had been sitting unreviewed for fourteen days. Three operators were dispatched independently — finance, CRM, and a coordination layer — with no instruction beyond "investigate this invoice."
 
-Each one found a different piece of the picture. The finance operator confirmed the PO did not exist, that no one had approved the invoice internally, and that no goods receipt had been registered. The CRM operator found zero companies, zero contacts, and zero deal history for Grossist Nord — a supplier nobody in the business had ever worked with. The coordination operator cross-referenced vendor metadata against the invoice date and found that the vendor account had been created on the same day as the invoice. It then noticed something no one had asked it to look for: the purchase order reference — APX-0033 — matched the internal naming format of an existing customer, Apexis AB.
+Each one found a different piece of the picture. The finance operator confirmed the PO did not exist, that no one had approved the invoice internally, and that no goods receipt had been registered. The CRM operator found zero companies, zero contacts, and zero deal history for PackNord AB — a supplier nobody in the business had ever worked with. The coordination operator cross-referenced vendor metadata against the invoice date and found that the vendor account had been created on the same day as the invoice. It then noticed something no one had asked it to look for: the purchase order reference — APX-0033 — matched the internal naming format of an existing customer, Apexis AB.
 
 No single operator had the full picture. No single module contained enough information to raise the finding. The invoice was either a test of whether the company pays invoices without checking, a fabricated document exploiting a known PO format, or an off-system transaction that bypassed procurement entirely. The operators could not determine which. But they stopped the payment, filed a CRITICAL finding, and produced a coordinated assessment before any money moved.
 
