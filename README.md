@@ -1,8 +1,15 @@
 # The Agentic AI Handbook
 
-> **Open source. Free forever. Two editions.**
->
-> [clawable.org](https://clawable.org)
+> **Open source. Free forever. Two editions.** Contributions welcome.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Issues](https://img.shields.io/github/issues/magnusfroste/clawable-handbook)](https://github.com/magnusfroste/clawable-handbook/issues)
+[![Discussions](https://img.shields.io/badge/Discussions-welcome-blue)](https://github.com/magnusfroste/clawable-handbook/discussions)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)](#contributing)
+
+<p align="center">
+  <img src="docs/clawable-cover.png" alt="The Agentic AI Handbook" width="100%" />
+</p>
 
 ---
 
@@ -32,6 +39,18 @@ The technical architecture guide. OpenClaw internals, heartbeat protocols, memor
 
 ---
 
+## The Experiment
+
+**Platform:** [FlowWink](https://github.com/magnusfroste/flowwink) — a B2B SaaS ERP (CRM, Orders, Invoicing, Contracts, Expenses, Content, Newsletter, Support, Recruitment, Analytics). Built with [Lovable](https://lovable.dev) in weeks. Self-hosted, open source. 150+ MCP skills.
+
+**Operator:** An external [OpenClaw](https://github.com/openclaw/openclaw) instance connected to FlowWink via MCP.
+
+**FlowPilot** — FlowWink's embedded agent — was **OFF** during the experiment. The external operator alone was sufficient.
+
+**What happened:** [Business Edition, Chapter 3 — Live Proof](https://clawable.org/business/03-live-proof)
+
+---
+
 ## Repository Structure
 
 ```
@@ -45,25 +64,13 @@ src/
     └── builder/       # Builder Edition routes
 
 research/
-├── chapters/          # Business Edition manuscript source
-├── clawstack/         # FlowWink ↔ Clawable integration docs
+── chapters/          # Business Edition manuscript source
+── clawstack/         # FlowWink ↔ Clawable integration docs
 ├── flowwink/          # FlowWink platform research
 ├── references/        # Live proof logs, primary sources
 ├── resources/         # Curated Agentic AI reading list
 └── archived/          # Historical research and superseded drafts
 ```
-
----
-
-## The Experiment
-
-**Platform:** [FlowWink](https://github.com/magnusfroste/flowwink) — a B2B SaaS ERP (CRM, Orders, Invoicing, Contracts, Expenses, Content, Newsletter, Support, Recruitment, Analytics). Built with [Lovable](https://lovable.dev) in weeks. Self-hosted, open source. 150+ MCP skills.
-
-**Operator:** Clawable — an external [OpenClaw](https://github.com/openclaw/openclaw) instance connected to FlowWink via MCP.
-
-**FlowPilot** — FlowWink's embedded agent — was **OFF** during the experiment. The external operator alone was sufficient.
-
-**What happened:** [Business Edition, Chapter 3 — Live Proof](https://clawable.org/business/03-live-proof)
 
 ---
 
@@ -81,6 +88,33 @@ research/
 | [FlowWink](https://github.com/magnusfroste/flowwink) | The SaaS ERP platform used as test environment |
 | [ClawStack](https://github.com/magnusfroste/clawstack) | Self-hosted OpenClaw infrastructure |
 | [Lovable](https://lovable.dev) | The platform FlowWink was built with |
+
+---
+
+## Contributing
+
+This handbook is **open source and community-driven**. We want it to become the definitive resource on autonomous AI agents — and we need your help to make it great.
+
+### Ways to contribute
+
+- **Report errors** — Found a typo, broken link, or factual error? [Open an issue](https://github.com/magnusfroste/clawable-handbook/issues).
+- **Request topics** — Missing a subject you think should be covered? [Start a discussion](https://github.com/magnusfroste/clawable-handbook/discussions).
+- **Improve docs** — Better explanations, clearer examples, translations — all welcome.
+- **Share your experience** — Deployed an agent using patterns from this handbook? We'd love to hear what worked and what didn't.
+
+### How to contribute
+
+1. **Fork** the repository
+2. **Create a branch** for your change
+3. **Make your changes** — content, code, or docs
+4. **Test locally** with `npx astro dev`
+5. **Open a pull request** — describe what you changed and why
+
+No contribution is too small. A typo fix is as valuable as a new chapter.
+
+### Good first issues
+
+Look for the [`good first issue`](https://github.com/magnusfroste/clawable-handbook/labels/good%20first%20issue) label for beginner-friendly tasks to get started with.
 
 ---
 
