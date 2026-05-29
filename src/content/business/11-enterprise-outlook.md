@@ -217,7 +217,7 @@ The honest caveat: the operator does not replace human judgment on complex decis
 
 For a mid-market B2B company running 8–12 SaaS tools, the cost-avoidance case alone pays for the deployment. A fully coordinated operator covering CRM, invoicing, expense compliance, content, newsletters, and sales intelligence replaces the context-switching tax across those tools — one reasoning context instead of twelve open tabs.
 
-> *Evidence note.* The cost table above is `partial` — the operator column reflects observed ClawStack deployment costs; the human column uses public European salary data. Individual business results will vary. The 2027 and 2028 market claims that open and close this chapter are `hypothesis` — directional forecasts anchored to McKinsey's agentic-organization framing and the Agent Manager trajectory, not observed outcomes.
+> *Evidence note.* The cost table above is `partial` — the operator column reflects observed ClawClass deployment costs; the human column uses public European salary data. Individual business results will vary. The 2027 and 2028 market claims that open and close this chapter are `hypothesis` — directional forecasts anchored to McKinsey's agentic-organization framing and the Agent Manager trajectory, not observed outcomes.
 
 ---
 

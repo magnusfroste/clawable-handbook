@@ -27,7 +27,7 @@ LiteIT is a Swedish consulting and transformation firm with an unusual thesis: t
 
 The company has deep roots in leadership development. Long before agentic AI existed, LiteIT was training managers in group dynamics and self-leadership. That background now shapes a very specific product offer: helping organizations implement autonomous agents not as IT projects, but as a **leadership transformation**.
 
-Their platform is **ClawStack** — the same infrastructure described in chapter 30 of this handbook. On top of ClawStack, LiteIT builds what they call a *digital company*: AI agents with goals, memory, and the ability to learn, working autonomously across processes from first customer contact through quote, delivery, and follow-up. The organisation's "digital employees" are OpenClaw instances, each with a soul, an identity, and a mandate. Paperclip sits on top as the orchestrating layer — the CEO that delegates.
+Their platform is **ClawClass** — the same infrastructure described in chapter 30 of this handbook. On top of ClawClass, LiteIT builds what they call a *digital company*: AI agents with goals, memory, and the ability to learn, working autonomously across processes from first customer contact through quote, delivery, and follow-up. The organisation's "digital employees" are OpenClaw instances, each with a soul, an identity, and a mandate. Paperclip sits on top as the orchestrating layer — the CEO that delegates.
 
 **What LiteIT offers:**
 

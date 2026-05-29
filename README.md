@@ -57,7 +57,7 @@ The technical architecture guide. OpenClaw internals, heartbeat protocols, memor
 |---------|-----------|
 | [OpenClaw](https://github.com/openclaw/openclaw) | The reference operator framework (346k+ stars) |
 | [FlowWink](https://github.com/magnusfroste/flowwink) | The SaaS ERP platform used as test environment |
-| [ClawStack](https://github.com/magnusfroste/clawstack) | Self-hosted OpenClaw infrastructure |
+| [ClawClass](https://github.com/magnusfroste/clawstack) | Self-hosted OpenClaw infrastructure |
 | [Lovable](https://lovable.dev) | The platform FlowWink was built with |
 
 ---

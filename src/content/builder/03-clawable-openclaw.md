@@ -129,7 +129,7 @@ The answer was yes, with two concrete proofs:
 1. OpenClaw works as a specialist QA assistant without any code modifications
 2. The `/v1/responses` + A2A pattern creates a real, sustained feedback loop between two architecturally different agents
 
-Once this worked with one QA Claw, the natural next step was to add more specialist roles: SEO Claw, Dev Claw, Research Claw. That is where infrastructure friction emerged — which is exactly why ClawStack exists (chapter 30).
+Once this worked with one QA Claw, the natural next step was to add more specialist roles: SEO Claw, Dev Claw, Research Claw. That is where infrastructure friction emerged — which is exactly why ClawClass exists (chapter 30).
 
 ---
 

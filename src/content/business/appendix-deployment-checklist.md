@@ -8,7 +8,7 @@ appendix: true
 
 > A checklist is a form of respect — for the people who will read the operator's findings, and for the business data it will touch. The operator runs autonomously. You are responsible for what it does.
 
-The builder edition carries an infrastructure-level checklist — Supabase, edge functions, RLS, cron jobs. This version is different. It assumes the operator runtime (an OpenClaw instance on ClawStack, or equivalent) is already running somewhere. What it checks is whether the operator is ready to be *given* a business.
+The builder edition carries an infrastructure-level checklist — Supabase, edge functions, RLS, cron jobs. This version is different. It assumes the operator runtime (an OpenClaw instance on ClawClass, or equivalent) is already running somewhere. What it checks is whether the operator is ready to be *given* a business.
 
 Four phases, one go/no-go table.
 

@@ -80,7 +80,7 @@ Deploying an operator against an L1 platform produces demos. Deploying against a
 - Identify the one business process where cross-system insight would have highest leverage — typically pipeline-at-risk, revenue recognition, or churn signals.
 
 **Days 31–60: Deploy in shadow mode.**
-- Stand up an external operator (OpenClaw on ClawStack, or equivalent) and connect it to the audited platform with read-only or low-stakes scope.
+- Stand up an external operator (OpenClaw on ClawClass, or equivalent) and connect it to the audited platform with read-only or low-stakes scope.
 - All medium- and high-stakes skills in `approve` mode. Run the daily review cadence (deployment checklist appendix).
 - Log every finding. Compare to what your team would have noticed without it.
 

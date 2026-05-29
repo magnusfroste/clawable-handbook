@@ -1,5 +1,5 @@
 ---
-title: "ClawStack — From Theory to Swarm"
+title: "ClawClass — From Theory to Swarm"
 description: "How to spin up a swarm of autonomous agents on your own infrastructure in an afternoon, and connect Paperclip as the CEO that delegates to all of them."
 order: 33
 icon: "server"
@@ -7,33 +7,33 @@ icon: "server"
 
 ## From Theory to Swarm Operations
 
-The jump from "I understand OpenClaw" to "I operate a production agentic organization" is large. [ClawStack](https://github.com/magnusfroste/clawstack) is the bridge — a minimal infrastructure layer that lets you spin up a swarm of OpenClaw agents on your own VPS in an afternoon, wire them together, and connect an orchestration layer that delegates work like a manager.
+The jump from "I understand OpenClaw" to "I operate a production agentic organization" is large. [ClawClass](https://github.com/magnusfroste/clawstack) is the bridge — a minimal infrastructure layer that lets you spin up a swarm of OpenClaw agents on your own VPS in an afternoon, wire them together, and connect an orchestration layer that delegates work like a manager.
 
 ## Executive Takeaway
 
 If you only remember three things from this chapter, remember these:
 
-1. **Time-to-value:** ClawStack compresses setup from days of infra work to an afternoon on one VPS.
+1. **Time-to-value:** ClawClass compresses setup from days of infra work to an afternoon on one VPS.
 2. **Role-ready agents:** Presets turn blank-slate OpenClaw instances into job-specific agents from first boot.
 3. **Organized swarm:** Paperclip adds delegation and accountability so multiple agents behave like a team, not noise.
 
 ---
 
-## The Problem ClawStack Solves
+## The Problem ClawClass Solves
 
 OpenClaw ships as a powerful blank-slate runtime. The project now has substantially better onboarding and configuration documentation, but many operators still hit a practical activation gap after first install: they see `SOUL.md`, `IDENTITY.md`, `TOOLS.md`, `BOOTSTRAP.md` and understand the pieces individually, yet struggle to turn them into a role-ready agent quickly. The persona setup remains conversational by design, which is flexible but can feel open-ended for first-time builders.
 
-The swarm problem is worse. Running multiple agents that collaborate requires manually configuring A2A bearer tokens, peer lists, and Agent Cards for each instance pair. Before ClawStack, there was effectively no turnkey, operator-friendly tooling for this.
+The swarm problem is worse. Running multiple agents that collaborate requires manually configuring A2A bearer tokens, peer lists, and Agent Cards for each instance pair. Before ClawClass, there was effectively no turnkey, operator-friendly tooling for this.
 
 We did not start by designing an infrastructure product.
 
 We started with exactly one OpenClaw QA agent helping FlowPilot via `/v1/responses` and A2A. It worked so well that we added more specialist Claws — SEO, Dev, Research. Very quickly, the problem stopped being "does the pattern work?" and became "how do we spin up and operate many OpenClaws without turning into a full-time infra team?".
 
-ClawStack is the answer to that second problem. It exists because the FlowPilot ⇄ QA Claw loop proved the pattern in production, and scaling that pattern by hand was not sustainable.
+ClawClass is the answer to that second problem. It exists because the FlowPilot ⇄ QA Claw loop proved the pattern in production, and scaling that pattern by hand was not sustainable.
 
-ClawStack removes both barriers.
+ClawClass removes both barriers.
 
-| Barrier | Before | With ClawStack |
+| Barrier | Before | With ClawClass |
 |---|---|---|
 | Infrastructure | Manual Docker, nginx, certbot, DNS | One form, automatic HTTPS, done |
 | Configuration | Flexible workspace model that can feel abstract for newcomers | Role presets: pick a job, agent starts ready |
@@ -48,14 +48,14 @@ Customer visits https://ai.customer.com
         ↓
 Caddy (on-demand TLS — cert issued on first request)
         ↓
-ClawStack portal (routes by hostname → container)
+ClawClass portal (routes by hostname → container)
         ↓
 OpenClaw container (isolated Docker network)
         ├── port 18789 → UI + OpenResponses API
         └── port 18800 → A2A gateway (if enabled)
 ```
 
-**Caddy** handles the infrastructure problem entirely. Point a DNS CNAME at your ClawStack server, create an instance in the portal, and the TLS certificate issues automatically on first request. No wildcard certs. No nginx reloads. No certbot cron jobs.
+**Caddy** handles the infrastructure problem entirely. Point a DNS CNAME at your ClawClass server, create an instance in the portal, and the TLS certificate issues automatically on first request. No wildcard certs. No nginx reloads. No certbot cron jobs.
 
 Each OpenClaw instance runs as an isolated Docker container with its own domain and its own identity. One server. Unlimited agents. The portal is a single Node.js file — no build pipeline, no framework, no complexity.
 
@@ -63,7 +63,7 @@ Each OpenClaw instance runs as an isolated Docker container with its own domain 
 
 ## Role Presets — Agents That Start Ready
 
-The biggest problem with a blank-slate agent is that you don't know what to write. ClawStack solves this with **role presets**: opinionated configurations that write the right `SOUL.md`, `TOOLS.md`, and `AGENTS.md` content at bootstrap time.
+The biggest problem with a blank-slate agent is that you don't know what to write. ClawClass solves this with **role presets**: opinionated configurations that write the right `SOUL.md`, `TOOLS.md`, and `AGENTS.md` content at bootstrap time.
 
 **Available roles:**
 
@@ -76,7 +76,7 @@ The biggest problem with a blank-slate agent is that you don't know what to writ
 | **Support Agent** | Customer-facing FAQ, escalation routing | Answer question, escalate, summarize conversation |
 | **Research Agent** | Web search, source aggregation, summarization | Search web, extract facts, compare positions |
 
-Pick a role at creation time. ClawStack writes the configuration. The container starts with an agent that already knows its job — no prompt archaeology required.
+Pick a role at creation time. ClawClass writes the configuration. The container starts with an agent that already knows its job — no prompt archaeology required.
 
 This is the same principle as OpenClaw's own SKILL.md system, applied to the bootstrapping problem: opinionated defaults that work immediately, full control for those who want to go deeper.
 
@@ -88,9 +88,9 @@ So far we've been talking about infrastructure: how to spin up agents, how to co
 
 Now we need to talk about the organization that runs inside it. Provisioning ten agents with no coordination structure is not a company — it's noise. Someone needs to decide what gets done, delegate it to the right agent, and track that it was completed. That's Paperclip.
 
-ClawStack provisions the swarm. But who delegates work to the swarm?
+ClawClass provisions the swarm. But who delegates work to the swarm?
 
-**Paperclip** is the orchestration layer that sits on top of ClawStack. It represents the organization — the CEO level — and delegates tasks downward to individual Claw instances the way a manager delegates to employees.
+**Paperclip** is the orchestration layer that sits on top of ClawClass. It represents the organization — the CEO level — and delegates tasks downward to individual Claw instances the way a manager delegates to employees.
 
 The mental model is explicit:
 
@@ -104,7 +104,7 @@ Paperclip (CEO / orchestrator)
 
 Adding a Claw to Paperclip follows an onboarding process that mirrors (intentionally) how a human employee joins an organization:
 
-1. Create an instance in ClawStack portal — pick a role
+1. Create an instance in ClawClass portal — pick a role
 2. In Paperclip, generate an OpenClaw Invite Prompt
 3. Paste the prompt into the Claw's chat — the agent runs its own onboarding
 4. Approve the join request in Paperclip
@@ -154,7 +154,7 @@ This dual-channel model maps exactly to how human organizations work: a manager 
 
 ## Swarm Templates
 
-The goal — currently in progress — is **swarm templates**: pre-composed sets of agents wired together for a common use case. Create the swarm from a template; ClawStack provisions all the instances, generates A2A tokens, and configures peering automatically.
+The goal — currently in progress — is **swarm templates**: pre-composed sets of agents wired together for a common use case. Create the swarm from a template; ClawClass provisions all the instances, generates A2A tokens, and configures peering automatically.
 
 **Web quality swarm:**
 - QA Agent + SEO Agent + Research Agent
@@ -175,15 +175,15 @@ The goal — currently in progress — is **swarm templates**: pre-composed sets
 
 ## The Governance Implication
 
-ClawStack makes the governance model from chapter 20 concrete.
+ClawClass makes the governance model from chapter 20 concrete.
 
-McKinsey's four-layer accountability model — Principal, Delegator, Operator, Agent — maps directly onto the ClawStack/Paperclip stack:
+McKinsey's four-layer accountability model — Principal, Delegator, Operator, Agent — maps directly onto the ClawClass/Paperclip stack:
 
-| McKinsey layer | ClawStack reality |
+| McKinsey layer | ClawClass reality |
 |---|---|
 | Principal | Business owner, sets objectives |
 | Delegator | Paperclip — delegates to agents, approves join requests |
-| Operator | ClawStack — provisions infrastructure, manages lifecycle |
+| Operator | ClawClass — provisions infrastructure, manages lifecycle |
 | Agent | Individual Claw instances — execute tasks |
 
 The Agent Manager role HBR described in February 2026 is not abstract here. It's the person who manages the Paperclip organization: deciding which roles to spin up, reviewing completed tasks, adjusting SOUL.md files when agents drift, and approving join requests from new Claws. Concrete, learnable, necessary.
@@ -211,15 +211,15 @@ The entire stack — Caddy, portal, OpenClaw containers, A2A gateway — runs on
 
 ## Why This Matters Beyond Getting Started
 
-ClawStack is more than a convenience layer. It demonstrates something the handbook has argued throughout: **the value is not in the agent, it's in the infrastructure around the agent.**
+ClawClass is more than a convenience layer. It demonstrates something the handbook has argued throughout: **the value is not in the agent, it's in the infrastructure around the agent.**
 
-A single OpenClaw instance is a powerful but horizontal tool. It does nothing specific. ClawStack adds:
+A single OpenClaw instance is a powerful but horizontal tool. It does nothing specific. ClawClass adds:
 - Role specificity (what the agent knows and cares about)
 - Organizational structure (how agents relate to each other)
 - Delegation infrastructure (how work flows from top to bottom and peer to peer)
 - Lifecycle management (provisioning, monitoring, decommissioning)
 
-This is precisely what Flowwink added to OpenClaw at the B2B SaaS level. ClawStack adds it at the infrastructure level — accessible to anyone with a VPS and an afternoon.
+This is precisely what Flowwink added to OpenClaw at the B2B SaaS level. ClawClass adds it at the infrastructure level — accessible to anyone with a VPS and an afternoon.
 
 The path from "I understand agentic AI" to "I operate an agentic organization" now has a practical on-ramp.
 
@@ -227,8 +227,8 @@ The path from "I understand agentic AI" to "I operate an agentic organization" n
 
 *Next: giving your agent eyes on the web — public scraping, Chrome Extension relay, and Signal Capture. [The Browser Operator →](/builder/34-browser-operator)*
 
-*ClawStack source: [github.com/magnusfroste/clawstack](https://github.com/magnusfroste/clawstack) — MIT license.*
+*ClawClass source: [github.com/magnusfroste/clawstack](https://github.com/magnusfroste/clawstack) — MIT license.*
 
-*Paperclip integration: see `paperclip.sh` and `docs/` in the ClawStack repo.*
+*Paperclip integration: see `paperclip.sh` and `docs/` in the ClawClass repo.*
 
-*Reference A2A peer: [Flowwink/FlowPilot](https://github.com/magnusfroste/flowwink) — the production implementation used during ClawStack's A2A development.*
+*Reference A2A peer: [Flowwink/FlowPilot](https://github.com/magnusfroste/flowwink) — the production implementation used during ClawClass's A2A development.*

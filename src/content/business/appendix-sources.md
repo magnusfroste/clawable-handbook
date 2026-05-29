@@ -116,7 +116,7 @@ All findings attributed to Clawable operating FlowWink live can be cross-checked
 | `/root/flowwink/docs/modules/` | Module surface documentation (200+ skills) |
 | `/root/openclaw/` | OpenClaw local fork — architecture claims verified here |
 | FlowWink production deployment | Edge functions, skills, MCP server |
-| `clawthree.froste.eu` / `clawwink.froste.eu` | Clawable operator deployments on ClawStack |
+| `clawthree.froste.eu` / `clawwink.froste.eu` | Clawable operator deployments on ClawClass |
 
 ---
 

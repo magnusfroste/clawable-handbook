@@ -440,8 +440,8 @@ The rest of this handbook uses the OpenClaw reference model and Flowwink adaptat
 - **Pattern 2: Agentic CMS/CRM (FlowPilot Pattern)**  
   Take the OpenClaw laws (soul, agents, heartbeat, skills, memory) and apply them to a self-hosted business platform. Flowwink/FlowPilot is one example: FlowPilot operates pages, blog, CRM, email, and analytics as a digital employee instead of a dashboard.
 
-- **Pattern 3: Role-Based Swarms on ClawStack**  
-  Run multiple specialist OpenClaw agents — QA, SEO, Dev, Research — as separate services on a VPS. Use ClawStack to provision and route them, and use `/v1/responses` + A2A to delegate work between them and your own systems.
+- **Pattern 3: Role-Based Swarms on ClawClass**  
+  Run multiple specialist OpenClaw agents — QA, SEO, Dev, Research — as separate services on a VPS. Use ClawClass to provision and route them, and use `/v1/responses` + A2A to delegate work between them and your own systems.
 
 - **Pattern 4: Company-Level Orchestrator with Paperclip**  
   Treat individual Claws as "employees" and use an orchestration layer (Paperclip) as the "company" that sets objectives, delegates tasks, and enforces budgets and governance across agents.
@@ -461,7 +461,7 @@ This handbook is opinionated, but it is not the final word. The OpenClaw ecosyst
 
 - **Memory architecture.** How do we give agents enough continuity to feel reliable, without turning every prompt into an unbounded dump of history or creating opaque, un-auditable vector stores? OpenClaw's file-based memory and Flowwink's tiered database memory are two different answers to the same tension.
 - **Governance and self-modification.** How much freedom should an agent have to rewrite its own soul, skills, and protocols? Where should hard boundaries live (files, policies, approval flows), and how do we detect and roll back drift when it goes wrong?
-- **Multi-agent coordination.** When you move from one agent to swarms and company-level orchestrators, how should objectives, budgets, and memory be shared? OpenClaw's session tools, ClawStack swarms, and Paperclip-style control planes all explore different compositions.
+- **Multi-agent coordination.** When you move from one agent to swarms and company-level orchestrators, how should objectives, budgets, and memory be shared? OpenClaw's session tools, ClawClass swarms, and Paperclip-style control planes all explore different compositions.
 - **Model-agnostic orchestration.** If the agent layer is supposed to work across providers, how much normalization and fallback should it own? At what point does "supports any LLM" become too thin to be meaningful, and where is it worth specializing for a particular model's strengths?
 - **Heartbeats, scheduling, and health.** How often should autonomous loops run, what token and time budgets are acceptable, and how do we detect when an agent is stuck in an unproductive pattern? Flowwink's heartbeat budgets and health logging are one attempt; OpenClaw operators are actively asking for richer dashboards and stagnation detection.
 - **Observability and debugging.** What level of logging, tracing, and replay is needed so that operators can understand *why* an agent did something, not just *what* it did? Techniques from microservices (structured logs, traces, metrics) are only starting to be applied to agent runs.

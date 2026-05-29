@@ -24,7 +24,7 @@ Traditional testing catches schema violations and broken handlers. It doesn't ca
 
 We needed an auditor. Not a test suite — an *agent* that could reason about FlowPilot's behavior the way a senior consultant would review a junior colleague's work.
 
-Enter ClawOne — an OpenClaw instance running on ClawStack, configured as a QA specialist.
+Enter ClawOne — an OpenClaw instance running on ClawClass, configured as a QA specialist.
 
 ---
 

@@ -73,10 +73,10 @@ appendix: true
 
 | Term | Definition |
 |------|-----------|
-| **ClawStack** | Infrastructure for running multiple OpenClaw instances on a single server. Handles DNS, TLS (via Caddy), container isolation, and A2A wiring. The bridge from "I understand OpenClaw" to "I operate agents." |
-| **Paperclip** | The orchestration layer that sits on top of ClawStack. Represents the organization — delegates tasks to individual Claw instances, enforces budgets, and manages agent lifecycle. The "CEO" of an agent swarm. |
-| **Caddy** | The web server used by ClawStack. Handles automatic TLS certificate issuance on first request. No nginx, no certbot, no manual cert management. |
-| **Role Preset** | A pre-configured agent identity in ClawStack (QA Agent, SEO Agent, Dev Agent, etc.). Writes the appropriate `SOUL.md`, `TOOLS.md`, and `AGENTS.md` at bootstrap time. |
+| **ClawClass** | Infrastructure for running multiple OpenClaw instances on a single server. Handles DNS, TLS (via Caddy), container isolation, and A2A wiring. The bridge from "I understand OpenClaw" to "I operate agents." |
+| **Paperclip** | The orchestration layer that sits on top of ClawClass. Represents the organization — delegates tasks to individual Claw instances, enforces budgets, and manages agent lifecycle. The "CEO" of an agent swarm. |
+| **Caddy** | The web server used by ClawClass. Handles automatic TLS certificate issuance on first request. No nginx, no certbot, no manual cert management. |
+| **Role Preset** | A pre-configured agent identity in ClawClass (QA Agent, SEO Agent, Dev Agent, etc.). Writes the appropriate `SOUL.md`, `TOOLS.md`, and `AGENTS.md` at bootstrap time. |
 | **RLS (Row-Level Security)** | PostgreSQL feature used by Flowwink to isolate data within an instance between admin roles, public visitors, and system processes. |
 
 ---
