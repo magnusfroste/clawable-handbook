@@ -51,35 +51,6 @@ The technical architecture guide. OpenClaw internals, heartbeat protocols, memor
 
 ---
 
-## Repository Structure
-
-```
-src/
-├── content/
-│   ├── business/      # Business Edition chapters (18 + appendices)
-│   └── builder/       # Builder Edition chapters (33+ chapters + appendices)
-└── pages/
-    ├── index.astro    # Umbrella landing (clawable.org)
-    ├── business/      # Business Edition routes
-    └── builder/       # Builder Edition routes
-
-research/
-── chapters/          # Business Edition manuscript source
-── clawstack/         # FlowWink ↔ Clawable integration docs
-├── flowwink/          # FlowWink platform research
-├── references/        # Live proof logs, primary sources
-├── resources/         # Curated Agentic AI reading list
-└── archived/          # Historical research and superseded drafts
-```
-
----
-
-## Curated Resources
-
-→ [Agentic AI Reading List](research/resources/agentic-ai-reading-list.md) — The most important protocols, frameworks, reports, and case studies in the field. MCP, A2A, OpenClaw, LangGraph, Gartner, McKinsey, HBR, Klarna.
-
----
-
 ## Related Projects
 
 | Project | What it is |
