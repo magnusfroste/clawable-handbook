@@ -101,7 +101,7 @@ OpenClaw proved the pattern for individuals. FlowPilot is the same pattern appli
 │                                              │
 │  PostgreSQL Memory (pgvector + RLS)          │
 │  Soul / Identity / Operational Rules         │
-│  200+ Skills across 60+ modules              │
+│  250+ Skills across 60+ modules              │
 │  Heartbeat Protocol (7-step autonomous loop) │
 │  Self-Healing (auto-quarantine failing)      │
 │  Self-Evolution (modify own skills/soul)     │

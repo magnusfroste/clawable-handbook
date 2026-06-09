@@ -1,6 +1,6 @@
 ---
 title: "Production Patterns — Battle-Tested in Production"
-description: "Six architectural patterns that emerged from running an autonomous agent with 100+ skills, 25+ modules, and real business traffic. Not theory — production code."
+description: "Six architectural patterns that emerged from running an autonomous agent with 250+ skills, 60+ modules, and real business traffic. Not theory — production code."
 order: 25
 icon: "wrench"
 ---
@@ -22,7 +22,7 @@ Make the agent a **module** — an opt-in capability layer on top of a fully fun
 │  FlowWink Shell (always active)         │
 │  ┌───────────────────────────────────┐  │
 │  │ CMS · CRM · Blog · Orders · ...  │  │
-│  │ 25+ modules, all work manually    │  │
+│  │ 60+ modules, all work manually    │  │
 │  └───────────────────────────────────┘  │
 │                                         │
 │  ┌───────────────────────────────────┐  │
@@ -35,7 +35,7 @@ Make the agent a **module** — an opt-in capability layer on top of a fully fun
 ```
 
 When FlowPilot is disabled:
-- All 25+ modules work as traditional admin tools
+- All 60+ modules work as traditional admin tools
 - Navigation hides agent-related UI (Engine Room, Activity Feed)
 - No heartbeat runs, no skills execute, no automations fire
 - The platform is a standard CMS/CRM
@@ -339,7 +339,7 @@ export const MODULE_SKILL_MAP: Record<string, string[]> = {
   invoicing:   ['manage_invoices', 'generate_invoice_pdf'],
   booking:     ['manage_bookings', 'check_availability'],
   newsletter:  ['manage_newsletters', 'manage_subscribers'],
-  // ... 25+ modules total
+  // ... 60+ modules total
 };
 ```
 

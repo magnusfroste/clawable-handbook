@@ -60,7 +60,7 @@ AI Tiers:
 
 Never inject all skill instructions into the prompt. Load only the instructions for skills the agent actually calls.
 
-**Why:** Think of the agent's working memory as a whiteboard with limited space. Every skill's full instruction set takes up space on that whiteboard. With 200+ skills, you'd fill the board before the agent even starts working. The solution: write only the skill names on the board, and fetch the full instructions only when a skill is actually needed.
+**Why:** Think of the agent's working memory as a whiteboard with limited space. Every skill's full instruction set takes up space on that whiteboard. With 250+ skills, you'd fill the board before the agent even starts working. The solution: write only the skill names on the board, and fetch the full instructions only when a skill is actually needed.
 
 In technical terms: skill instructions are expensive (~500 tokens each). With 200+ registered skills, that's 100,000+ tokens just for instructions — far beyond any model's context window. Instead, load metadata only (~10 tokens per skill), then fetch full instructions on-demand.
 
@@ -221,7 +221,7 @@ These laws aren't theoretical. They emerged from building FlowPilot, which imple
 
 | Law | FlowPilot Implementation |
 |-----|-------------------------|
-| 1 | 200+ registered skills with rich `instructions` columns across 60+ modules |
+| 1 | 250+ registered skills with rich `instructions` columns across 60+ modules |
 | 2 | `resolveAiConfig()` with `fast` and `reasoning` tiers |
 | 3 | `loadSkillTools()` + `fetchSkillInstructions()` lazy loading |
 | 4 | 32 built-in self-modification tools |

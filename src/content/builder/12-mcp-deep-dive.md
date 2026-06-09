@@ -86,7 +86,7 @@ workflows:
             value: $inputs.lead_id
 ```
 
-**Why this is directly relevant to FlowWink's MCP surface:** The 200+ skills across 60+ modules represent orchestration opportunities — but an agent reasoning freshly about how to sequence invoice creation, contract signing, and CRM status updates on every heartbeat cycle is less reliable than an agent following an Arazzo workflow that encodes the proven sequence. As FlowWink's operation surface matures, Arazzo workflows become the mechanism for crystallizing operational knowledge into reusable, auditable procedures.
+**Why this is directly relevant to FlowWink's MCP surface:** The 250+ skills across 60+ modules represent orchestration opportunities — but an agent reasoning freshly about how to sequence invoice creation, contract signing, and CRM status updates on every heartbeat cycle is less reliable than an agent following an Arazzo workflow that encodes the proven sequence. As FlowWink's operation surface matures, Arazzo workflows become the mechanism for crystallizing operational knowledge into reusable, auditable procedures.
 
 **The agent as workflow author:** Nordic APIs reports that AI agents are beginning to author Arazzo workflows themselves — discovering a sequence that works, and persisting it as a formal workflow specification. This closes a loop between agentic execution and documented process: the agent that successfully runs a multi-step recovery procedure can write the Arazzo spec for that procedure, making it available for deterministic replay. This is the self-documenting operator — a thread that runs through the self-learning architecture described in The Learning Operator (Book 3).
 

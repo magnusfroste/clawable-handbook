@@ -144,7 +144,7 @@ The "new computer" framing is deliberate. When personal computers arrived, enter
 
 Before NemoClaw, there was NanoClaw ([qwibitai/nanoclaw](https://github.com/qwibitai/nanoclaw), star count varies by date). It emerged January 31, 2026 — created by Gavriel Cohen of Qwibit AI — as a direct response to perceived architectural security risks in larger agent runtimes. This is not a fork. It is a rewrite from a different premise.
 
-**The founding thesis** (Cohen's own words): *"I can't sleep well running software I don't understand with access to my life."* OpenClaw weighs in at ~400,000 lines of code, 70+ dependencies, 52+ modules. NanoClaw's core is **~500 lines of TypeScript** — readable in eight minutes.
+**The founding thesis** (Cohen's own words): *"I can't sleep well running software I don't understand with access to my life."* OpenClaw weighs in as a large monorepo — over a hundred packages and hundreds of thousands of lines of code across its dependency tree. NanoClaw's core is **~500 lines of TypeScript** — readable in eight minutes.
 
 ### The Isolation Difference — OS vs Application
 

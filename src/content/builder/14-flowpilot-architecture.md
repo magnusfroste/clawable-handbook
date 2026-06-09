@@ -9,7 +9,7 @@ icon: "cpu-chip"
 
 Chapter five mapped the embedded vs. external decision at a strategic level. FlowPilot is embedded depth made concrete — the reference implementation of what it means to build natively agentic rather than bolt on an agent after the fact.
 
-FlowPilot is FlowWink's native agent. It runs on the same database, the same authentication layer, and the same runtime as the rest of the platform. An external operator reads FlowWink through a 200+ skill MCP surface. FlowPilot reads the database directly.
+FlowPilot is FlowWink's native agent. It runs on the same database, the same authentication layer, and the same runtime as the rest of the platform. An external operator reads FlowWink through a 250+ skill MCP surface. FlowPilot reads the database directly.
 
 For a builder, the architectural details matter because they determine what the agent can and cannot do. Three consequences follow from the depth.
 
@@ -19,7 +19,7 @@ For a builder, the architectural details matter because they determine what the 
 
 **Sub-millisecond latency.** When FlowPilot needs to check whether a lead has any associated open invoices, it queries the database in the same call. No HTTP round-trip. No serialization overhead. The consequence is practical: proactive workflows that would be too slow over MCP are trivial inside the platform.
 
-**Context an external operator cannot see.** The FlowWink MCP surface exposes 200+ skills — comprehensive but still a surface. FlowPilot sees every table, every row, every row-level security policy that governs human users. When a customer's history spans CRM, billing, support, and content, FlowPilot holds the full record in one reasoning context. An external operator holds what the MCP surface returns.
+**Context an external operator cannot see.** The FlowWink MCP surface exposes 250+ skills — comprehensive but still a surface. FlowPilot sees every table, every row, every row-level security policy that governs human users. When a customer's history spans CRM, billing, support, and content, FlowPilot holds the full record in one reasoning context. An external operator holds what the MCP surface returns.
 
 **Runtime skill evolution.** FlowPilot can register a new skill, update an existing one, or retire one that no longer fits — at runtime, without a deployment. When FlowWink's MCP surface adds a new tool, FlowPilot can examine it on the next heartbeat cycle and decide whether to incorporate it. The skill registry is not a config file that humans maintain. It is state the agent manages as part of operating.
 

@@ -15,7 +15,7 @@ Flowwink is a **Business Operating System (BOS)** — an open-source, self-hoste
 2. **SaaS era** (2010s–2020s) — Cloud platforms. Easier to use, still human-driven.
 3. **Agent era** (2025–) — AI operators. You set direction, the agent runs the business.
 
-FlowWink is built for the agent era. It bundles **25+ modules** that normally require 5-10 separate SaaS tools:
+FlowWink is built for the agent era. It bundles **60+ modules** that normally require 5-10 separate SaaS tools:
 
 | Category | Modules |
 |----------|---------|
@@ -182,7 +182,7 @@ Human operators have limited working memory: we can only juggle a handful of ite
 
 OpenClaw and Flowwink both encode this as explicit *skill budgets*:
 
-- **OpenClaw** keeps skills lightweight in the prompt and lazy-loads full instructions via the `read` tool. Its skills loader enforces caps such as `maxSkillsInPrompt` and `maxSkillsPromptChars` (defaults ≈150 skills and 30,000 characters, configurable via `config.skills.limits`) so a large Skill Hub cannot silently blow up the context window.
+- **OpenClaw** keeps skills lightweight in the prompt and lazy-loads full instructions via the `read` tool. It bundles roughly 50–90 skills out of the box (many more are installable via ClawHub). To stop a large Skill Hub from silently blowing up the context window, its skills loader enforces a configurable *ceiling* — `maxSkillsInPrompt` and `maxSkillsPromptChars`, set via `config.skills.limits`. Note this is a limit on how many skill summaries (and how many characters) may enter a single prompt, **not** a count of how many skills the agent has — the cap can sit well above the number actually installed.
 - **Flowwink/FlowPilot** gives each autonomous heartbeat a fixed token budget and tracks how much of that budget has been consumed. As usage rises, it progressively trims and compacts tool definitions and narrows the visible skill set instead of letting every skill compete for attention on every loop.
 
 The design lesson is simple: as your agent's capabilities grow from "a few tools" to "dozens or hundreds of skills," you must treat **skill selection and token budgeting** as first-class architecture. A powerful agent is not the one with the most skills installed — it is the one with a small, well-curated working set per decision.
