@@ -36,7 +36,7 @@ On April 19, 2026, Clawable operated FlowWink autonomously for a full day. No hu
 
 Forty-four seconds after the cycle started, it returned its first finding. We had not planned for what it found.
 
-FlowWink is a business operating system — CRM, ERP, and CMS in one platform — covering the full operational stack of a mid-size company: deal pipeline, quote-to-cash, contracts, expenses, accounting (AP, AR, GL, bank reconciliation, VAT, budget), timesheets, content publishing, and recruitment. Over 100 MCP skills across fifteen modules — the same surface any external operator connects through.
+FlowWink is a business operating system — CRM, ERP, and CMS in one platform — covering the full operational stack of a mid-size company: deal pipeline, quote-to-cash, contracts, expenses, accounting (AP, AR, GL, bank reconciliation, VAT, budget), timesheets, content publishing, and recruitment. Over 250 MCP skills across 60+ modules — the same surface any external operator connects through.
 
 ### What Workflows Cannot Do
 
@@ -215,7 +215,7 @@ What makes this generalisable: **any SaaS platform can activate this.** Build an
 
 The pattern is not unique to FlowWink. Atonom, a B2B startup, used the same architecture to replace a $40,000 annual Salesforce contract: they built a purpose-built CRM on Lovable in three hours, exposed it via MCP, and had a Clawable operator running against it the same week. The case is documented in the sources appendix.
 
-The FlowWink MCP surface exposes 200+ skills across 60+ modules. The operator used sixteen of them across five scenarios. It used the right ones at the right moments because it read its mandate, read the situation, and decided — not because anyone mapped a workflow.
+The FlowWink MCP surface exposes 250+ skills across 60+ modules. The operator used sixteen of them across five scenarios. It used the right ones at the right moments because it read its mandate, read the situation, and decided — not because anyone mapped a workflow.
 
 ---
 
