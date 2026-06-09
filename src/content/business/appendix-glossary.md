@@ -29,7 +29,7 @@ The builder edition carries a wider technical vocabulary. This glossary covers o
 | **MCP (Model Context Protocol)** | The standardized layer that makes a SaaS platform legible to an agent. Exposes tools and schemas the agent can call. If a capability is not in MCP, the agent cannot reach it. |
 | **A2A (Agent-to-Agent)** | The protocol that lets one agent call another and receive a structured response. How an external operator delegates to a native agent. |
 | **Skill** | A single callable capability the operator can invoke — qualify a lead, create an invoice, publish a post. Each skill has a description, a schema, and a trust level. |
-| **MCP Surface** | The full set of tools a platform exposes to agents. FlowWink's MCP surface is 200+ skills at the time of writing. |
+| **MCP Surface** | The full set of tools a platform exposes to agents. FlowWink's MCP surface is 250+ skills at the time of writing. |
 
 ---
 

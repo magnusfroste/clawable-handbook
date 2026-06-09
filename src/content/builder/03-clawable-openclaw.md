@@ -45,7 +45,7 @@ All three are part of the same story: **building a production agentic system, th
 │                                                         │
 │  QA Claw (OpenClaw)            FlowPilot (Operator)     │
 │  VPS · Docker · stock          Flowwink edge function   │
-│  A2A plugin enabled            25+ modules · 100+ skills│
+│  A2A plugin enabled            60+ modules · 250+ skills│
 │  ──────────────────            ─────────────────────────│
 │  Audits FlowPilot output ──►  Receives findings         │
 │  Runs conformance tests  ──►  Creates objectives        │
