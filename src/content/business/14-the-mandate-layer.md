@@ -98,13 +98,13 @@ The mandate did not constrain the outcome. It made the outcome trustworthy.
 
 ---
 
-## The Mandate at Work — Two Quiet Proofs
+## The Mandate at Work — Three Quiet Proofs
 
 The negotiation scenario above is the dramatic version of mandate governance — a high-stakes customer situation, multiple conflicting demands, an operator navigating the line in real time. It makes the principle vivid.
 
 But most mandate compliance looks nothing like that. Most of it is invisible. It is the operator not doing something it could have done but was not authorised to do. These moments do not generate findings, reports, or applause. They generate silence — which is exactly what governance is supposed to produce.
 
-Two incidents from May 2026 illustrate this.
+Three incidents from the production logs illustrate this.
 
 ---
 
@@ -146,7 +146,19 @@ When the operator escalated, it was not failing. It was doing exactly what the g
 
 ---
 
-Both incidents share a structure. An operator encountered a situation that fell partially or fully outside its mandate. It did not attempt to work around the constraint. It did not rationalise an exception. It stopped, reported the situation accurately, and left the decision to a human.
+**The empty queue.**
+
+One evening in June 2026, during routine monitoring, an operator noticed a system state no dashboard was built to flag: the human live-support agent had logged out, and two visitor conversations were sitting in the waiting-for-agent queue — with nobody on the other end and no escalation path.
+
+The operator changed the chat widget's mode: from "escalate to human" to "AI first, escalate only when a human is present." Then it logged the decision and the reason in its daily notes, and moved on. `validated`
+
+It did not ask for approval, because none was required — channel configuration sat inside its mandate, and the alternative was visitors typing into a void all night. The next morning, the log entry was the only evidence anything had happened at all.
+
+This is the third face of mandate governance. The first two proofs show an operator stopping at a boundary. This one shows the mirror image: acting decisively *inside* the boundary, without permission theater, because the mandate had already answered the question. An operator that escalates everything it is allowed to do alone is as misconfigured as one that does things it should escalate.
+
+---
+
+All three incidents share a structure. An operator read a live situation against a written mandate and did exactly what the boundary prescribed — acted without asking where its authority was clear, stopped without being told where it was not. No workaround. No rationalised exception. The situation reported accurately, the decision left where the mandate said it belonged.
 
 That behaviour is not instilled by training a model to be cautious. It is produced by a mandate design that tells the operator precisely where its authority ends — and by an operator architecture that treats that boundary as binding, not advisory.
 

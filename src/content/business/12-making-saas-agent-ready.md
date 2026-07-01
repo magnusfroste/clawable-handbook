@@ -77,6 +77,8 @@ This is the thing that does not appear in the vendor pitch decks.
 
 Your platforms have tools like these. Tools that return success and do nothing. Tools that accept parameters they silently ignore. Tools that work in the demo environment and fail on the data shape your real customers generate. Every platform has them, because every platform was built by humans under deadline, tested against happy paths, and shipped before anyone thought to ask what happens when an agent calls a tool at 23:00 on a Tuesday to mark a late invoice paid.
 
+That second category is not rhetorical. In a June 2026 sweep against a FlowWink instance, an operator called `manage_leads` to update a lead's status. The tool accepted the field, returned success — and never saved it. Score updates worked; status updates evaporated. Every pipeline report downstream of that field would have run on stale data indefinitely. No human had noticed, because humans change lead status from a dropdown that takes a different code path. `validated`
+
 You do not know which of your tools are broken, because you do not have anything that checks. Your users click buttons and trust the green checkmark. Your automations fire and report "completed." Nobody queries the database to verify that the thing that was supposed to happen actually happened.
 
 Until an agent does.

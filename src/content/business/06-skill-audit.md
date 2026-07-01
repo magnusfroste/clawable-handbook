@@ -49,7 +49,7 @@ In June 2026 we pointed a stock operator at a freshly provisioned FlowWink insta
 
 **Fully operational.** Lead, deal, and product operations worked end to end. A visitor form submission became a lead, the lead became a deal, the deal moved through stages, the weekly CFO digest compiled. Deployment-ready.
 
-**Partially exposed.** Invoice creation *accepted records with required fields missing* — a write tool with no validation is more dangerous than no tool at all, because it returns success and stores a liability. Moving a deal to an invalid stage failed silently: no error, no change, no signal. And several tool definitions had gone stale — the action names in the published schema no longer matched the handlers behind them.
+**Partially exposed.** Invoice creation *accepted records with required fields missing* — a write tool with no validation is more dangerous than no tool at all, because it returns success and stores a liability. Moving a deal to an invalid stage failed silently: no error, no change, no signal. Several tool definitions had gone stale — the action names in the published schema no longer matched the handlers behind them. And of the skills in the platform's own registry, roughly thirty percent lacked instruction definitions: listed as available, not actually executable.
 
 **Absent.** The platform's own onboarding brief listed `list_leads` as a key tool. The registry had no tool by that name — the capability existed under a different one. If the platform's documentation cannot find the tool, neither can the agent.
 
