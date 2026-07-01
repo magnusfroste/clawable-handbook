@@ -74,7 +74,22 @@ Chapters 11–15 go deeper — the enterprise-scale picture and business case, w
 
 ---
 
-*— The Clawable Project, April 2026*
+## Why I Built This
+
+I have seen this movie twice before.
+
+In 2003 I was at IP-Only, a Swedish challenger operator, when two open-source projects — Asterisk and SIP Express Router — made it possible to deliver business telephony over the internet. The incumbents called it a toy. We shipped SIP trunking to enterprise customers as the first operator in the market — five to seven years before every operator offered it. Then the same pattern repeated with software-defined networking: we were delivering intelligent, software-based enterprise networks years before the industry had agreed on a name for them.
+
+The pattern is always the same. An open-source project appears and quietly removes the expensive, proprietary part of an industry. The incumbents dismiss it — too immature, too risky, not enterprise-grade. And the organizations that move early build a lead measured in years, because the thing they accumulate — operational experience — cannot be bought later.
+
+I spent the following two decades at the customer–product–technology interface, most of them at Telia, scaling digital services across the Nordics: partner programs, product launches, P&L. Enough years inside large organizations to know exactly how they respond to a shift like this one — and how expensive "let's wait until it matures" turns out to be.
+
+In 2024, the shape appeared for the third time. Not in how businesses communicate — in how they operate. So I did what I did the previous two times, except I went further: I built the business platform (FlowWink), built the swarm infrastructure (ClawClass), connected autonomous operators to a live business, and logged everything. This handbook is the write-up of that experiment.
+
+The third time you see the pattern, you recognize the window while it is still open. That is why this book exists — and why it is in a hurry.
+
+*— Magnus Fröste, Stockholm, 2026*
+*[linkedin.com/in/froste](https://linkedin.com/in/froste) · [github.com/magnusfroste](https://github.com/magnusfroste)*
 
 ---
 

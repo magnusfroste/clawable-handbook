@@ -83,6 +83,11 @@ Signature line: "On the IT backlog, this is a project with an end date. On
 the leadership agenda, it is an operating capability with a compounding
 curve." Do not add a fourth placement; do not vary the destination.
 
+**Author presence:** "Why I Built This" in the business foreword — the
+third-time-pattern story (SIP trunking 2003 → SD-WAN → agentic AI), signed
+Magnus Fröste. This is the trust anchor for the CEO reader; keep it factual
+and first-person, never promotional.
+
 **Kill criteria for new business-track material:** doesn't map to a
 sub-question above; second bug story in a chapter; second analogy in a
 chapter; a question that can't change a multi-year decision; anything that
