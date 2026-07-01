@@ -85,7 +85,7 @@ curve." Do not add a fourth placement; do not vary the destination.
 
 **Author presence:** "Why I Built This" in the business foreword — the
 third-time-pattern story (SIP trunking 2003 → SD-WAN → agentic AI), signed
-Magnus Fröste. This is the trust anchor for the CEO reader; keep it factual
+Magnus Froste. This is the trust anchor for the CEO reader; keep it factual
 and first-person, never promotional.
 
 **Kill criteria for new business-track material:** doesn't map to a

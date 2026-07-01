@@ -88,7 +88,7 @@ In 2024, the shape appeared for the third time. Not in how businesses communicat
 
 The third time you see the pattern, you recognize the window while it is still open. That is why this book exists — and why it is in a hurry.
 
-*— Magnus Fröste, Stockholm, 2026*
+*— Magnus Froste, Stockholm, 2026*
 *[linkedin.com/in/froste](https://linkedin.com/in/froste) · [github.com/magnusfroste](https://github.com/magnusfroste)*
 
 ---
