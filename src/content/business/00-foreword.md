@@ -7,9 +7,9 @@ icon: "book-open"
 
 ## About This Edition
 
-- **Edition:** May 2026
-- **Last reviewed:** April 22, 2026
-- **Update cadence:** monthly scheduled review, with fast patches for major ecosystem changes
+- **Edition:** July 2026
+- **Last reviewed:** July 2026
+- **Update cadence:** monthly scheduled review, with fast patches for major ecosystem changes — see the [Revision History](/business/appendix-changelog) for what changed and when
 - **Companion volume:** *The Agentic Handbook (Builder Edition)* — architecture, skills, memory, governance internals for teams building their own agentic platform
 
 ---

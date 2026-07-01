@@ -33,6 +33,8 @@ Before anything else, there is one distinction that shapes every other decision:
 
 Most serious production systems end up using both. Frontier models for complex reasoning, open-weight for high-volume or sensitive tasks. The question is knowing when each one is the right call.
 
+June 2026 added a third reason to run both — continuity. A US export-control directive forced Anthropic to disable Fable 5 and Mythos 5 for all customers overnight; days later, OpenAI limited its newest release to government-approved partners; by June 30 access was restored. Eighteen days in which frontier-model access was a policy variable, not an engineering one. A system with an open-weight fallback behind its own firewall kept operating through all of it. Model-agnosticism is no longer just an escape hatch from pricing and deprecation — it is what keeps the heartbeat running when the API layer becomes geopolitics.
+
 ---
 
 ## Where Your Data Goes

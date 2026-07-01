@@ -107,6 +107,12 @@ This is significant because it validates the same architecture OpenClaw pioneere
 
 **When to stick with OpenClaw:** You want flexibility across models, no vendor lock-in, and community-driven innovation.
 
+### What June 2026 Settled
+
+If "model-agnostic" sounded like an architect's preference, June 2026 turned it into a board-level requirement. On June 12, a US export-control directive forced Anthropic to switch off its most capable models — Fable 5 and Mythos 5 — for every customer, overnight. Two weeks later, at the government's request, OpenAI limited its newest model release to a small circle of approved partners. By June 30 the restrictions were lifted and access restored. `validated`
+
+Eighteen days, start to finish. No outage, no breach, no failure of engineering — a policy decision, made in one jurisdiction, that determined which businesses on the planet had access to frontier intelligence that morning. Both may prove to be isolated episodes. The architectural lesson does not depend on that: **an operator is infrastructure now, and infrastructure cannot have a single point of failure — including its intelligence.** An operator built model-agnostic swapped engines and kept its heartbeat. An operator hard-wired to one provider stopped. Choose accordingly.
+
 ---
 
 ## The Real Decision

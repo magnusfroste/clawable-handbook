@@ -7,8 +7,8 @@ icon: "book-open"
 
 ## About This Edition
 
-- **Edition:** May 2026
-- **Last reviewed:** April 11, 2026
+- **Edition:** July 2026
+- **Last reviewed:** July 2026
 - **Update cadence:** monthly scheduled review, with fast patches for major ecosystem changes
 
 ---

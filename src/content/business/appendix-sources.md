@@ -173,6 +173,16 @@ All findings attributed to Clawable operating FlowWink live can be cross-checked
 
 ---
 
+## The June 2026 Model Access Events (Ch 7)
+
+| Claim | Source | Status |
+|-------|--------|--------|
+| US export-control directive forced Anthropic to disable Fable 5 and Mythos 5 for all customers (June 12–13, 2026) | [Anthropic statement](https://www.anthropic.com/news/fable-mythos-access); [CNBC](https://www.cnbc.com/2026/06/12/anthropic-disables-access-to-fable-5-and-mythos-5-to-comply-with-government-directive.html); [Time](https://time.com/article/2026/06/13/anthropic-fable-mythos-ban-US-security/) | `validated` |
+| OpenAI limited GPT-5.6 rollout to government-approved partners at the White House's request (June 25–26, 2026), stating it "shouldn't become the long-term default" | [CNBC](https://www.cnbc.com/2026/06/26/openai-limits-new-ai-models-to-trusted-partners-request-us-government.html); [TechCrunch](https://techcrunch.com/2026/06/26/openai-limits-gpt-5-6-rollout-after-government-request-says-restrictions-shouldnt-be-the-norm/) | `validated` |
+| Restrictions on Fable 5 / Mythos 5 lifted June 30, 2026 | [CNBC](https://www.cnbc.com/2026/06/30/anthropic-says-trump-admin-has-lifted-export-controls-on-claude-fable-5-and-mythos-5.html); [Bloomberg](https://www.bloomberg.com/news/articles/2026-06-30/us-government-lifts-restrictions-on-anthropic-s-fable-5-model) | `validated` |
+
+---
+
 ## Evidence Discipline
 
 If a chapter makes a claim and it is not traceable to a row in this appendix or a SIM log, the claim is either:
