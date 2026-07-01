@@ -17,6 +17,7 @@ appendix: true
 - **New logged evidence throughout.** The skill audit (ch 6) now includes a real audit of a freshly provisioned FlowWink instance. The vendor chapter (ch 12) carries the logged `manage_leads` silent-failure case. The mandate layer (ch 14) gained a third quiet proof — the empty support queue. The enterprise chapter (ch 11) gained "Four Days, Logged": one operator running a business cycle from zero to 860,000 SEK ARR in four days.
 - **The MCP adoption spectrum** (ch 11): how vendors are opening up — early movers, fast followers, and the community wrappers that queue outside the doors of the laggards. Plus the author's reflection on digital sovereignty and loop engineering.
 - **The June 2026 model shutdowns** and what they mean for operator architecture (ch 7).
+- **Mid-2026 market scale signals** (ch 11): the Gartner $206.5B forecast, SAP's "Autonomous Enterprise," and vendor adoption figures.
 - **Author's note added** — *Why I Built This* (foreword).
 - **Skill counts updated** to FlowWink's current surface: 300+ skills across 60+ modules.
 - **Structural fixes:** The Contract Layer chapter completed and moved to follow The Agent's Superpowers; chapter titles and operator naming made consistent throughout.

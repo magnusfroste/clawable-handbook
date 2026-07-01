@@ -183,6 +183,17 @@ All findings attributed to Clawable operating FlowWink live can be cross-checked
 
 ---
 
+## Mid-2026 Market Scale Signals (Ch 11)
+
+| Claim | Source | Status |
+|-------|--------|--------|
+| Gartner forecasts AI agent software spend of ~$206.5B in 2026, up 139% from $86.4B in 2025 | Gartner forecast, June 2026, as reported in [agentic AI trade coverage](https://aiagentstore.ai/ai-agent-news/2026-june) | `validated` — analyst forecast, not observed outcome |
+| SAP "Autonomous Enterprise" announced at Sapphire 2026, incl. €100M partner fund; Anthropic Claude among foundation models for Joule | [SAP News](https://news.sap.com/2026/05/sap-sapphire-sap-unveils-autonomous-enterprise/); [Forbes](https://www.forbes.com/sites/victordey/2026/05/12/the-end-of-the-erp-era-sap-wants-ai-agents-to-run-your-autonomous-enterprise/) | `validated` |
+| ServiceNow "Autonomous Workforce" across major business functions | [ServiceNow newsroom](https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-brings-Autonomous-Workforce-to-every-major-business-function/default.aspx) | `validated` |
+| Salesforce Agentforce ~29,000 deals / ~$800M ARR; Microsoft Copilot Studio ~160,000 orgs / 400,000+ custom agents | Vendor-reported figures, 2026 ([Microsoft Work Trend Index](https://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization); market coverage) | `partial` — vendor-reported adoption metrics |
+
+---
+
 ## Evidence Discipline
 
 If a chapter makes a claim and it is not traceable to a row in this appendix or a SIM log, the claim is either:

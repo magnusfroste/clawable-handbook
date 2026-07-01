@@ -40,6 +40,10 @@ The businesses that move in 2026 are not making a bet on a technology that might
 
 Every major SaaS vendor is building AI capabilities into their platform. Salesforce, SAP, HubSpot, ServiceNow — all of them are shipping embedded agents, copilots, and autonomous features on top of their existing software. This is not a threat to the external operator model. It is a precondition for it.
 
+By mid-2026, the scale stopped being a projection. Gartner now forecasts AI agent software spend at **$206.5 billion for 2026 — up 139 percent in a single year** — the fastest-growing segment of enterprise software. SAP used its 2026 Sapphire keynote to declare the "Autonomous Enterprise" — the largest ERP vendor on the planet now markets the exact thesis of this handbook — and backed it with a €100 million partner fund. ServiceNow shipped an "Autonomous Workforce" across every major business function. Salesforce reports 29,000 Agentforce deals; Microsoft reports 160,000 organizations running 400,000+ custom agents. `validated`
+
+None of this settles the architecture question — an autonomous suite inside one vendor's walls is still one vendor's walls, and chapter eight still applies. But it settles two things a board can act on: the direction, and the timetable. When the incumbents rename their flagship strategies after your operating model, the debate about *whether* is over. What remains is *how* — and who coordinates above them.
+
 The pace of MCP adoption among the incumbents is faster than most businesses realize. Three examples from the last twelve months:
 
 - **Salesforce** shipped Hosted MCP Servers to General Availability on April 29, 2026 — exposing CRM data, flows, Apex actions, and Tableau analytics to any MCP-compatible agent across every Enterprise Edition org. Any agent that speaks MCP can now reach Salesforce without a custom integration.
