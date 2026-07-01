@@ -43,6 +43,22 @@ The point is not to achieve perfect coverage before deploying. The point is to k
 
 ---
 
+## What One Audit Found — Logged
+
+In June 2026 we pointed a stock operator at a freshly provisioned FlowWink instance with one instruction: map what you can reach. On paper the surface was impressive — 59 of 62 modules active, 250+ tools exposed over MCP. The audit took an afternoon. `validated`
+
+**Fully operational.** Lead, deal, and product operations worked end to end. A visitor form submission became a lead, the lead became a deal, the deal moved through stages, the weekly CFO digest compiled. Deployment-ready.
+
+**Partially exposed.** Invoice creation *accepted records with required fields missing* — a write tool with no validation is more dangerous than no tool at all, because it returns success and stores a liability. Moving a deal to an invalid stage failed silently: no error, no change, no signal. And several tool definitions had gone stale — the action names in the published schema no longer matched the handlers behind them.
+
+**Absent.** The platform's own onboarding brief listed `list_leads` as a key tool. The registry had no tool by that name — the capability existed under a different one. If the platform's documentation cannot find the tool, neither can the agent.
+
+Then one finding no human user would ever have produced: roughly fifty public endpoints were returning authorization errors because a deployment configuration file had drifted out of sync with the codebase. Human users never noticed — their clicks took a different path. The test suite never noticed — it tested the functions, not the deployment. The operator noticed on its first sweep, because the operator is the only user that actually exercises the machine surface.
+
+Every one of these, unmapped, would have surfaced later as a silent production failure — or as an operator quietly returning thin findings that nobody knew to distrust. That is what the audit buys: one afternoon, before go-live, instead.
+
+---
+
 ## The Principle
 
 You cannot fix a gap you have not mapped. And you cannot trust an agent's outputs if you do not know where its vision ends.

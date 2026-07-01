@@ -67,6 +67,8 @@ The direction from here is measurable, not speculative. Three horizons, with dat
 - Governance frameworks (McKinsey four-layer, Singapore AIGL) become enterprise default
 - Regulatory frameworks begin catching up to autonomous-action liability
 
+*What this looks like in a log file, not a forecast: in June 2026, a second external agent — running on entirely different infrastructure — was wired into a live FlowWink instance as a peer operator. A scoped token minted in the federation admin, a dispatch surface of two tools instead of 250 schemas, connection verified within the hour. No account was created. Nobody logged in. One operator granting another operator a mandate-shaped key.* `validated`
+
 ### Horizon 2 — 2027 → 2029: Structural Reorganization
 
 - Middle-management coordination layers restructured across industries
@@ -75,6 +77,8 @@ The direction from here is measurable, not speculative. Three horizons, with dat
 - New professional certifications emerge: agent management, agent ethics, operator governance
 - First wave of AI-related legal precedents established in US and EU courts
 
+*A concrete Horizon 2 moment: your finance operator hits a disputed invoice, dispatches the dispute — contract, ledger trail, and its own findings attached — to the counterparty's operator, and has a structured settlement proposal waiting for your approval by morning.* `hypothesis`
+
 ### Horizon 3 — 2029 → 2031: New Equilibrium
 
 - Organizations fully redesigned around human-agent collaboration
@@ -82,6 +86,8 @@ The direction from here is measurable, not speculative. Three horizons, with dat
 - Regulatory frameworks reach enforcement maturity (EU AI Act, US equivalent)
 - The "what is work?" question produces new labor policy globally
 - First generation of workers enters the workforce who never knew a pre-agent workplace
+
+*A concrete Horizon 3 moment: the renewal, the negotiation within both mandates, the signature, and the payment happen operator-to-operator overnight. The humans on both sides read it in the quarterly summary.* `hypothesis`
 
 Each horizon is a threshold the business either crosses with preparation or crosses reactively. The businesses preparing in Horizon 1 are the ones setting the standards that Horizon 2 enterprises will adopt.
 
