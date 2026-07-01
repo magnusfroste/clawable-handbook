@@ -1,5 +1,5 @@
 ---
-title: "The Enterprise Architecture"
+title: "External, Embedded, Hybrid"
 description: "Five platforms, five native agents, five silos — and the one architectural decision that determines whether you get intelligence or noise."
 order: 10
 icon: "office-building"

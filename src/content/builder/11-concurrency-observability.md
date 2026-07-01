@@ -328,4 +328,4 @@ The recovery message is injected as a `system` role message — not a `user` mes
 
 *Concurrency and observability aren't glamorous. They're plumbing. But plumbing is what separates a demo from a product. Without it, your agent works in the lab and fails in production. With it, you can sleep while your agent runs — and know exactly what it did when you wake up.*
 
-*Next: the skills ecosystem and how capabilities are organized. [Skills Ecosystem →](/builder/15-skills-ecosystem)*
+*Next: the protocol that makes every skill reachable by any agent — and why it won. [MCP: Under the Hood →](/builder/12-mcp-deep-dive)*

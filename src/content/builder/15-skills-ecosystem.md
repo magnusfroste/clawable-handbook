@@ -103,19 +103,9 @@ Skills with 3+ consecutive failures are automatically quarantined. The agent can
 
 ## Skill Budget Management
 
-With 100+ skills, the token budget gets tight. The system uses dynamic compression:
+With 100+ skills, the token budget gets tight. The system compresses skill definitions dynamically in three tiers — full, compact, drop — as the context fills up, re-evaluated on every iteration of the reasoning loop. Chapter 19 covers the mechanism in full as part of the token economy.
 
-```
-Token Usage    Tier       Behavior
-───────────    ────       ────────
-< 50%          full       All skills with full tool_definitions
-50–75%         compact    Descriptions truncated to 80 chars
-> 75%          drop       Only top-20 recently-used skills remain
-```
-
-This is re-evaluated on every iteration of the reasoning loop. As the context fills up, the agent's available tools shrink dynamically.
-
-**The implication:** Popular skills stay available. Unused skills get dropped. This creates a natural selection pressure — skills that the agent finds useful survive, skills it doesn't use get pruned.
+**The implication for the skill system:** popular skills stay available, unused skills get dropped. This creates a natural selection pressure — skills the agent finds useful survive, skills it doesn't use get pruned.
 
 ---
 

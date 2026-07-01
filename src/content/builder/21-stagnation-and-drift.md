@@ -7,6 +7,8 @@ icon: "exclamation-triangle"
 
 ## Where We Are (April 2026)
 
+The previous chapter described the compound effect: feedback loops that make an agent measurably better every week. This chapter is about what happens when those loops quietly stop working — or start working on the wrong thing.
+
 OpenClaw went viral roughly one month ago. Developers worldwide deployed their first autonomous agents. The initial results were striking: agents that worked around the clock, qualified leads, published content, responded to visitors.
 
 Then, around week 3-4 of production, communities on X started noticing:

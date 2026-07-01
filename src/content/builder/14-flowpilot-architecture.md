@@ -7,7 +7,7 @@ icon: "cpu-chip"
 
 > The previous chapter covered the external operator — what it takes to deploy and govern an agent that lives above your stack. This one covers the other half. An agent that lives *inside* the platform it operates.
 
-Chapter five mapped the embedded vs. external decision at a strategic level. FlowPilot is embedded depth made concrete — the reference implementation of what it means to build natively agentic rather than bolt on an agent after the fact.
+The Business Edition maps the embedded vs. external decision at a strategic level. FlowPilot is embedded depth made concrete — the reference implementation of what it means to build natively agentic rather than bolt on an agent after the fact.
 
 FlowPilot is FlowWink's native agent. It runs on the same database, the same authentication layer, and the same runtime as the rest of the platform. An external operator reads FlowWink through a 250+ skill MCP surface. FlowPilot reads the database directly.
 
@@ -27,7 +27,7 @@ For a builder, the architectural details matter because they determine what the 
 
 ## Why This Is the Other Half, Not the Whole
 
-Embedded depth and external breadth are the two sides of the architecture from chapter ten. Neither makes the other redundant.
+Embedded depth and external breadth are the two halves of the federated architecture. Neither makes the other redundant.
 
 FlowPilot handles the work that needs deep context and low latency inside FlowWink. Clawable handles the work that requires reading across FlowWink, Fortnox, a support desk, and a data warehouse at the same time. The handshake between them — FlowPilot answering an A2A call from Clawable with the same depth it brings to its own heartbeat — is where federated execution starts to look like an operating system for the business.
 
@@ -35,8 +35,8 @@ The 2028 enterprise will run both. A native agent in every platform that can aff
 
 ---
 
-*Builder edition: the full architectural treatment of FlowPilot — memory tiers, skill system internals, concurrency, self-healing, trust gates — lives in the builder handbook, chapter 13. This operator edition captures only what the business leader needs to understand the hybrid story.*
+This chapter is the map. The chapters that follow open the hood on each system that makes the depth real: the skills ecosystem (15), skill self-creation (16), intent scoring (17), memory tiers (18), and the token economy (19).
 
 ---
 
-*Next: [Making SaaS Agent-Ready →](/business/15-making-saas-agent-ready)*
+*Next: the atomic unit of agent capability — what a skill actually is and how 250+ of them stay organized. [The Skills Ecosystem →](/builder/15-skills-ecosystem)*

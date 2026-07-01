@@ -1,13 +1,15 @@
 ---
 title: "The Contract Layer"
 description: "Your lawyers are not slow. They are doing clerical work that was never supposed to be theirs."
-order: 3.3
+order: 4.5
 icon: "scale"
 ---
 
 > A lawyer's judgment is worth every króna you pay for it. The problem is not what they charge per hour. It is how many of those hours are spent doing work that does not require judgment at all.
 
 ---
+
+The previous chapter named four superpowers in the abstract. This chapter shows what they look like when they are pointed at one expensive, universally neglected domain.
 
 Every company that sells services has a contract problem. Not because their legal function is inadequate. Because the contract process was designed around the assumption that every agreement is different — and most of them are not.
 
@@ -115,4 +117,14 @@ A workflow monitors events. A signed contract is an event. An unsigned contract 
 
 ---
 
-## The Prerequisite
+## The Takeaway
+
+The contract layer is what the four superpowers look like when they converge on one domain. Cross-module correlation connects the contract to the deal, the invoice, and the calendar. Absence detection hears the silence of a document nobody sent. Semantic judgment knows the difference between "I know this" and "I am inferring this" — and marks the boundary. Pattern diagnosis turns thirty-three days of unsigned work from an invisible non-event into a critical finding.
+
+None of this replaced a lawyer. All of it redirected legal judgment to where legal judgment is required.
+
+That is one domain. The same logic applies to every process where expensive expertise spends its hours on clerical work. Which raises the question that determines everything downstream: what architecture puts these capabilities on top of *your* systems — an agent embedded inside one platform, or an operator working above all of them?
+
+---
+
+*Next: [Embedded vs. External →](/business/05-embedded-vs-external)*

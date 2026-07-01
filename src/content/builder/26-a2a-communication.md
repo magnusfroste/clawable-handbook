@@ -7,7 +7,7 @@ icon: "signal"
 
 ## From Reliability to Federation
 
-The transition from chapter 22 to this chapter is intentional: once a single agent is reliable, the next bottleneck is coordination.
+The sequence so far is intentional: chapters 22–24 made a single agent governable, chapter 25 made it reliable in production. Once a single agent is reliable, the next bottleneck is coordination.
 
 A lone agent can run a business workflow. A network of agents can split roles, cross-check each other, and scale specialization without losing control. That is federation in practice.
 
@@ -332,6 +332,8 @@ The MCP server dynamically exposes skills where `mcp_exposed = true` in the `age
 ---
 
 ## The Agentic Web — A Vision
+
+*A reading note: this section is a scenario, not architecture. It shows where the primitives above lead once they federate across company boundaries. If you are here for the implementation, skip ahead to [Adding a New Peer](#adding-a-new-peer) — but come back. This is why the plumbing matters.*
 
 *This is not science fiction. Every technical primitive described below exists today.*
 

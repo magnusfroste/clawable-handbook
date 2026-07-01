@@ -7,7 +7,7 @@ icon: "wrench"
 
 ## The Problem Nobody Writes About
 
-Chapter 28 covered resilience as a full stack. One recurring failure mode inside that stack deserves its own chapter: malformed tool calls.
+Chapter 31 covered resilience as a full stack. One recurring failure mode inside that stack deserves its own chapter: malformed tool calls.
 
 LLMs don't call tools the way a programmer calls functions. They *predict* tool calls based on the names and schemas in the prompt. This prediction can fail in several distinct ways:
 

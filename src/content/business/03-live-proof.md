@@ -396,4 +396,4 @@ The invoice is paid. The contract is signed. The thread is closed.
 
 ---
 
-*Next: [The Contract Layer →](/business/03c-the-contract-layer)*
+*Next: [The Agent's Superpowers →](/business/04-superpowers)*

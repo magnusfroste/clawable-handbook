@@ -118,15 +118,9 @@ Nothing in your existing stack disappears. Salesforce stays. Fortnox stays. HubS
 
 This is what makes the current moment different from every previous wave of business software. The tools are already there. The data is already there. What has been missing is the intelligence layer that can hold all of it in context simultaneously and act on what it sees.
 
-History offers a useful sense of scale for how fast this kind of transition moves once it starts.
+History offers a sense of scale for how fast this kind of transition moves once it starts. In 1900, New York City ran on well over 100,000 horses; by 1908 automobiles outnumbered them, and by 1917 the Broadway shops that had sold saddles were selling carburetors. Fifteen years, and a 250-year-old paradigm was gone. The businesses that survived were not the ones that bred better horses — they were the ones that understood, early enough, that *transport* was the business, not horses.
 
-In 1900, New York City had an estimated 100,000 to 200,000 horses — historical sources vary, but the scale was enormous. The entire urban economy ran on them — freight, passenger transport, postal delivery, street cleaning. The city had been horse-powered for 250 years and had no particular reason to expect that to change. By 1908, for the first time, automobiles in New York outnumbered horses. By 1917, the Broadway shops that had sold saddles, harnesses, and wagon wheels were selling carburetors, tyres, and ignition parts. The businesses that survived the transition were not the ones that bred better horses. They were the ones that understood, early enough, that *transport* was the business — not horses.
-
-Fifteen years. A 250-year-old dominant paradigm, gone.
-
-The companies walking away from that transition were not incompetent. They were operating correctly within a model that no longer applied. The farrier had better skills than ever. The harness-maker had finer craftsmanship. But the category had shifted beneath them, and skill inside the old category does not transfer to the new one.
-
-You are facing a structural shift of comparable speed. Not in transport. In operations. The question is not *if* the category shifts — it is whether the shift leaves you operating in a horse economy while your competitors have moved to horsepower.
+You are facing a structural shift of comparable speed. Not in transport. In operations.
 
 Peter Steinberger, creator of OpenClaw, described MCP — the standardized protocol that connects agents to business software — as USB-C for AI. One standard. Any tool. Any system. The plug fits.
 

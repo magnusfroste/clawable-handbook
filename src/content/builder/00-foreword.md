@@ -149,4 +149,4 @@ How large is the opportunity for those who actually understand how it works?
 ---
 
 > **How to read this:**
-> Start with chapters 1–4 for conceptual grounding. Jump to chapter 5 (Control Plane) if you're a builder who wants the architecture fast. Read chapter 20 (Governance) if you're a manager or Agent Manager. Read chapter 24 (Agent-Driven Development) if you want to understand how agents improve agents. Read all of it if you want the full picture — it's written as a coherent argument, not just a reference.
+> Start with chapters 1–4 for conceptual grounding. Jump to chapter 5 (Control Plane) if you're a builder who wants the architecture fast. Read chapter 23 (Governance) if you're a manager or Agent Manager. Read chapter 27 (Agent-Driven Development) if you want to understand how agents improve agents. Read all of it if you want the full picture — it's written as a coherent argument, not just a reference.

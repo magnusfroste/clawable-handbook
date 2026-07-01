@@ -9,30 +9,13 @@ icon: "cpu-chip"
 
 The Agent Manager role and the accountability structure only work if the person responsible can read the operator's configuration, recognize behavioral drift, and know where to intervene. That requires a minimum level of architectural understanding. Not engineering depth. Operator fluency. That is what this chapter provides.
 
-This chapter is not the full OpenClaw builder manual — that is covered elsewhere in this edition. This is the operator's-handbook version: enough architectural understanding that you can deploy a stock OpenClaw instance, direct it with confidence, recognize when something is going wrong, and know what to ask your engineering team when a finding looks unusual.
-
-If you are building your own operator from scratch, read the builder edition. If you are deploying a stock OpenClaw instance against your SaaS, this chapter covers what you need.
+Chapter 4 dissected the mechanics — system prompt, skills, memory, heartbeat, verified against source. This chapter is the operator's view of the same machine: what those mechanics mean for the person who has to deploy it, govern it, and answer for it. If you skipped straight here from the business track, this chapter stands alone. If you read chapter 4, read this as the "so what."
 
 ---
 
 ## Three Files, One Operator
 
-Everything the operator is — its identity, its rules, its rhythm — lives in three text files that sit in a workspace directory you control.
-
-```
-  workspace/
-  ├── SOUL.md        → Who the agent is.  What it values.
-  │                    How it speaks. What it never does.
-  │
-  ├── AGENTS.md      → How the agent works.  The operating
-  │                    rules.  What happens at the edges.
-  │
-  └── HEARTBEAT.md   → What the agent does when nobody asks.
-                       A checklist it works through on a
-                       schedule.  Alone.  While you sleep.
-```
-
-The architectural choice that makes OpenClaw different from every other agent framework is this: **identity is a file, not a feature flag.** You change your operator's personality by editing `SOUL.md` in a text editor. You change what it does on its own schedule by editing `HEARTBEAT.md`. There is no admin panel. There is no proprietary configuration database. There is plain text, version-controlled in a git repository you own.
+Everything the operator is — its identity (`SOUL.md`), its rules (`AGENTS.md`), its rhythm (`HEARTBEAT.md`) — lives in three text files in a workspace directory you control. Chapter 4 covered what is in them. What matters here is the architectural choice they represent: **identity is a file, not a feature flag.** You change your operator's personality in a text editor. There is no admin panel. There is no proprietary configuration database. There is plain text, version-controlled in a git repository you own.
 
 This matters for three reasons that every business leader cares about:
 
@@ -42,42 +25,15 @@ This matters for three reasons that every business leader cares about:
 
 ---
 
-## What the Operator Sees When It Starts Up
+## Startup, Heartbeat, Memory — the Operator's Reading
 
-When an OpenClaw operator begins a session — whether triggered by a user message, a scheduled heartbeat, or an A2A dispatch from another agent — it runs the same startup sequence every time.
+Three mechanics from earlier chapters carry a governance implication worth stating plainly.
 
-It reads `SOUL.md` to remember who it is. It reads the user file to remember who it is working for. It reads yesterday's memory file to remember what happened. If it is the main session, it also loads a curated long-term memory file. Only then does it turn to whatever task is in front of it.
+**Startup.** Every session — user message, scheduled heartbeat, A2A dispatch — begins the same way: the operator reads `SOUL.md`, the user file, and yesterday's memory before touching the task. The implication: **the operator's behavior is grounded in files you control, not in model weights you do not.**
 
-This sequence is not a script. It is an instruction in `AGENTS.md` that the model follows because the instruction is always in its context. Every turn, the operator is reading its own rules alongside whatever it is being asked to do.
+**Heartbeat.** Chapter 10 covered the protocol in depth. The operator's-view summary: the heartbeat is what makes the accountability question urgent. An agent that only acts when asked raises few governance questions; an operator that acts on its own every thirty minutes, around the clock, raises all of them. The two questions the Agent Manager should always be able to answer are: *what is on the heartbeat?* and *what is the operator allowed to do without approval?* Both live in files. Both are readable. Both are auditable.
 
-For a business leader, the implication is simple: **the operator's behavior is grounded in files you control, not in model weights you do not.**
-
----
-
-## The Heartbeat — Autonomy on a Schedule
-
-The feature that makes OpenClaw an operator rather than a chatbot is the heartbeat.
-
-A heartbeat is a scheduled cycle — typically every thirty minutes to a few hours, depending on how fast the business needs to move — in which the operator wakes up without being asked, reads its objectives, checks the state of the systems it is connected to, and acts on what it finds. If there is nothing to do, it logs the check and goes back to sleep. If there is something to do, it does the work and surfaces the result in whatever channel it is configured to report to.
-
-The heartbeat is what turns an agent from "a tool you open and close" into "a colleague who is always on duty." It is also what makes the accountability model from chapter eleven necessary: an agent that only acts when asked raises fewer governance questions than an operator that acts on its own every thirty minutes, around the clock.
-
-For business readers, the two questions the Agent Manager should always be able to answer are: *what is on the heartbeat?* and *what is the operator allowed to do without approval?* Both live in files. Both are readable. Both are auditable.
-
----
-
-## Memory — What the Operator Remembers
-
-An operator without memory is not an operator. It is a series of disconnected sessions that happen to share a name.
-
-OpenClaw's memory architecture is two-tier:
-
-- **Daily memory files** — raw logs of what happened each day, one file per day, dated. The equivalent of a working journal.
-- **Long-term memory** — a curated file that records what mattered. The operator is expected to periodically review the daily logs and distill significant events into long-term memory during its heartbeat cycles.
-
-This is deliberately simple. There is no vector database. There is no embeddings store. There is plain markdown that the operator reads, edits, and evolves over time. The consequence is that memory is inspectable — you can read what the operator thinks it knows about your business and correct it in a text editor if it is wrong.
-
-For the Agent Manager role described in chapter seventeen, this is where most of the actual work happens. Reading what the operator has recorded. Correcting misinterpretations. Updating the rules in `AGENTS.md` when the operator develops a habit that does not match the business.
+**Memory.** OpenClaw's two tiers — daily logs plus a curated long-term file — are deliberately plain markdown, no vector database (chapter 18 covers the richer tiers a business platform adds). The consequence for the operator: memory is inspectable. You can read what the operator thinks it knows about your business and correct it in a text editor if it is wrong. This is where most of the Agent Manager's actual work happens: reading what the operator has recorded, correcting misinterpretations, updating the rules in `AGENTS.md` when the operator develops a habit that does not match the business.
 
 ---
 
@@ -109,9 +65,9 @@ The separation is not academic. It is the difference between an architecture tha
 
 ## What You Do Not Need to Understand
 
-OpenClaw has substantial internal machinery — a skill system, session management, tool-use protocols, A2A dispatch, approval gates, concurrency controls, self-healing routines. For most business readers, the correct depth of understanding is: **it works, and your Agent Manager knows where to look when it does not.**
+OpenClaw has substantial internal machinery — a skill system, session management, tool-use protocols, A2A dispatch, approval gates, concurrency controls, self-healing routines. For the person *operating* an agent rather than building one, the correct depth of understanding is: **it works, and your Agent Manager knows where to look when it does not.**
 
-If you need the full picture — and you will if you are building your own operator from scratch or customizing OpenClaw for an unusual deployment — the builder edition of this handbook covers the internals in the depth the engineering team needs.
+If you need the full picture — and you will if you are building your own operator from scratch or customizing OpenClaw for an unusual deployment — chapter 4 dissects the internals against source, and chapters 10–12 cover the heartbeat, concurrency, and protocol layers in the depth the engineering team needs.
 
 For running a business on top of an operator, the three files, the heartbeat, and the memory tiers are the entire conceptual surface. Everything else is implementation detail.
 
@@ -129,4 +85,4 @@ The ones built on opaque vendor infrastructure are the ones you will be asking t
 
 ---
 
-*Next: [FlowPilot Architecture →](/builder/14-flowpilot-architecture)*
+*Next: the other half of the architecture — the agent that lives inside the platform. [Inside FlowPilot →](/builder/14-flowpilot-architecture)*

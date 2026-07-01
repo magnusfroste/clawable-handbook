@@ -136,8 +136,8 @@ Workflows are trains on tracks. They are reliable, predictable, and fundamentall
 
 The companies that adopt agents early will not win because they automate faster. They will win because they see problems that their competitors still do not know exist.
 
-Understanding why these four capabilities exist structurally is the foundation. The next question is which architecture makes them available to your business — because an agent embedded inside a platform and an agent operating above it produce meaningfully different coverage, at meaningfully different costs. That decision is the next chapter.
+Understanding why these four capabilities exist structurally is the foundation. Before choosing the architecture that delivers them, it is worth watching all four converge on a single domain — the one where silence is most expensive and the most expensive people in your business do the typing. The contract layer.
 
 ---
 
-*Next: [Embedded vs. External →](/business/05-embedded-vs-external)*
+*Next: [The Contract Layer →](/business/04c-the-contract-layer)*
