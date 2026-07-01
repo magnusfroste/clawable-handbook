@@ -110,6 +110,8 @@ The ceiling shows up in the same place every time. Not in the 80 percent that wo
 
 That 20 percent is where deals die quietly, invoices age invisibly, and contracts expire without a conversation. It is also, not coincidentally, where an autonomous agent operates by default.
 
+*Before reading on, try to name yours: which three things in your business die quietly today — between systems, in the gaps no dashboard covers? Hold that list. You will want it in the next chapter.*
+
 ---
 
 ## The Soft Layer Above Your Stack
