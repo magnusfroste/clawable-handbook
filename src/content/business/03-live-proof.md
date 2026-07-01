@@ -295,7 +295,7 @@ The coordination operator did not just flag the invoice. It mapped the downstrea
 
 In a single sweep, it traced the full consequence chain: INV-2026-001 unpaid → Apexis AB relationship at risk → renewal contract 674b4819 (422,400 SEK, two years) cannot proceed → 18.3x return on a 23,125 SEK payment blocked by inaction.
 
-It then kept going. While in Apexis AB's records, it found the Northway Motors contract — 1,800,000 SEK, stuck in pending signature for seventeen days. Not assigned, not followed up, not on anyone's radar. It found Lindvall Systems's service contract expiring in eight days with no renewal deal, no conversation, no contact made. Three separate revenue risks. One sweep. Under four minutes.
+It then kept going. It re-surfaced the Northway Motors contract from the stressed morning — 1,800,000 SEK, *still* pending signature despite the follow-up — and Lindvall Systems's service contract, *still* without a renewal conversation. The operator did not treat them as handled because an email had been sent. It treated them as open until the state changed. Three separate revenue risks. One sweep. Under four minutes.
 
 The cascade the operator described was precise: *"Resolving INV-2026-001 does not just close a receivable. It unblocks a 422,400 SEK renewal that has been sitting idle since the invoice went overdue. The downstream is approximately 18.3x the outstanding amount."*
 

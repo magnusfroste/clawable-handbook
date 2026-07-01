@@ -193,23 +193,9 @@ This is what "the business runs itself" means in practice. Not that humans are r
 
 Most of this handbook has focused on the defensive value of agents — catching problems, preventing losses, stopping the bleeding. There is an offensive value that compounds differently.
 
-An autonomous operator does not just protect revenue. It accelerates it. The mechanism is what sales and marketing teams call **growth loops** — feedback cycles where every interaction feeds back into the system and makes the next interaction more effective.
+An operator running continuously does not just protect revenue — it tightens the loops that create it. A form submission becomes a scored, qualified lead without anyone entering it. Every open, click, and meeting compounds into intent signals nobody has to guess at. Deals update themselves — and won and lost both feed the pattern analysis. Company data gets enriched once and improves every linked contact. And the metrics from all of it feed back into the operator's own objectives on the next cycle.
 
-Five loops, all agent-amplified:
-
-**Capture & Qualify.** A visitor fills out a form. The operator creates the contact, links it to the company if it exists, calculates an engagement score, and generates an AI qualification summary. The lead appears in the pipeline ranked by intent — not by who remembered to enter it.
-
-**Engage & Track.** The contact opens an email, clicks a link, attends a webinar. Each action is logged and scored. Signals compound over time. The operator knows who is hot and who is not — without anyone guessing.
-
-**Sell & Convert.** The deal progresses. Contact status updates automatically. A won deal marks the customer and logs revenue. A lost deal is tracked for pattern analysis. The complete journey — from first interaction to signed contract — is visible in one timeline.
-
-**Enrich & Understand.** A company is added to the system. AI enrichment fills in industry, size, website, address. Every linked contact benefits. The operator's qualification quality improves with every piece of enriched data.
-
-**Measure & Improve.** Every loop generates metrics — leads per source, email open rates, pipeline value, win rates. The operator reads them, identifies where to double down and where to cut, and adjusts its own objectives accordingly.
-
-The difference between a funnel and a loop is compounding. A funnel processes each lead from scratch. A loop remembers — every data point makes the system smarter. An operator running on a heartbeat cycle does not just catch problems. It tightens the loops, accelerates the cycles, and makes the business increasingly effective at converting attention into revenue.
-
-This is not marketing automation. It is the integration of marketing, sales, and customer intelligence into a single reasoning context that runs continuously, learns continuously, and improves continuously.
+The difference between a funnel and a loop is compounding. A funnel processes each lead from scratch. A loop remembers — every data point makes the system smarter at converting attention into revenue. That is not marketing automation. It is marketing, sales, and customer intelligence in a single reasoning context that never stops running.
 
 ---
 
@@ -219,9 +205,7 @@ The CFO's version of the argument is simpler than the architecture one. Start wi
 
 Chapter three documented two findings from a single open prompt — no checklist, no target, forty-four seconds to first result. Västfjord Consulting: €45,000 suspended between a won deal and an unsigned contract in a different module, invisible until the agent looked across both simultaneously. Apexis AB: €22,000 on an active contract expiring in twelve days with no renewal in the pipeline. The CRM tracks what exists, not what is about to stop existing.
 
-Two findings. €67,000 of revenue either blocked or invisible. Not an edge case — the structural consequence of running a B2B business across systems that do not read each other. The full session log is in chapter three.
-
-These are not edge cases. They are the structural consequence of running a B2B business across disconnected systems. A mid-size company with forty active clients and a twelve-deal pipeline will lose 2–3 revenue events per month to this kind of cross-module silence. At an average deal value of €15,000–30,000, that is €30,000–90,000 per month in delayed, degraded, or lost revenue. Over a quarter, the number compounds. Over a year, it reshapes the growth curve.
+Two findings. €67,000 of revenue either blocked or invisible — and not an edge case. It is the structural consequence of running a B2B business across systems that do not read each other. A mid-size company with forty active clients and a twelve-deal pipeline will lose 2–3 revenue events per month to this kind of cross-module silence. At an average deal value of €15,000–30,000, that is €30,000–90,000 per month in delayed, degraded, or lost revenue. Over a quarter, the number compounds. Over a year, it reshapes the growth curve. The full session log is in chapter three.
 
 ---
 
