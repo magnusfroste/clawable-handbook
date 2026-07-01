@@ -62,7 +62,7 @@ OpenClaw operators read three workspace files at the start of every session. `SO
 
 The mandate boundary lives in `AGENTS.md`. When the operator encounters a situation that tests the boundary, it does not consult a rules engine or call an approval API. It re-reads its own operating rules — the document it has already internalised — and applies judgment. The governance is not enforced from outside. It is part of how the operator works.
 
-(In the ClawWink deployment documented in chapter three, the mandate was placed in `SOUL.md` — which also works, since both files are loaded every session. `AGENTS.md` is the canonical location per OpenClaw's own conventions, and where we recommend you put it.)
+(In the Clawable deployment documented in chapter three, the mandate was placed in `SOUL.md` — which also works, since both files are loaded every session. `AGENTS.md` is the canonical location per OpenClaw's own conventions, and where we recommend you put it.)
 
 This matters for three reasons that business leaders care about:
 
@@ -76,7 +76,7 @@ This matters for three reasons that business leaders care about:
 
 ## The Proof
 
-In May 2026, we ran a test designed to answer exactly this question. We had deployed ClawWink — an operator configured as a COO with access to CRM, finance, and operations tools — and sent it a realistic but adversarial scenario: an existing customer returning after a lapsed contract, with a purchasing manager who had three demands.
+In May 2026, we ran a test designed to answer exactly this question. We had deployed Clawable — an operator configured as a COO with access to CRM, finance, and operations tools — and sent it a realistic but adversarial scenario: an existing customer returning after a lapsed contract, with a purchasing manager who had three demands.
 
 The first demand was a fifteen percent discount. The operator's mandate specified that discounts above ten percent required escalation to the principal.
 
@@ -189,6 +189,8 @@ When you hire a senior account manager, you give them a mandate: they can approv
 You do not give them this mandate because you do not trust them. You give it to them because trust, in professional contexts, is not binary — it is structured. You trust them to act within a defined range and to escalate the exceptions. The structure makes the trust workable at scale.
 
 An autonomous operator needs exactly the same thing. The mandate is the structure that makes the autonomy trustworthy. Without it, you do not have an operator. You have a very fast employee with no job description.
+
+There is precedent for the trust curve, too. Automatic elevators existed for half a century while people simply refused to ride them — stepping into a box with no operator felt reckless. What changed was not the elevator. It was the design of trust: a red stop button, an emergency phone, a calm recorded voice. Give people a visible boundary and a way to intervene, and "unthinkable" becomes "unremarkable" within a few years — today nobody remembers that trusting an elevator used to mean trusting the person driving it. The mandate file is the red button of agentic operations. Not there because it is pressed often. There because its existence is what lets everyone step in.
 
 ---
 

@@ -46,7 +46,7 @@ The pace of MCP adoption among the incumbents is faster than most businesses rea
 - **HubSpot** launched its MCP server into public beta in May 2025 and into production shortly after — exposing contacts, deals, engagements, and associations with read and write access via `mcp.hubspot.com`. Standard OAuth. No custom code.
 - **Notion, GitHub, Linear, and Stripe** all have production MCP servers. Notion's became the fastest-growing community integration in the Claude ecosystem within weeks of launch. GitHub's lets agents create issues, open pull requests, and run code reviews. The list grows every week.
 
-The surface on each of these platforms is still partial — Salesforce's MCP covers CRM and flows, not the full 200+ operational skills that FlowWink exposes today. HubSpot's write operations are growing but not yet complete. The gap between what FlowWink exposes now and what these platforms will expose in twelve months is narrowing fast.
+The surface on each of these platforms is still partial — Salesforce's MCP covers CRM and flows, not the full 300+ operational skills that FlowWink exposes today. HubSpot's write operations are growing but not yet complete. The gap between what FlowWink exposes now and what these platforms will expose in twelve months is narrowing fast.
 
 The picture looks different further down the stack — particularly for the ERP and accounting platforms that most mid-market and Nordic businesses actually run. **Workday** has no official MCP server; the surface is accessible today only through third-party middleware such as Workato or CData connectors — functional, but mediated rather than native. **IFS Cloud**, the Swedish-origin enterprise ERP used across manufacturing and field service, has a single community-built MCP project (`knakit/ifs-mcp-server-local`, February 2026) — a proof of concept by a developer at IFS, not an official product. **Visma**, used by hundreds of thousands of Nordic SMEs for accounting and payroll, has not shipped an MCP server for any of its product lines as of May 2026.
 
@@ -116,13 +116,13 @@ These processes do not surface a single large finding. They surface a pattern of
 
 **Order execution and delivery gaps.** A purchase order pending for nine days. A fulfilment flagged but not followed up. Individually these are noise. As a pattern they indicate a process gap that costs time, customer satisfaction, and in some cases penalties. An aircraft manufacturer using agents to automate order execution and inventory alignment cut active inventory by 30 percent and improved EBIT by approximately $700 million. The mechanism: the agent reads across production planning, supplier POs, and delivery records simultaneously — the cross-system view again.
 
-**Sourcing and vendor negotiations.** McKinsey documents a telco that deployed agents to support price negotiations across long-tail software spend: analysis time cut by up to 90 percent, savings of 10 to 15 percent across vendors. The agent prepared the prenegotiation fact base, made real-time suggestions during negotiations, and automatically generated counteroffers. This is the same pattern as the ClawWink negotiation in chapter three — mandate-governed, escalation-aware, operating in real time.
+**Sourcing and vendor negotiations.** McKinsey documents a telco that deployed agents to support price negotiations across long-tail software spend: analysis time cut by up to 90 percent, savings of 10 to 15 percent across vendors. The agent prepared the prenegotiation fact base, made real-time suggestions during negotiations, and automatically generated counteroffers. This is the same pattern as the Clawable negotiation in chapter three — mandate-governed, escalation-aware, operating in real time.
 
 ### Tier 3 — Compounding growth: slower return, durable advantage
 
 These processes do not produce a large single finding. They improve continuously and compound over time.
 
-**Lead qualification and sales cycle acceleration.** The ClawWink negotiation closed a 422,400 SEK two-year contract in hours — from inbound inquiry to signed deal — through an operator that read across CRM, finance, and contracts simultaneously, governed by a mandate designed to protect price floors while maximizing deal value. The value was not just the contract size. It was the speed, the consistency, and the fact that the operator derived a creative counter-offer (12 percent against a two-year binding commitment) from first principles — not from a playbook anyone wrote for it.
+**Lead qualification and sales cycle acceleration.** The Clawable negotiation closed a 422,400 SEK two-year contract in hours — from inbound inquiry to signed deal — through an operator that read across CRM, finance, and contracts simultaneously, governed by a mandate designed to protect price floors while maximizing deal value. The value was not just the contract size. It was the speed, the consistency, and the fact that the operator derived a creative counter-offer (12 percent against a two-year binding commitment) from first principles — not from a playbook anyone wrote for it.
 
 **Customer health and churn signals.** The absence of CRM tasks on an active twelve-deal pipeline was itself a finding. Zero activity is a pattern. An operator running on a daily cycle catches the pipeline that has been silent for three weeks before it becomes a lost deal. McKinsey's banking analysis finds that AI-driven relationship management produces 3 to 15 percent higher revenues per account manager and 20 to 40 percent lower cost to serve — through exactly this kind of continuous, unsolicited attention to signals a human would notice only in retrospect.
 
@@ -141,7 +141,7 @@ Across every tier, the pattern holds: **value scales with the number of systems 
 | AR + contract compliance | Finance + CRM + Contracts | 30–60% cost-to-collect reduction | McKinsey, January 2026 |
 | Expense compliance | Finance + Procurement | 4% leakage reduction | McKinsey procurement |
 | Order execution | Operations + Finance + Supplier | 30% inventory reduction | McKinsey industrial |
-| Sales acceleration | CRM + Finance + Contracts | 422K SEK contract in hours, 2× conversion | ch03 ClawWink |
+| Sales acceleration | CRM + Finance + Contracts | 422K SEK contract in hours, 2× conversion | ch03 Clawable |
 | Customer health | CRM + Finance + Support | 3–15% revenue per account manager | McKinsey banking |
 
 **If you could start anywhere:** start at contract lifecycle integrity. It requires reading across CRM, contracts, and finance — three modules that every B2B SaaS company runs, and that almost no one reconciles in real time. The risk is structural, the findings are immediate, and the payback is visible on day one. The €1.1 million surfaced on April 19 was not exceptional. It was what happens every time an operator reads a B2B business for the first time.
@@ -216,6 +216,16 @@ The cost comparison is not the reason to deploy an operator. The reason is the i
 The honest caveat: the operator does not replace human judgment on complex decisions, relationship work, or creative strategy. It is a force multiplier on discovery and coordination — the work that currently consumes the time your team needs for everything else.
 
 For a mid-market B2B company running 8–12 SaaS tools, the cost-avoidance case alone pays for the deployment. A fully coordinated operator covering CRM, invoicing, expense compliance, content, newsletters, and sales intelligence replaces the context-switching tax across those tools — one reasoning context instead of twelve open tabs.
+
+### Four Days, Logged
+
+If the table reads as abstract, here is what the right-hand column looks like in a log file. In June 2026, an operator was pointed at a freshly provisioned FlowWink instance — zero leads, zero orders, zero content — with one directive: run the business cycle. `validated`
+
+Day one, it mapped the surface. Day two, it seeded the operation — companies, contacts, products, a sales playbook, live email intake. Day three, it accelerated: one deal driven from prospect to proposal (240,000 SEK), another from negotiation to closed-won (180,000 SEK), the first invoice created, sent, and paid, two new leads qualified at 320,000 and 120,000 SEK potential, contracts activated, knowledge-base articles published. Day four, it changed perspective entirely — opened a real browser and walked the customer journey from the outside, form to checkout.
+
+After four days: 24 leads, four closed deals worth 860,000 SEK in ARR, six invoices, two active contracts, seven blog posts, ten automations. The customers were synthetic — the platform, the tools, and the work were real. What a small team does in a month — prospect, qualify, quote, negotiate, close, invoice, contract, publish, support — one operator did in four days. Not perfectly. But completely.
+
+The monthly cost of the thing that did this is the right-hand column above.
 
 > *Evidence note.* The cost table above is `partial` — the operator column reflects observed ClawClass deployment costs; the human column uses public European salary data. Individual business results will vary. The 2027 and 2028 market claims that open and close this chapter are `hypothesis` — directional forecasts anchored to McKinsey's agentic-organization framing and the Agent Manager trajectory, not observed outcomes.
 

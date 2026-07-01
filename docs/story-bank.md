@@ -174,7 +174,7 @@ bug count — it's the correction count.*
 
 | Story | Feeling it gives | Strongest placement |
 |---|---|---|
-| 1. Four days as a company | Scale — "this is BIG" | business ch 3 act V / ch 11 / marketing |
+| 1. Four days as a company | Scale — "this is BIG" | **used** (business ch 11, "Four Days, Logged") — full version still free for marketing |
 | 2. Sara Berg phantom | Depth — sees what QA can't | business ch 12 / builder ch 30 |
 | 3. Visitor who bought nothing | Completeness — both sides of the glass | builder ch 34 |
 | 4. Queue nobody watched | Trust — governance that acts | used (business ch 14) |
