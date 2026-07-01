@@ -52,6 +52,33 @@ The picture looks different further down the stack — particularly for the ERP 
 
 The pattern is structural, not cyclical. The platforms built for enterprise are moving through middleware and community effort. The AI-native platforms are already there. The SaaS vendors who will lead are the ones that built MCP surfaces before it became a table stakes requirement — that treated external operators as integration partners rather than threats. The ones that wait will build compatibility at exactly the moment when it no longer differentiates them.
 
+### The Queue Outside the Door
+
+There is a reliable way to read where any vendor stands on this curve, and it is not their press releases. It is GitHub.
+
+When a platform has no official agent surface, and the demand exists, builders do not wait — they wrap the public API in a community MCP server and publish it. Booking.com is the textbook case: for months, the only way for an agent to search accommodations was through a half-dozen community-built wrappers on GitHub, written by individual developers, downloaded and forked by builders who needed the capability *now*. When an official surface finally appeared, it was a narrow search connector — a peephole, not a door. Notion sits at the other end of the spectrum: it shipped a full read-write MCP surface before the standard was even consensus, and became one of the fastest-growing integrations in the agent ecosystem for exactly that reason. Airtable followed officially in February 2026 — a fast follower, roughly a year behind. `validated`
+
+Community wrappers are not a curiosity. They are the queue outside the door — unpaid developers telling the vendor, in working code, that the demand already exists. Count the wrappers around your own vendors. The number is a leading indicator of both the pressure they are under and how far behind their roadmap is.
+
+The opening strategies will diverge from here, and the divergence is strategic, not technical. Some vendors will open selectively — exposing search but not operations, reads but not writes, hoping to be agent-visible without becoming agent-operable. Some will open fully and early, betting that being the easiest platform for agents to operate is the new distribution. And some — Salesforce may be the clearest example — appear to be calculating coldly that it does not matter either way: where the data lives, the business value lives, and gravity does the rest.
+
+### A Reflection on That Bet
+
+The author's own reflection, offered as exactly that: the data-gravity bet may be weaker than it looks. `hypothesis`
+
+Ask what a SaaS platform actually consists of, once an operator runs the processes. A data model. Business logic. And a user interface. The data model is the part with gravity — but a self-hosted Postgres holds a data model too, and it holds it on your infrastructure, under your jurisdiction, at a fraction of the cost. The business logic is increasingly what the *agent* carries, not the platform. And the UI — the thing that made SaaS sticky for twenty years — inverts from asset to constraint the day the primary user of the system is not a human clicking through screens but an operator calling tools. A UI designed for human workflows does not help an agent. It just sits there, priced in.
+
+And when a human *does* need an interface, building one is no longer a project. Chapter three documented Atonom replacing a $40,000-a-year Salesforce contract with a purpose-built CRM assembled on Lovable in three hours. Call the practice **loop engineering**: you build interfaces only where the human-in-the-loop actually stands — an approval queue, a briefing view, a red button — and you build them in an afternoon, against your own data. The UI stops being the house everyone lives in. It becomes the windows you install where humans need to look in, and the handles where humans need to reach in. Everything else — the data processing, the routine operations, the process execution — runs without a screen at all, because no one is watching it work.
+
+If that reflection is even half right, the pressure on incumbent SaaS will not come first from competing platforms. It will come from digital sovereignty: businesses realizing that a data layer they own, plus operators they govern, plus interfaces they can generate on demand, covers more of their operation than they thought — and asking, module by module, what the subscription is still for.
+
+> **Questions for the reader — we are not going to answer these.**
+>
+> - If an operator ran your processes autonomously for a quarter, which screens in your current SaaS stack would a human still open every week? What is the annual cost of all the screens that go dark?
+> - Look at your most critical vendor's agent surface. Is it a door or a peephole — can an agent *operate* the platform, or only search it? Whose interest does that boundary serve?
+> - If your data lived in a database you own, with operators you govern running the processes — name precisely what you would still be renting. Is it worth the invoice?
+> - Who in your organization could put a working interface in front of a process by Friday? If the answer is nobody, is that a tooling gap or a capability gap?
+
 As native AI capabilities become standard in each platform, the value of the coordination layer above them increases. Each platform's agent becomes a more capable domain expert. The question of who coordinates across those domain experts — who holds the cross-system view and acts on it — becomes the strategic question.
 
 The enterprises that will lead in 2027 are not the ones that chose the best single platform's AI feature. They are the ones that added the coordination layer early, before the pattern became obvious.

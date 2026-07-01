@@ -162,6 +162,17 @@ All findings attributed to Clawable operating FlowWink live can be cross-checked
 
 ---
 
+## SaaS MCP Adoption Spectrum (Ch 11)
+
+| Claim | Source | Status |
+|-------|--------|--------|
+| Booking.com: community MCP wrappers preceded any official surface; official offering is a narrow search connector | Multiple community repositories on GitHub (e.g. `esakrissa/hotels_mcp_server`, `mcp-use/booking-com`, `samwang0723/mcp-booking`, `prakashsanker/flights-mcp-server`); official remote MCP at `demandapi-mcp.booking.com` exposes accommodation search, not operations | `validated` — repository and endpoint enumeration, July 2026 |
+| Notion shipped a full read-write MCP surface early, before broad industry adoption of the standard | Notion hosted MCP server, launched 2025; became one of the fastest-growing integrations in the Claude ecosystem | `validated` |
+| Airtable official MCP server launched February 2026 | [Airtable support documentation](https://support.airtable.com/docs/using-the-airtable-mcp-server); community server (`domdomegg/airtable-mcp-server`) predates it | `validated` |
+| Data-gravity bet weakens under digital sovereignty; self-hosted data layer + governed operators + on-demand interfaces cover most of the operation | Author's reflection, anchored to the Atonom case (ch 3) | `hypothesis` — explicitly marked as reflection in ch 11 |
+
+---
+
 ## Evidence Discipline
 
 If a chapter makes a claim and it is not traceable to a row in this appendix or a SIM log, the claim is either:
