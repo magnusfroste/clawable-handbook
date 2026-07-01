@@ -396,4 +396,8 @@ The invoice is paid. The contract is signed. The thread is closed.
 
 ---
 
+*If this chapter changed what you think is possible, do one thing before reading on: put it on your next leadership agenda. Not as an IT item — as strategy. The chapters ahead explain what you are putting on the table; chapter 15 gives you the playbook for the meeting itself.*
+
+---
+
 *Next: [The Agent's Superpowers →](/business/04-superpowers)*

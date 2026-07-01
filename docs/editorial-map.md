@@ -68,6 +68,21 @@ Urgency without fear; scale without hype.
 3. The mandate idea ("you write its job description in a text file — that's
    the red button").
 
+**The macro-CTA (defined July 2026, Magnus's call):**
+*Put agentic AI on the leadership agenda — as strategy, not an IT project —
+and start the first cycle.* NOT "contact a partner." LiteIT/Autoversio appear
+only as implementation support, and private/sovereign AI is framed as the
+compliance precondition for sensitive data — a leadership decision, not
+procurement. The CTA appears at exactly three points, always the same,
+always with a small first step:
+1. End of ch 3 (seed — one italic line after the proof).
+2. Ch 15 "The Agenda, Not the Backlog" (full treatment — the four agenda
+   activities; anchored to ch 9's all-organizational failure modes).
+3. TL;DR appendix "The One Action to Take" (condensed).
+Signature line: "On the IT backlog, this is a project with an end date. On
+the leadership agenda, it is an operating capability with a compounding
+curve." Do not add a fourth placement; do not vary the destination.
+
 **Kill criteria for new business-track material:** doesn't map to a
 sub-question above; second bug story in a chapter; second analogy in a
 chapter; a question that can't change a multi-year decision; anything that

@@ -99,4 +99,10 @@ For companies that have already moved, this is the operating model. The first-mo
 
 ---
 
-*To read the full argument: start at chapter 1. To verify the claims: see the sources appendix. To start deploying: see the deployment checklist.*
+## The One Action to Take
+
+Put agentic AI on your next leadership agenda as its own item — strategy, not IT. On the IT backlog, this is a project with an end date. On the leadership agenda, it is an operating capability with a compounding curve. Chapter 15 gives you the four activities for that first meeting.
+
+---
+
+*To read the full argument: start at chapter 1. To verify the claims: see the sources appendix. To make it strategic: chapter 15. To start deploying: see the deployment checklist.*

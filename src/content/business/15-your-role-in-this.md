@@ -17,6 +17,25 @@ The gap between those two scenarios is not measured in the cost of setup. It is 
 
 ---
 
+## The Agenda, Not the Backlog
+
+The single most important action in this book costs nothing and takes one meeting: **put agentic AI on the leadership agenda as its own item.** Not under "IT update." Not delegated to a working group that reports back in Q4. On the agenda, owned at the leadership level, with your name next to it.
+
+Here is why this is not a formality. Go back to chapter nine and look at what actually kills agent programs: governance vacuum, wrong process selection, no ownership, no visibility. Every failure mode is organizational. None is technical. A challenge whose failure modes are organizational cannot be solved by the IT department, because the IT department does not control the organization — the leadership team does. Routing this to IT is not delegation. It is assigning the problem to the one function that structurally cannot solve it.
+
+There is a simpler way to say it: **on the IT backlog, this is a project with an end date. On the leadership agenda, it is an operating capability with a compounding curve.** A project gets delivered, evaluated, and closed. An operator gets hired, given a mandate, reviewed, and expanded — the same lifecycle as an employee, which is exactly why chapter fourteen reads like an employment framework. You do not run recruitment as an IT project. Do not run this as one either.
+
+What "on the agenda" means in practice — four activities, none of which require a single line of code:
+
+1. **A standing item with a named owner.** Thirty minutes a month at leadership level. The future Agent Manager reports here — not to a steering group, to you. (The accountability model in chapter eleven gives you the structure.)
+2. **The mirror test as pre-read.** Before the first session, every function head names their 20 percent — the things that die quietly between systems in their domain (chapter two). The combined list is your process-selection shortlist, and it will surprise you.
+3. **One boundary decision per quarter.** First process. First mandate. First expansion of autonomy. Small, explicit, minuted decisions — the graduated-trust curve from chapter fourteen, run at board pace.
+4. **The data question, decided at the top.** Where is your operator allowed to think? When the work touches customer data, financials, or personal information, private AI — self-hosted or sovereign infrastructure — is not a preference; it is the compliance and security precondition for letting an operator near the data at all. That is a jurisdiction and risk decision, which makes it a leadership decision, not a procurement line. Implementation partners exist for the build; the *decision* cannot be outsourced.
+
+The companies that treat this as strategy will spend leadership time on it. The companies that treat it as IT will spend budget on it. Only one of them ends up with the operating model.
+
+---
+
 ## Before the First Week: Getting the Frame Right
 
 Richard Maltsbarger, CEO of Canadian retailer Pet Valu, offers the right framing to carry into a first deployment: *"Think of AI as a really eager, but slightly naive, personal assistant. Brilliantly capable — but instruct it wrong and you get pancakes and bafflingly stupid outcomes."* (`validated` — Maltsbarger, cited in Mathias Sundin, *Den Femte Accelerationen*, 2025)
