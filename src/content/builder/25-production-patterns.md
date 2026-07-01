@@ -1,6 +1,6 @@
 ---
 title: "Production Patterns — Battle-Tested in Production"
-description: "Six architectural patterns that emerged from running an autonomous agent with 250+ skills, 60+ modules, and real business traffic. Not theory — production code."
+description: "Six architectural patterns that emerged from running an autonomous agent with 300+ skills, 60+ modules, and real business traffic. Not theory — production code."
 order: 25
 icon: "wrench"
 ---

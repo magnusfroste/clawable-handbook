@@ -67,7 +67,7 @@ The direction from here is measurable, not speculative. Three horizons, with dat
 - Governance frameworks (McKinsey four-layer, Singapore AIGL) become enterprise default
 - Regulatory frameworks begin catching up to autonomous-action liability
 
-*What this looks like in a log file, not a forecast: in June 2026, a second external agent — running on entirely different infrastructure — was wired into a live FlowWink instance as a peer operator. A scoped token minted in the federation admin, a dispatch surface of two tools instead of 250 schemas, connection verified within the hour. No account was created. Nobody logged in. One operator granting another operator a mandate-shaped key.* `validated`
+*What this looks like in a log file, not a forecast: in June 2026, a second external agent — running on entirely different infrastructure — was wired into a live FlowWink instance as a peer operator. A scoped token minted in the federation admin, a dispatch surface of two tools instead of 300 schemas, connection verified within the hour. No account was created. Nobody logged in. One operator granting another operator a mandate-shaped key.* `validated`
 
 ### Horizon 2 — 2027 → 2029: Structural Reorganization
 

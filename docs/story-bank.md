@@ -10,6 +10,30 @@ Already woven into the handbook: the skill audit findings (business ch 6),
 the empty-queue mandate proof (ch 14). The stories below are **unused or only
 partially used** — pick freely.
 
+## Tone guidance — read before weaving anything in
+
+The reader should finish every chapter with **energy** — wanting help getting
+started with agentic AI against their own systems — not with the impression
+that agents are bug-hunters or that FlowWink is fragile. Rules of thumb:
+
+1. **Lead with capability, close with capability.** Story 1 (four days as a
+   company) is the anchor. Bug material is seasoning, never the meal — at most
+   one bug story per chapter, always inside a capability frame.
+2. **Use the drift frame, not the defect frame.** Most findings were not
+   broken logic — they were *drift*: config out of sync with codebase, schemas
+   out of sync with handlers, docs out of sync with the registry. Every living
+   platform drifts. Humans never feel it; agents feel all of it immediately.
+   This universalizes the findings (it's not about FlowWink) and connects to
+   the stagnation-and-drift theme the handbook already owns.
+3. **Always close the loop.** Every finding was filed with repro steps and
+   fixed within days. Finding → fix → stronger platform. A bug mentioned
+   without its fix reads as fragility; with its fix it reads as a working
+   quality ratchet.
+4. **The auditability flex.** The only reason an afternoon audit was possible
+   is that FlowWink exposes its entire surface over MCP. Platforms that can't
+   be audited this way aren't cleaner — they're unexamined. Turn every
+   findings-list into proof of transparency, not weakness.
+
 ---
 
 ## 1. Four Days as an Entire Company
