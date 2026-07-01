@@ -7,7 +7,7 @@ icon: "server"
 
 ## From Theory to Swarm Operations
 
-The jump from "I understand OpenClaw" to "I operate a production agentic organization" is large. [ClawClass](https://github.com/magnusfroste/clawstack) is the bridge — a minimal infrastructure layer that lets you spin up a swarm of OpenClaw agents on your own VPS in an afternoon, wire them together, and connect an orchestration layer that delegates work like a manager.
+The jump from "I understand OpenClaw" to "I operate a production agentic organization" is large. [ClawClass](https://github.com/magnusfroste/clawclass) is the bridge — a minimal infrastructure layer that lets you spin up a swarm of OpenClaw agents on your own VPS in an afternoon, wire them together, and connect an orchestration layer that delegates work like a manager.
 
 ## Executive Takeaway
 
@@ -193,15 +193,15 @@ The Agent Manager role HBR described in February 2026 is not abstract here. It's
 ## Getting Started
 
 ```bash
-git clone https://github.com/magnusfroste/clawstack.git
-cd clawstack
+git clone https://github.com/magnusfroste/clawclass.git
+cd clawclass
 cp .env.example .env
 # Edit .env: BASE_DOMAIN, CADDY_EMAIL, ADMIN_USER, ADMIN_PASS
-mkdir -p /opt/clawstack/instances
+mkdir -p /opt/clawclass/instances
 docker compose up -d
 ```
 
-Open `https://clawstack.yourdomain.com`. Create an instance. Point a DNS CNAME. Done.
+Open `https://clawclass.yourdomain.com`. Create an instance. Point a DNS CNAME. Done.
 
 Prerequisites: Docker on a VPS, ports 80 and 443 open, DNS pointing to your server.
 
@@ -227,7 +227,7 @@ The path from "I understand agentic AI" to "I operate an agentic organization" n
 
 *Next: giving your agent eyes on the web — public scraping, Chrome Extension relay, and Signal Capture. [The Browser Operator →](/builder/34-browser-operator)*
 
-*ClawClass source: [github.com/magnusfroste/clawstack](https://github.com/magnusfroste/clawstack) — MIT license.*
+*ClawClass source: [github.com/magnusfroste/clawclass](https://github.com/magnusfroste/clawclass) — MIT license.*
 
 *Paperclip integration: see `paperclip.sh` and `docs/` in the ClawClass repo.*
 
