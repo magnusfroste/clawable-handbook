@@ -76,17 +76,19 @@ Chapters 11–15 go deeper — the enterprise-scale picture and business case, w
 
 ## Why I Built This
 
-I have seen this movie twice before.
+I have seen this movie before. More than once.
 
 In 2003 I was at IP-Only, a Swedish challenger operator, when two open-source projects — Asterisk and SIP Express Router — made it possible to deliver business telephony over the internet. The incumbents called it a toy. We shipped SIP trunking to enterprise customers as the first operator in the market — five to seven years before every operator offered it. Then the same pattern repeated with software-defined networking: we were delivering intelligent, software-based enterprise networks years before the industry had agreed on a name for them.
 
-The pattern is always the same. An open-source project appears and quietly removes the expensive, proprietary part of an industry. The incumbents dismiss it — too immature, too risky, not enterprise-grade. And the organizations that move early build a lead measured in years, because the thing they accumulate — operational experience — cannot be bought later.
+The pattern is always the same. An open protocol appears and quietly removes the expensive, proprietary part of an industry. The incumbents dismiss it — too immature, too risky, not enterprise-grade. And the organizations that move early build a lead measured in years, because the thing they accumulate — operational experience — cannot be bought later.
 
-I spent the following two decades at the customer–product–technology interface, most of them at Telia, scaling digital services across the Nordics: partner programs, product launches, P&L. Enough years inside large organizations to know exactly how they respond to a shift like this one — and how expensive "let's wait until it matures" turns out to be.
+I should be honest about what "moving early" actually looks like, because I have paid for that lesson too. In 2010 I started minting digital money on spare servers, for no better reason than that the idea was too interesting to leave untested: what if you could send value the way you send email? It became an expensive education. A hard drive crashed with the coins on it. A trading bot I built spawned thousands of transactions nothing could reconcile. Exchanges disappeared overnight and took their balances with them. I lost the coins. I kept the lesson — because the signal underneath the mess was real, and the world knows today what Bitcoin became. Early is not a visionary on a keynote stage. Early is a crashed disk at two in the morning. **Early costs tuition. Late costs rent. Tuition ends. Rent does not.**
 
-In 2024, the shape appeared for the third time. Not in how businesses communicate — in how they operate. So I did what I did the previous two times, except I went further: I built the business platform (FlowWink), built the swarm infrastructure (ClawClass), connected autonomous operators to a live business, and logged everything. This handbook is the write-up of that experiment.
+I spent the decades in between at the customer–product–technology interface, most of them at Telia, scaling digital services across the Nordics: partner programs, product launches, P&L. Enough years inside large organizations to know exactly how they respond to a shift like this one — and how expensive "let's wait until it matures" turns out to be.
 
-The third time you see the pattern, you recognize the window while it is still open. That is why this book exists — and why it is in a hurry.
+In 2024, the shape appeared again. Not in how we communicate, not in how we send value — in how businesses operate. So I did what I have done every time before, except I went further: I built the business platform (FlowWink), built the swarm infrastructure (ClawClass), connected autonomous operators to a live business, and logged everything — including what broke. This handbook is the write-up of that experiment.
+
+When you have seen the pattern enough times, you recognize the window while it is still open — and you know the tuition is worth paying. That is why this book exists, and why it is in a hurry.
 
 *— Magnus Froste, Stockholm, 2026*
 *[linkedin.com/in/froste](https://linkedin.com/in/froste) · [github.com/magnusfroste](https://github.com/magnusfroste)*

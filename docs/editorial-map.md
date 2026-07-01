@@ -84,9 +84,12 @@ the leadership agenda, it is an operating capability with a compounding
 curve." Do not add a fourth placement; do not vary the destination.
 
 **Author presence:** "Why I Built This" in the business foreword — the
-third-time-pattern story (SIP trunking 2003 → SD-WAN → agentic AI), signed
-Magnus Froste. This is the trust anchor for the CEO reader; keep it factual
-and first-person, never promotional.
+pattern story (SIP trunking 2003 → SD-WAN → Bitcoin mining 2010, told with
+its full cost: crashed disk, runaway bot, vanished exchanges → agentic AI),
+signed Magnus Froste. The Bitcoin verse is the honesty beat that makes the
+rest credible. Landmark line: "Early costs tuition. Late costs rent.
+Tuition ends. Rent does not." Trust anchor for the CEO reader; factual and
+first-person, never promotional.
 
 **Kill criteria for new business-track material:** doesn't map to a
 sub-question above; second bug story in a chapter; second analogy in a
