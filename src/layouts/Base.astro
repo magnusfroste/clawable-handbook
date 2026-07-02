@@ -113,5 +113,55 @@ const allSchemas = [orgSchema, webSiteSchema, ...schemaList];
   </head>
   <body class="bg-dark-950 text-dark-200 font-sans antialiased">
     <slot />
+    {import.meta.env.PUBLIC_STATS_URL && import.meta.env.PUBLIC_STATS_KEY && (
+      <script is:inline define:vars={{ statsUrl: import.meta.env.PUBLIC_STATS_URL, statsKey: import.meta.env.PUBLIC_STATS_KEY }}>
+        // Anonymous, aggregate-only reading analytics. No cookies, no IDs, no IP stored.
+        (function () {
+          if (navigator.webdriver) return;
+          var activeMs = 0;
+          var lastVisible = document.visibilityState === 'visible' ? Date.now() : null;
+          var maxDepth = 0;
+          var sent = false;
+
+          function updateDepth() {
+            var doc = document.documentElement;
+            var scrollable = doc.scrollHeight - window.innerHeight;
+            var d = scrollable <= 0 ? 100 : Math.round(((window.scrollY || doc.scrollTop) / scrollable) * 100);
+            if (d > maxDepth) maxDepth = Math.min(d, 100);
+          }
+
+          document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState === 'visible') {
+              lastVisible = Date.now();
+            } else {
+              if (lastVisible) activeMs += Date.now() - lastVisible;
+              lastVisible = null;
+              send();
+            }
+          });
+          window.addEventListener('scroll', updateDepth, { passive: true });
+          window.addEventListener('pagehide', send);
+
+          function send() {
+            if (sent) return;
+            sent = true;
+            updateDepth();
+            if (lastVisible) activeMs += Date.now() - lastVisible;
+            var seconds = Math.min(Math.round(activeMs / 1000), 7200);
+            var payload = JSON.stringify({
+              path: location.pathname.slice(0, 190),
+              depth: maxDepth,
+              seconds: seconds,
+              referrer: (document.referrer || '').split('/').slice(0, 3).join('/').slice(0, 190) || null,
+              device: window.innerWidth < 768 ? 'mobile' : 'desktop',
+            });
+            navigator.sendBeacon(
+              statsUrl + '/rest/v1/book_events?apikey=' + encodeURIComponent(statsKey),
+              new Blob([payload], { type: 'application/json' })
+            );
+          }
+        })();
+      </script>
+    )}
   </body>
 </html>

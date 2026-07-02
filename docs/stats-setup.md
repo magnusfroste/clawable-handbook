@@ -1,0 +1,103 @@
+# Reading Analytics — Setup
+
+Anonymous, aggregate-only reading stats. No cookies, no identifiers, no IP
+addresses stored → no consent banner needed. Storage: Supabase (free tier is
+plenty). The site is static on Vercel, so file-based storage is not possible —
+Supabase is the natural fit for this stack.
+
+## How it works
+
+1. **Beacon** (in `Base.astro`, site-wide): on every page view, tracks max
+   scroll depth and visibility-aware reading time; sends ONE event via
+   `navigator.sendBeacon` when the reader leaves the page/tab.
+2. **`book_events` table**: insert-only for the anon key (RLS). Nobody can
+   read raw events from the browser.
+3. **`book_stats` view**: the only thing readable — aggregates per path.
+4. **`/stats`**: unlinked page (excluded from sitemap, `noindex`) that
+   renders the aggregates. Anyone with the URL can see it — by design,
+   it contains nothing sensitive.
+
+## Setup (once, ~10 minutes)
+
+### 1. Create a Supabase project
+
+New project (e.g. `clawable-stats`) at supabase.com — or reuse an existing
+non-production project. Region: EU (Stockholm/Frankfurt) for good manners.
+
+### 2. Run this SQL (SQL Editor)
+
+```sql
+create table public.book_events (
+  id bigint generated always as identity primary key,
+  ts timestamptz not null default now(),
+  path text not null check (char_length(path) <= 200),
+  depth smallint not null default 0 check (depth between 0 and 100),
+  seconds integer not null default 0 check (seconds between 0 and 7200),
+  referrer text check (char_length(referrer) <= 200),
+  device text check (device in ('mobile', 'desktop'))
+);
+
+alter table public.book_events enable row level security;
+
+-- The anon key may ONLY insert. No select, update, delete.
+create policy "anon can insert events"
+  on public.book_events for insert
+  to anon
+  with check (true);
+
+-- Aggregates are the only readable surface.
+create view public.book_stats as
+select
+  path,
+  count(*)::int                                   as views,
+  round(avg(depth))::int                          as avg_depth,
+  round(avg(seconds))::int                        as avg_seconds,
+  round(100.0 * avg((depth >= 90)::int))::int     as completion_pct,
+  count(*) filter (where device = 'mobile')::int  as mobile_views,
+  max(ts)                                         as last_view
+from public.book_events
+group by path;
+
+grant select on public.book_stats to anon;
+```
+
+### 3. Set env vars in Vercel (Project → Settings → Environment Variables)
+
+| Name | Value |
+|---|---|
+| `PUBLIC_STATS_URL` | `https://<project-ref>.supabase.co` |
+| `PUBLIC_STATS_KEY` | the project's **anon** key (never the service key) |
+
+Redeploy. Without the vars, the beacon and /stats degrade gracefully
+(nothing is tracked, /stats says "not configured").
+
+### 4. Read your stats
+
+`https://www.clawable.org/stats` — unlinked, noindex, excluded from sitemap.
+
+## What you get per page
+
+- **Views** — page loads that ended (beacon fired)
+- **Avg depth** — how far down readers get (the "where do they stop" answer)
+- **Avg time** — visibility-aware active reading time
+- **Completion %** — share of views that scrolled past 90%
+- **Mobile share** — mobile vs desktop split
+- **Last view** — freshness
+
+Chapter-level drop-off across the book = compare avg depth/completion between
+consecutive chapters in the /stats tables.
+
+## Privacy posture (for the curious)
+
+Stored per event: path, depth %, seconds, referrer *origin* only (e.g.
+`https://www.linkedin.com`), device class, timestamp. Nothing else. No
+fingerprinting, no session IDs, no IP (Supabase logs aside — set log
+retention low if you care). This is well inside GDPR's anonymous-data lane.
+
+## Later, if you want more
+
+- Daily trend: add a `book_stats_daily` view grouped by `date_trunc('day', ts)`.
+- Referrer table: same pattern, group by referrer.
+- Cleanup: `delete from book_events where ts < now() - interval '12 months'`.
+- Rate limiting if abuse ever appears: move the insert behind a Supabase Edge
+  Function. Not worth the complexity until then.

@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+
+const statsUrl = import.meta.env.PUBLIC_STATS_URL ?? '';
+const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
+---
+
+<Base title="Reading Stats" description="Aggregated, anonymous reading statistics." robots="noindex,nofollow">
+  <main class="pt-16 pb-20 max-w-5xl mx-auto px-6">
+    <h1 class="text-3xl font-bold text-white mb-2">Reading Stats</h1>
+    <p class="text-dark-400 mb-8 text-sm">
+      Aggregated and anonymous — no cookies, no identifiers, no IP addresses.
+      Completion = share of views that scrolled past 90%.
+    </p>
+
+    <div id="summary" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10"></div>
+
+    <div id="tracks"></div>
+
+    <p id="status" class="text-dark-500 text-sm mt-8">Loading…</p>
+  </main>
+
+  <script is:inline define:vars={{ statsUrl, statsKey }}>
+    (async function () {
+      const statusEl = document.getElementById('status');
+      if (!statsUrl || !statsKey) {
+        statusEl.textContent = 'Analytics is not configured (PUBLIC_STATS_URL / PUBLIC_STATS_KEY missing at build time).';
+        return;
+      }
+      try {
+        const res = await fetch(`${statsUrl}/rest/v1/book_stats?select=*&order=views.desc`, {
+          headers: { apikey: statsKey, authorization: `Bearer ${statsKey}` },
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const rows = await res.json();
+        if (!rows.length) { statusEl.textContent = 'No data yet. Come back after the first readers.'; return; }
+
+        const totalViews = rows.reduce((s, r) => s + Number(r.views), 0);
+        const totalMinutes = Math.round(rows.reduce((s, r) => s + Number(r.views) * Number(r.avg_seconds), 0) / 60);
+        const chapters = rows.filter((r) => /^\/(business|builder)\//.test(r.path));
+        const avgCompletion = chapters.length
+          ? Math.round(chapters.reduce((s, r) => s + Number(r.completion_pct), 0) / chapters.length)
+          : 0;
+
+        document.getElementById('summary').innerHTML = [
+          ['Total views', totalViews.toLocaleString()],
+          ['Total reading time', `${totalMinutes.toLocaleString()} min`],
+          ['Pages with traffic', rows.length],
+          ['Avg chapter completion', `${avgCompletion}%`],
+        ].map(([label, value]) => `
+          <div class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-4">
+            <div class="text-2xl font-bold text-white">${value}</div>
+            <div class="text-xs text-dark-400 mt-1">${label}</div>
+          </div>`).join('');
+
+        const groups = [
+          ['Business Edition', rows.filter((r) => r.path.startsWith('/business'))],
+          ['Builder Edition', rows.filter((r) => r.path.startsWith('/builder'))],
+          ['Other pages', rows.filter((r) => !r.path.startsWith('/business') && !r.path.startsWith('/builder'))],
+        ];
+
+        document.getElementById('tracks').innerHTML = groups
+          .filter(([, list]) => list.length)
+          .map(([name, list]) => `
+            <h2 class="text-xl font-semibold text-white mt-10 mb-4">${name}</h2>
+            <div class="overflow-x-auto rounded-xl border border-dark-800/50">
+              <table class="w-full text-sm">
+                <thead class="bg-dark-900/60 text-dark-400 text-left">
+                  <tr>
+                    <th class="p-3">Page</th>
+                    <th class="p-3 text-right">Views</th>
+                    <th class="p-3 text-right">Avg depth</th>
+                    <th class="p-3 text-right">Avg time</th>
+                    <th class="p-3 text-right">Completion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${list.map((r) => `
+                    <tr class="border-t border-dark-800/40">
+                      <td class="p-3 text-dark-200 font-mono text-xs">${r.path}</td>
+                      <td class="p-3 text-right text-white">${Number(r.views).toLocaleString()}</td>
+                      <td class="p-3 text-right">
+                        <span class="inline-block w-24 bg-dark-800 rounded h-2 align-middle mr-2"><span class="block h-2 rounded bg-claw-500" style="width:${r.avg_depth}%"></span></span>${r.avg_depth}%
+                      </td>
+                      <td class="p-3 text-right text-dark-300">${Math.round(r.avg_seconds / 60)}m ${r.avg_seconds % 60}s</td>
+                      <td class="p-3 text-right text-dark-300">${r.completion_pct}%</td>
+                    </tr>`).join('')}
+                </tbody>
+              </table>
+            </div>`).join('');
+
+        statusEl.textContent = `Based on ${totalViews.toLocaleString()} anonymous page views.`;
+      } catch (e) {
+        statusEl.textContent = `Could not load stats: ${e.message}`;
+      }
+    })();
+  </script>
+</Base>
