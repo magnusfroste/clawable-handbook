@@ -20,6 +20,14 @@ boundaries, and a human at the right altitude.
 One sentence: **the agent is the operator, the software is its environment,
 and the mandate is what makes that trustworthy.**
 
+**The value thread (explicit as of July 2026):** the book distinguishes
+*surfaced* value (findings, exposure made visible — the €1.1M) from
+*realized* value (a finding changes what a human does — the 18.3x cascade).
+The equation: **operator value = findings × the rate at which humans act on
+them.** Governance/accountability chapters are framed as the
+value-realization mechanism, not compliance overhead. Any new value claim
+must state which side of that line it sits on.
+
 ---
 
 ## Business Edition

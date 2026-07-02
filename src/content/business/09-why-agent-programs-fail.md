@@ -28,6 +28,8 @@ Someone has to own the agent. Not the infrastructure — the behavior. Who decid
 
 The governance failure is not a missing approval matrix. It is a missing human being — someone whose job description includes "respond to what the operator found." Without that person, the agent speaks into an empty room.
 
+And an empty room is not just a governance problem. It is where the business case dies. An operator's value is realized at exactly one moment: when a finding changes what a human does. Unread findings do not have a smaller value — they have none, at full token cost. The most common way agent programs fail to create value is not that the agent found nothing. It is that it found plenty, and nobody owned the acting.
+
 ---
 
 ## Wrong Process, Right Technology

@@ -262,6 +262,20 @@ The monthly cost of the thing that did this is the right-hand column above.
 
 ---
 
+## From Findings to Value
+
+One distinction, before the accountability model — because it is the distinction this entire chapter's numbers rest on.
+
+**A finding is not value.** The €1.1 million from chapter three is exposure *surfaced* — made visible, priced, and put in front of a human. Value happens later, at a precise moment: when a finding changes what a human does, or what a human no longer has to do. The invoice that got paid and the contract that got signed in chapter three's cascade — 23,125 SEK in, 422,400 SEK unblocked — is what *realized* value looks like. Everything between those two states is the part your organization controls.
+
+That gives you the only equation in this book worth memorizing:
+
+**Operator value = findings × the rate at which humans act on them.**
+
+An operator producing brilliant findings that nobody reads is not an underperforming asset. It is a cost that writes well. The industry already has a word for AI output that looks impressive and changes nothing — and no operator, however capable, can escape that fate on its own. The second factor in the equation is not configured in a YAML file. It is an owner, a cadence, and a leadership team that treats the Monday briefing as an input to decisions rather than a report to skim.
+
+Which is why the next section is not compliance overhead. It is the value-realization mechanism.
+
 ## The Accountability Model
 
 The question every board asks before approving an autonomous operator is: *who is responsible when it gets something wrong?*
