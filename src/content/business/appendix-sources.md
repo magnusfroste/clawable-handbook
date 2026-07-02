@@ -188,6 +188,7 @@ All findings attributed to Clawable operating FlowWink live can be cross-checked
 | Claim | Source | Status |
 |-------|--------|--------|
 | "The real question is not whether AI can create value... The question is whether the organization is built to receive the value"; measure AI maturity in value created (time freed, better decisions, shorter flows, raised quality), not pilots/licenses/lectures | Per Clingweld, Change Agent at AI Sweden — public LinkedIn post following Almedalen 2026 ([profile](https://www.linkedin.com/in/perclingweld/)) | `validated` — direct quote from public post |
+| Satya Nadella describes future organizations as consisting of human capital plus "token capital" — the AI capability an organization builds on top of the models; post reached tens of millions of views within a week (mid-2026) | Satya Nadella, public post on the future organization, 2026; discussed in Per Clingweld's LinkedIn commentary | `validated` — widely circulated public post |
 
 ## Mid-2026 Market Scale Signals (Ch 11)
 

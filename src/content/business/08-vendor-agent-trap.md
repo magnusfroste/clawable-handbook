@@ -29,6 +29,8 @@ Agent-layer lock-in is different. When your agent has been trained on your speci
 
 This is lock-in at the level of organizational memory, not just data.
 
+Put differently: this is the difference between buying AI and building AI capacity. Buying, almost anyone can do — it makes you faster this quarter. Building means the learning accumulates in systems you own. You can outsource tasks. You can automate parts of jobs. **You cannot outsource your organization's learning** — and if your agent's understanding of your business lives inside a vendor's walls, that is exactly what you have done.
+
 ### Pillar Two: The Data Silo Problem
 
 A vendor agent has deep access to its own platform and no access to anything else. It can read every field in your CRM, every record in your ERP, every transaction in your billing system. It cannot read the email that a customer sent you from Gmail. It cannot cross-reference the invoice in your payment processor with the deal in your CRM. It cannot see the compliance flag that lives in a separate regulatory platform.
