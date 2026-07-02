@@ -196,5 +196,83 @@ const allSchemas = [orgSchema, webSiteSchema, ...schemaList];
         })();
       </script>
     )}
+    {import.meta.env.PUBLIC_STATS_URL && import.meta.env.PUBLIC_STATS_KEY && import.meta.env.PUBLIC_SURVEY === 'on' && (
+      <script is:inline define:vars={{ statsUrl: import.meta.env.PUBLIC_STATS_URL, statsKey: import.meta.env.PUBLIC_STATS_KEY }}>
+        // Optional 3-question reader card. Anonymous. Shows once, on the reader's
+        // 2nd+ chapter at 50% scroll, always skippable. Enable: PUBLIC_SURVEY=on.
+        (function () {
+          if (navigator.webdriver) return;
+          if (!/^\/(business|builder)\//.test(location.pathname)) return;
+          try {
+            if (localStorage.getItem('cw_survey_done')) return;
+            var count = (parseInt(sessionStorage.getItem('cw_ch') || '0', 10) || 0) + 1;
+            sessionStorage.setItem('cw_ch', String(count));
+            if (count < 2) return;
+          } catch (e) { return; }
+
+          var QUESTIONS = [
+            { q: 'What best describes you?', key: 'role',
+              a: [['Business leader', 'leader'], ['Engineer / builder', 'builder'], ['Investor / analyst', 'analyst'], ['Curious reader', 'curious']] },
+            { q: 'Where is your organization on agentic AI?', key: 'stage',
+              a: [['Just learning', 'learning'], ['Exploring', 'exploring'], ['Running a pilot', 'pilot'], ['In production', 'production']] },
+            { q: 'Likely to start an agent project within 6 months?', key: 'intent',
+              a: [['Yes', 'yes'], ['Maybe', 'maybe'], ['No', 'no']] },
+          ];
+          var idx = 0, shown = false;
+
+          function beacon(target) {
+            navigator.sendBeacon(
+              statsUrl + '/rest/v1/book_events?apikey=' + encodeURIComponent(statsKey),
+              new Blob([JSON.stringify({ event_type: 'answer', path: location.pathname.slice(0, 190), target: target.slice(0, 100),
+                device: window.innerWidth < 768 ? 'mobile' : 'desktop' })], { type: 'application/json' })
+            );
+          }
+          function done() {
+            try { localStorage.setItem('cw_survey_done', '1'); } catch (e) {}
+            var el = document.getElementById('cw-survey');
+            if (el) { el.style.transform = 'translateY(120%)'; setTimeout(function () { el.remove(); }, 400); }
+          }
+          function render() {
+            var el = document.getElementById('cw-survey');
+            if (idx >= QUESTIONS.length) {
+              el.querySelector('#cw-body').innerHTML = '<p style="margin:0;font-weight:600;color:#fff">Thank you — enjoy the book. 🦞</p>';
+              setTimeout(done, 1400);
+              return;
+            }
+            var item = QUESTIONS[idx];
+            el.querySelector('#cw-body').innerHTML =
+              '<p style="margin:0 0 10px;font-weight:600;color:#fff">' + item.q + '</p>' +
+              '<div style="display:flex;flex-wrap:wrap;gap:8px">' +
+              item.a.map(function (pair) {
+                return '<button data-v="' + item.key + ':' + pair[1] + '" style="border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#e5e5e5;border-radius:9999px;padding:7px 14px;font-size:13px;cursor:pointer">' + pair[0] + '</button>';
+              }).join('') + '</div>';
+            el.querySelectorAll('#cw-body button').forEach(function (b) {
+              b.addEventListener('click', function () { beacon(b.dataset.v); idx++; render(); });
+            });
+          }
+          function show() {
+            if (shown) return; shown = true;
+            var el = document.createElement('div');
+            el.id = 'cw-survey';
+            el.style.cssText = 'position:fixed;left:12px;right:12px;bottom:12px;z-index:60;max-width:460px;margin:0 auto;background:#111214;border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px;box-shadow:0 12px 40px rgba(0,0,0,.5);transition:transform .4s ease;font-family:inherit';
+            el.innerHTML =
+              '<p style="margin:0 0 8px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#8b8b93">Three taps — anonymous, as always</p>' +
+              '<div id="cw-body"></div>' +
+              '<button id="cw-skip" style="margin-top:12px;background:none;border:none;color:#8b8b93;font-size:13px;cursor:pointer;padding:0;text-decoration:underline">Continue reading →</button>';
+            document.body.appendChild(el);
+            el.querySelector('#cw-skip').addEventListener('click', done);
+            render();
+          }
+          window.addEventListener('scroll', function onScroll() {
+            var doc = document.documentElement;
+            var scrollable = doc.scrollHeight - window.innerHeight;
+            if (scrollable > 0 && (window.scrollY / scrollable) > 0.5) {
+              window.removeEventListener('scroll', onScroll);
+              show();
+            }
+          }, { passive: true });
+        })();
+      </script>
+    )}
   </body>
 </html>

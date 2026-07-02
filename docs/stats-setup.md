@@ -127,7 +127,7 @@ anonymous) and reader-action tracking (outbound clicks, hostname only).
 ```sql
 alter table public.book_events
   add column event_type text not null default 'view'
-    check (event_type in ('view', 'click')),
+    check (event_type in ('view', 'click', 'answer')),
   add column visit text check (char_length(visit) <= 16),
   add column target text check (char_length(target) <= 100);
 
@@ -222,6 +222,19 @@ from v
 group by 1;
 
 grant select on public.book_visit_segments to anon;
+
+-- Reader survey answers (the optional 3-question card; enable with
+-- PUBLIC_SURVEY=on in Vercel). target format: 'question:answer'
+create view public.book_survey as
+select
+  split_part(target, ':', 1) as question,
+  split_part(target, ':', 2) as answer,
+  count(*)::int              as answers
+from public.book_events
+where event_type = 'answer' and target like '%:%'
+group by 1, 2;
+
+grant select on public.book_survey to anon;
 ```
 
 ## Later, if you want more

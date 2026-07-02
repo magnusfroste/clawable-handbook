@@ -48,13 +48,14 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
       };
 
       try {
-        const [rows, daily, refs, visitStats, clicks, segments] = await Promise.all([
+        const [rows, daily, refs, visitStats, clicks, segments, survey] = await Promise.all([
           get('book_stats?select=*&order=views.desc'),
           get('book_stats_daily?select=*&order=day.asc').catch(() => []),
           get('book_referrers?select=*&order=views.desc&limit=15').catch(() => []),
           get('book_visit_stats?select=*').catch(() => []),
           get('book_clicks?select=*&order=clicks.desc&limit=15').catch(() => []),
           get('book_visit_segments?select=*').catch(() => []),
+          get('book_survey?select=*').catch(() => []),
         ]);
         if (!rows.length) { statusEl.textContent = 'No data yet. Come back after the first readers.'; return; }
 
@@ -229,6 +230,32 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
                     <td class="p-3 text-right text-white w-20">${Number(c.clicks).toLocaleString()}</td>
                   </tr>`).join('')}
               </tbody></table>
+            </div>`);
+        }
+
+        // ---- Who reads (survey answers) ----
+        if (survey.length) {
+          const labels = { role: 'What best describes you?', stage: 'Where on agentic AI?', intent: 'Project within 6 months?' };
+          const byQ = {};
+          survey.forEach((s) => { (byQ[s.question] = byQ[s.question] || []).push(s); });
+          document.getElementById('tables').insertAdjacentHTML('beforeend', `
+            <h2 class="text-xl font-semibold text-white mt-10 mb-1">Who reads — survey answers</h2>
+            <p class="text-xs text-dark-500 mb-4">Optional 3-tap card, anonymous. Shown once per reader from their second chapter.</p>
+            <div class="grid md:grid-cols-3 gap-4">
+              ${Object.entries(byQ).map(([q, list]) => {
+                const total = list.reduce((s, r) => s + Number(r.answers), 0);
+                return `
+                  <div class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-4">
+                    <h3 class="text-sm font-semibold text-white mb-3">${esc(labels[q] || q)}</h3>
+                    ${list.sort((a, b) => b.answers - a.answers).map((r) => `
+                      <div class="flex items-center gap-2 text-xs mb-1.5">
+                        <span class="w-20 shrink-0 text-dark-400">${esc(r.answer)}</span>
+                        <div class="flex-1 bg-dark-800 rounded h-2.5"><div class="h-2.5 rounded bg-biz-500/70" style="width:${Math.round((100 * Number(r.answers)) / total)}%"></div></div>
+                        <span class="w-10 text-right text-dark-300">${Math.round((100 * Number(r.answers)) / total)}%</span>
+                      </div>`).join('')}
+                    <p class="text-[10px] text-dark-500 mt-2">${total} answers</p>
+                  </div>`;
+              }).join('')}
             </div>`);
         }
 
