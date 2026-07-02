@@ -62,6 +62,8 @@ This is a logged production claim, not a vision statement. Every chapter that fo
 
 If you build the platforms themselves — if your job is to make a SaaS agent-ready from the source code level — this is the wrong book. Read the builder edition instead.
 
+One assumption about the reader, stated openly: most people this book is written for are expected to have opinions about AI in rooms where they privately hold mostly questions. In 2026, that is not a gap — it is the universal starting position, at every level of every organization. This book is designed to be read from exactly there.
+
 ---
 
 ## How to Read This Handbook

@@ -104,6 +104,18 @@ sub-question above; second bug story in a chapter; second analogy in a
 chapter; a question that can't change a multi-year decision; anything that
 makes the reader feel behind instead of early.
 
+**The invisible thread (never name it, always serve it):** the senior
+reader privately knows less about AI than their role implies, and fears
+admitting it — the biggest adoption brake there is. The book NEVER says
+this to the reader. It handles it by design: (1) the author models paid
+ignorance (the Bitcoin verse, the self-correction night); (2) not-knowing
+is framed as the universal 2026 starting position (foreword permission
+line), never a personal gap; (3) uncertainty is given structure, not
+stigma — the evidence tags offered as a leadership discipline (ch 15:
+"'we do not know yet' is a category, not a confession"). Any new material
+that could make a reader feel exposed, behind, or stupid violates this
+thread — rewrite it until it grants permission instead.
+
 ---
 
 ## Builder Edition

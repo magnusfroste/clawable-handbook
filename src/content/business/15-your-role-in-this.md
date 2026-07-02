@@ -32,6 +32,8 @@ What "on the agenda" means in practice — four activities, none of which requir
 3. **One boundary decision per quarter.** First process. First mandate. First expansion of autonomy. Small, explicit, minuted decisions — the graduated-trust curve from chapter fourteen, run at board pace.
 4. **The data question, decided at the top.** Where is your operator allowed to think? When the work touches customer data, financials, or personal information, private AI — self-hosted or sovereign infrastructure — is not a preference; it is the compliance and security precondition for letting an operator near the data at all. That is a jurisdiction and risk decision, which makes it a leadership decision, not a procurement line. Implementation partners exist for the build; the *decision* cannot be outsourced.
 
+One more discipline for that standing item — borrow this handbook's own. Every claim in these pages carries a tag: `validated`, `partial`, or `hypothesis`. Nobody has mistaken the tags for weakness; they are why the validated claims get believed. Run the leadership conversation the same way. Tag what you collectively know, what you partially know, and what is still a guess — out loud, in the minutes. When *"we do not know yet"* is a category rather than a confession, it costs nothing to say, and the distance from not-knowing to finding-out collapses from a quarter to a week. The teams that learn fastest are not the ones with the most answers in the room. They are the ones where the questions get said out loud.
+
 The companies that treat this as strategy will spend leadership time on it. The companies that treat it as IT will spend budget on it. Only one of them ends up with the operating model.
 
 ---
