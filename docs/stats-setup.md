@@ -195,6 +195,33 @@ where event_type = 'click'
 group by 1;
 
 grant select on public.book_clicks to anon;
+
+-- Audience segments: business readers vs builder readers vs both
+create view public.book_visit_segments as
+with v as (
+  select
+    visit,
+    count(*) filter (where event_type = 'view') as pages,
+    bool_or(path like '/business/%')            as b1,
+    bool_or(path like '/builder/%')             as b2
+  from public.book_events
+  where visit is not null
+  group by visit
+)
+select
+  case
+    when b1 and b2 then 'both'
+    when b1 then 'business'
+    when b2 then 'builder'
+    else 'other'
+  end                                        as segment,
+  count(*)::int                              as visits,
+  round(avg(pages), 1)                       as pages_per_visit,
+  round(100.0 * avg((pages >= 3)::int))::int as deep_visit_pct
+from v
+group by 1;
+
+grant select on public.book_visit_segments to anon;
 ```
 
 ## Later, if you want more

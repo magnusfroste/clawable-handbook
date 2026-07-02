@@ -48,12 +48,13 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
       };
 
       try {
-        const [rows, daily, refs, visitStats, clicks] = await Promise.all([
+        const [rows, daily, refs, visitStats, clicks, segments] = await Promise.all([
           get('book_stats?select=*&order=views.desc'),
           get('book_stats_daily?select=*&order=day.asc').catch(() => []),
           get('book_referrers?select=*&order=views.desc&limit=15').catch(() => []),
           get('book_visit_stats?select=*').catch(() => []),
           get('book_clicks?select=*&order=clicks.desc&limit=15').catch(() => []),
+          get('book_visit_segments?select=*').catch(() => []),
         ]);
         if (!rows.length) { statusEl.textContent = 'No data yet. Come back after the first readers.'; return; }
 
@@ -81,6 +82,45 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
             <div class="text-2xl font-bold text-white">${value}</div>
             <div class="text-xs text-dark-400 mt-1">${label}</div>
           </div>`).join('');
+
+        // ---- Business vs Builder — the two audiences ----
+        const trackStats = (prefix) => {
+          const list = rows.filter((r) => r.path.startsWith(prefix));
+          if (!list.length) return null;
+          const views = list.reduce((s, r) => s + Number(r.views), 0);
+          const wavg = (field) => Math.round(list.reduce((s, r) => s + Number(r[field]) * Number(r.views), 0) / views);
+          return { views, time: wavg('avg_seconds'), completion: wavg('completion_pct'),
+                   mobile: Math.round((100 * list.reduce((s, r) => s + Number(r.mobile_views || 0), 0)) / views) };
+        };
+        const seg = (name) => segments.find((s) => s.segment === name);
+        const biz = trackStats('/business'); const bld = trackStats('/builder');
+        if (biz || bld) {
+          const col = (label, t, s, color) => `
+            <div class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-5">
+              <h3 class="font-semibold ${color} mb-3">${label}</h3>
+              ${!t ? '<p class="text-dark-500 text-sm">No data yet.</p>' : `
+              <dl class="grid grid-cols-2 gap-y-2 text-sm">
+                <dt class="text-dark-400">Views</dt><dd class="text-right text-white font-semibold">${t.views.toLocaleString()}</dd>
+                <dt class="text-dark-400">Avg reading time</dt><dd class="text-right text-white font-semibold">${Math.floor(t.time / 60)}m ${t.time % 60}s</dd>
+                <dt class="text-dark-400">Avg completion</dt><dd class="text-right text-white font-semibold">${t.completion}%</dd>
+                <dt class="text-dark-400">Mobile share</dt><dd class="text-right text-white font-semibold">${t.mobile}%</dd>
+                ${s ? `
+                <dt class="text-dark-400">Visits (this track only)</dt><dd class="text-right text-white font-semibold">${Number(s.visits).toLocaleString()}</dd>
+                <dt class="text-dark-400">Pages / visit</dt><dd class="text-right text-white font-semibold">${s.pages_per_visit}</dd>
+                <dt class="text-dark-400">Deep visits (3+)</dt><dd class="text-right text-white font-semibold">${s.deep_visit_pct}%</dd>` : ''}
+              </dl>`}
+            </div>`;
+          const both = seg('both');
+          document.getElementById('summary').insertAdjacentHTML('afterend', `
+            <section class="mb-10">
+              <h2 class="text-xl font-semibold text-white mb-1">The two audiences</h2>
+              <p class="text-xs text-dark-500 mb-4">Business = leaders. Builder = engineers. ${both ? `<span class="text-claw-400">${Number(both.visits).toLocaleString()} visits read both editions (${both.pages_per_visit} pages/visit)</span> — the decision-maker-plus-CTO signal.` : ''}</p>
+              <div class="grid md:grid-cols-2 gap-4">
+                ${col('Business Edition', biz, seg('business'), 'text-biz-400')}
+                ${col('Builder Edition', bld, seg('builder'), 'text-claw-400')}
+              </div>
+            </section>`);
+        }
 
         // ---- Daily trend (last 30 days) ----
         if (daily.length) {
