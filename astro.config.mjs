@@ -8,6 +8,6 @@ export default defineConfig({
   integrations: [tailwind(), mdx(), sitemap({
     lastmod: new Date(),
     changefreq: 'weekly',
-    filter: (page) => !page.includes('/stats'),
+    filter: (page) => !page.includes('/analytics'),
   })],
 });

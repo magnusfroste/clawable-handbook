@@ -1,0 +1,174 @@
+---
+import Base from '../layouts/Base.astro';
+
+const statsUrl = import.meta.env.PUBLIC_STATS_URL ?? '';
+const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
+---
+
+<Base title="Analytics" description="Aggregated, anonymous reading analytics." robots="noindex,nofollow">
+  <main class="pt-16 pb-20 max-w-5xl mx-auto px-6">
+    <h1 class="text-3xl font-bold text-white mb-2">Reading Analytics</h1>
+    <p class="text-dark-400 mb-8 text-sm">
+      Aggregated and anonymous — no cookies, no identifiers, no IP addresses.
+      Completion = share of views that scrolled past 90%.
+    </p>
+
+    <div id="summary" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10"></div>
+
+    <section id="trend-section" class="hidden mb-10">
+      <h2 class="text-xl font-semibold text-white mb-4">Views — last 30 days</h2>
+      <div id="trend" class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-4"></div>
+    </section>
+
+    <section id="funnels"></section>
+
+    <section id="tables"></section>
+
+    <section id="ref-section" class="hidden mt-10">
+      <h2 class="text-xl font-semibold text-white mb-4">Where readers come from</h2>
+      <div id="referrers" class="rounded-xl border border-dark-800/50 overflow-hidden"></div>
+    </section>
+
+    <p id="status" class="text-dark-500 text-sm mt-8">Loading…</p>
+  </main>
+
+  <script is:inline define:vars={{ statsUrl, statsKey }}>
+    (async function () {
+      const statusEl = document.getElementById('status');
+      const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      if (!statsUrl || !statsKey) {
+        statusEl.textContent = 'Analytics is not configured (PUBLIC_STATS_URL / PUBLIC_STATS_KEY missing at build time).';
+        return;
+      }
+      const headers = { apikey: statsKey, authorization: `Bearer ${statsKey}` };
+      const get = async (q) => {
+        const res = await fetch(`${statsUrl}/rest/v1/${q}`, { headers });
+        if (!res.ok) throw new Error(`HTTP ${res.status} on ${q.split('?')[0]}`);
+        return res.json();
+      };
+
+      try {
+        const [rows, daily, refs] = await Promise.all([
+          get('book_stats?select=*&order=views.desc'),
+          get('book_stats_daily?select=*&order=day.asc').catch(() => []),
+          get('book_referrers?select=*&order=views.desc&limit=15').catch(() => []),
+        ]);
+        if (!rows.length) { statusEl.textContent = 'No data yet. Come back after the first readers.'; return; }
+
+        // ---- Summary cards ----
+        const totalViews = rows.reduce((s, r) => s + Number(r.views), 0);
+        const totalMinutes = Math.round(rows.reduce((s, r) => s + Number(r.views) * Number(r.avg_seconds), 0) / 60);
+        const chapters = rows.filter((r) => /^\/(business|builder)\//.test(r.path));
+        const avgCompletion = chapters.length
+          ? Math.round(chapters.reduce((s, r) => s + Number(r.completion_pct), 0) / chapters.length) : 0;
+        const mobileViews = rows.reduce((s, r) => s + Number(r.mobile_views || 0), 0);
+        document.getElementById('summary').innerHTML = [
+          ['Total views', totalViews.toLocaleString()],
+          ['Total reading time', `${totalMinutes.toLocaleString()} min`],
+          ['Avg chapter completion', `${avgCompletion}%`],
+          ['Mobile share', `${Math.round((100 * mobileViews) / totalViews)}%`],
+        ].map(([label, value]) => `
+          <div class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-4">
+            <div class="text-2xl font-bold text-white">${value}</div>
+            <div class="text-xs text-dark-400 mt-1">${label}</div>
+          </div>`).join('');
+
+        // ---- Daily trend (last 30 days) ----
+        if (daily.length) {
+          const cutoff = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
+          const recent = daily.filter((d) => d.day >= cutoff);
+          if (recent.length) {
+            const max = Math.max(...recent.map((d) => d.views));
+            document.getElementById('trend-section').classList.remove('hidden');
+            document.getElementById('trend').innerHTML = `
+              <div class="flex items-end gap-1 h-32">
+                ${recent.map((d) => `
+                  <div class="flex-1 flex flex-col items-center gap-1" title="${esc(d.day)}: ${d.views} views">
+                    <span class="text-[10px] text-dark-500">${d.views}</span>
+                    <div class="w-full rounded-t bg-claw-500/70 hover:bg-claw-400" style="height:${Math.max(4, Math.round((d.views / max) * 100))}%"></div>
+                  </div>`).join('')}
+              </div>
+              <div class="flex justify-between text-[10px] text-dark-500 mt-2">
+                <span>${esc(recent[0].day)}</span><span>${esc(recent[recent.length - 1].day)}</span>
+              </div>`;
+          }
+        }
+
+        // ---- Reading funnel per track (numbered chapters, in order) ----
+        const funnel = (track, label) => {
+          const list = rows
+            .filter((r) => r.path.startsWith(`/${track}/`) && !/appendix/.test(r.path))
+            .sort((a, b) => a.path.localeCompare(b.path));
+          if (list.length < 2) return '';
+          const first = Number(list[0].views) || 1;
+          return `
+            <h2 class="text-xl font-semibold text-white mt-10 mb-1">${label} — reading funnel</h2>
+            <p class="text-xs text-dark-500 mb-4">Retention vs the first chapter. Where the bars shrink fast is where readers stop.</p>
+            <div class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-4 flex flex-col gap-1.5">
+              ${list.map((r) => {
+                const pct = Math.min(100, Math.round((Number(r.views) / first) * 100));
+                const slug = r.path.split('/').pop();
+                return `
+                  <div class="flex items-center gap-3 text-xs">
+                    <span class="w-44 shrink-0 truncate font-mono text-dark-400">${esc(slug)}</span>
+                    <div class="flex-1 bg-dark-800 rounded h-3.5">
+                      <div class="h-3.5 rounded bg-gradient-to-r from-claw-600 to-claw-400" style="width:${pct}%"></div>
+                    </div>
+                    <span class="w-20 text-right text-dark-300">${Number(r.views).toLocaleString()} · ${pct}%</span>
+                  </div>`;
+              }).join('')}
+            </div>`;
+        };
+        document.getElementById('funnels').innerHTML = funnel('business', 'Business Edition') + funnel('builder', 'Builder Edition');
+
+        // ---- Per-track tables ----
+        const table = (name, list) => !list.length ? '' : `
+          <h2 class="text-xl font-semibold text-white mt-10 mb-4">${name}</h2>
+          <div class="overflow-x-auto rounded-xl border border-dark-800/50">
+            <table class="w-full text-sm">
+              <thead class="bg-dark-900/60 text-dark-400 text-left">
+                <tr><th class="p-3">Page</th><th class="p-3 text-right">Views</th><th class="p-3 text-right">Avg depth</th><th class="p-3 text-right">Avg time</th><th class="p-3 text-right">Completion</th></tr>
+              </thead>
+              <tbody>
+                ${list.map((r) => `
+                  <tr class="border-t border-dark-800/40">
+                    <td class="p-3 text-dark-200 font-mono text-xs">${esc(r.path)}</td>
+                    <td class="p-3 text-right text-white">${Number(r.views).toLocaleString()}</td>
+                    <td class="p-3 text-right">
+                      <span class="inline-block w-24 bg-dark-800 rounded h-2 align-middle mr-2"><span class="block h-2 rounded bg-claw-500" style="width:${r.avg_depth}%"></span></span>${r.avg_depth}%
+                    </td>
+                    <td class="p-3 text-right text-dark-300">${Math.round(r.avg_seconds / 60)}m ${r.avg_seconds % 60}s</td>
+                    <td class="p-3 text-right text-dark-300">${r.completion_pct}%</td>
+                  </tr>`).join('')}
+              </tbody>
+            </table>
+          </div>`;
+        document.getElementById('tables').innerHTML =
+          table('Business Edition', rows.filter((r) => r.path.startsWith('/business'))) +
+          table('Builder Edition', rows.filter((r) => r.path.startsWith('/builder'))) +
+          table('Other pages', rows.filter((r) => !r.path.startsWith('/business') && !r.path.startsWith('/builder')));
+
+        // ---- Referrers ----
+        if (refs.length) {
+          document.getElementById('ref-section').classList.remove('hidden');
+          const maxRef = Number(refs[0].views);
+          document.getElementById('referrers').innerHTML = `
+            <table class="w-full text-sm">
+              <tbody>
+                ${refs.map((r) => `
+                  <tr class="border-t border-dark-800/40 first:border-t-0">
+                    <td class="p-3 text-dark-200 font-mono text-xs w-64 truncate">${esc(r.referrer)}</td>
+                    <td class="p-3"><div class="bg-dark-800 rounded h-3"><div class="h-3 rounded bg-biz-500/70" style="width:${Math.round((Number(r.views) / maxRef) * 100)}%"></div></div></td>
+                    <td class="p-3 text-right text-white w-20">${Number(r.views).toLocaleString()}</td>
+                  </tr>`).join('')}
+              </tbody>
+            </table>`;
+        }
+
+        statusEl.textContent = `Based on ${totalViews.toLocaleString()} anonymous page views.`;
+      } catch (e) {
+        statusEl.textContent = `Could not load analytics: ${e.message}`;
+      }
+    })();
+  </script>
+</Base>

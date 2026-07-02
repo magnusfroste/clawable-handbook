@@ -13,7 +13,7 @@ Supabase is the natural fit for this stack.
 2. **`book_events` table**: insert-only for the anon key (RLS). Nobody can
    read raw events from the browser.
 3. **`book_stats` view**: the only thing readable — aggregates per path.
-4. **`/stats`**: unlinked page (excluded from sitemap, `noindex`) that
+4. **`/analytics`**: unlinked page (excluded from sitemap, `noindex`) that
    renders the aggregates. Anyone with the URL can see it — by design,
    it contains nothing sensitive.
 
@@ -59,6 +59,28 @@ from public.book_events
 group by path;
 
 grant select on public.book_stats to anon;
+
+-- Daily trend (for the /analytics bar chart)
+create view public.book_stats_daily as
+select
+  date_trunc('day', ts)::date as day,
+  count(*)::int               as views,
+  round(avg(seconds))::int    as avg_seconds
+from public.book_events
+group by 1;
+
+grant select on public.book_stats_daily to anon;
+
+-- Referrer origins (where readers come from)
+create view public.book_referrers as
+select
+  coalesce(referrer, '(direct)') as referrer,
+  count(*)::int                  as views,
+  max(ts)                        as last_view
+from public.book_events
+group by 1;
+
+grant select on public.book_referrers to anon;
 ```
 
 ### 3. Set env vars in Vercel (Project → Settings → Environment Variables)
@@ -68,12 +90,12 @@ grant select on public.book_stats to anon;
 | `PUBLIC_STATS_URL` | `https://<project-ref>.supabase.co` |
 | `PUBLIC_STATS_KEY` | the project's **anon** key (never the service key) |
 
-Redeploy. Without the vars, the beacon and /stats degrade gracefully
-(nothing is tracked, /stats says "not configured").
+Redeploy. Without the vars, the beacon and /analytics degrade gracefully
+(nothing is tracked, /analytics says "not configured").
 
 ### 4. Read your stats
 
-`https://www.clawable.org/stats` — unlinked, noindex, excluded from sitemap.
+`https://www.clawable.org/analytics` — unlinked, noindex, excluded from sitemap.
 
 ## What you get per page
 
@@ -84,8 +106,11 @@ Redeploy. Without the vars, the beacon and /stats degrade gracefully
 - **Mobile share** — mobile vs desktop split
 - **Last view** — freshness
 
-Chapter-level drop-off across the book = compare avg depth/completion between
-consecutive chapters in the /stats tables.
+Chapter-level drop-off across the book is visualized directly: /analytics
+renders a **reading funnel** per track — every numbered chapter in order,
+retention measured against the first chapter. Where the bars shrink fast is
+where readers stop. Plus a 30-day daily trend and a referrer breakdown
+(so the LinkedIn launch effect is visible on day one).
 
 ## Privacy posture (for the curious)
 
@@ -96,8 +121,6 @@ retention low if you care). This is well inside GDPR's anonymous-data lane.
 
 ## Later, if you want more
 
-- Daily trend: add a `book_stats_daily` view grouped by `date_trunc('day', ts)`.
-- Referrer table: same pattern, group by referrer.
 - Cleanup: `delete from book_events where ts < now() - interval '12 months'`.
 - Rate limiting if abuse ever appears: move the insert behind a Supabase Edge
   Function. Not worth the complexity until then.
