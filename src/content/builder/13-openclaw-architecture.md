@@ -79,6 +79,8 @@ The reason this architecture works — the reason it can be trusted in productio
 
 The user always knows what the agent knows. The user can always read and change the agent's values. The agent cannot hide from its operator. Every piece of state that shapes the operator's behavior is a file you can open.
 
+The industry is converging on the same conclusion. Google's Open Knowledge Format (June 2026) packages organizational knowledge exactly this way — markdown, metadata, links, versioned — because files are the only substrate that serves humans and agents equally well. What Steinberger chose for one agent's soul, the ecosystem is now standardizing for entire organizations' knowledge.
+
 As agents become more powerful, this principle does not become less important. It becomes more important. The operators you deploy in 2026, running on top of architectures built with this principle, are the operators you will still be able to audit and govern in 2029 when autonomous action has become the industry default.
 
 The ones built on opaque vendor infrastructure are the ones you will be asking to explain themselves, and getting no answer.

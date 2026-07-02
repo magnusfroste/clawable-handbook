@@ -18,6 +18,8 @@ appendix: true
 - **The MCP adoption spectrum** (ch 11): how vendors are opening up — early movers, fast followers, and the community wrappers that queue outside the doors of the laggards. Plus the author's reflection on digital sovereignty and loop engineering.
 - **The June 2026 model shutdowns** and what they mean for operator architecture (ch 7).
 - **Mid-2026 market scale signals** (ch 11): the Gartner $206.5B forecast, SAP's "Autonomous Enterprise," and vendor adoption figures.
+- **The value thread made explicit** (chs 9, 11, 15): surfaced vs realized value, the operator-value equation, and the receiving organization — anchored in Per Clingweld's Almedalen takeaway and Satya Nadella's "token capital" (ch 8, 13).
+- **The knowledge question** (ch 6): Google's Open Knowledge Format and knowledge hygiene — what the agent reaches must also be understandable.
 - **Author's note added** — *Why I Built This* (foreword).
 - **Skill counts updated** to FlowWink's current surface: 300+ skills across 60+ modules.
 - **Structural fixes:** The Contract Layer chapter completed and moved to follow The Agent's Superpowers; chapter titles and operator naming made consistent throughout.

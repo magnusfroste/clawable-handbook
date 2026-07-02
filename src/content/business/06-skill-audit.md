@@ -61,6 +61,18 @@ Every finding was filed with reproduction steps and fixed within days. And the a
 
 ---
 
+## The Knowledge Question
+
+The audit maps what your agent can *reach*. Underneath it sits a second readiness question: whether what it reaches is in a shape it can *understand*.
+
+Tools expose operations. But an operator reasoning about your business also needs your business's knowledge — what "active customer" means here, which table is the source of truth for revenue, which process applies to incidents, which retired routine still sits in an old wiki sabotaging one more workday. In most organizations that knowledge lives everywhere and nowhere: documents, slide decks, chat threads, shared drives, and the head of whoever has become the company's human API.
+
+The industry is converging on an answer, and it is strikingly unglamorous. In June 2026, Google published the **Open Knowledge Format** — an open specification for packaging organizational knowledge as a directory of markdown files with metadata and links: readable by humans, parseable by agents, portable between tools. `validated` If that pattern sounds familiar, it should. It is the architecture this handbook's operators already run on — the mandate in a text file, the company profile the agent fetches on demand, memory as markdown a human can correct in an editor. Knowledge as files is not a Google invention. It is the pattern the agent era keeps rediscovering, because it is the only substrate that serves both readers at once.
+
+Per Clingweld of AI Sweden gave the readiness question its sharpest form: an agent without the right context is just *"a very confident intern with access to the wrong binder."* The model does not lack intelligence. It lacks context. So alongside the skill audit, ask the knowledge question: is our operational knowledge clear, current, linked, and usable by something that reads it literally? Call the discipline, as Clingweld does, **knowledge hygiene**. The organizations that have it will extract compounding value from the same models everyone else buys.
+
+---
+
 ## The Principle
 
 You cannot fix a gap you have not mapped. And you cannot trust an agent's outputs if you do not know where its vision ends.
