@@ -268,6 +268,8 @@ One distinction, before the accountability model — because it is the distincti
 
 **A finding is not value.** The €1.1 million from chapter three is exposure *surfaced* — made visible, priced, and put in front of a human. Value happens later, at a precise moment: when a finding changes what a human does, or what a human no longer has to do. The invoice that got paid and the contract that got signed in chapter three's cascade — 23,125 SEK in, 422,400 SEK unblocked — is what *realized* value looks like. Everything between those two states is the part your organization controls.
 
+Per Clingweld, change agent at AI Sweden, put it precisely after Almedalen 2026: *"The real question is not whether AI can create value. It already can. The question is whether the organization is built to receive the value."* `validated` The technology question is settled. The receiving organization is the variable.
+
 That gives you the only equation in this book worth memorizing:
 
 **Operator value = findings × the rate at which humans act on them.**

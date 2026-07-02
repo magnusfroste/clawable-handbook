@@ -183,6 +183,12 @@ All findings attributed to Clawable operating FlowWink live can be cross-checked
 
 ---
 
+## The Receiving Organization (Chs 11, 15)
+
+| Claim | Source | Status |
+|-------|--------|--------|
+| "The real question is not whether AI can create value... The question is whether the organization is built to receive the value"; measure AI maturity in value created (time freed, better decisions, shorter flows, raised quality), not pilots/licenses/lectures | Per Clingweld, Change Agent at AI Sweden — public LinkedIn post following Almedalen 2026 ([profile](https://www.linkedin.com/in/perclingweld/)) | `validated` — direct quote from public post |
+
 ## Mid-2026 Market Scale Signals (Ch 11)
 
 | Claim | Source | Status |
