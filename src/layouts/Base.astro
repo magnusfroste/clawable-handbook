@@ -116,12 +116,30 @@ const allSchemas = [orgSchema, webSiteSchema, ...schemaList];
     {import.meta.env.PUBLIC_STATS_URL && import.meta.env.PUBLIC_STATS_KEY && (
       <script is:inline define:vars={{ statsUrl: import.meta.env.PUBLIC_STATS_URL, statsKey: import.meta.env.PUBLIC_STATS_KEY }}>
         // Anonymous, aggregate-only reading analytics. No cookies, no IDs, no IP stored.
+        // The visit id lives in sessionStorage only (dies with the tab) — per-visit
+        // grouping without any cross-visit tracking.
         (function () {
           if (navigator.webdriver) return;
           var activeMs = 0;
           var lastVisible = document.visibilityState === 'visible' ? Date.now() : null;
           var maxDepth = 0;
           var sent = false;
+
+          var visit;
+          try {
+            visit = sessionStorage.getItem('cw_visit');
+            if (!visit) {
+              visit = Math.random().toString(36).slice(2, 12);
+              sessionStorage.setItem('cw_visit', visit);
+            }
+          } catch (e) { visit = null; }
+
+          function beacon(payload) {
+            navigator.sendBeacon(
+              statsUrl + '/rest/v1/book_events?apikey=' + encodeURIComponent(statsKey),
+              new Blob([JSON.stringify(payload)], { type: 'application/json' })
+            );
+          }
 
           function updateDepth() {
             var doc = document.documentElement;
@@ -142,23 +160,38 @@ const allSchemas = [orgSchema, webSiteSchema, ...schemaList];
           window.addEventListener('scroll', updateDepth, { passive: true });
           window.addEventListener('pagehide', send);
 
+          // Outbound clicks → reader actions (target = hostname only)
+          document.addEventListener('click', function (e) {
+            var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+            if (!a) return;
+            try {
+              var u = new URL(a.href, location.href);
+              if (u.host !== location.host && /^https?:$/.test(u.protocol)) {
+                beacon({
+                  event_type: 'click',
+                  path: location.pathname.slice(0, 190),
+                  target: u.hostname.slice(0, 100),
+                  visit: visit,
+                  device: window.innerWidth < 768 ? 'mobile' : 'desktop',
+                });
+              }
+            } catch (err) {}
+          }, { capture: true, passive: true });
+
           function send() {
             if (sent) return;
             sent = true;
             updateDepth();
             if (lastVisible) activeMs += Date.now() - lastVisible;
-            var seconds = Math.min(Math.round(activeMs / 1000), 7200);
-            var payload = JSON.stringify({
+            beacon({
+              event_type: 'view',
               path: location.pathname.slice(0, 190),
               depth: maxDepth,
-              seconds: seconds,
+              seconds: Math.min(Math.round(activeMs / 1000), 7200),
               referrer: (document.referrer || '').split('/').slice(0, 3).join('/').slice(0, 190) || null,
               device: window.innerWidth < 768 ? 'mobile' : 'desktop',
+              visit: visit,
             });
-            navigator.sendBeacon(
-              statsUrl + '/rest/v1/book_events?apikey=' + encodeURIComponent(statsKey),
-              new Blob([payload], { type: 'application/json' })
-            );
           }
         })();
       </script>

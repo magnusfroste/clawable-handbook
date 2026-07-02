@@ -119,6 +119,84 @@ Stored per event: path, depth %, seconds, referrer *origin* only (e.g.
 fingerprinting, no session IDs, no IP (Supabase logs aside — set log
 retention low if you care). This is well inside GDPR's anonymous-data lane.
 
+## v2 migration (visits, outbound clicks, cross-edition) — run once
+
+Adds per-visit grouping (sessionStorage id, dies with the tab — still fully
+anonymous) and reader-action tracking (outbound clicks, hostname only).
+
+```sql
+alter table public.book_events
+  add column event_type text not null default 'view'
+    check (event_type in ('view', 'click')),
+  add column visit text check (char_length(visit) <= 16),
+  add column target text check (char_length(target) <= 100);
+
+-- Views now count reading events only
+create or replace view public.book_stats as
+select
+  path,
+  count(*)::int                                   as views,
+  round(avg(depth))::int                          as avg_depth,
+  round(avg(seconds))::int                        as avg_seconds,
+  round(100.0 * avg((depth >= 90)::int))::int     as completion_pct,
+  count(*) filter (where device = 'mobile')::int  as mobile_views,
+  max(ts)                                         as last_view
+from public.book_events
+where event_type = 'view'
+group by path;
+
+create or replace view public.book_stats_daily as
+select
+  date_trunc('day', ts)::date as day,
+  count(*)::int               as views,
+  round(avg(seconds))::int    as avg_seconds
+from public.book_events
+where event_type = 'view'
+group by 1;
+
+create or replace view public.book_referrers as
+select
+  coalesce(referrer, '(direct)') as referrer,
+  count(*)::int                  as views,
+  max(ts)                        as last_view
+from public.book_events
+where event_type = 'view'
+group by 1;
+
+-- Visit-level aggregates (the publisher metrics)
+create view public.book_visit_stats as
+with v as (
+  select
+    visit,
+    count(*) filter (where event_type = 'view')      as pages,
+    bool_or(path like '/business/%')                 as touched_business,
+    bool_or(path like '/builder/%')                  as touched_builder
+  from public.book_events
+  where visit is not null
+  group by visit
+)
+select
+  count(*)::int                                                      as visits,
+  round(avg(pages), 1)                                               as pages_per_visit,
+  round(100.0 * avg((pages >= 3)::int))::int                         as deep_visit_pct,
+  round(100.0 * avg((touched_business and touched_builder)::int))::int as cross_edition_pct
+from v;
+
+grant select on public.book_visit_stats to anon;
+
+-- Reader actions: outbound clicks by destination
+create view public.book_clicks as
+select
+  coalesce(target, '(unknown)') as target,
+  count(*)::int                 as clicks,
+  max(ts)                       as last_click
+from public.book_events
+where event_type = 'click'
+group by 1;
+
+grant select on public.book_clicks to anon;
+```
+
 ## Later, if you want more
 
 - Cleanup: `delete from book_events where ts < now() - interval '12 months'`.
