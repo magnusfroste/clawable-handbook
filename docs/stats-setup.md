@@ -237,6 +237,41 @@ group by 1, 2;
 grant select on public.book_survey to anon;
 ```
 
+## v3 migration (sponsor metrics) — run once
+
+Adds engaged-session counting and reading-rhythm data. No new tracking —
+new angles on existing events.
+
+```sql
+-- book_stats gains engaged_views (>= 3 min active reading) at the end.
+-- CREATE OR REPLACE allows appending columns.
+create or replace view public.book_stats as
+select
+  path,
+  count(*)::int                                   as views,
+  round(avg(depth))::int                          as avg_depth,
+  round(avg(seconds))::int                        as avg_seconds,
+  round(100.0 * avg((depth >= 90)::int))::int     as completion_pct,
+  count(*) filter (where device = 'mobile')::int  as mobile_views,
+  max(ts)                                         as last_view,
+  count(*) filter (where seconds >= 180)::int     as engaged_views
+from public.book_events
+where event_type = 'view'
+group by path;
+
+-- Reading rhythm: views by weekday and hour, Swedish time
+create view public.book_hours as
+select
+  extract(isodow from ts at time zone 'Europe/Stockholm')::int as dow,
+  extract(hour from ts at time zone 'Europe/Stockholm')::int   as hour,
+  count(*)::int                                                as views
+from public.book_events
+where event_type = 'view'
+group by 1, 2;
+
+grant select on public.book_hours to anon;
+```
+
 ## Later, if you want more
 
 - Cleanup: `delete from book_events where ts < now() - interval '12 months'`.

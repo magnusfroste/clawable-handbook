@@ -48,7 +48,7 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
       };
 
       try {
-        const [rows, daily, refs, visitStats, clicks, segments, survey] = await Promise.all([
+        const [rows, daily, refs, visitStats, clicks, segments, survey, hours] = await Promise.all([
           get('book_stats?select=*&order=views.desc'),
           get('book_stats_daily?select=*&order=day.asc').catch(() => []),
           get('book_referrers?select=*&order=views.desc&limit=15').catch(() => []),
@@ -56,6 +56,7 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
           get('book_clicks?select=*&order=clicks.desc&limit=15').catch(() => []),
           get('book_visit_segments?select=*').catch(() => []),
           get('book_survey?select=*').catch(() => []),
+          get('book_hours?select=*').catch(() => []),
         ]);
         if (!rows.length) { statusEl.textContent = 'No data yet. Come back after the first readers.'; return; }
 
@@ -67,11 +68,22 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
           ? Math.round(chapters.reduce((s, r) => s + Number(r.completion_pct), 0) / chapters.length) : 0;
         const mobileViews = rows.reduce((s, r) => s + Number(r.mobile_views || 0), 0);
         const vs = visitStats[0] || null;
+        const engagedTotal = rows.reduce((s, r) => s + Number(r.engaged_views || 0), 0);
+        // Week-over-week from daily data
+        let wow = null;
+        if (daily.length) {
+          const day = (offset) => new Date(Date.now() - offset * 864e5).toISOString().slice(0, 10);
+          const sum = (from, to) => daily.filter((d) => d.day >= from && d.day < to).reduce((s, d) => s + Number(d.views), 0);
+          const thisWeek = sum(day(7), day(-1)); const lastWeek = sum(day(14), day(7));
+          if (lastWeek > 0) wow = Math.round((100 * (thisWeek - lastWeek)) / lastWeek);
+        }
         document.getElementById('summary').innerHTML = [
           ['Total views', totalViews.toLocaleString()],
+          ['Engaged sessions (3+ min)', engagedTotal.toLocaleString()],
           ['Total reading time', `${totalMinutes.toLocaleString()} min`],
           ['Avg chapter completion', `${avgCompletion}%`],
           ['Mobile share', `${Math.round((100 * mobileViews) / totalViews)}%`],
+          ...(wow !== null ? [['Views week-over-week', `${wow >= 0 ? '+' : ''}${wow}%`]] : []),
           ...(vs ? [
             ['Visits', Number(vs.visits).toLocaleString()],
             ['Pages / visit', vs.pages_per_visit],
@@ -230,6 +242,64 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
                     <td class="p-3 text-right text-white w-20">${Number(c.clicks).toLocaleString()}</td>
                   </tr>`).join('')}
               </tbody></table>
+            </div>`);
+        }
+
+        // ---- Partner performance (the sponsor sales sheet) ----
+        const PARTNER_DOMAINS = ['liteit.se', 'www.liteit.se', 'autoversio.ai', 'autoversio.com', 'www.autoversio.ai'];
+        const partnerClicks = clicks.filter((c) => PARTNER_DOMAINS.some((d) => c.target === d || c.target.endsWith('.' + d)));
+        const sponsorPage = rows.find((r) => r.path === '/builder/37-sponsors');
+        if (partnerClicks.length || sponsorPage) {
+          document.getElementById('tables').insertAdjacentHTML('beforeend', `
+            <h2 class="text-xl font-semibold text-white mt-10 mb-1">Partner performance</h2>
+            <p class="text-xs text-dark-500 mb-4">Partners chapter reach and clicks to partner sites — from any page in the book.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-4">
+                <div class="text-2xl font-bold text-white">${sponsorPage ? Number(sponsorPage.views).toLocaleString() : '0'}</div>
+                <div class="text-xs text-dark-400 mt-1">Partners chapter views</div>
+              </div>
+              <div class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-4">
+                <div class="text-2xl font-bold text-white">${sponsorPage ? `${sponsorPage.completion_pct}%` : '—'}</div>
+                <div class="text-xs text-dark-400 mt-1">Chapter completion</div>
+              </div>
+              <div class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-4">
+                <div class="text-2xl font-bold text-white">${partnerClicks.reduce((s, c) => s + Number(c.clicks), 0).toLocaleString()}</div>
+                <div class="text-xs text-dark-400 mt-1">Clicks to partner sites</div>
+              </div>
+              <div class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-4">
+                <div class="text-sm font-semibold text-white leading-relaxed">${partnerClicks.map((c) => `${esc(c.target)}: ${c.clicks}`).join('<br>') || '—'}</div>
+                <div class="text-xs text-dark-400 mt-1">By destination</div>
+              </div>
+            </div>`);
+        }
+
+        // ---- Reading rhythm (weekday × hour, Swedish time) ----
+        if (hours.length) {
+          const byDow = Array.from({ length: 7 }, () => 0);
+          const byHour = Array.from({ length: 24 }, () => 0);
+          hours.forEach((h) => { byDow[h.dow - 1] += Number(h.views); byHour[h.hour] += Number(h.views); });
+          const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+          const maxD = Math.max(...byDow, 1); const maxH = Math.max(...byHour, 1);
+          document.getElementById('tables').insertAdjacentHTML('beforeend', `
+            <h2 class="text-xl font-semibold text-white mt-10 mb-1">Reading rhythm</h2>
+            <p class="text-xs text-dark-500 mb-4">When the audience reads (Swedish time). Useful for publishing cadence — and for sponsors.</p>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-4">
+                <h3 class="text-sm font-semibold text-white mb-3">By weekday</h3>
+                ${byDow.map((v, i) => `
+                  <div class="flex items-center gap-2 text-xs mb-1.5">
+                    <span class="w-8 text-dark-400">${days[i]}</span>
+                    <div class="flex-1 bg-dark-800 rounded h-2.5"><div class="h-2.5 rounded bg-claw-500/70" style="width:${Math.round((100 * v) / maxD)}%"></div></div>
+                    <span class="w-10 text-right text-dark-300">${v}</span>
+                  </div>`).join('')}
+              </div>
+              <div class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-4">
+                <h3 class="text-sm font-semibold text-white mb-3">By hour</h3>
+                <div class="flex items-end gap-0.5 h-24">
+                  ${byHour.map((v, i) => `<div class="flex-1 rounded-t bg-biz-500/70" title="${i}:00 — ${v} views" style="height:${Math.max(3, Math.round((100 * v) / maxH))}%"></div>`).join('')}
+                </div>
+                <div class="flex justify-between text-[10px] text-dark-500 mt-1"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div>
+              </div>
             </div>`);
         }
 

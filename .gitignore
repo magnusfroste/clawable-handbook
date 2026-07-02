@@ -8,3 +8,6 @@ research/
 *.DS_Store
 .DS_Store
 tsconfig.tsbuildinfo
+
+# local env (public keys, but keep repo clean)
+.env
