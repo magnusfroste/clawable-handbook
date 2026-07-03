@@ -318,6 +318,14 @@ The scale of the failure is now measured. BCG's *AI at Work 2026* found that 42 
 
 Which is why the next section is not compliance overhead. It is the value-realization mechanism.
 
+### What Is AI Actually Expected to Contribute?
+
+One more forest-level question, because leadership teams get lost in the trees here: of the four standard expectations — cut costs, save time, grow revenue, decide better — which one is AI actually *for*? The evidence ranks them, and not in the order most boards assume.
+
+**Cost-cutting is the most seductive and the weakest first move.** Roughly 90 percent of firms report no measurable productivity impact from AI after three years `partial`, Klarna partially re-hired the support staff its AI replaced, and a cost line can only ever go to zero — the upside is bounded. Harvest costs after capability is proven; do not hunt them first. **Time saved is the most common effect and the most evaporated** — BCG's full workday per week, with two-thirds getting no guidance on the recovered time. Saved time is potential value: time × redirection, nothing more. **Revenue — protected and grown — is where the logged evidence is strongest** and the upside unbounded; money that moves also verifies itself. **And decision quality is the meta-contribution**: it owns no line in the P&L, because it compresses the latency on all of them.
+
+Which gives the forest its one-sentence answer: **AI's biggest contribution is not a line in the income statement. It is the redistribution of attention and the compression of time from signal to decision.** Cost, efficiency, and growth are downstream expressions of a business that sees sooner and chooses faster. Set your expectations there, and the four trees stop competing.
+
 ## The Accountability Model
 
 The question every board asks before approving an autonomous operator is: *who is responsible when it gets something wrong?*
