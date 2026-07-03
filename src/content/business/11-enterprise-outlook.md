@@ -127,6 +127,30 @@ Most first deployments target the processes that feel most automatable: sending 
 
 **The highest-value processes are the ones that span system boundaries.** The reason is structural. Every system in your business manages its own domain well. Salesforce knows your pipeline. Fortnox knows your invoices. Your contract module knows your agreements. What none of them knows — and cannot know — is what is happening simultaneously in two or three of the others. That is the gap where risk accumulates and revenue leaks. It is also the gap that only an external operator can see.
 
+### The Two Dimensions — Where the Effect Lands Fastest
+
+Before the tiers, one picture. Two distinctions determine how quickly agentic AI pays off, and they are often conflated. The first is *what kind of work*: rule-work (the automation floor — already automated well) versus judgment-work (the 20 percent that lives between systems). The second is *what kind of agent*: **vertical agents** embedded inside a platform — what Salesforce, SAP, Oracle, and Microsoft ship — versus a **horizontal operator** running above the whole stack, the OpenClaw-class agent this book documents. Cross them, and the map draws itself:
+
+```
+                        RULE-WORK                    JUDGMENT-WORK
+                  (the automation floor)        (the 20% between systems)
+                ┌───────────────────────────┬───────────────────────────────┐
+  VERTICAL      │  Marginal gains.          │  Deep but walled.             │
+  AGENT         │  The work is already      │  Sees everything inside ONE   │
+  (embedded:    │  automated — the agent    │  platform — and nothing       │
+  Salesforce,   │  adds percentage points.  │  across. Ch 8 applies.        │
+  SAP, Oracle…) │                           │                               │
+                ├───────────────────────────┼───────────────────────────────┤
+  HORIZONTAL    │  Wrong tool.              │  ★ FASTEST EFFECT             │
+  OPERATOR      │  A workflow does this     │  Triage + cross-system        │
+  (OpenClaw-    │  cheaper. Don't send a    │  judgment: deals ↔ invoices   │
+  class, above  │  reasoning engine to      │  ↔ contracts — and the        │
+  the stack)    │  file paperwork.          │  silences no webhook fires on.│
+                └───────────────────────────┴───────────────────────────────┘
+```
+
+The starred quadrant is not just where the value is largest — it is where the effect arrives *fastest*, because the first job there is **triage**: reading everything, ranking what deserves attention, routing decisions to the right human. Triage is read-heavy and recommendation-based, which means low risk, no re-engineering, and results in the first week — a morning briefing instead of two hours of discovery. It is also the natural first line of the operator's mandate. And one distinction to keep clean in the leadership conversation: MCP is the doorway, the agent is the worker — the effect lives in what the worker does once the doors are open.
+
 The €1.1 million surfaced in a single Clawable pass on April 19 came entirely from cross-system reasoning. The €950,000 in unbooked contracts was visible only because the operator connected draft contract status to open pipeline deals — two modules, one pattern. The €180,000 in inflated pipeline existed because three separate deal records shared one contact — semantic reasoning across records a workflow would treat as unrelated. The findings that rule-based automation could catch — the pending order, the unregistered expenses — were the smallest numbers on the list.
 
 ### Tier 1 — Revenue at risk: highest impact, fastest payback

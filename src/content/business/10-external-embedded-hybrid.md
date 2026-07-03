@@ -29,6 +29,8 @@ The answer is to add a coordination layer above them — an external orchestrato
 
 This is federated specialization. Native agents are domain experts: deep, proactive, transactional, operating inside their platforms with full context. The external orchestrator is the coordinator: wide, comparative, strategic, operating across all platforms via MCP. The native agents do not need to be replaced. They need to be connected.
 
+The market has settled on vocabulary for this split, worth adopting in your own leadership conversations: the embedded platform agents are **vertical agents** — deep in one domain, walled by design — and the operator above the stack is a **horizontal agent**. Every vendor pitch you hear this year is selling you a vertical. This chapter is about who coordinates them — and chapter eleven maps where each kind pays off fastest.
+
 In practice, the federated architecture works like this. The orchestrator holds the cross-system view — customer health across CRM, payment status across accounting, support load across IT service management. When the orchestrator identifies a customer at risk — overdue payment, escalating ticket, cooling renewal — it does not try to take action in all three systems directly. It surfaces the pattern to the relevant humans and, where appropriate, delegates specific actions to the native agents that already know how to operate in those systems. Einstein creates the renewal task. Joule flags the invoice for expedited review. Now Assist holds the escalation pending the account call.
 
 The orchestrator handles the intelligence. The native agents handle the execution.
