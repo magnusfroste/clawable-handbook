@@ -40,7 +40,7 @@ The businesses that move in 2026 are not making a bet on a technology that might
 
 Every major SaaS vendor is building AI capabilities into their platform. Salesforce, SAP, HubSpot, ServiceNow — all of them are shipping embedded agents, copilots, and autonomous features on top of their existing software. This is not a threat to the external operator model. It is a precondition for it.
 
-By mid-2026, the scale stopped being a projection. Gartner now forecasts AI agent software spend at **$206.5 billion for 2026 — up 139 percent in a single year** — the fastest-growing segment of enterprise software. SAP used its 2026 Sapphire keynote to declare the "Autonomous Enterprise" — the largest ERP vendor on the planet now markets the exact thesis of this handbook — and backed it with a €100 million partner fund. ServiceNow shipped an "Autonomous Workforce" across every major business function. Salesforce reports 29,000 Agentforce deals; Microsoft reports 160,000 organizations running 400,000+ custom agents. `validated`
+By mid-2026, the scale stopped being a projection. Gartner now forecasts AI agent software spend at **$206.5 billion for 2026 — up 139 percent in a single year** — the fastest-growing segment of enterprise software. BCG's *AI at Work 2026* measured the deployment side: **30 percent of organizations now run AI agents in live production workflows, up from 13 percent a year earlier.** The production share more than doubled in twelve months. SAP used its 2026 Sapphire keynote to declare the "Autonomous Enterprise" — the largest ERP vendor on the planet now markets the exact thesis of this handbook — and backed it with a €100 million partner fund. ServiceNow shipped an "Autonomous Workforce" across every major business function. Salesforce reports 29,000 Agentforce deals; Microsoft reports 160,000 organizations running 400,000+ custom agents. `validated`
 
 None of this settles the architecture question — an autonomous suite inside one vendor's walls is still one vendor's walls, and chapter eight still applies. But it settles two things a board can act on: the direction, and the timetable. When the incumbents rename their flagship strategies after your operating model, the debate about *whether* is over. What remains is *how* — and who coordinates above them.
 
@@ -275,6 +275,8 @@ That gives you the only equation in this book worth memorizing:
 **Operator value = findings × the rate at which humans act on them.**
 
 An operator producing brilliant findings that nobody reads is not an underperforming asset. It is a cost that writes well. The industry already has a word for AI output that looks impressive and changes nothing — and no operator, however capable, can escape that fate on its own. The second factor in the equation is not configured in a YAML file. It is an owner, a cadence, and a leadership team that treats the Monday briefing as an input to decisions rather than a report to skim.
+
+The scale of the failure is now measured. BCG's *AI at Work 2026* found that 42 percent of regular AI users among frontline employees already save a full workday per week — and 66 percent of them get little or no guidance on what to do with the recovered time. `validated` The savings are being generated and left to evaporate: solar panels installed, never connected to the grid. That is the equation's second factor failing at population scale — and it is the part your leadership team, not your vendor, controls.
 
 Which is why the next section is not compliance overhead. It is the value-realization mechanism.
 

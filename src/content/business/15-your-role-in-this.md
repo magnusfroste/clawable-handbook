@@ -36,6 +36,8 @@ One more discipline for that standing item — borrow this handbook's own. Every
 
 The companies that treat this as strategy will spend leadership time on it. The companies that treat it as IT will spend budget on it. Only one of them ends up with the operating model.
 
+BCG's *AI at Work 2026* survey — 11,749 employees across 14 markets — put a number on exactly this. Employees with strong strategic clarity but limited tool access report measurable business impact 80 percent of the time. Employees with strong tool access but limited strategic clarity: 60 percent. **Clarity beats tools by twenty points.** The agenda item costs nothing. It is also, statistically, the highest-yielding AI investment available to you. `validated`
+
 ---
 
 ## Before the First Week: Getting the Frame Right

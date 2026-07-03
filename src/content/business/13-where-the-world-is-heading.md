@@ -74,7 +74,7 @@ The direction from here is measurable, not speculative. Three horizons, with dat
 ### Horizon 2 — 2027 → 2029: Structural Reorganization
 
 - Middle-management coordination layers restructured across industries
-- Agent-to-agent commerce becomes normal — operators transacting with other operators via A2A. The payment infrastructure is already being built: Google has released the **Agent Payments Protocol (AP2)**, and Stripe and OpenAI have partnered on the **Agentic Commerce Protocol (ACP)**. The agents that negotiate, contract, and pay other agents in Horizon 3 are being given their wallets now.
+- Agent-to-agent commerce becomes normal — operators transacting with other operators via A2A. The payment infrastructure is already being built: Google has released the **Agent Payments Protocol (AP2)**, Stripe and OpenAI have partnered on the **Agentic Commerce Protocol (ACP)**, and by mid-2026 both Mastercard (Agent Pay for Machines, June 2026) and Visa (agentic-commerce programs with Nuvei and BBVA) had shipped their first agentic-payment offerings. All four payment giants are in. The agents that negotiate, contract, and pay other agents in Horizon 3 are being given their wallets now.
 - "Human + agent" teams become the default organizational unit, not the exception
 - New professional certifications emerge: agent management, agent ethics, operator governance
 - First wave of AI-related legal precedents established in US and EU courts

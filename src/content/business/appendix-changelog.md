@@ -23,6 +23,8 @@ appendix: true
 - **Author's note added** — *Why I Built This* (foreword).
 - **Skill counts updated** to FlowWink's current surface: 300+ skills across 60+ modules.
 - **The Cursor acquisition** (Builder Edition, foreword + ch 5): SpaceX's $60B purchase of Anysphere — the control-plane thesis got its price tag. Model-name references refreshed to the current generation.
+- **BCG *AI at Work 2026* woven in** (chs 11, 15): 30% of organizations now run agents in production; clarity beats tools by twenty points; the evaporating-workday finding as population-scale proof of the value equation.
+- **All four payment giants** (ch 13): Mastercard and Visa joined Google and Stripe/OpenAI with shipped agentic-payment programs.
 - **Structural fixes:** The Contract Layer chapter completed and moved to follow The Agent's Superpowers; chapter titles and operator naming made consistent throughout.
 
 ## June 2026 Edition
