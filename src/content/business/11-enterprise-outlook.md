@@ -207,7 +207,7 @@ The difference between a funnel and a loop is compounding. A funnel processes ea
 
 The CFO's version of the argument is simpler than the architecture one. Start with what is already leaking.
 
-Chapter three documented two findings from a single open prompt — no checklist, no target, forty-four seconds to first result. Västfjord Consulting: €45,000 suspended between a won deal and an unsigned contract in a different module, invisible until the agent looked across both simultaneously. Apexis AB: €22,000 on an active contract expiring in twelve days with no renewal in the pipeline. The CRM tracks what exists, not what is about to stop existing.
+Chapter three documented two findings from a single open prompt — no checklist, no target, forty-four seconds to first result. Västfjord Consulting: €45,000 suspended between a won deal and an unsigned contract in a different module, invisible until the agent looked across both simultaneously. Apexira AB: €22,000 on an active contract expiring in twelve days with no renewal in the pipeline. The CRM tracks what exists, not what is about to stop existing.
 
 Two findings. €67,000 of revenue either blocked or invisible — and not an edge case. It is the structural consequence of running a B2B business across systems that do not read each other. A mid-size company with forty active clients and a twelve-deal pipeline will lose 2–3 revenue events per month to this kind of cross-module silence. At an average deal value of €15,000–30,000, that is €30,000–90,000 per month in delayed, degraded, or lost revenue. Over a quarter, the number compounds. Over a year, it reshapes the growth curve. The full session log is in chapter three.
 

@@ -33,7 +33,7 @@ The significant fact for anyone reading this handbook in 2026: FlowWink is avail
 
 That is what makes the proof in this handbook reproducible — and what makes FlowWink the fastest path from "we want to understand autonomous agents" to "we are running one."
 
-The data used in these scenarios is representative: structured to reflect the operational reality of a mid-market B2B company, not sourced from a client under NDA.
+The data used in these scenarios is representative: structured to reflect the operational reality of a mid-market B2B company, not sourced from a client under NDA. **All customer, supplier, and person names appearing in the scenarios are synthetic.** Any resemblance to real companies or individuals, in Sweden or elsewhere, is coincidental and unintended.
 
 What is not constructed is Clawable's behaviour. The agent operates on standing objectives configured in its `HEARTBEAT.md` — a file that defines what it checks on each scheduled cycle. The April 19 sweep that surfaced over €1 million in exposure was not triggered by a human prompt. Clawable woke up on its own schedule, read its objectives, and went through the business. No one was watching.
 
