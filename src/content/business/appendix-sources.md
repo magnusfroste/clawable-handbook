@@ -192,6 +192,14 @@ All findings attributed to Clawable operating FlowWink live can be cross-checked
 | Google published the Open Knowledge Format (OKF) v0.1 on June 12, 2026 — an open spec representing organizational knowledge as a directory of markdown files with YAML frontmatter and links; human-readable, agent-parseable, vendor-neutral | [Google Cloud blog](https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing); [Search Engine Journal](https://www.searchenginejournal.com/google-cloud-announces-the-open-knowledge-format/579253/) | `validated` — v0.1 explicitly "a starting point, not a finished standard" |
 | "A very confident intern with access to the wrong binder"; "knowledge hygiene" | Per Clingweld, public LinkedIn post on OKF, June 2026 (translated from Swedish) | `validated` — direct quote from public post |
 
+## The Post-SaaS Question (Ch 13)
+
+| Claim | Source | Status |
+|-------|--------|--------|
+| Satya Nadella: "SaaS is dead" — business applications are "CRUD databases with business logic"; in the agent era the logic moves to the agent tier | [BG2 podcast, December 2024](https://windows.gadgethacks.com/news/microsoft-ceo-nadella-saas-is-dead-ai-agents-take-over/); widely analyzed ([IDC](https://www.idc.com/resource-center/blog/is-saas-dead-rethinking-the-future-of-software-in-the-age-of-ai/)) | `validated` — direct public statement |
+| IDC: by 2028 pure seat-based pricing obsolete; 70% of software vendors refactoring pricing around new value metrics | [IDC analysis](https://www.idc.com/resource-center/blog/is-saas-dead-rethinking-the-future-of-software-in-the-age-of-ai/) | `partial` — analyst projection |
+| The laggard inversion and the five-year post-SaaS picture | Author's reflection, anchored to the decomposition demonstrated in chs 3, 11, 14 | `hypothesis` — explicitly marked |
+
 ## Mid-2026 Market Scale Signals (Ch 11)
 
 | Claim | Source | Status |

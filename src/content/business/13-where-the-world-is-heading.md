@@ -57,6 +57,24 @@ The organizations that will lead in 2028 are not the ones that deployed the most
 
 ---
 
+## The Post-SaaS Question
+
+Twenty-five years ago, Elon Musk looked at the space industry's most settled assumption and refused it: rockets that burn up after one flight are not a law of physics — they are a habit the industry had stopped questioning. The reframe was not a better rocket. It was first principles applied to a cost everyone had normalized. Today the rockets land routinely, and nobody remembers why disposable ever seemed reasonable.
+
+Apply the same first principles to business software, and the question gets uncomfortable fast. What *is* a SaaS application, stripped to its physics? A data layer. Business logic. Interfaces. And the judgment of the people using it. Satya Nadella — the man who sells more business software than anyone alive — asked the question out loud in December 2024: business applications are "CRUD databases with business logic," and in the agent era the logic moves out of the application and into the agent tier. His conclusion, verbatim: *"SaaS is dead."* `validated`
+
+This handbook has already shown you each piece of the decomposition, running. The business logic lives in mandate files you own — plain markdown, version-controlled, portable (chapter fourteen). The interfaces become loop-engineered peepholes built where the human stands, in an afternoon (chapter eleven). The judgment stays human. Which leaves exactly one component with genuine gravity: **the data layer, and the operational wisdom accumulated on top of it.** Both ownable. Neither requiring a subscription.
+
+So — does SaaS need to exist at all? The honest answer, tagged accordingly: for most workloads, for years, yes. `hypothesis` The industry consensus says evolution rather than elimination, and the vendors are not standing still — vertical agents, compliance packaging, and data gravity are real counter-moats. IDC's projection captures the transition's shape: by 2028, pure seat-based pricing is obsolete, and 70 percent of software vendors are refactoring what they charge for. `partial` The application is not dying this quarter. But the *assumption* — that operating a business requires renting applications — has been asked out loud by the industry's own leadership, and assumptions do not survive being questioned in public.
+
+Two implications deserve the leadership table now, not in 2029:
+
+**The laggard inversion.** The companies that never completed the cloud journey — still on legacy installations, systems that could never go multi-tenant without ripping out their heart — have spent a decade being told they are behind. In a post-SaaS direction, their position quietly inverts: no SaaS contracts to unwind, no per-seat dependencies, data already inside their own perimeter. Like the markets that skipped landlines and went straight to mobile, the stragglers may skip the era everyone else has to exit. Their lag is becoming optionality. `hypothesis`
+
+**The renewal as a bet.** This is not an IT question, because the decisions that price this direction are made in commercial contracts, not in architecture reviews. Every multi-year SaaS renewal signed in 2026 is a wager that the application still earns its subscription in 2030. The leadership moves that keep the option open cost almost nothing: shorter renewal terms, data-exit clauses as standard, process definitions written as files you own regardless of platform — they migrate; the app does not — and one post-SaaS pilot in one domain: a data layer, an operator, and peepholes. Not rip-and-replace. Optionality.
+
+The five-year picture, stated plainly so it can be wrong in public: operations run as processes, executed by agents directly against a data layer you own, governed by mandate files, with interfaces built only where humans decide — and every employee starting the day with a briefing instead of eleven logins. `hypothesis` Perhaps it takes ten years. Perhaps the vendors absorb it. But twenty-five years ago the industry laughed at reusable rockets, and the laughing stopped when the first one landed. The first landing for post-SaaS operations already happened — chapter three logged it.
+
 ## The Three Horizons
 
 The direction from here is measurable, not speculative. Three horizons, with dated endpoints and concrete markers for each. The Horizon 1 markers drawn from shipped releases and published frameworks are `validated`; the forward-dated claims in Horizons 2 and 3 are `hypothesis` — structural extrapolations, not observed outcomes.
