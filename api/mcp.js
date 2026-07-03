@@ -82,6 +82,7 @@ async function callTool(name, args = {}) {
     const terms = String(args.query || '').toLowerCase().split(/\s+/).filter((t) => t.length > 1);
     if (!terms.length) return 'Empty query.';
     const limit = Math.min(Number(args.limit) || 5, 10);
+    await Promise.all(chapters.map((c) => chapterBody(c).catch(() => ''))); // warm cache in parallel
     const scored = [];
     for (const c of chapters) {
       const body = (await chapterBody(c)).toLowerCase();
