@@ -51,7 +51,7 @@ for what those 2–3 things are.
 | Decisions | 5–8 | "Which architecture, what do I check, which operator, what's the trap?" | Embedded vs external → skill audit → operator choice → vendor agent trap |
 | Honesty | 9 | "Where does this fail?" | Six failure modes — all organizational, all preventable |
 | Synthesis | 10–12 | "How does it fit my enterprise, what does it cost, what do I demand?" | Federation, the CFO case + four-days story, vendor demands + adoption spectrum |
-| Horizon & role | 13–15 | "Where is this going, how do I govern it, what's my Monday?" | Three horizons → the mandate layer → Agent Manager + ten-day first cycle |
+| Horizon & role | 13–15 | "Where is this going, how do I govern it, what's my Monday?" | Three horizons → the mandate layer → Agent Manager + the "Eighteen Months In" vision tableau + ten-day first cycle |
 
 **How we answer (method):**
 - **Logged evidence, tagged** (`validated`/`partial`/`hypothesis`) — the
