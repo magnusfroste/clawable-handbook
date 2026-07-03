@@ -135,10 +135,13 @@ const allSchemas = [orgSchema, webSiteSchema, ...schemaList];
           } catch (e) { visit = null; }
 
           function beacon(payload) {
-            navigator.sendBeacon(
-              statsUrl + '/rest/v1/book_events?apikey=' + encodeURIComponent(statsKey),
-              new Blob([JSON.stringify(payload)], { type: 'application/json' })
-            );
+            // fetch+keepalive survives page unload AND passes CORS preflight —
+            // sendBeacon with JSON is silently dropped cross-origin.
+            fetch(statsUrl + '/rest/v1/book_events?apikey=' + encodeURIComponent(statsKey), {
+              method: 'POST', keepalive: true,
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            }).catch(function () {});
           }
 
           function updateDepth() {
@@ -221,11 +224,12 @@ const allSchemas = [orgSchema, webSiteSchema, ...schemaList];
           var idx = 0, shown = false;
 
           function beacon(target) {
-            navigator.sendBeacon(
-              statsUrl + '/rest/v1/book_events?apikey=' + encodeURIComponent(statsKey),
-              new Blob([JSON.stringify({ event_type: 'answer', path: location.pathname.slice(0, 190), target: target.slice(0, 100),
-                device: window.innerWidth < 768 ? 'mobile' : 'desktop' })], { type: 'application/json' })
-            );
+            fetch(statsUrl + '/rest/v1/book_events?apikey=' + encodeURIComponent(statsKey), {
+              method: 'POST', keepalive: true,
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ event_type: 'answer', path: location.pathname.slice(0, 190), target: target.slice(0, 100),
+                device: window.innerWidth < 768 ? 'mobile' : 'desktop' }),
+            }).catch(function () {});
           }
           function done() {
             try { localStorage.setItem('cw_survey_done', '1'); } catch (e) {}
