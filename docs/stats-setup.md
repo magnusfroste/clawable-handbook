@@ -272,6 +272,33 @@ group by 1, 2;
 grant select on public.book_hours to anon;
 ```
 
+## v5 migration (agent readers — MCP usage) — run once
+
+The MCP server logs anonymous usage into the same store: which client
+software connects, which chapters agents read, what they search for.
+No IPs, no identifiers.
+
+```sql
+alter table public.book_events
+  drop constraint book_events_event_type_check;
+
+alter table public.book_events
+  add constraint book_events_event_type_check
+  check (event_type in ('view', 'click', 'answer', 'mcp'));
+
+create view public.book_agent_stats as
+select
+  split_part(target, ':', 1) as kind,     -- connect | read | search | tool
+  substring(target from position(':' in target) + 1) as detail,
+  count(*)::int  as events,
+  max(ts)        as last_event
+from public.book_events
+where event_type = 'mcp' and target like '%:%'
+group by 1, 2;
+
+grant select on public.book_agent_stats to anon;
+```
+
 ## Later, if you want more
 
 - Cleanup: `delete from book_events where ts < now() - interval '12 months'`.

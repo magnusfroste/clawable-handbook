@@ -48,7 +48,7 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
       };
 
       try {
-        const [rows, daily, refs, visitStats, clicks, segments, survey, hours] = await Promise.all([
+        const [rows, daily, refs, visitStats, clicks, segments, survey, hours, agents] = await Promise.all([
           get('book_stats?select=*&order=views.desc'),
           get('book_stats_daily?select=*&order=day.asc').catch(() => []),
           get('book_referrers?select=*&order=views.desc&limit=15').catch(() => []),
@@ -57,6 +57,7 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
           get('book_visit_segments?select=*').catch(() => []),
           get('book_survey?select=*').catch(() => []),
           get('book_hours?select=*').catch(() => []),
+          get('book_agent_stats?select=*&order=events.desc').catch(() => []),
         ]);
         if (!rows.length) { statusEl.textContent = 'No data yet. Come back after the first readers.'; return; }
 
@@ -300,6 +301,36 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
                 </div>
                 <div class="flex justify-between text-[10px] text-dark-500 mt-1"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div>
               </div>
+            </div>`);
+        }
+
+        // ---- Agent readers (MCP usage) ----
+        if (agents.length) {
+          const byKind = (k) => agents.filter((a) => a.kind === k);
+          const connects = byKind('connect');
+          const reads = byKind('read');
+          const searches = byKind('search');
+          const totalConnects = connects.reduce((s, a) => s + Number(a.events), 0);
+          const col = (title, list, color, empty) => `
+            <div class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-4">
+              <h3 class="text-sm font-semibold text-white mb-3">${title}</h3>
+              ${!list.length ? `<p class="text-dark-500 text-xs">${empty}</p>` : list.slice(0, 8).map((a) => {
+                const max = Number(list[0].events);
+                return `
+                  <div class="flex items-center gap-2 text-xs mb-1.5">
+                    <span class="w-36 shrink-0 truncate font-mono text-dark-400" title="${esc(a.detail)}">${esc(a.detail)}</span>
+                    <div class="flex-1 bg-dark-800 rounded h-2.5"><div class="h-2.5 rounded ${color}" style="width:${Math.round((100 * Number(a.events)) / max)}%"></div></div>
+                    <span class="w-8 text-right text-dark-300">${a.events}</span>
+                  </div>`;
+              }).join('')}
+            </div>`;
+          document.getElementById('tables').insertAdjacentHTML('beforeend', `
+            <h2 class="text-xl font-semibold text-white mt-10 mb-1">Agent readers — MCP</h2>
+            <p class="text-xs text-dark-500 mb-4">${totalConnects.toLocaleString()} agent connections. The handbook's second audience: software reading for its humans.</p>
+            <div class="grid md:grid-cols-3 gap-4">
+              ${col('Connections by client', connects, 'bg-claw-500/70', 'No connections yet.')}
+              ${col('Chapters read by agents', reads, 'bg-biz-500/70', 'No agent reads yet.')}
+              ${col('What agents search for', searches, 'bg-claw-500/50', 'No searches yet.')}
             </div>`);
         }
 

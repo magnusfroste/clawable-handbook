@@ -8,6 +8,20 @@
 const SITE = 'https://www.clawable.org';
 const PROTOCOL = '2025-06-18';
 
+// Anonymous usage logging into the same aggregate-only analytics store.
+// No IPs, no identifiers — just which client software connected and what
+// the agents read/searched. Skipped entirely if env vars are absent.
+function log(target) {
+  const url = process.env.PUBLIC_STATS_URL;
+  const key = process.env.PUBLIC_STATS_KEY;
+  if (!url || !key) return;
+  fetch(`${url}/rest/v1/book_events?apikey=${encodeURIComponent(key)}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ event_type: 'mcp', path: '/api/mcp', target: String(target).slice(0, 100) }),
+  }).catch(() => {});
+}
+
 let cache = null;
 async function content() {
   if (cache) return cache;
@@ -115,7 +129,8 @@ async function handle(msg) {
   const { id, method, params } = msg;
   const reply = (result) => ({ jsonrpc: '2.0', id, result });
 
-  if (method === 'initialize')
+  if (method === 'initialize') {
+    log(`connect:${(params?.clientInfo?.name || 'unknown').replace(/[^\w.-]/g, '_').slice(0, 60)}`);
     return reply({
       protocolVersion: params?.protocolVersion || PROTOCOL,
       capabilities: { tools: {}, resources: {} },
@@ -123,6 +138,7 @@ async function handle(msg) {
       instructions:
         'The full Clawable handbook (Business + Builder editions) as tools and resources. Start with list_chapters or search_handbook. Every chapter is evidence-tagged (validated/partial/hypothesis).',
     });
+  }
 
   if (method === 'ping') return reply({});
 
@@ -130,7 +146,12 @@ async function handle(msg) {
 
   if (method === 'tools/call') {
     try {
-      const text = await callTool(params?.name, params?.arguments);
+      const toolName = params?.name;
+      const args = params?.arguments || {};
+      if (toolName === 'read_chapter') log(`read:${String(args.slug || '').slice(0, 90)}`);
+      else if (toolName === 'search_handbook') log(`search:${String(args.query || '').slice(0, 90)}`);
+      else log(`tool:${String(toolName).slice(0, 90)}`);
+      const text = await callTool(toolName, args);
       return reply({ content: [{ type: 'text', text }], isError: false });
     } catch (e) {
       if (e && e.code) return { jsonrpc: '2.0', id, error: e };
@@ -156,6 +177,7 @@ async function handle(msg) {
     const uri = String(params?.uri || '');
     const c = find(chapters, uri.replace('clawable://', ''));
     if (!c) return { jsonrpc: '2.0', id, error: { code: -32002, message: `Unknown resource: ${uri}` } };
+    log(`read:${c.track}/${c.slug}`);
     return reply({ contents: [{ uri, mimeType: 'text/markdown', text: await chapterBody(c) }] });
   }
 
