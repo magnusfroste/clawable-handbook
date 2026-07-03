@@ -63,7 +63,7 @@ Three converging forces made agentic AI practical in 2025-2026:
 
 ### 1. Model Capability
 
-Modern frontier models (Claude Opus 4.6, GPT-4.1, Gemini 2.5 Pro) can reliably:
+Modern frontier models (Claude Fable 5 and Sonnet 5, GPT-5.6, Gemini 3.5) can reliably:
 - Parse complex tool schemas
 - Make multi-step plans
 - Self-correct when tools return errors

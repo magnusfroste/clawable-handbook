@@ -22,14 +22,14 @@ This is not a subtle distinction. It is the central business and architectural q
 | Tool | Type | Architecture | Model approach | Moat |
 |------|------|-------------|----------------|------|
 | **Claude Code** | Terminal agent | Agentic loop + React/Ink TUI | Claude-native, Messages API | Deep Anthropic integration, CLAUDE.md, Teams |
-| **Cursor** | AI-native IDE | Fork of VS Code + agent layer | Model-agnostic, Chat Completions | IDE depth, codebase indexing, ~$29–50B valuation (2026) |
+| **Cursor** | AI-native IDE | Fork of VS Code + agent layer | Model-agnostic, Chat Completions | IDE depth, codebase indexing; acquired by SpaceX for $60B (June 2026) |
 | **Windsurf** | AI-native IDE | Codeium-based IDE | OpenAI deal collapsed (Jul 2025); CEO/team to Google ($2.4B); IP to Cognition | Uncertain roadmap post-acquisition collapse |
 | **Cline** | VS Code extension | Agentic loop, XML tool format | Model-agnostic, 59k stars | Open-source, extensibility |
 | **Roo** | VS Code extension | Multi-agent, role-driven | Model-agnostic, 23k stars | Custom modes, agentic orchestration |
 | **GitHub Copilot** | IDE + chat | GitHub integration + agent | Mostly GPT-4o / o1 | GitHub ecosystem, enterprise distribution |
 | **Devin** | Autonomous coder | Full autonomy, cloud-hosted | Proprietary | Deep autonomy, long-horizon tasks |
 
-**The consolidation signal:** OpenAI agreed to acquire Windsurf for $3 billion (May 2025) but the deal collapsed in July 2025. Google then hired Windsurf's CEO and key engineers in a $2.4B talent and licensing deal; Cognition acquired the remaining product and IP. The control plane layer is being fought over at the acquisition level — which tells you the value is real.
+**The consolidation signal:** OpenAI agreed to acquire Windsurf for $3 billion (May 2025) but the deal collapsed in July 2025. Google then hired Windsurf's CEO and key engineers in a $2.4B talent and licensing deal; Cognition acquired the remaining product and IP. Then June 2026 removed all doubt about where the value sits: SpaceX acquired Anysphere — Cursor's parent — for **$60 billion in stock**, the largest venture-backed acquisition in history, at roughly fifteen times revenue. The strategic logic, per the deal coverage: compute plus data plus distribution — Cursor's coding data and enterprise reach, SpaceX's Colossus compute. The control plane layer is not just being fought over anymore. It is what the biggest checks in technology are written for.
 
 ---
 
@@ -116,7 +116,7 @@ This is why the most valuable products in this space all converge on the same an
 
 ### What That Looks Like in Practice
 
-**Cursor (~$29–50B, Bloomberg March 2026):** An AI-native IDE built from scratch with deep codebase indexing. The moat is the IDE itself — once your team's workflows are embedded, switching costs are high. The agent operates inside an environment Cursor owns.
+**Cursor (acquired by SpaceX for $60B, June 2026):** An AI-native IDE built from scratch with deep codebase indexing. The moat is the IDE itself — once your team's workflows are embedded, switching costs are high. The agent operates inside an environment Cursor owns. The acquisition price confirmed what the moat was worth: the environment, the data, and the distribution — not the models underneath.
 
 **Claude Code:** Anthropic is the model provider, so disintermediation risk is zero. The product *is* the model's capabilities delivered through a control plane Anthropic controls. Every Claude improvement benefits Claude Code automatically.
 

@@ -19,7 +19,7 @@ OpenClaw began with Claude as its default. Peter Steinberger designed it to be m
 
 Before anything else, there is one distinction that shapes every other decision:
 
-**Closed-source models** — GPT-4o, Claude 3.7, Gemini — are the most capable reasoning engines available today. You access them through an API. You do not own them, host them, or control where your data goes.
+**Closed-source models** — Claude, GPT, Gemini — are the most capable reasoning engines available today. You access them through an API. You do not own them, host them, or control where your data goes.
 
 **Open-weight models** — Llama, Mistral, Qwen, DeepSeek — you can download, run yourself, and keep behind your own firewall. They are generally less capable than frontier models, but the gap is narrowing fast.
 

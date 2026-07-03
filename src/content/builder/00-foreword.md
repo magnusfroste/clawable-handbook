@@ -57,7 +57,7 @@ Harvard Business Review coined a new job title in February 2026: Agent Manager. 
 
 McKinsey identified nine organizational shifts driven by autonomous agents. Nine. Not a trend. Not a feature. Nine fundamental changes in how companies are structured, how decisions are made, how accountability is distributed.
 
-The agentic layer — the control plane above the model — is one of the most valuable places in all of technology right now. OpenAI agreed to acquire Windsurf for $3 billion in May 2025, but the deal collapsed in July 2025 — Google ultimately hired Windsurf's CEO and key engineers in a $2.4 billion talent and licensing deal. Press coverage has valued Cursor around $29–50 billion (Bloomberg, March 2026) and Lovable around $6.6 billion. All of them are selling fundamentally the same thing: **a well-constructed agent layer on top of models someone else builds.**
+The agentic layer — the control plane above the model — is one of the most valuable places in all of technology right now. OpenAI agreed to acquire Windsurf for $3 billion in May 2025, but the deal collapsed in July 2025 — Google ultimately hired Windsurf's CEO and key engineers in a $2.4 billion talent and licensing deal. Lovable has been valued around $6.6 billion. And in June 2026, the layer got its definitive price tag: **SpaceX acquired Cursor's parent Anysphere for $60 billion** — the largest acquisition of a venture-backed startup ever, roughly fifteen times revenue, days after SpaceX's own IPO. All of these companies sell fundamentally the same thing: **a well-constructed agent layer on top of models someone else builds.** Sixty billion dollars, for a company that trains no frontier models of its own.
 
 The model is not the product. The lantern around the model is.
 

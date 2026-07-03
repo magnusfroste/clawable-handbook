@@ -82,6 +82,7 @@ All major claims in this handbook are sourced. This appendix lists primary sourc
 | [OpenAI acquires Windsurf $3B](https://lumichats.com/blog/openai-windsurf-acquisition-ai-coding-2026-explained) | Acquisition | ✅ |
 | [Google acquires Windsurf executives $2.4B](https://neuron.expert/news/google-acquires-windsurf-executives-to-enhance-ai-coding-capabilities/) | Talent deal | ✅ |
 | [Lovable $6.6B valuation, acquisition push](https://ceowire.co/startups/lovable-seeks-acquisitions-vibe-coding-6-billion-startup) (Mar 24, 2026) | Market signal | ✅ |
+| [SpaceX acquires Anysphere/Cursor for $60B](https://techcrunch.com/2026/06/16/spacex-to-acquire-cursor-for-60b-in-stock-days-after-blockbuster-ipo/) (Jun 16, 2026); [CNBC](https://www.cnbc.com/2026/06/16/spacex-spcx-cursor-acquisition-ipo.html); [Forbes](https://www.forbes.com/sites/sandycarter/2026/06/16/spacex-buys-cursor-in-largest-startup-acquisition-ever-at-60-billion/) | Largest venture-backed acquisition ever; ~15x revenue; all-stock; close Q3 2026 | ✅ Multiple outlets |
 | [HatchWorks: AI wrapper moat (Mar 31, 2026)](https://hatchworks.com/blog/gen-ai/ai-wrapper-product-strategy/) | Thin wrapper analysis | ✅ |
 
 ---
