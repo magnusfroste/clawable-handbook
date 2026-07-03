@@ -10,6 +10,7 @@ icon: "book-open"
 - **Edition:** July 2026
 - **Last reviewed:** July 2026
 - **Update cadence:** monthly scheduled review, with fast patches for major ecosystem changes
+- **Agent-readable:** the handbook exposes its own MCP surface — Streamable HTTP at `https://www.clawable.org/api/mcp` (tools: `list_chapters`, `read_chapter`, `search_handbook`; every chapter as a `clawable://` resource), plus [llms.txt](/llms.txt) and raw markdown at `/raw/<track>/<slug>.md`. A handbook about MCP that cannot be read over MCP would be unexamined by its own standard
 
 ---
 

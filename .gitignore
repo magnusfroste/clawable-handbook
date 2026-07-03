@@ -11,3 +11,7 @@ tsconfig.tsbuildinfo
 
 # local env (public keys, but keep repo clean)
 .env
+
+# generated agent-readable surface (rebuilt on every deploy)
+public/raw/
+public/llms.txt

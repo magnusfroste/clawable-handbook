@@ -10,6 +10,7 @@ icon: "book-open"
 - **Edition:** July 2026
 - **Last reviewed:** July 2026
 - **Update cadence:** monthly scheduled review, with fast patches for major ecosystem changes — see the [Revision History](/business/appendix-changelog) for what changed and when
+- **Agent-readable:** this handbook practices what it preaches. Every chapter is exposed over MCP (Streamable HTTP) at `https://www.clawable.org/api/mcp` — point OpenClaw, Hermes, Claude Code, or any MCP client at it — plus [llms.txt](/llms.txt) and raw markdown for everything else
 - **Companion volume:** *The Agentic Handbook (Builder Edition)* — architecture, skills, memory, governance internals for teams building their own agentic platform
 
 ---
