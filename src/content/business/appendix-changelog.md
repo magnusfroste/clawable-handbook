@@ -29,6 +29,7 @@ appendix: true
 - **The Fixed-Cost Workhorse** (ch 11): open-weight workhorse models on owned or partner-leased GPU rigs — the excavator analogy, the night-shift-to-kanban rhythm, and the CFO principle "fixed cost where the volume is, variable cost where the value is."
 - **"Eighteen Months In"** (ch 15): the vision tableau — a Tuesday at the operator-run workplace, assembled entirely from mechanisms proven earlier in the book. The chapter's opening question finally gets its painted answer.
 - **The handbook became agent-readable.** Its own MCP surface (Streamable HTTP at `/api/mcp` — list, read, and search every chapter), plus `llms.txt` and raw markdown per chapter. The book about MCP now speaks MCP.
+- **"Running the Vendor Conversation"** (ch 12): the leadership playbook for vendor pressure — where to press first (CRM and finance before dashboard-heavy ERP), the answer decoder ("no demand" → count the wrappers), the 90-day/two-quarter/twelve-month clock, and the capability-lag vs strategic-closure switching rule.
 - **The trust curve and the warm negotiator** (ch 14): Capgemini's trust-fell-as-adoption-tripled finding, and MIT's tournament showing warm agents out-negotiate ruthless ones.
 - **The April platform cutoff** (ch 7): Anthropic's subscription-policy change as the commercial twin of June's export-control lesson.
 - **Meta-Harness** (Builder ch 35): the Stanford/MIT/KRAFTON paper — empirical proof that the harness matters as much as the model.

@@ -41,6 +41,54 @@ The full technical specification — how to evaluate an MCP surface, what good l
 
 ---
 
+## Running the Vendor Conversation
+
+Putting the demands on the table is the easy part. The strategic work is what happens next: reading the answers, running the clock, and deciding — per system — whether to pressure, bridge, or leave. One reframe first, because it changes the whole conversation: **MCP is a protocol, but a protocol is not what you are negotiating.** What you are negotiating is the right to redesign your own workflows — to move from the automation floor to operator-driven processes on your own data. A vendor who controls that access controls your operating model. That is why this conversation belongs to the leadership team, not to procurement.
+
+### Where to press first
+
+Not all systems deserve equal pressure, and the order is not what most leadership teams assume. Rank by where your tier-1 value lives (chapter eleven), not by which system has the most impressive dashboards:
+
+1. **CRM and sales** — first, for two reasons: your revenue truth lives there, and the CRM market is furthest along (chapter eleven's readiness map), which makes your demands credible and your switching threat real.
+2. **Finance, invoicing, and contracts** — the other half of every tier-1 process. Contract lifecycle integrity and AR-to-pipeline correlation require this surface; without it, your operator is blind on the money side.
+3. **Operational ERP** — later, deliberately. The heavily-dashboarded production and manufacturing systems are the *automation floor*: rule-based work that is already automated well. Agents add the least there at first — and ERP switching costs are so high that pressure beats threats anyway.
+
+The counterintuitive conclusion: the system with the most "AI features" on its roadmap is often the one where agent access matters least, and vice versa. Sales and finance is where cross-system judgment lives. That is where the door must open first.
+
+### Decoding the answers
+
+What vendors say and what it means are different languages. The translation table:
+
+| The vendor says | What it usually means | Your move |
+|---|---|---|
+| "We have a comprehensive API" | An API is for developers; an agent needs MCP. This answer offers you an integration project instead of a surface. | "Good — then the MCP layer on top is small. What is the date?" |
+| "It's on our roadmap" | Without a quarter attached, this is a deflection, not a commitment. | Ask for the quarter and beta access, in writing, at renewal. |
+| "We have security concerns" | Sometimes genuine, always solvable — auth, scopes, and audit logging are known patterns. | "Which concern, specifically, and what is your plan for it?" No specifics = stalling. |
+| "Our own AI assistant covers this" | The vendor agent trap, chapter eight: their agent sees only their walls. | "Can *our* operator call *your* tools? That is the question — not whether you have an assistant." |
+| "There's no demand for it" | The market disagrees, in working code. | Count the community wrappers on GitHub — the queue outside the door. Unpaid developers do not build bridges to platforms nobody wants to reach. |
+
+### The clock
+
+Vendors respond to calendars, not sentiments. A reasonable sequence, anchored to your renewal cycle:
+
+- **Now:** the four demands go into the RFP or renewal conversation, in writing.
+- **90 days:** a dated MCP roadmap, or the vendor has told you something important about their strategy.
+- **Two quarters:** read access in beta on your core objects.
+- **Twelve months:** production read-write on the objects your tier-1 processes touch.
+
+Miss a gate, and you do not escalate emotionally — you start the parallel track: connect through a community wrapper today (functional, if ungoverned — chapter eight's caveats apply), begin decoupling your data, and shortlist alternatives. You do not need to threaten. **The calendar does the negotiating.**
+
+### Switch, bridge, or stay
+
+The decision is not "is the vendor behind?" — nearly everyone is behind. The decision is whether you are looking at **capability lag** or **strategic closure**, and they deserve opposite responses:
+
+- **Capability lag** — no MCP yet, but engaged, dated roadmap, tolerant of community wrappers: *stay and bridge.* The wrapper buys you operations today and evidence for the next negotiation.
+- **Strategic closure** — blocking wrappers in their terms of service, per-action pricing on agent access to *your own data*, shipping their own agent while refusing yours: *start the migration plan.* Not as punishment — as risk management. A vendor whose business model depends on your operator staying blind has told you where this ends.
+
+And when the CFO asks whether this is worth the disruption, the answer comes from chapter eleven's numbers: the tier-1 processes leak €30,000–90,000 per month while the door stays closed. A vendor conversation that shortens that by one quarter pays for itself before the first meeting ends.
+
+---
+
 ## The QA Team You Never Hired
 
 There is something nobody tells you about deploying agents on your operational platforms. You will find out anyway — usually in the first week.
