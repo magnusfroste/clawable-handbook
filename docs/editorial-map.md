@@ -59,7 +59,7 @@ for what those 2–3 things are.
 - **One worked example** (FlowWink + Clawable), never a pitch — "one
   implementation of the pattern, build your own."
 - **Landmark analogies as memory pegs** (one per chapter max): horse (2),
-  electric motor (9), container (12), elevator button (14).
+  electric motor (9), excavator (11), container (12), elevator button (14).
 - **Strategic questions, sparsely** — silent through the proof arc,
   densifying toward decision chapters; problematize, never answer.
 - **Honesty as energy** — findings framed as drift + fixed-in-days + "the

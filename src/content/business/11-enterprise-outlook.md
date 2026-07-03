@@ -234,6 +234,18 @@ For a mid-market B2B company running 8–12 SaaS tools, the cost-avoidance case 
 
 One discipline keeps the right-hand column small, and mid-2026 showed what happens without it. The Financial Times reported that Amazon, Walmart, Uber, and Cisco had all begun capping internal AI use as token bills outran budgets — Uber reportedly consumed its entire 2026 AI allowance by April; one CIO described spend jumping sevenfold overnight. `partial` The failure mode is structural, not vendor greed: **an agent is a meter that runs whether or not it is producing anything you needed.** The fix is mandate thinking applied to money — a spend boundary per operator written before deployment, unit-cost trip-wires, and a standing answer to "is this task worth what it costs to run?" An operator with a budget boundary is infrastructure. One without is an open tab.
 
+### The Fixed-Cost Workhorse
+
+For some CFOs, the answer to the meter problem is not better metering. It is no meter at all.
+
+By mid-2026, open-weight models crossed a threshold worth a board slide: not frontier-grade, but genuinely **workhorse-grade**. NVIDIA's Nemotron family, Alibaba's Qwen, and heavier options like MiniMax and GLM now handle the bulk of what a business operator actually does all day — reading records, drafting documents, reconciling data, preparing analyses — and they run on hardware you can own.
+
+Think of it the way you think about an excavator. Nobody rents an excavator by the scoop. When the digging is constant, you buy the machine — or lease it, fully dedicated, from a regional partner — and run it around the clock at a cost you knew in January. An agent rig is the same calculation: a server with one to six workstation-class GPUs, self-hosted or leased dedicated, covers a remarkable share of a mid-market company's agent workload at a **fixed monthly cost**. No token meter. No sevenfold-overnight surprise. And after June 2026, one more line for the board slide: nobody outside the building can switch it off — the whole chain, from data to decision, is under your control.
+
+The rhythm it enables is the picture worth keeping. At night, the workhorse digs through the day's data: analyses run, quotes are prepared, processes are checked, exceptions are queued. The team arrives in the morning not to discovery work but to a **kanban of decisions** — everything the operator did is transparent in the log, everything it wants approved is waiting for the right competence to move the card. During the day, the same machine serves the developers and the rest of the staff as their daily workhorse. The frontier models are still in the loop — routed in per task, for the reasoning that genuinely needs them — but the meter only runs when the work deserves it.
+
+**Fixed cost where the volume is. Variable cost where the value is.** A CFO can plan that — and audit it.
+
 ### Four Days, Logged
 
 If the table reads as abstract, here is what the right-hand column looks like in a log file. In June 2026, an operator was pointed at a freshly provisioned FlowWink instance — zero leads, zero orders, zero content — with one directive: run the business cycle. `validated`
