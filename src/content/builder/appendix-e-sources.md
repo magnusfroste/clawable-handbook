@@ -83,6 +83,7 @@ All major claims in this handbook are sourced. This appendix lists primary sourc
 | [Google acquires Windsurf executives $2.4B](https://neuron.expert/news/google-acquires-windsurf-executives-to-enhance-ai-coding-capabilities/) | Talent deal | ✅ |
 | [Lovable $6.6B valuation, acquisition push](https://ceowire.co/startups/lovable-seeks-acquisitions-vibe-coding-6-billion-startup) (Mar 24, 2026) | Market signal | ✅ |
 | [SpaceX acquires Anysphere/Cursor for $60B](https://techcrunch.com/2026/06/16/spacex-to-acquire-cursor-for-60b-in-stock-days-after-blockbuster-ipo/) (Jun 16, 2026); [CNBC](https://www.cnbc.com/2026/06/16/spacex-spcx-cursor-acquisition-ipo.html); [Forbes](https://www.forbes.com/sites/sandycarter/2026/06/16/spacex-buys-cursor-in-largest-startup-acquisition-ever-at-60-billion/) | Largest venture-backed acquisition ever; ~15x revenue; all-stock; close Q3 2026 | ✅ Multiple outlets |
+| [Meta-Harness: End-to-End Optimization of Model Harnesses](https://arxiv.org/abs/2603.28052) (Lee, Nair, Zhang, Lee, Khattab, Finn — Stanford/MIT/KRAFTON, Mar 2026); [code](https://github.com/stanford-iris-lab/meta-harness) | Discovered harness improves all 5 held-out models; +7.7 pts with 4x fewer context tokens; harness matters as much as weights (ch 35) | ✅ arXiv + reference code verified |
 | [HatchWorks: AI wrapper moat (Mar 31, 2026)](https://hatchworks.com/blog/gen-ai/ai-wrapper-product-strategy/) | Thin wrapper analysis | ✅ |
 
 ---

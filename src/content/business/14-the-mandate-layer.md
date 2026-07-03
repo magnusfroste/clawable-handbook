@@ -26,6 +26,8 @@ The real question is: *what will it do when I am not watching?*
 
 This chapter is the answer to that question. Not the reassuring version — "don't worry, it's safe" — but the honest version: the answer depends entirely on a design decision you make before you deploy, and most teams skip it.
 
+The market has already run the experiment. Capgemini's 2026 survey of 1,500 executives across 14 countries found that while scaled agent adoption *tripled* in a year, trust in fully autonomous agents fell from 43 to 27 percent — a decline, in Capgemini's words, born out of experience rather than fear. `partial` Practitioners are not learning that agents fail. They are learning that autonomy without a designed boundary is not trustworthy. That boundary is this chapter.
+
 ---
 
 ## The Gap in Every Deployment
@@ -95,6 +97,8 @@ The counter-offer it proposed without being asked — twelve percent against a t
 The principal approved. The operator implemented. A 422,400 SEK two-year contract was created, meeting booked, confirmation sent. Start to finish, the operator handled a negotiation that would typically require a sales manager, a finance director, and two rounds of internal approval — while staying inside a governance structure defined in a text file.
 
 The mandate did not constrain the outcome. It made the outcome trustworthy.
+
+It may also have made it *better*. An MIT Sloan tournament that pitted negotiation agents against each other across forty countries found that the ruthless, hard-nosed agents everyone expected to win instead drove counterparts to walk away — while agents designed with warmth kept the conversation alive and captured better outcomes. `partial` The operator that offers 12 percent against a two-year commitment instead of bluffing toward an impasse is not being soft. It is playing the strategy that wins.
 
 ---
 
@@ -198,7 +202,7 @@ There is precedent for the trust curve, too. Automatic elevators existed for hal
 
 The mandate layer is not the last thing you design. It is the first.
 
-Before you configure the heartbeat schedule, before you write the workspace files, before you connect the MCP surface — ask: what is this operator authorised to do without asking me? Write it down. Then ask: what does it need to bring to me before acting? Write that down too.
+Before you configure the heartbeat schedule, before you write the workspace files, before you connect the MCP surface — ask: what is this operator authorised to do without asking me? Write it down. Then ask: what does it need to bring to me before acting? Write that down too. Then add the boundary most deployments forget: what may it *spend* — tokens, API calls, money — without asking? A mandate without a budget line is a job description without a salary frame.
 
 Those two lists are your `AGENTS.md`. They are also your governance document, your audit reference, and your test specification. They are three hundred words that determine whether your operator is an asset you trust or a system you watch nervously.
 

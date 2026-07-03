@@ -232,6 +232,8 @@ The honest caveat: the operator does not replace human judgment on complex decis
 
 For a mid-market B2B company running 8–12 SaaS tools, the cost-avoidance case alone pays for the deployment. A fully coordinated operator covering CRM, invoicing, expense compliance, content, newsletters, and sales intelligence replaces the context-switching tax across those tools — one reasoning context instead of twelve open tabs.
 
+One discipline keeps the right-hand column small, and mid-2026 showed what happens without it. The Financial Times reported that Amazon, Walmart, Uber, and Cisco had all begun capping internal AI use as token bills outran budgets — Uber reportedly consumed its entire 2026 AI allowance by April; one CIO described spend jumping sevenfold overnight. `partial` The failure mode is structural, not vendor greed: **an agent is a meter that runs whether or not it is producing anything you needed.** The fix is mandate thinking applied to money — a spend boundary per operator written before deployment, unit-cost trip-wires, and a standing answer to "is this task worth what it costs to run?" An operator with a budget boundary is infrastructure. One without is an open tab.
+
 ### Four Days, Logged
 
 If the table reads as abstract, here is what the right-hand column looks like in a log file. In June 2026, an operator was pointed at a freshly provisioned FlowWink instance — zero leads, zero orders, zero content — with one directive: run the business cycle. `validated`

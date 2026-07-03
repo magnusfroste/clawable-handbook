@@ -25,6 +25,10 @@ appendix: true
 - **The Cursor acquisition** (Builder Edition, foreword + ch 5): SpaceX's $60B purchase of Anysphere — the control-plane thesis got its price tag. Model-name references refreshed to the current generation.
 - **BCG *AI at Work 2026* woven in** (chs 11, 15): 30% of organizations now run agents in production; clarity beats tools by twenty points; the evaporating-workday finding as population-scale proof of the value equation.
 - **All four payment giants** (ch 13): Mastercard and Visa joined Google and Stripe/OpenAI with shipped agentic-payment programs.
+- **Agent cost governance** (chs 11, 14): the mid-2026 enterprise cost-capping wave ("an agent is a meter that runs"), and the budget boundary as the mandate component most deployments forget.
+- **The trust curve and the warm negotiator** (ch 14): Capgemini's trust-fell-as-adoption-tripled finding, and MIT's tournament showing warm agents out-negotiate ruthless ones.
+- **The April platform cutoff** (ch 7): Anthropic's subscription-policy change as the commercial twin of June's export-control lesson.
+- **Meta-Harness** (Builder ch 35): the Stanford/MIT/KRAFTON paper — empirical proof that the harness matters as much as the model.
 - **Structural fixes:** The Contract Layer chapter completed and moved to follow The Agent's Superpowers; chapter titles and operator naming made consistent throughout.
 
 ## June 2026 Edition

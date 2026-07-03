@@ -52,6 +52,8 @@ A practical test you can apply to any product — including your own:
 
 This is why products like Claude Code have proven sticky despite identical underlying access: the moat is not inference quality, it is the operating layer. The same applies to Lovable moving beyond generation into durable orchestration, and to Flowwink — the value is not which model runs the heartbeat, it is the 18 months of operational pattern recognition that accumulated while the model ran it.
 
+In March 2026 this stopped being an opinion. The Meta-Harness paper (Stanford, MIT, KRAFTON — arXiv 2603.28052) showed empirically that the harness — the code deciding what a model stores, retrieves, and sees — matters as much as the model weights: an automatically discovered harness beat weeks of hand-tuning, improved *all five* held-out models it had never been optimized for, and in one benchmark gained 7.7 points while using 4× fewer context tokens. Same models, different harness, materially different system. The harness outlives the model.
+
 For builders, the implication is direct: **optimize less for prompt quality and more for operating design.** The prompt is a commodity. The system that makes the prompt reliable, observable, recoverable, and accountable — that is where the moat is.
 
 ---
