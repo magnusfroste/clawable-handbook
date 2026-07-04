@@ -389,9 +389,24 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
 
         // ---- Who reads (survey answers) ----
         if (survey.length) {
-          const labels = { role: 'What best describes you?', stage: 'Where on agentic AI?', intent: 'Project within 6 months?' };
+          const labels = { role: 'What best describes you?', stage: 'Where on agentic AI?', intent: 'Project within 6 months?', book3: 'Want handbook three?', book3focus: 'Handbook three should prioritize' };
+          // NPS computed properly: %promoters (9-10) − %detractors (0-6)
+          const npsRows = survey.filter((s) => s.question === 'nps');
+          if (npsRows.length) {
+            const tot = npsRows.reduce((s, r) => s + Number(r.answers), 0);
+            const promoters = npsRows.filter((r) => Number(r.answer) >= 9).reduce((s, r) => s + Number(r.answers), 0);
+            const detractors = npsRows.filter((r) => Number(r.answer) <= 6).reduce((s, r) => s + Number(r.answers), 0);
+            const nps = Math.round((100 * (promoters - detractors)) / tot);
+            document.getElementById('tables').insertAdjacentHTML('beforeend', `
+              <h2 class="text-xl font-semibold text-white mt-10 mb-1">End-of-book NPS</h2>
+              <div class="grid grid-cols-3 gap-4 max-w-xl">
+                <div class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-4"><div class="text-2xl font-bold text-white">${nps > 0 ? '+' : ''}${nps}</div><div class="text-xs text-dark-400 mt-1">NPS (${tot} answers)</div></div>
+                <div class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-4"><div class="text-2xl font-bold text-emerald-400">${promoters}</div><div class="text-xs text-dark-400 mt-1">Promoters (9–10)</div></div>
+                <div class="rounded-xl bg-dark-900/40 border border-dark-800/50 p-4"><div class="text-2xl font-bold text-red-400">${detractors}</div><div class="text-xs text-dark-400 mt-1">Detractors (0–6)</div></div>
+              </div>`);
+          }
           const byQ = {};
-          survey.forEach((s) => { (byQ[s.question] = byQ[s.question] || []).push(s); });
+          survey.filter((s) => s.question !== 'nps').forEach((s) => { (byQ[s.question] = byQ[s.question] || []).push(s); });
           document.getElementById('tables').insertAdjacentHTML('beforeend', `
             <h2 class="text-xl font-semibold text-white mt-10 mb-1">Who reads — survey answers</h2>
             <p class="text-xs text-dark-500 mb-4">Optional 3-tap card, anonymous. Shown once per reader from their second chapter.</p>

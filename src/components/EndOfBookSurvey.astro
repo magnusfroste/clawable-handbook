@@ -1,0 +1,67 @@
+---
+// End-of-book survey — shown only on the final chapter. Three taps:
+// NPS, interest in handbook three, and what it should prioritize.
+// The third answer is literal research input for the book being researched.
+---
+
+<div id="eob" class="mt-10 rounded-2xl bg-dark-900/50 border border-biz-500/20 p-6 md:p-8">
+  <p class="text-biz-400 text-xs uppercase tracking-widest font-medium mb-3">You reached the end</p>
+  <div id="eob-body">
+    <h3 class="text-lg font-semibold text-white mb-1">Three taps before you go — anonymous, as always.</h3>
+    <p id="eob-q" class="text-dark-300 text-sm mb-4">How likely are you to recommend this handbook to a colleague?</p>
+    <div id="eob-opts" class="flex flex-wrap gap-2"></div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var wrap = document.getElementById('eob');
+    if (!wrap) return;
+    try { if (localStorage.getItem('cw_endsurvey')) { wrap.remove(); return; } } catch (e) {}
+
+    var QUESTIONS = [
+      { key: 'nps', q: 'How likely are you to recommend this handbook to a colleague?',
+        opts: Array.from({ length: 11 }, function (_, i) { return [String(i), String(i)]; }) },
+      { key: 'book3', q: 'Handbook three is in research right now: tracking the measured results of agentic AI in real businesses — which use cases pay off fastest. Interested?',
+        opts: [['Yes — I want it', 'yes'], ['Maybe', 'maybe'], ['Not for me', 'no']] },
+      { key: 'book3focus', q: 'What should it prioritize?',
+        opts: [['Use cases by function', 'usecases'], ['Measured ROI evidence', 'roi'], ['Implementation playbooks', 'playbooks'], ['Governance & mandates', 'governance']] },
+    ];
+    var idx = 0;
+    var qEl = document.getElementById('eob-q');
+    var optsEl = document.getElementById('eob-opts');
+
+    function send(key, value) {
+      try {
+        if (window.__statsUrl && window.__statsKey) {
+          fetch(window.__statsUrl + '/rest/v1/book_events?apikey=' + encodeURIComponent(window.__statsKey), {
+            method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ event_type: 'answer', path: location.pathname.slice(0, 190), target: key + ':' + value, device: window.innerWidth < 768 ? 'mobile' : 'desktop' }),
+          }).catch(function () {});
+        }
+      } catch (e) {}
+    }
+    function render() {
+      if (idx >= QUESTIONS.length) {
+        try { localStorage.setItem('cw_endsurvey', '1'); } catch (e) {}
+        document.getElementById('eob-body').innerHTML =
+          '<h3 class="text-lg font-semibold text-white mb-1">Thank you — and welcome to the early side. 🦞</h3>' +
+          '<p class="text-dark-400 text-sm">Logged. Handbook three is being researched as you read this — the operators are already collecting the data. Watch the <a href="/business/appendix-changelog" class="text-biz-400 hover:text-biz-300">revision history</a>.</p>';
+        return;
+      }
+      var item = QUESTIONS[idx];
+      qEl.textContent = item.q;
+      optsEl.innerHTML = '';
+      item.opts.forEach(function (pair) {
+        var b = document.createElement('button');
+        b.textContent = pair[0];
+        b.className = item.key === 'nps'
+          ? 'w-9 h-9 rounded-lg border border-dark-700/60 text-dark-300 hover:text-white hover:border-biz-500/50 hover:bg-biz-500/10 transition-colors text-sm'
+          : 'px-4 py-2 rounded-full border border-dark-700/60 text-dark-300 hover:text-white hover:border-biz-500/50 hover:bg-biz-500/10 transition-colors text-sm';
+        b.addEventListener('click', function () { send(item.key, pair[1]); idx++; render(); });
+        optsEl.appendChild(b);
+      });
+    }
+    render();
+  })();
+</script>
