@@ -48,7 +48,7 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
       };
 
       try {
-        const [rows, daily, refs, visitStats, clicks, segments, survey, hours, agents] = await Promise.all([
+        const [rows, daily, refs, visitStats, clicks, segments, survey, hours, agents, listens] = await Promise.all([
           get('book_stats?select=*&order=views.desc'),
           get('book_stats_daily?select=*&order=day.asc').catch(() => []),
           get('book_referrers?select=*&order=views.desc&limit=15').catch(() => []),
@@ -58,6 +58,7 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
           get('book_survey?select=*').catch(() => []),
           get('book_hours?select=*').catch(() => []),
           get('book_agent_stats?select=*&order=events.desc').catch(() => []),
+          get('book_listens?select=*&order=starts.desc').catch(() => []),
         ]);
         if (!rows.length) { statusEl.textContent = 'No data yet. Come back after the first readers.'; return; }
 
@@ -301,6 +302,33 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
                 </div>
                 <div class="flex justify-between text-[10px] text-dark-500 mt-1"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div>
               </div>
+            </div>`);
+        }
+
+        // ---- Listening (audio) ----
+        if (listens.length) {
+          const totalStarts = listens.reduce((s, l) => s + Number(l.starts), 0);
+          const mobileStarts = listens.reduce((s, l) => s + Number(l.mobile_starts || 0), 0);
+          const withTime = listens.filter((l) => l.avg_listen_seconds != null);
+          const maxStarts = Math.max(...listens.map((l) => Number(l.starts)), 1);
+          document.getElementById('tables').insertAdjacentHTML('beforeend', `
+            <h2 class="text-xl font-semibold text-white mt-10 mb-1">Listening — audio playback</h2>
+            <p class="text-xs text-dark-500 mb-4">${totalStarts.toLocaleString()} listen starts · ${Math.round((100 * mobileStarts) / Math.max(totalStarts, 1))}% on mobile. If these numbers grow, premium pre-generated audio earns its build.</p>
+            <div class="rounded-xl border border-dark-800/50 overflow-hidden">
+              <table class="w-full text-sm">
+                <thead class="bg-dark-900/60 text-dark-400 text-left">
+                  <tr><th class="p-3">Chapter</th><th class="p-3 text-right">Starts</th><th class="p-3 text-right">Avg listened</th><th class="p-3"></th></tr>
+                </thead>
+                <tbody>
+                  ${listens.slice(0, 12).map((l) => `
+                    <tr class="border-t border-dark-800/40">
+                      <td class="p-3 text-dark-200 font-mono text-xs">${esc(l.path)}</td>
+                      <td class="p-3 text-right text-white">${Number(l.starts).toLocaleString()}</td>
+                      <td class="p-3 text-right text-dark-300">${l.avg_listen_seconds != null ? Math.floor(l.avg_listen_seconds / 60) + 'm ' + (l.avg_listen_seconds % 60) + 's' : '—'}</td>
+                      <td class="p-3 w-32"><div class="bg-dark-800 rounded h-2.5"><div class="h-2.5 rounded bg-claw-500/70" style="width:${Math.round((100 * Number(l.starts)) / maxStarts)}%"></div></div></td>
+                    </tr>`).join('')}
+                </tbody>
+              </table>
             </div>`);
         }
 

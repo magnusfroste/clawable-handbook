@@ -299,6 +299,35 @@ group by 1, 2;
 grant select on public.book_agent_stats to anon;
 ```
 
+## v6 migration (listening stats) — run once
+
+Listen starts + actual listened seconds per chapter. Decides whether
+premium pre-generated audio is worth building.
+
+```sql
+create view public.book_listens as
+select
+  path,
+  count(*) filter (where target = 'listen')::int                    as starts,
+  round(avg(seconds) filter (where target = 'listen-done'))::int    as avg_listen_seconds,
+  count(*) filter (where target = 'listen' and device = 'mobile')::int as mobile_starts
+from public.book_events
+where event_type = 'click' and target in ('listen', 'listen-done')
+group by path;
+
+grant select on public.book_listens to anon;
+
+-- Keep listen events out of the outbound-clicks table
+create or replace view public.book_clicks as
+select
+  coalesce(target, '(unknown)') as target,
+  count(*)::int                 as clicks,
+  max(ts)                       as last_click
+from public.book_events
+where event_type = 'click' and target not in ('listen', 'listen-done')
+group by 1;
+```
+
 ## Later, if you want more
 
 - Cleanup: `delete from book_events where ts < now() - interval '12 months'`.
