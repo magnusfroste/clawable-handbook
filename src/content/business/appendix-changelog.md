@@ -40,6 +40,7 @@ appendix: true
 - **The trust curve and the warm negotiator** (ch 14): Capgemini's trust-fell-as-adoption-tripled finding, and MIT's tournament showing warm agents out-negotiate ruthless ones.
 - **The April platform cutoff** (ch 7): Anthropic's subscription-policy change as the commercial twin of June's export-control lesson.
 - **Meta-Harness** (Builder ch 35): the Stanford/MIT/KRAFTON paper — empirical proof that the harness matters as much as the model.
+- **The landscape completed** (Builder ch 5): OpenAI Codex and Google Antigravity join the control-plane table — all three frontier labs now ship their own agent layer, which settles the chapter's central claim.
 - **Structural fixes:** The Contract Layer chapter completed and moved to follow The Agent's Superpowers; chapter titles and operator naming made consistent throughout.
 
 ## June 2026 Edition

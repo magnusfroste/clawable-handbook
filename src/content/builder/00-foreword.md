@@ -83,7 +83,7 @@ The narrative arc is deliberate:
 
 We cover:
 - OpenClaw's actual architecture — system prompt, workspace files, heartbeat, skills, sessions — and what the source code actually confirms
-- The agentic control plane — how Claude Code, Cursor, Cline, and Roo work under the hood, why thin wrappers fail, and what a defensible moat requires
+- The agentic control plane — how Claude Code, Codex, Antigravity, Cursor, and Cline work under the hood, why thin wrappers fail, and what a defensible moat requires
 - The API layer — the three diverging formats (Chat Completions, Responses, Messages) and how adapters like LiteLLM preserve portability
 - Flowwink as a production self-hosted SaaS/ERP stack — CMS, CRM, e-commerce, booking, and more — with FlowPilot designed as a native autonomous agent from day one
 - Agent-Driven Development (ADD): how agents test and evaluate other agents through A2A dispatch, MCP inspection, and structured findings

@@ -1,6 +1,6 @@
 ---
 title: "The Agentic Control Plane"
-description: "Claude Code, Cursor, Cline, Roo, Windsurf, Copilot — what they actually are, how they work, and what the thin wrapper problem reveals about moats in the AI era."
+description: "Claude Code, Codex, Antigravity, Cursor, Cline, Copilot — what they actually are, how they work, and what the thin wrapper problem reveals about moats in the AI era."
 order: 5
 icon: "command-line"
 ---
@@ -11,23 +11,27 @@ icon: "command-line"
 
 Applied to AI agents: the **model** is the data plane — it processes tokens and generates responses. The **control plane** is everything around it: what context the model sees, what tools it can call, what permissions govern those calls, how results feed back into the loop.
 
-Claude Code, Cursor, Cline, Roo, Windsurf, Copilot — they are all control planes sitting above a model. The model changes. The control plane is the product.
+Claude Code, OpenAI Codex, Google Antigravity, Cursor, Cline, Roo, Copilot — they are all control planes sitting above a model. The model changes. The control plane is the product.
 
 This is not a subtle distinction. It is the central business and architectural question of the current moment.
 
 ---
 
-## The Landscape (April 2026)
+## The Landscape (July 2026)
 
 | Tool | Type | Architecture | Model approach | Moat |
 |------|------|-------------|----------------|------|
 | **Claude Code** | Terminal agent | Agentic loop + React/Ink TUI | Claude-native, Messages API | Deep Anthropic integration, CLAUDE.md, Teams |
+| **OpenAI Codex** | Cloud coding agent | Async sandboxed tasks → diffs and PRs; ChatGPT-embedded + standalone macOS app (Feb 2026) | GPT-native | ChatGPT distribution, GitHub-native delegation |
+| **Google Antigravity** | Agent-first IDE | Parallel agents + manager view, browser-based verification, CLI | Gemini-native (launched with Gemini 3, Nov 2025) | Google ecosystem, multi-agent orchestration |
 | **Cursor** | AI-native IDE | Fork of VS Code + agent layer | Model-agnostic, Chat Completions | IDE depth, codebase indexing; acquired by SpaceX for $60B (June 2026) |
 | **Windsurf** | AI-native IDE | Codeium-based IDE | OpenAI deal collapsed (Jul 2025); CEO/team to Google ($2.4B); IP to Cognition | Uncertain roadmap post-acquisition collapse |
 | **Cline** | VS Code extension | Agentic loop, XML tool format | Model-agnostic, 59k stars | Open-source, extensibility |
 | **Roo** | VS Code extension | Multi-agent, role-driven | Model-agnostic, 23k stars | Custom modes, agentic orchestration |
 | **GitHub Copilot** | IDE + chat | GitHub integration + agent | Mostly GPT-4o / o1 | GitHub ecosystem, enterprise distribution |
 | **Devin** | Autonomous coder | Full autonomy, cloud-hosted | Proprietary | Deep autonomy, long-horizon tasks |
+
+**The lab signal:** all three frontier labs now ship their own control plane — Anthropic's Claude Code, OpenAI's Codex, Google's Antigravity. Same layer, three philosophies: the terminal, the delegated cloud task, the agent-first IDE. When the companies that train the models each build an agent layer *on top of their own models*, the premise of this chapter stops being a thesis. It is the product strategy of the entire frontier.
 
 **The consolidation signal:** OpenAI agreed to acquire Windsurf for $3 billion (May 2025) but the deal collapsed in July 2025. Google then hired Windsurf's CEO and key engineers in a $2.4B talent and licensing deal; Cognition acquired the remaining product and IP. Then June 2026 removed all doubt about where the value sits: SpaceX acquired Anysphere — Cursor's parent — for **$60 billion in stock**, the largest venture-backed acquisition in history, at roughly fifteen times revenue. The strategic logic, per the deal coverage: compute plus data plus distribution — Cursor's coding data and enterprise reach, SpaceX's Colossus compute. The control plane layer is not just being fought over anymore. It is what the biggest checks in technology are written for.
 
