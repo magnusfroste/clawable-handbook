@@ -48,7 +48,7 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
       };
 
       try {
-        const [rows, daily, refs, visitStats, clicks, segments, survey, hours, agents, listens] = await Promise.all([
+        const [rows, daily, refs, visitStats, clicks, segments, survey, hours, agents, listens, ratings] = await Promise.all([
           get('book_stats?select=*&order=views.desc'),
           get('book_stats_daily?select=*&order=day.asc').catch(() => []),
           get('book_referrers?select=*&order=views.desc&limit=15').catch(() => []),
@@ -59,6 +59,7 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
           get('book_hours?select=*').catch(() => []),
           get('book_agent_stats?select=*&order=events.desc').catch(() => []),
           get('book_listens?select=*&order=starts.desc').catch(() => []),
+          get('book_ratings?select=*&order=last_vote.desc').catch(() => []),
         ]);
         if (!rows.length) { statusEl.textContent = 'No data yet. Come back after the first readers.'; return; }
 
@@ -302,6 +303,30 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
                 </div>
                 <div class="flex justify-between text-[10px] text-dark-500 mt-1"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div>
               </div>
+            </div>`);
+        }
+
+        // ---- Chapter feedback (thumbs) ----
+        if (ratings.length) {
+          const upT = ratings.reduce((s, r) => s + Number(r.up), 0);
+          const downT = ratings.reduce((s, r) => s + Number(r.down), 0);
+          const sorted2 = [...ratings].sort((a, b) => (Number(b.up) + Number(b.down)) - (Number(a.up) + Number(a.down)));
+          document.getElementById('tables').insertAdjacentHTML('beforeend', `
+            <h2 class="text-xl font-semibold text-white mt-10 mb-1">Chapter feedback</h2>
+            <p class="text-xs text-dark-500 mb-4">👍 ${upT} · 👎 ${downT}. A thumbs-down plus funnel drop-off on the same chapter = next month's revision target.</p>
+            <div class="rounded-xl border border-dark-800/50 overflow-hidden">
+              <table class="w-full text-sm"><tbody>
+                ${sorted2.slice(0, 12).map((r) => {
+                  const total = Number(r.up) + Number(r.down);
+                  const pct = total ? Math.round((100 * Number(r.up)) / total) : 0;
+                  return `
+                    <tr class="border-t border-dark-800/40 first:border-t-0">
+                      <td class="p-3 text-dark-200 font-mono text-xs">${esc(r.path)}</td>
+                      <td class="p-3 w-40"><div class="bg-red-900/40 rounded h-2.5"><div class="h-2.5 rounded bg-emerald-500/70" style="width:${pct}%"></div></div></td>
+                      <td class="p-3 text-right text-dark-300 w-28">👍 ${r.up} · 👎 ${r.down}</td>
+                    </tr>`;
+                }).join('')}
+              </tbody></table>
             </div>`);
         }
 

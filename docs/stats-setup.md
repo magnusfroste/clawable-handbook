@@ -328,6 +328,35 @@ where event_type = 'click' and target not in ('listen', 'listen-done')
 group by 1;
 ```
 
+## v7 migration (chapter feedback) — run once
+
+One-tap thumbs per chapter. Sparse but directional: thumbs-down + funnel
+drop-off on the same chapter = next month's revision target.
+
+```sql
+create view public.book_ratings as
+select
+  path,
+  count(*) filter (where target = 'rating:up')::int   as up,
+  count(*) filter (where target = 'rating:down')::int as down,
+  max(ts)                                             as last_vote
+from public.book_events
+where event_type = 'answer' and target like 'rating:%'
+group by path;
+
+grant select on public.book_ratings to anon;
+
+-- Keep ratings out of the survey table
+create or replace view public.book_survey as
+select
+  split_part(target, ':', 1) as question,
+  split_part(target, ':', 2) as answer,
+  count(*)::int              as answers
+from public.book_events
+where event_type = 'answer' and target like '%:%' and target not like 'rating:%'
+group by 1, 2;
+```
+
 ## Later, if you want more
 
 - Cleanup: `delete from book_events where ts < now() - interval '12 months'`.

@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import ListenButton from '../../components/ListenButton.astro';
+import ChapterFeedback from '../../components/ChapterFeedback.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -97,6 +98,8 @@ const chapterStructuredData = {
       <div class="prose prose-invert prose-lg max-w-none [&_table]:block [&_table]:overflow-x-auto">
         <Content />
       </div>
+      <ChapterFeedback accent="claw" />
+
       <nav class="mt-16 pt-8 border-t border-dark-800 flex justify-between gap-4">
         {prev ? (
           <a href={`/builder/${stripSlug(prev.id)}`} class="group flex-1">
