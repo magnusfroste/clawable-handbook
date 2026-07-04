@@ -2,7 +2,7 @@
 title: "Memory Architecture"
 description: "The 4-tier memory system — session, working, long-term, and semantic memory powered by pgvector."
 order: 18
-icon: "cpu-chip"
+icon: "circle-stack"
 ---
 
 Think about your best colleague at work. What makes them valuable isn't just what they know today — it's that they remember your last conversation, they know how your business operates, they recall what didn't work last time, and they've built up an intuition about what you actually need. That accumulated context is what separates a trusted colleague from a new hire.

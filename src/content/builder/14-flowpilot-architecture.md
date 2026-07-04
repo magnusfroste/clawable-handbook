@@ -2,7 +2,7 @@
 title: "Inside FlowPilot"
 description: "The embedded agent architecture — what native agentic design looks like when the agent lives inside the platform."
 order: 14
-icon: "cpu-chip"
+icon: "bolt"
 ---
 
 > The previous chapter covered the external operator — what it takes to deploy and govern an agent that lives above your stack. This one covers the other half. An agent that lives *inside* the platform it operates.

@@ -2,7 +2,7 @@
 title: "OpenClaw Architecture — Operator's Handbook"
 description: "The essential architectural understanding required to deploy, govern, and troubleshoot an autonomous OpenClaw operator."
 order: 13
-icon: "cpu-chip"
+icon: "cog-6-tooth"
 ---
 
 > You do not need to read the engine manual to drive the car. But you do need to understand enough about how it works to know when it is behaving correctly and when it is not.

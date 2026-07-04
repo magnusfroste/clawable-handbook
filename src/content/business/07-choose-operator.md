@@ -2,7 +2,7 @@
 title: "Choose Your Operator"
 description: "Build it yourself, buy a proprietary platform, or use the open-source framework the market has converged on — and how to think about the trade-off."
 order: 7
-icon: "scale"
+icon: "compass"
 ---
 
 > The choice is not between three products. It is between three relationships with time.
