@@ -23,6 +23,7 @@ const btnClass =
     <span id="listen-label">Listen</span>
   </button>
   <button id="listen-rate" class="hidden text-xs px-3 py-1.5 rounded-full bg-dark-800/60 border border-dark-700/50 text-dark-400 hover:text-dark-200 transition-colors">1×</button>
+  <button id="listen-voice" class="hidden text-xs px-3 py-1.5 rounded-full bg-dark-800/60 border border-dark-700/50 text-dark-400 hover:text-dark-200 transition-colors max-w-[9rem] truncate" title="Change voice"></button>
   <button id="listen-stop" class="hidden text-xs px-3 py-1.5 rounded-full bg-dark-800/60 border border-dark-700/50 text-dark-400 hover:text-dark-200 transition-colors">Stop</button>
   <span id="listen-time" class="text-xs text-dark-500"></span>
 </div>
@@ -38,6 +39,7 @@ const btnClass =
     var timeEl = document.getElementById('listen-time');
     var iconPlay = document.getElementById('listen-icon-play');
     var iconPause = document.getElementById('listen-icon-pause');
+    var voiceBtn = document.getElementById('listen-voice');
     bar.classList.remove('hidden');
     bar.classList.add('flex');
 
@@ -81,23 +83,51 @@ const btnClass =
       if (listenMs > 2000 && !reported) { reported = true; beaconEvent('listen-done', listenMs / 1000); }
     }
 
-    function pickVoice() {
-      var vs = speechSynthesis.getVoices().filter(function (v) { return v.lang && v.lang.indexOf('en') === 0; });
-      if (!vs.length) return null;
-      // Quality first: modern devices ship premium voices but list them last.
-      var tiers = [
-        function (v) { return /natural|premium|enhanced/i.test(v.name); },
-        function (v) { return /Samantha|Daniel|Karen|Moira|Google US English|Google UK English|Aria|Jenny|Ava|Zoe/i.test(v.name); },
-        function (v) { return v.lang === 'en-US' || v.lang === 'en_US'; },
-      ];
-      for (var i = 0; i < tiers.length; i++) {
-        var hit = vs.find(tiers[i]);
-        if (hit) return hit;
-      }
-      return vs[0];
+    var rankedVoices = [];
+    function rankVoices() {
+      var novelty = /Albert|Bad News|Bahh|Bells|Boing|Bubbles|Cellos|Deranged|Good News|Jester|Organ|Superstar|Trinoids|Whisper|Wobble|Zarvox|Fred|Junior|Kathy|Ralph|Eddy|Flo|Grandma|Grandpa|Reed|Rocko|Sandy|Shelley/i;
+      var vs = speechSynthesis.getVoices().filter(function (v) { return v.lang && v.lang.indexOf('en') === 0 && !novelty.test(v.name); });
+      if (!vs.length) return [];
+      var ranked = [];
+      var used = {};
+      function add(v) { if (v && !used[v.name]) { used[v.name] = 1; ranked.push(v); } }
+      // 1. Premium/Natural/Enhanced voices — best quality wherever they exist
+      vs.forEach(function (v) { if (/natural|premium|enhanced/i.test(v.name)) add(v); });
+      // 2. Known-good names in OUR preference order (network voices first —
+      //    Chrome lists local system voices before the better Google ones)
+      ['Google US English', 'Google UK English Female', 'Google UK English Male',
+       'Microsoft Aria', 'Microsoft Jenny', 'Microsoft Guy',
+       'Ava', 'Zoe', 'Samantha', 'Daniel', 'Karen', 'Moira'].forEach(function (name) {
+        add(vs.find(function (v) { return v.name.indexOf(name) !== -1; }));
+      });
+      // 3. Any en-US network voice, then any en-US, then the rest
+      vs.forEach(function (v) { if (!v.localService && (v.lang === 'en-US' || v.lang === 'en_US')) add(v); });
+      vs.forEach(function (v) { if (v.lang === 'en-US' || v.lang === 'en_US') add(v); });
+      vs.forEach(add);
+      return ranked;
     }
-    speechSynthesis.onvoiceschanged = function () { voice = pickVoice(); };
-    voice = pickVoice();
+    function currentVoice() {
+      if (!rankedVoices.length) rankedVoices = rankVoices();
+      if (!rankedVoices.length) return null;
+      try {
+        var saved = localStorage.getItem('cw_voice');
+        if (saved) {
+          var hit = rankedVoices.find(function (v) { return v.name === saved; });
+          if (hit) return hit;
+        }
+      } catch (e) {}
+      return rankedVoices[0];
+    }
+    function updateVoiceBtn() {
+      var v = currentVoice();
+      if (v) {
+        voiceBtn.textContent = v.name.replace(/\s*\(.*\)$/, '').slice(0, 18);
+        voiceBtn.title = 'Voice: ' + v.name + ' — click to change';
+      }
+    }
+    speechSynthesis.onvoiceschanged = function () { rankedVoices = rankVoices(); voice = currentVoice(); updateVoiceBtn(); };
+    rankedVoices = rankVoices();
+    voice = currentVoice();
 
     function clearHighlight() {
       blocks.forEach(function (b) { b.style.background = ''; b.style.borderRadius = ''; });
@@ -117,7 +147,7 @@ const btnClass =
         .replace(/`(validated|partial|hypothesis)`/g, '')
         .replace(/[€]/g, ' euro ').replace(/\bSEK\b/g, 'Swedish kronor');
       var u = new SpeechSynthesisUtterance(text);
-      if (!voice) voice = pickVoice(); // voices load async — retry at speak time
+      if (!voice) { voice = currentVoice(); updateVoiceBtn(); } // voices load async — retry at speak time
       if (voice) u.voice = voice;
       u.lang = 'en-US'; // never let a non-English default voice read English text
       u.rate = rates[rateIdx];
@@ -131,6 +161,8 @@ const btnClass =
       label.textContent = state === 'playing' ? 'Pause' : state === 'paused' ? 'Resume' : 'Listen';
       stopBtn.classList.toggle('hidden', state === 'stopped');
       rateBtn.classList.toggle('hidden', state === 'stopped');
+      voiceBtn.classList.toggle('hidden', state === 'stopped');
+      if (state !== 'stopped') updateVoiceBtn();
     }
     function stopAll() {
       playing = false;
@@ -164,6 +196,16 @@ const btnClass =
       rateIdx = (rateIdx + 1) % rates.length;
       rateBtn.textContent = rates[rateIdx] + '×';
       if (playing) { speechSynthesis.cancel(); speakFrom(idx); }
+    });
+    voiceBtn.addEventListener('click', function () {
+      if (!rankedVoices.length) rankedVoices = rankVoices();
+      if (!rankedVoices.length) return;
+      var pool = rankedVoices.slice(0, Math.min(8, rankedVoices.length));
+      var cur = voice ? pool.findIndex(function (v) { return v.name === voice.name; }) : -1;
+      voice = pool[(cur + 1) % pool.length];
+      try { localStorage.setItem('cw_voice', voice.name); } catch (e) {}
+      updateVoiceBtn();
+      if (playing) { speechSynthesis.cancel(); speakFrom(idx); } // hear the new voice immediately
     });
     stopBtn.addEventListener('click', stopAll);
     window.addEventListener('pagehide', function () { speechSynthesis.cancel(); reportListen(); });
