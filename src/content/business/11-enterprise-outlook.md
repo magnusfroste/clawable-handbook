@@ -201,6 +201,8 @@ Across every tier, the pattern holds: **value scales with the number of systems 
 
 **If you could start anywhere:** start at contract lifecycle integrity. It requires reading across CRM, contracts, and finance — three modules that every B2B SaaS company runs, and that almost no one reconciles in real time. The risk is structural, the findings are immediate, and the payback is visible on day one. The €1.1 million surfaced on April 19 was not exceptional. It was what happens every time an operator reads a B2B business for the first time.
 
+*For the concrete version of this map — the thirteen standard processes, what an agent runs in each today, and which lever each pulls — see the [process catalog appendix](/business/appendix-process-catalog).*
+
 ---
 
 ## The Dual-Model End State
