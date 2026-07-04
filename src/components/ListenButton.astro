@@ -65,14 +65,20 @@ const btnClass =
 
     function pickVoice() {
       var vs = speechSynthesis.getVoices().filter(function (v) { return v.lang && v.lang.indexOf('en') === 0; });
-      var prefs = ['Samantha', 'Daniel', 'Google US English', 'Google UK English Female', 'Microsoft Aria'];
-      for (var i = 0; i < prefs.length; i++) {
-        var hit = vs.find(function (v) { return v.name.indexOf(prefs[i]) !== -1; });
+      if (!vs.length) return null;
+      // Quality first: modern devices ship premium voices but list them last.
+      var tiers = [
+        function (v) { return /natural|premium|enhanced/i.test(v.name); },
+        function (v) { return /Samantha|Daniel|Karen|Moira|Google US English|Google UK English|Aria|Jenny|Ava|Zoe/i.test(v.name); },
+        function (v) { return v.lang === 'en-US' || v.lang === 'en_US'; },
+      ];
+      for (var i = 0; i < tiers.length; i++) {
+        var hit = vs.find(tiers[i]);
         if (hit) return hit;
       }
-      return vs[0] || null;
+      return vs[0];
     }
-    speechSynthesis.onvoiceschanged = function () { if (!voice) voice = pickVoice(); };
+    speechSynthesis.onvoiceschanged = function () { voice = pickVoice(); };
     voice = pickVoice();
 
     function clearHighlight() {
@@ -93,7 +99,9 @@ const btnClass =
         .replace(/`(validated|partial|hypothesis)`/g, '')
         .replace(/[€]/g, ' euro ').replace(/\bSEK\b/g, 'Swedish kronor');
       var u = new SpeechSynthesisUtterance(text);
+      if (!voice) voice = pickVoice(); // voices load async — retry at speak time
       if (voice) u.voice = voice;
+      u.lang = 'en-US'; // never let a non-English default voice read English text
       u.rate = rates[rateIdx];
       u.onend = function () { if (playing) speakFrom(idx + 1); };
       u.onerror = function () { if (playing) speakFrom(idx + 1); };
