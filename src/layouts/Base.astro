@@ -118,6 +118,8 @@ const allSchemas = [orgSchema, webSiteSchema, ...schemaList];
         // Anonymous, aggregate-only reading analytics. No cookies, no IDs, no IP stored.
         // The visit id lives in sessionStorage only (dies with the tab) — per-visit
         // grouping without any cross-visit tracking.
+        window.__statsUrl = statsUrl;
+        window.__statsKey = statsKey;
         (function () {
           if (navigator.webdriver) return;
           var activeMs = 0;

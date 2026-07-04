@@ -1,0 +1,152 @@
+---
+// Browser-native text-to-speech for chapter pages. Zero cost, zero
+// infrastructure, always reads the CURRENT text — the living book stays
+// listenable without regenerating audio on every revision.
+interface Props {
+  accent?: 'claw' | 'biz';
+}
+const { accent = 'claw' } = Astro.props;
+// Full literal class strings so Tailwind's scanner picks them up.
+const btnClass =
+  accent === 'biz'
+    ? 'inline-flex items-center gap-2 px-4 py-2 rounded-full bg-biz-500/10 border border-biz-500/30 text-biz-300 hover:bg-biz-500/20 transition-colors text-sm font-medium'
+    : 'inline-flex items-center gap-2 px-4 py-2 rounded-full bg-claw-500/10 border border-claw-500/30 text-claw-300 hover:bg-claw-500/20 transition-colors text-sm font-medium';
+---
+
+<div id="listen-bar" class="hidden items-center gap-3 mb-10">
+  <button
+    id="listen-toggle"
+    class={btnClass}
+  >
+    <svg id="listen-icon-play" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    <svg id="listen-icon-pause" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+    <span id="listen-label">Listen</span>
+  </button>
+  <button id="listen-rate" class="hidden text-xs px-3 py-1.5 rounded-full bg-dark-800/60 border border-dark-700/50 text-dark-400 hover:text-dark-200 transition-colors">1×</button>
+  <button id="listen-stop" class="hidden text-xs px-3 py-1.5 rounded-full bg-dark-800/60 border border-dark-700/50 text-dark-400 hover:text-dark-200 transition-colors">Stop</button>
+  <span id="listen-time" class="text-xs text-dark-500"></span>
+</div>
+
+<script is:inline>
+  function initListen() {
+    if (!('speechSynthesis' in window)) return; // silently absent if unsupported
+    var bar = document.getElementById('listen-bar');
+    var toggle = document.getElementById('listen-toggle');
+    var stopBtn = document.getElementById('listen-stop');
+    var rateBtn = document.getElementById('listen-rate');
+    var label = document.getElementById('listen-label');
+    var timeEl = document.getElementById('listen-time');
+    var iconPlay = document.getElementById('listen-icon-play');
+    var iconPause = document.getElementById('listen-icon-pause');
+    bar.classList.remove('hidden');
+    bar.classList.add('flex');
+
+    var prose = document.querySelector('.prose');
+    if (!prose) return;
+    var blocks = Array.prototype.filter.call(
+      prose.querySelectorAll('p, h2, h3, h4, li, blockquote'),
+      function (el) {
+        if (el.closest('pre') || el.closest('table')) return false;
+        if (el.tagName === 'BLOCKQUOTE') return true;
+        if (el.closest('blockquote') && el.tagName === 'P') return false; // read via parent
+        var t = (el.textContent || '').trim();
+        return t.length > 1;
+      }
+    );
+
+    var words = blocks.reduce(function (s, b) { return s + b.textContent.split(/\s+/).length; }, 0);
+    timeEl.textContent = '~' + Math.max(1, Math.round(words / 160)) + ' min';
+
+    var rates = [1, 1.25, 1.5];
+    var rateIdx = 0;
+    var idx = 0;
+    var playing = false;
+    var voice = null;
+
+    function pickVoice() {
+      var vs = speechSynthesis.getVoices().filter(function (v) { return v.lang && v.lang.indexOf('en') === 0; });
+      var prefs = ['Samantha', 'Daniel', 'Google US English', 'Google UK English Female', 'Microsoft Aria'];
+      for (var i = 0; i < prefs.length; i++) {
+        var hit = vs.find(function (v) { return v.name.indexOf(prefs[i]) !== -1; });
+        if (hit) return hit;
+      }
+      return vs[0] || null;
+    }
+    speechSynthesis.onvoiceschanged = function () { if (!voice) voice = pickVoice(); };
+    voice = pickVoice();
+
+    function clearHighlight() {
+      blocks.forEach(function (b) { b.style.background = ''; b.style.borderRadius = ''; });
+    }
+    function speakFrom(i) {
+      if (i >= blocks.length) return stopAll();
+      idx = i;
+      clearHighlight();
+      var el = blocks[i];
+      el.style.background = 'rgba(232, 93, 74, 0.08)';
+      el.style.borderRadius = '6px';
+      var rect = el.getBoundingClientRect();
+      if (rect.top < 80 || rect.bottom > window.innerHeight - 80) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      var text = el.textContent.replace(/\s+/g, ' ').trim()
+        .replace(/`(validated|partial|hypothesis)`/g, '')
+        .replace(/[€]/g, ' euro ').replace(/\bSEK\b/g, 'Swedish kronor');
+      var u = new SpeechSynthesisUtterance(text);
+      if (voice) u.voice = voice;
+      u.rate = rates[rateIdx];
+      u.onend = function () { if (playing) speakFrom(idx + 1); };
+      u.onerror = function () { if (playing) speakFrom(idx + 1); };
+      speechSynthesis.speak(u);
+    }
+    function setUI(state) {
+      iconPlay.classList.toggle('hidden', state === 'playing');
+      iconPause.classList.toggle('hidden', state !== 'playing');
+      label.textContent = state === 'playing' ? 'Pause' : state === 'paused' ? 'Resume' : 'Listen';
+      stopBtn.classList.toggle('hidden', state === 'stopped');
+      rateBtn.classList.toggle('hidden', state === 'stopped');
+    }
+    function stopAll() {
+      playing = false;
+      speechSynthesis.cancel();
+      clearHighlight();
+      idx = 0;
+      setUI('stopped');
+    }
+
+    toggle.addEventListener('click', function () {
+      if (playing) {
+        speechSynthesis.pause();
+        playing = false;
+        setUI('paused');
+      } else if (speechSynthesis.paused && speechSynthesis.speaking) {
+        speechSynthesis.resume();
+        playing = true;
+        setUI('playing');
+      } else {
+        playing = true;
+        setUI('playing');
+        speakFrom(idx);
+        // anonymous listen event via the existing analytics store
+        try {
+          if (window.__statsUrl && window.__statsKey) {
+            fetch(window.__statsUrl + '/rest/v1/book_events?apikey=' + encodeURIComponent(window.__statsKey), {
+              method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ event_type: 'click', path: location.pathname.slice(0, 190), target: 'listen', device: window.innerWidth < 768 ? 'mobile' : 'desktop' }),
+            }).catch(function () {});
+          }
+        } catch (e) {}
+      }
+    });
+    rateBtn.addEventListener('click', function () {
+      rateIdx = (rateIdx + 1) % rates.length;
+      rateBtn.textContent = rates[rateIdx] + '×';
+      if (playing) { speechSynthesis.cancel(); speakFrom(idx); }
+    });
+    stopBtn.addEventListener('click', stopAll);
+    window.addEventListener('pagehide', function () { speechSynthesis.cancel(); });
+  }
+  // The prose content renders after this component — wait for the full DOM.
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initListen);
+  else initListen();
+</script>

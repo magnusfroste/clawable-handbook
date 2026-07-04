@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import ListenButton from '../../components/ListenButton.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -116,9 +117,11 @@ const structuredDataList = [chapterStructuredData, breadcrumbList, ...(faqStruct
       <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
         {chapter.data.title}
       </h1>
-      <p class="text-xl text-dark-300 mb-12 max-w-2xl">
+      <p class="text-xl text-dark-300 mb-8 max-w-2xl">
         {chapter.data.description}
       </p>
+
+      <ListenButton accent="biz" />
 
       <div class="prose prose-invert prose-lg max-w-none
         [&_a]:text-biz-400 [&_a:hover]:text-biz-300
