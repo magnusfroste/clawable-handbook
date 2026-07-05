@@ -4,10 +4,41 @@
 // with a name + reference-consent checkbox. The taps are anonymous like
 // everything else on the site; the note is a separate, opt-in, named
 // submission that goes to its own non-public table (see docs/stats-setup.md).
+interface Props {
+  accent?: 'biz' | 'claw';
+}
+const { accent = 'biz' } = Astro.props;
+// Full literal class strings per accent so Tailwind's JIT scanner picks them up.
+// The dynamic (JS-generated) buttons read the accent strings from data-* below.
+const T =
+  accent === 'claw'
+    ? {
+        border: 'border-claw-500/20',
+        eyebrow: 'text-claw-400',
+        optHover: 'hover:border-claw-500/50 hover:bg-claw-500/10',
+        send: 'bg-claw-500/10 border-claw-500/30 text-claw-300 hover:bg-claw-500/20',
+        link: 'text-claw-400 hover:text-claw-300',
+        focus: 'focus:border-claw-500/50',
+      }
+    : {
+        border: 'border-biz-500/20',
+        eyebrow: 'text-biz-400',
+        optHover: 'hover:border-biz-500/50 hover:bg-biz-500/10',
+        send: 'bg-biz-500/10 border-biz-500/30 text-biz-300 hover:bg-biz-500/20',
+        link: 'text-biz-400 hover:text-biz-300',
+        focus: 'focus:border-biz-500/50',
+      };
 ---
 
-<div id="eob" class="mt-10 rounded-2xl bg-dark-900/50 border border-biz-500/20 p-6 md:p-8">
-  <p class="text-biz-400 text-xs uppercase tracking-widest font-medium mb-3">You reached the end</p>
+<div
+  id="eob"
+  class={`mt-10 rounded-2xl bg-dark-900/50 border ${T.border} p-6 md:p-8`}
+  data-opt-hover={T.optHover}
+  data-send={T.send}
+  data-link={T.link}
+  data-focus={T.focus}
+>
+  <p class={`${T.eyebrow} text-xs uppercase tracking-widest font-medium mb-3`}>You reached the end</p>
   <div id="eob-body">
     <h3 class="text-lg font-semibold text-white mb-1">Three taps before you go — anonymous, as always.</h3>
     <p id="eob-q" class="text-dark-300 text-sm mb-4">How likely are you to recommend this handbook to a colleague?</p>
@@ -34,6 +65,13 @@
     var optsEl = document.getElementById('eob-opts');
     var bodyEl = document.getElementById('eob-body');
     var device = window.innerWidth < 768 ? 'mobile' : 'desktop';
+    // Accent-specific class strings, set on the wrapper in the frontmatter.
+    var A = {
+      optHover: wrap.dataset.optHover || 'hover:border-biz-500/50 hover:bg-biz-500/10',
+      send: wrap.dataset.send || 'bg-biz-500/10 border-biz-500/30 text-biz-300 hover:bg-biz-500/20',
+      link: wrap.dataset.link || 'text-biz-400 hover:text-biz-300',
+      focus: wrap.dataset.focus || 'focus:border-biz-500/50',
+    };
 
     function send(key, value) {
       try {
@@ -64,20 +102,20 @@
       try { localStorage.setItem('cw_endsurvey', '1'); } catch (e) {}
       bodyEl.innerHTML =
         '<h3 class="text-lg font-semibold text-white mb-1">Thank you — and welcome to the early side. 🦞</h3>' +
-        '<p class="text-dark-400 text-sm">Logged. Handbook three is being researched as you read this — the operators are already collecting the data. Watch the <a href="/business/appendix-changelog" class="text-biz-400 hover:text-biz-300">revision history</a>.</p>';
+        '<p class="text-dark-400 text-sm">Logged. Handbook three is being researched as you read this — the operators are already collecting the data. Watch the <a href="/business/appendix-changelog" class="' + A.link + '">revision history</a>.</p>';
     }
     function renderTestimonial() {
       bodyEl.innerHTML =
         '<h3 class="text-lg font-semibold text-white mb-1">One more thing — entirely optional.</h3>' +
         '<p class="text-dark-300 text-sm mb-4">Leave a short note (a few lines) — what stood out, or what would make this better. I read every one.</p>' +
-        '<textarea id="eob-note" maxlength="400" rows="3" placeholder="Your note…" class="w-full rounded-lg bg-dark-800/60 border border-dark-700/50 text-dark-200 text-sm p-3 mb-3 focus:outline-none focus:border-biz-500/50 placeholder:text-dark-600"></textarea>' +
-        '<input id="eob-name" type="text" maxlength="80" placeholder="Your name (optional)" class="w-full rounded-lg bg-dark-800/60 border border-dark-700/50 text-dark-200 text-sm px-3 py-2 mb-3 focus:outline-none focus:border-biz-500/50 placeholder:text-dark-600" />' +
+        '<textarea id="eob-note" maxlength="400" rows="3" placeholder="Your note…" class="w-full rounded-lg bg-dark-800/60 border border-dark-700/50 text-dark-200 text-sm p-3 mb-3 focus:outline-none ' + A.focus + ' placeholder:text-dark-600"></textarea>' +
+        '<input id="eob-name" type="text" maxlength="80" placeholder="Your name (optional)" class="w-full rounded-lg bg-dark-800/60 border border-dark-700/50 text-dark-200 text-sm px-3 py-2 mb-3 focus:outline-none ' + A.focus + ' placeholder:text-dark-600" />' +
         '<label class="flex items-start gap-2 mb-4 cursor-pointer">' +
           '<input id="eob-ref" type="checkbox" class="mt-0.5" />' +
           '<span class="text-dark-400 text-xs">I\'m fine with this being used publicly, with my name, as a reference — e.g. on the landing page. Unchecked, it\'s only used to make the handbook better.</span>' +
         '</label>' +
         '<div class="flex gap-2">' +
-          '<button id="eob-send" class="px-4 py-2 rounded-full bg-biz-500/10 border border-biz-500/30 text-biz-300 hover:bg-biz-500/20 transition-colors text-sm font-medium">Send</button>' +
+          '<button id="eob-send" class="px-4 py-2 rounded-full border ' + A.send + ' transition-colors text-sm font-medium">Send</button>' +
           '<button id="eob-skip" class="px-4 py-2 rounded-full border border-dark-700/60 text-dark-400 hover:text-dark-200 transition-colors text-sm">Skip</button>' +
         '</div>';
       document.getElementById('eob-skip').addEventListener('click', function () {
@@ -103,8 +141,8 @@
         var b = document.createElement('button');
         b.textContent = pair[0];
         b.className = item.key === 'nps'
-          ? 'w-9 h-9 rounded-lg border border-dark-700/60 text-dark-300 hover:text-white hover:border-biz-500/50 hover:bg-biz-500/10 transition-colors text-sm'
-          : 'px-4 py-2 rounded-full border border-dark-700/60 text-dark-300 hover:text-white hover:border-biz-500/50 hover:bg-biz-500/10 transition-colors text-sm';
+          ? 'w-9 h-9 rounded-lg border border-dark-700/60 text-dark-300 hover:text-white ' + A.optHover + ' transition-colors text-sm'
+          : 'px-4 py-2 rounded-full border border-dark-700/60 text-dark-300 hover:text-white ' + A.optHover + ' transition-colors text-sm';
         b.addEventListener('click', function () { send(item.key, pair[1]); idx++; render(); });
         optsEl.appendChild(b);
       });

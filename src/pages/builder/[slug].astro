@@ -4,6 +4,7 @@ import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import ListenButton from '../../components/ListenButton.astro';
 import ChapterFeedback from '../../components/ChapterFeedback.astro';
+import EndOfBookSurvey from '../../components/EndOfBookSurvey.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -99,6 +100,8 @@ const chapterStructuredData = {
         <Content />
       </div>
       <ChapterFeedback accent="claw" />
+
+      {chapterSlug === '36-closing' && <EndOfBookSurvey accent="claw" />}
 
       <nav class="mt-16 pt-8 border-t border-dark-800 flex justify-between gap-4">
         {prev ? (
