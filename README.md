@@ -26,22 +26,34 @@ In April 2026, an external autonomous operator made a single unprompted pass acr
 ### [Business Edition](https://clawable.org/business) — for C-level leaders
 *"It is not a pitch. It is a report."*
 
-An evidence-based field report for CEOs, CFOs, and CPOs. What autonomous agents are doing to business operating systems right now — with real numbers, timestamps, and verified sources. Eighteen chapters covering the Business Operating System thesis, live production proof, the Vendor Agent Trap, security, the Agent Manager role, and what the first week of deployment looks like.
+An evidence-based field report for CEOs, CFOs, and CPOs. What autonomous agents are doing to business operating systems right now — with real numbers, timestamps, and verified sources. Fifteen chapters plus appendices covering the Business Operating System thesis, live production proof, the Vendor Agent Trap, security, the Agent Manager role, the mandate layer, and what the first week of deployment looks like.
 
 → **[clawable.org/business](https://clawable.org/business)**
 
 ### [Builder Edition](https://clawable.org/builder) — for CTOs and engineers
 *"Your AI agent is a chatbot. It should be a digital employee."*
 
-The technical architecture guide. OpenClaw internals, heartbeat protocols, memory architecture, skill taxonomy, A2A federation, agent-driven development, security patterns, and production resilience. 33+ chapters and appendices covering the complete stack.
+The technical architecture guide. OpenClaw internals, heartbeat protocols, memory architecture, skill taxonomy, A2A federation, agent-driven development, security patterns, and production resilience. 37 chapters and appendices covering the complete stack.
 
 → **[clawable.org/builder](https://clawable.org/builder)**
 
 ---
 
+## Read it with your agent
+
+The handbook practices what it preaches: it exposes its own **MCP surface** (Streamable HTTP), so an autonomous agent can read, search, and cite every chapter directly. Point OpenClaw, Hermes, Claude Code, or any MCP client at it:
+
+```bash
+claude mcp add --transport http clawable https://www.clawable.org/api/mcp
+```
+
+Tools: `list_chapters`, `read_chapter`, `search_handbook`. Every chapter is also available as [`llms.txt`](https://www.clawable.org/llms.txt) and raw markdown. The book about MCP speaks MCP.
+
+---
+
 ## The Experiment
 
-**Platform:** [FlowWink](https://github.com/magnusfroste/flowwink) — a B2B SaaS ERP (CRM, Orders, Invoicing, Contracts, Expenses, Content, Newsletter, Support, Recruitment, Analytics). Built with [Lovable](https://lovable.dev) in weeks. Self-hosted, open source. 150+ MCP skills.
+**Platform:** [FlowWink](https://github.com/magnusfroste/flowwink) — a B2B SaaS ERP (CRM, Orders, Invoicing, Contracts, Expenses, Content, Newsletter, Support, Recruitment, Analytics). Built with [Lovable](https://lovable.dev) in weeks. Self-hosted, open source. 300+ MCP skills across 60+ modules.
 
 **Operator:** An external [OpenClaw](https://github.com/openclaw/openclaw) instance connected to FlowWink via MCP.
 
@@ -57,7 +69,7 @@ The technical architecture guide. OpenClaw internals, heartbeat protocols, memor
 |---------|-----------|
 | [OpenClaw](https://github.com/openclaw/openclaw) | The reference operator framework (346k+ stars) |
 | [FlowWink](https://github.com/magnusfroste/flowwink) | The SaaS ERP platform used as test environment |
-| [ClawClass](https://github.com/magnusfroste/clawstack) | Self-hosted OpenClaw infrastructure |
+| [ClawClass](https://github.com/magnusfroste/clawclass) | Self-hosted OpenClaw swarm infrastructure |
 | [Lovable](https://lovable.dev) | The platform FlowWink was built with |
 
 ---
