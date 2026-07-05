@@ -357,6 +357,45 @@ where event_type = 'answer' and target like '%:%' and target not like 'rating:%'
 group by 1, 2;
 ```
 
+## v8 migration (end-of-book testimonial) — run once
+
+**Different in kind from everything above.** Every other table/view in this
+file is anonymous and aggregate-only — nobody, not even Magnus, can read a
+single raw row. This one is the opposite on purpose: an optional, opt-in note
+with a name attached, so it can later be curated by hand into a landing-page
+quote. It must NOT get an anon-readable view — that would turn a voluntary,
+named submission into something scraped off `/analytics`.
+
+```sql
+create table public.book_testimonials (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  path text check (char_length(path) <= 200),
+  feedback text not null check (char_length(feedback) between 1 and 400),
+  name text check (char_length(name) <= 80),
+  can_reference boolean not null default false,
+  device text check (device in ('mobile', 'desktop'))
+);
+
+alter table public.book_testimonials enable row level security;
+
+-- The anon key may ONLY insert. No select policy at all — read raw rows
+-- from the Supabase Table Editor / SQL Editor only, never from the browser.
+create policy "anon can insert testimonials"
+  on public.book_testimonials for insert
+  to anon
+  with check (true);
+```
+
+The "sent" vs "skipped" tap on this step is logged as an ordinary anonymous
+`book_events` answer (`testimonial:sent` / `testimonial:skipped`), so the
+response rate shows up in the existing `book_survey` view on `/analytics`
+with zero new views — only the free-text/name pair lives in the new table.
+
+To read submissions: Supabase dashboard → Table Editor → `book_testimonials`,
+or `select * from book_testimonials where can_reference order by created_at desc`
+in the SQL Editor. Curate by hand before ever putting a name on the landing page.
+
 ## Later, if you want more
 
 - Cleanup: `delete from book_events where ts < now() - interval '12 months'`.
