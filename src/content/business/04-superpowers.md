@@ -7,9 +7,9 @@ icon: "zap"
 
 ## Four Minutes
 
-Lindvall Systems had a service contract expiring in eight days. No renewal deal in the pipeline. No contact made. No email sent. The situation had been visible in the system for weeks. Nobody had acted.
+Lindvall Systems had a service contract expiring in eight days. No renewal deal in the pipeline. No contact made. No email sent. The situation had been visible in the system for weeks. The stressed-morning sweep in chapter three had flagged it — a task, a finding. Still nobody had acted.
 
-One sentence dispatched to the operator: handle the Lindvall Systems renewal.
+Then someone pointed at it. One sentence dispatched to the operator: handle the Lindvall Systems renewal.
 
 Four minutes later:
 

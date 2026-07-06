@@ -42,6 +42,7 @@ appendix: true
 - **Meta-Harness** (Builder ch 35): the Stanford/MIT/KRAFTON paper — empirical proof that the harness matters as much as the model.
 - **The landscape completed** (Builder ch 5): OpenAI Codex and Google Antigravity join the control-plane table — all three frontier labs now ship their own agent layer, which settles the chapter's central claim.
 - **Structural fixes:** The Contract Layer chapter completed and moved to follow The Agent's Superpowers; chapter titles and operator naming made consistent throughout.
+- **Case-consistency pass** (chs 3, 4, 11, 14): every scenario customer traced across all chapters. The blind-test anomalies now carry their values (€45,000 won/unsigned, €22,000/yr expiring) where chapter three describes them; the enterprise chapter's CFO argument references the blind test correctly instead of misattributing it; the stressed morning is explicitly framed as a re-seeded stress test; the Lindvall Systems thread is one story told across two chapters (sweep finds it, a human dispatches, four minutes resolves it) instead of two conflicting versions; and the two dunning stories (chs 10, 14) now explicitly contrast — escalation without a rule vs. a quiet stop with one.
 
 ## June 2026 Edition
 

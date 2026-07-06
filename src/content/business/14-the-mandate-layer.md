@@ -126,6 +126,8 @@ The operator filed a finding — *"INV-2026-010: overdue 45,000 SEK, collection 
 
 The active deal was worth 380,000 SEK. An automated dunning sequence would have sent the reminder anyway, because no automation system knows that a finance event and a sales event belong to the same customer relationship. The operator knew because it read both modules and had a mandate that spanned them.
 
+Chapter ten showed this exact collision without the rule: a finance operator that could only stop and ask, because the answer existed nowhere in the system. This operator had the answer in advance, in one written sentence. That is the difference a mandate makes — the same situation, but the judgment already encoded.
+
 The finding sat in the queue. Nobody read it that week. The 380,000 SEK deal remained alive.
 
 That is mandate governance at its most useful: not a dramatic intervention, but a quiet stop at exactly the right moment, for a reason written in a text file by someone who understood the business.

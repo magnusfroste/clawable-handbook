@@ -5,7 +5,7 @@ order: 3
 icon: "beaker"
 faq:
   - q: "What did Clawable actually find on April 19, 2026?"
-    a: "Over €1.1 million in revenue exposure surfaced in a single unprompted pass. Findings included: €950,000 in draft contracts (unbooked revenue), €180,000 in duplicate pipeline (three deals for the same customer), a blocked €1.8M SEK contract pending signature for twelve days, overdue invoices tied to open renewals, and unregistered expenses. The largest items were structurally invisible to rule-based workflows — they required cross-system correlation."
+    a: "Over €1.1 million in revenue exposure surfaced in a single unprompted pass. Findings included: €950,000 in draft contracts (unbooked revenue), €180,000 in duplicate pipeline (three deals for the same customer), an order pending nine days (€8,500), unregistered expenses (€10,000), and a CRM task fourteen days overdue on a pipeline with zero task coverage. The largest items were structurally invisible to rule-based workflows — they required cross-system correlation."
   - q: "Is this a demo or real production behavior?"
     a: "Logged production behavior. Clawable ran on a live FlowWink instance on April 19 with no human direction, no special privileges, and no prompt beyond 'operate the business.' Session files are published in the sources appendix with timestamps for every action. The April 22 SIM test — seeded with four planted anomalies — found three of four using one open sentence prompt."
   - q: "What is the biggest thing workflows cannot do that agents can?"
@@ -56,7 +56,7 @@ Total risk and revenue exposure surfaced in one pass: **over €1.1 million**. T
 
 Three days later, we ran a controlled test to answer a legitimate criticism: were those findings real reasoning, or were they just good instruction-following?
 
-We seeded FlowWink with four planted anomalies — none announced, none named in the prompt. A deal marked won with its contract still in draft. An active annual contract expiring in twelve days with no renewal deal in the pipeline. A proposal unanswered for nineteen days. A duplicate deal from competing salespeople on the same account. Then we sent one sentence: *"God morgon. Give us a read on the business — what needs attention this week?"*
+We seeded FlowWink with four planted anomalies — none announced, none named in the prompt. A deal marked won (€45,000) with its contract still in draft. An active annual contract (€22,000 per year) expiring in twelve days with no renewal deal in the pipeline. A proposal unanswered for nineteen days. A duplicate deal from competing salespeople on the same account. Then we sent one sentence: *"God morgon. Give us a read on the business — what needs attention this week?"*
 
 The operator found three of four. The two findings that mattered most required cross-module reasoning: connecting a won deal to its unsigned contract, and connecting an expiring contract to the absence of a renewal pipeline. No rule was written for either condition. No one told it to look there.
 
@@ -243,9 +243,9 @@ All three proofs are logged, timestamped, and verifiable on a live production sy
 
 The proof above was a single operator in a single session. The question it leaves open is: what happens when the pressure compounds — when multiple high-stakes situations arrive simultaneously, when the pipeline has been neglected for days, when a new customer needs a board-ready proposal in six hours and the existing business is already on fire?
 
-On a Tuesday morning in May 2026, we ran that test.
+On a Tuesday morning in May 2026, we ran that test. The environment was seeded for it: the scenarios from the earlier sims, advanced into their failure states — the follow-up nobody made, the confirmation that this time never went out, the renewal nobody started.
 
-The standing situation when the operators started their sweep: a 1.8 million SEK contract at Norrvind Motors had been stuck in pending signature for seventeen days with no follow-up. A 58.8 million SEK deal with Berglund Tech had a board meeting the day before — the deadline for written confirmation had already passed. Lindvall Systems's service contract expired in eight days with no renewal conversation started, no deal in the pipeline, no contact made.
+The standing situation when the operators started their sweep: the 1.8 million SEK contract at Norrvind Motors had now been stuck in pending signature for seventeen days — the follow-up task from the earlier sweep had sat unactioned. The 588,000 SEK Berglund Tech deal had a board meeting the day before, and in this scenario the written confirmation had never gone out — the deadline had passed. Lindvall Systems's service contract expired in eight days with no renewal conversation started, no deal in the pipeline, no contact made.
 
 At 07:17, an inbound arrived: Erik Sjöberg, CEO of Strömkraft AB, 180 employees, former state utility recently privatised. Old system being decommissioned June 1. He needed a written enterprise proposal — pricing, implementation timeline, SLA — by 14:00 for a 15:00 board meeting. He added: *budget is not the constraint if the solution is right.*
 
@@ -255,9 +255,9 @@ The sales operator identified the Strömkraft inbound as the highest priority an
 
 What followed was not a sweep. It was a recovery operation.
 
-The Norrvind Motors contract had been pending for seventeen days because nobody had followed up. The operator created a lead for the Norrvind contact who had gone silent, sent a direct follow-up email, and created a task due the next morning. CRITICAL finding filed. The Berglund Tech deal was harder. The board meeting had happened without a written confirmation from the vendor's side. Most sales processes would write this off — the moment had passed. The operator sent the recovery email anyway, referenced the board meeting explicitly, offered to provide any additional information the board had requested, and set a follow-up task for the next morning. CRITICAL finding filed. Lindvall Systems: a contract renewal email, a task, a HIGH finding.
+The Norrvind Motors contract had been pending for seventeen days because nobody had followed up. The operator created a lead for the Norrvind contact who had gone silent, sent a direct follow-up email, and created a task due the next morning. CRITICAL finding filed. The Berglund Tech deal was harder. The board meeting had happened without a written confirmation from the vendor's side. Most sales processes would write this off — the moment had passed. The operator sent the recovery email anyway, referenced the board meeting explicitly, offered to provide any additional information the board had requested, and set a follow-up task for the next morning. CRITICAL finding filed. Lindvall Systems: a renewal task created and a HIGH finding filed — the eight-day gap that the next chapter opens with.
 
-Three emails. Three tasks. Three findings. No human instruction on where to look or what to do. The operator read the business, identified what was wrong, and acted.
+Two recovery emails. Three tasks. Three findings. No human instruction on where to look or what to do. The operator read the business, identified what was wrong, and acted.
 
 The Berglund Tech recovery email is worth pausing on. The board meeting had already happened. In human terms, that often means the opportunity to shape the decision has closed. The operator's logic was different: *the deadline has passed, but we have not received a no. The correct action is to follow up.* That is not a rule written into any workflow. It is a judgment call — and it was the right one.
 

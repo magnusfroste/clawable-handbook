@@ -157,7 +157,7 @@ The €1.1 million surfaced in a single Clawable pass on April 19 came entirely 
 
 These are the processes where cross-system blindness causes the most expensive leakage. They are also the ones where a single agent pass, in a single morning, can surface findings that change the week.
 
-**Contract lifecycle integrity.** The gap between a won deal and a signed contract. The contract expiring in twelve days with no renewal in the CRM pipeline. The draft agreement that has been sitting unsigned for fifteen days while the invoice is already scheduled. None of these trigger an alert in any individual system. All of them represent revenue that is either at risk or already lost. In the April 19 sweep, Clawable found €950,000 in draft contracts and 1,800,000 SEK in blocked contracts from a single unprompted pass. McKinsey's analysis of revenue cycle automation finds a 30 to 60 percent reduction in cost to collect when agents run AR follow-up, underpayment management, and contract compliance continuously rather than on a human-reviewed cadence.
+**Contract lifecycle integrity.** The gap between a won deal and a signed contract. The contract expiring in twelve days with no renewal in the CRM pipeline. The draft agreement that has been sitting unsigned for fifteen days while the invoice is already scheduled. None of these trigger an alert in any individual system. All of them represent revenue that is either at risk or already lost. In the April 19 sweep, Clawable found €950,000 in draft contracts from a single unprompted pass; a later sweep surfaced the 1,800,000 SEK contract that had sat in pending signature for over two weeks. McKinsey's analysis of revenue cycle automation finds a 30 to 60 percent reduction in cost to collect when agents run AR follow-up, underpayment management, and contract compliance continuously rather than on a human-reviewed cadence.
 
 **Pipeline integrity.** Duplicate deals for the same customer. Deals marked won before the contract is signed. Proposals unanswered for nineteen days. Stale pipeline that inflates forecast confidence. The €180,000 in duplicated pipeline value found on April 19 was invisible to any single tool — it required understanding that three records meant the same thing. McKinsey reports that banks using AI-generated pipeline analysis see approximately 30 percent growth in qualified pipeline and 2× conversion rates against traditional lead sources.
 
@@ -191,7 +191,7 @@ Across every tier, the pattern holds: **value scales with the number of systems 
 
 | Process | Systems spanned | Where the value is | Evidence |
 |---|---|---|---|
-| Contract lifecycle integrity | CRM + Contracts + Finance | €950K unbooked, 1.8M SEK blocked | ch03, April 19 |
+| Contract lifecycle integrity | CRM + Contracts + Finance | €950K unbooked, 1.8M SEK blocked | ch03, April 19 + May sweep |
 | Pipeline integrity | CRM + Contacts + Contracts | €180K duplicate pipeline, won/unsigned gap | ch03, April 19 + SIM |
 | AR + contract compliance | Finance + CRM + Contracts | 30–60% cost-to-collect reduction | McKinsey, January 2026 |
 | Expense compliance | Finance + Procurement | 4% leakage reduction | McKinsey procurement |
@@ -233,7 +233,7 @@ The difference between a funnel and a loop is compounding. A funnel processes ea
 
 The CFO's version of the argument is simpler than the architecture one. Start with what is already leaking.
 
-Chapter three documented two findings from a single open prompt — no checklist, no target, forty-four seconds to first result. Västfjord Consulting: €45,000 suspended between a won deal and an unsigned contract in a different module, invisible until the agent looked across both simultaneously. Apexira AB: €22,000 on an active contract expiring in twelve days with no renewal in the pipeline. The CRM tracks what exists, not what is about to stop existing.
+Chapter three documented two findings from the blind test — four anomalies planted, one open sentence, no target named. €45,000 suspended between a deal marked won and a contract still unsigned in a different module, invisible until the agent looked across both simultaneously. €22,000 a year on an active contract expiring in twelve days with no renewal in the pipeline. The CRM tracks what exists, not what is about to stop existing.
 
 Two findings. €67,000 of revenue either blocked or invisible — and not an edge case. It is the structural consequence of running a B2B business across systems that do not read each other. A mid-size company with forty active clients and a twelve-deal pipeline will lose 2–3 revenue events per month to this kind of cross-module silence. At an average deal value of €15,000–30,000, that is €30,000–90,000 per month in delayed, degraded, or lost revenue. Over a quarter, the number compounds. Over a year, it reshapes the growth curve. The full session log is in chapter three.
 
