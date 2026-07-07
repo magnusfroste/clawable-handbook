@@ -24,7 +24,7 @@ This is not a subtle distinction. It is the central business and architectural q
 | **Claude Code** | Terminal agent | Agentic loop + React/Ink TUI | Claude-native, Messages API | Deep Anthropic integration, CLAUDE.md, Teams |
 | **OpenAI Codex** | Cloud coding agent | Async sandboxed tasks → diffs and PRs; ChatGPT-embedded + standalone macOS app (Feb 2026) | GPT-native | ChatGPT distribution, GitHub-native delegation |
 | **Google Antigravity** | Agent-first IDE | Parallel agents + manager view, browser-based verification, CLI | Gemini-native (launched with Gemini 3, Nov 2025) | Google ecosystem, multi-agent orchestration |
-| **Cursor** | AI-native IDE | Fork of VS Code + agent layer | Model-agnostic, Chat Completions | IDE depth, codebase indexing; acquired by SpaceX for $60B (June 2026) |
+| **Cursor** | AI-native IDE | Fork of VS Code + agent layer | Model-agnostic — Grok-default planned post-acquisition | IDE depth, codebase indexing; acquired by SpaceX for $60B (June 2026), Grok Build to ship inside |
 | **Windsurf** | AI-native IDE | Codeium-based IDE | OpenAI deal collapsed (Jul 2025); CEO/team to Google ($2.4B); IP to Cognition | Uncertain roadmap post-acquisition collapse |
 | **Cline** | VS Code extension | Agentic loop, XML tool format | Model-agnostic, 59k stars | Open-source, extensibility |
 | **Roo** | VS Code extension | Multi-agent, role-driven | Model-agnostic, 23k stars | Custom modes, agentic orchestration |
