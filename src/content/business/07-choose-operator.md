@@ -107,6 +107,14 @@ This is significant because it validates the same architecture OpenClaw pioneere
 
 **When to stick with OpenClaw:** You want flexibility across models, no vendor lock-in, and community-driven innovation.
 
+### The Labs Came From the Other Side
+
+OpenClaw fired the starting shot, and Anthropic's Cowork answered it — an agent with hands, on the desktop, for people who never open a terminal. Together they accelerated the whole field. And the frontier labs did not watch from the stands: Anthropic ships Claude Code and Cowork, OpenAI ships Codex — delegated agent tasks inside ChatGPT plus a standalone app — and Google ships Antigravity, an agent-first environment with a manager's view over parallel agents. All three companies that train the frontier models now sell an agent layer on top of them. When the labs themselves build operators, the argument of this book stops being a thesis. It is the product strategy of the entire frontier. `validated`
+
+The direction of travel is just as readable: agentic capability is folding into the chat applications your employees already use. Today the seams show — Codex inside ChatGPT still feels bolted on, an agent stapled to a chat window. Over time the seams disappear, and every chat client ships some form of agentic AI as a default setting rather than a product decision. `hypothesis`
+
+Which raises the question a leadership team should actually sit with: does that replace the operator decision this chapter is about? No — it doubles it. The agent in the chat client is a *personal* surface: it acts for the employee holding the conversation, inside one vendor's walls, on that vendor's models. Your business operator is a *standing* surface: objectives in version control, a heartbeat, an audit trail, a mandate — working whether anyone is chatting or not. The convergence will normalize agents for your whole workforce faster than any internal program could. It also means every seat in the company is about to have an agent attached, whether leadership decided anything or not — which makes the governance chapters of this book more urgent, not less. And the CFO will see both lines in the same budget: per-seat agentic chat that scales with headcount, and the operator that scales with work. Knowing which line buys which capability is the difference between an AI budget and an AI strategy.
+
 ### What June 2026 Settled
 
 If "model-agnostic" sounded like an architect's preference, June 2026 turned it into a board-level requirement. On June 12, a US export-control directive forced Anthropic to switch off its most capable models — Fable 5 and Mythos 5 — for every customer, overnight. Two weeks later, at the government's request, OpenAI limited its newest model release to a small circle of approved partners. By June 30 the restrictions were lifted and access restored. `validated`

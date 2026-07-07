@@ -173,6 +173,16 @@ All findings attributed to Clawable operating FlowWink live can be cross-checked
 
 ---
 
+## The Frontier Labs' Agent Products (Ch 7)
+
+| Claim | Source | Status |
+|-------|--------|--------|
+| OpenAI Codex: cloud coding agent, delegated tasks inside ChatGPT plus standalone macOS app (Feb 2026) | [Antigravity vs Codex comparison](https://www.eigent.ai/blog/antigravity-vs-codex); [XDA month-long test vs Claude Code](https://www.xda-developers.com/used-claude-code-google-antigravity-codex-for-month-have-clear-winner/) | `validated` |
+| Google Antigravity: agent-first development environment with parallel-agent manager view, launched with Gemini 3 (Nov 2025), 2.0 adds CLI | [WeavAI Antigravity 2.0 review](https://weavai.app/blog/en/2026/05/22/google-antigravity-2-0-vs-openai-codex-2026-review/); [Eigent comparison](https://www.eigent.ai/blog/antigravity-vs-codex) | `validated` |
+| Agentic capability folding seamlessly into mainstream chat clients as a default | Author's trajectory read from the above | `hypothesis` |
+
+---
+
 ## The June 2026 Model Access Events (Ch 7)
 
 | Claim | Source | Status |
