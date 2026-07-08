@@ -148,9 +148,9 @@ const statsKey = import.meta.env.PUBLIC_STATS_KEY ?? '';
             document.getElementById('trend').innerHTML = `
               <div class="flex items-end gap-1 h-32">
                 ${recent.map((d) => `
-                  <div class="flex-1 flex flex-col items-center gap-1" title="${esc(d.day)}: ${d.views} views">
+                  <div class="flex-1 flex flex-col items-center justify-end gap-1" title="${esc(d.day)}: ${d.views} views">
                     <span class="text-[10px] text-dark-500">${d.views}</span>
-                    <div class="w-full rounded-t bg-claw-500/70 hover:bg-claw-400" style="height:${Math.max(4, Math.round((d.views / max) * 100))}%"></div>
+                    <div class="w-full rounded-t bg-claw-500/70 hover:bg-claw-400" style="height:${Math.max(4, Math.round((d.views / max) * 96))}px"></div>
                   </div>`).join('')}
               </div>
               <div class="flex justify-between text-[10px] text-dark-500 mt-2">
