@@ -118,10 +118,15 @@ const allSchemas = [orgSchema, webSiteSchema, ...schemaList];
         // Anonymous, aggregate-only reading analytics. No cookies, no IDs, no IP stored.
         // The visit id lives in sessionStorage only (dies with the tab) — per-visit
         // grouping without any cross-visit tracking.
+        // Dev sessions must not pollute production stats: leaving the globals unset
+        // also silences every other sender (listen, feedback, survey).
+        if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') { /* dev */ } else {
         window.__statsUrl = statsUrl;
         window.__statsKey = statsKey;
+        }
         (function () {
           if (navigator.webdriver) return;
+          if (!window.__statsUrl) return;
           var activeMs = 0;
           var lastVisible = document.visibilityState === 'visible' ? Date.now() : null;
           var maxDepth = 0;
