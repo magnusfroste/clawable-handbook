@@ -52,7 +52,7 @@ The pace of MCP adoption among the incumbents is faster than most businesses rea
 
 The surface on each of these platforms is still partial — Salesforce's MCP covers CRM and flows, not the full 300+ operational skills that FlowWink exposes today. HubSpot's write operations are growing but not yet complete. The gap between what FlowWink exposes now and what these platforms will expose in twelve months is narrowing fast.
 
-The picture looks different further down the stack — particularly for the ERP and accounting platforms that most mid-market and Nordic businesses actually run. **Workday** has no official MCP server; the surface is accessible today only through third-party middleware such as Workato or CData connectors — functional, but mediated rather than native. **IFS Cloud**, the Swedish-origin enterprise ERP used across manufacturing and field service, has a single community-built MCP project (`knakit/ifs-mcp-server-local`, February 2026) — a proof of concept by a developer at IFS, not an official product. **Visma**, used by hundreds of thousands of Nordic SMEs for accounting and payroll, has not shipped an MCP server for any of its product lines as of May 2026.
+The picture looks different further down the stack — particularly for the ERP and accounting platforms that most mid-market and Nordic businesses actually run. **Workday** has no official MCP server; the surface is accessible today only through third-party middleware such as Workato or CData connectors — functional, but mediated rather than native. **IFS Cloud**, the Swedish-origin enterprise ERP used across manufacturing and field service, has a single community-built MCP project (February 2026) — a proof of concept by a developer at IFS, not an official product. **Visma**, used by hundreds of thousands of Nordic SMEs for accounting and payroll, has not shipped an MCP server for any of its product lines as of May 2026.
 
 The pattern is structural, not cyclical. The platforms built for enterprise are moving through middleware and community effort. The AI-native platforms are already there. The SaaS vendors who will lead are the ones that built MCP surfaces before it became a table stakes requirement — that treated external operators as integration partners rather than threats. The ones that wait will build compatibility at exactly the moment when it no longer differentiates them.
 
@@ -74,7 +74,7 @@ Ask what a SaaS platform actually consists of, once an operator runs the process
 
 And when a human *does* need an interface, building one is no longer a project. Chapter three documented Atonom replacing a $40,000-a-year Salesforce contract with a purpose-built CRM assembled on Lovable in three hours. Call the practice **loop engineering**: you build interfaces only where the human-in-the-loop actually stands — an approval queue, a briefing view, a red button — and you build them in an afternoon, against your own data. The UI stops being the house everyone lives in. It becomes the windows you install where humans need to look in, and the handles where humans need to reach in. Everything else — the data processing, the routine operations, the process execution — runs without a screen at all, because no one is watching it work.
 
-If that reflection is even half right, the pressure on incumbent SaaS will not come first from competing platforms. It will come from digital sovereignty: businesses realizing that a data layer they own, plus operators they govern, plus interfaces they can generate on demand, covers more of their operation than they thought — and asking, module by module, what the subscription is still for.
+If that reflection is even half right, the pressure on incumbent SaaS will not come first from competing platforms. It will come from digital sovereignty: businesses realizing that a data layer they own, plus operators they govern, plus interfaces they can generate on demand, covers more of their operation than they thought — and asking, module by module, what the subscription is still for. Chapter thirteen takes that question to its conclusion.
 
 > **Questions for the reader — we are not going to answer these.**
 >
@@ -145,7 +145,7 @@ Before the tiers, one picture. Two distinctions determine how quickly agentic AI
   OPERATOR      │  A workflow does this     │  Triage + cross-system        │
   (OpenClaw-    │  cheaper. Don't send a    │  judgment: deals ↔ invoices   │
   class, above  │  reasoning engine to      │  ↔ contracts — and the        │
-  the stack)    │  file paperwork.          │  silences no webhook fires on.│
+  the stack)    │  file paperwork.          │  silences no system catches.  │
                 └───────────────────────────┴───────────────────────────────┘
 ```
 
@@ -213,7 +213,7 @@ Domain-specific agents — embedded in each platform, running proactive heartbea
 
 The external orchestrator — reading across all platforms via MCP, cycling through the cross-system view on every pass — handles the strategic coordination. It sees the customer risk that spans three systems. It identifies the process failure that looks like a content gap. It surfaces the pattern that no individual platform's agent could produce.
 
-Neither layer makes the other redundant. The domain agents without the orchestrator are five smart silos — as the May 2026 multi-agent test demonstrated: three specialist operators independently flagged the same customer in the same cycle, with no awareness of each other's actions, nearly producing a dunning notice and a renewal outreach to the same contact on the same day. The orchestrator without the domain agents is an observer with limited ability to act. Together, they form an operating system for the business — running continuously, surfacing what matters, directing human attention toward decisions rather than discovery.
+Neither layer makes the other redundant. The domain agents without the orchestrator are five smart silos — chapter ten's near-collision, where two operators almost sent a dunning notice and a renewal outreach to the same customer on the same day, is what that looks like in practice. The orchestrator without the domain agents is an observer with limited ability to act. Together, they form an operating system for the business — running continuously, surfacing what matters, directing human attention toward decisions rather than discovery.
 
 This is what "the business runs itself" means in practice. Not that humans are removed from the process. That the process of finding what needs attention is automated, and the human role is concentrated in the decisions that require judgment, relationship, and authority — which is where human time is most valuable anyway.
 
@@ -334,14 +334,12 @@ The question every board asks before approving an autonomous operator is: *who i
 
 McKinsey's *Trust in the Age of Agents* (March 2026) answers with a four-layer model that maps every agent action to a named human (source: Appendix, `validated`):
 
-```
 For any action the operator takes:
 
-1. DESIGN accountability    → Who built the skill and defined its boundaries?
-2. DEPLOY accountability    → Who authorized this operator to act in this context?
-3. OPERATE accountability   → Who monitors it and handles exceptions?
-4. REVIEW accountability    → Who audits performance and intervenes when needed?
-```
+1. **Design accountability** — who built the capability and defined its boundaries?
+2. **Deploy accountability** — who authorized this operator to act in this context?
+3. **Operate accountability** — who monitors it and handles exceptions?
+4. **Review accountability** — who audits performance and intervenes when needed?
 
 This is not a philosophical framework. It is an organizational answer to a legal and board-level question. Every autonomous action has four humans in the chain — the engineer who wrote the skill, the admin who approved its deployment in the business context, the manager who monitors what it does in production, and the auditor who reviews whether the operator is still aligned with the business it operates.
 

@@ -23,7 +23,7 @@ Four signals confirmed this was structural, not a moment:
 
 1. **346,000 GitHub stars in six weeks** — a community signal, not a product launch
 2. **Jensen Huang framed it as OS-level** at GTC 2026 — a category claim, not a compliment  
-3. **MCP became a cross-vendor standard** — Anthropic, then OpenAI, then the ecosystem converged on the same agent-to-tool protocol
+3. **MCP — the standard that lets agents talk to business software — went cross-vendor**: Anthropic, then OpenAI, then the whole ecosystem converged on the same protocol
 4. **OpenAI adopted MCP on April 15, 2026** — when the company that had its own agent framework adopted someone else's primitives, the protocol war was over
 
 When a new protocol wins that fast, it is because it fits a need so obvious that every actor in the space recognizes it simultaneously. What MCP did in 2026 — standardize how AI agents talk to business software — is what HTTP did for the web in the 1990s. Except the 1990s took a decade.

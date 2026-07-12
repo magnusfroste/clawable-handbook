@@ -111,7 +111,7 @@ The operator read the INBOX, put on the sales hat, and ran three parallel lookup
 
 It then created a deal for 240,000 SEK, embedded the financial blocker directly in the deal notes — *"UNPAID INVOICE: INV-2026-001, 23,125 SEK, overdue 2026-04-30. Contact Sofia Carlsson regarding payment before renewal"* — sent Marcus an outreach email, filed a HIGH finding, and wrote a day log with structured recommendations for the principal.
 
-Time to completion: under three minutes. Tools called: `manage_leads`, `search_contracts`, `invoice_overdue_check`, `qualify_lead`, `manage_deal`, `send_email_to_lead`, `openclaw_report_finding`.
+Time to completion: under three minutes.
 
 ### 2. The Negotiation — Mandate governance under pressure
 
@@ -165,33 +165,11 @@ It then returned to the sweep and completed it.
 
 ---
 
-## The MCP Surface — What Actually Ran
+## The Record — What Actually Ran
 
-Every MCP tool call is logged in `flowwink://activity`. This is the actual record, not a reconstruction:
+Every action the operator took is logged, call by call, in the platform's activity record — the actual log, not a reconstruction. Across the five scenarios: roughly 35 tool calls, 16 distinct tools, 4 platform modules — pipeline reviews, invoice checks, contract searches, quotes, emails, bookings, findings. (The full call-by-call table lives in the Builder Edition, for the reader who wants to audit it.)
 
-| Tool | Flowwink module | Called | Notes |
-|---|---|---|---|
-| `lead_pipeline_review` | CRM | 2× | Activation + morning sweep |
-| `deal_stale_check` | CRM | 2× | Activation + morning sweep |
-| `manage_leads` | CRM | 3× | List, search, context |
-| `qualify_lead` | CRM | 2× | Apexira AB, Berglund Tech |
-| `manage_deal` | CRM | 3× | Apexira AB deal, Berglund Tech deal, updates |
-| `send_email_to_lead` | CRM | 4× | Sims 1, 2, 3, 5 |
-| `crm_task_create` | CRM | 3× | Post-meeting, Norrvind, Västfjord |
-| `manage_bookings` | CRM | 1× | Thursday meeting |
-| `browse_services` | Commerce | 1× | Berglund Tech pricing lookup |
-| `manage_quote` | Commerce | 1× (failed) | Schema bug: `quote_number` null constraint — operator handled gracefully, delivered pricing in email instead |
-| `invoice_overdue_check` | Finance | 3× | Every sweep + Sim 1 |
-| `contract_renewal_check` | Finance | 2× | Activation + morning sweep |
-| `list_expense_reports` | Finance | 2× | Activation + morning sweep |
-| `manage_contract` | Finance | 1× | New Apexira AB 2-year contract |
-| `search_contracts` | Finance | 2× | Sims 1, 4 |
-| `manage_orders` | Operations | 3× | Every sweep |
-| `openclaw_report_finding` | Platform | 6× | Every scenario, every sweep |
-
-**Total: ~35 MCP calls. 4 Flowwink modules. 16 distinct tools. One failure — a schema bug the operator exposed and routed around.**
-
-That one failure is worth noting. `manage_quote` failed because the platform's quotes table requires a `quote_number` the tool's schema does not auto-generate. The operator caught the error, delivered pricing in the email body instead, and the customer received a complete answer. The agent's first schema error was also the platform's first bug report.
+One of those 35 calls failed. The quoting tool hit a platform bug — a required field the tool never filled in. The operator caught the error, delivered the pricing in the email body instead, and the customer received a complete answer on time. The agent's first error was also the platform's first bug report.
 
 ---
 
@@ -309,19 +287,19 @@ The invoice was marked paid. The cascade should have run.
 
 It did not — and the reason it did not is the second proof this chapter offers.
 
-The finance operator called `send_contract_for_signature` on the renewal contract. The tool returned: `status: success`. The operator confirmed completion, filed a finding, and marked the task done.
+The finance operator told the platform to send the renewal contract for signature. The platform answered: success. The operator confirmed completion, filed a finding, and marked the task done.
 
-It then ran a verification check.
+It then ran a verification check against the database.
 
-`sent_at: null. accept_token: null.`
+Sent: never. Signature link: never created.
 
-The tool had returned success. The database showed nothing had happened. The operator caught the discrepancy because it checked — because its mandate included verifying the state it expected to have changed, not just trusting the tool's response.
+The tool had reported success. The record showed nothing had happened. The operator caught the discrepancy because it checked — because its mandate included verifying the state it expected to have changed, not just trusting the tool's response.
 
 That behavior is not in any workflow spec. You cannot write an automation rule for "check whether the success you just received was real." The agent checked because it understood what success should look like and noticed when the record did not match.
 
-The finding it filed was precise: *"send_contract_for_signature returns 'success' but does not update sent_at or accept_token. The contract has not been sent. This is a platform bug. Manual intervention required."*
+The finding it filed was precise: *"The send tool reports success, but the contract was never sent and no signature link was created. This is a platform bug. Manual intervention required."*
 
-It was the third platform bug this fleet had surfaced in two weeks. `manage_invoice mark_paid` had no handler — the tool accepted the call and returned nothing. `manage_deal update` crashed on stage parameters without a helpful error. `accounting_reports` required a report_type it did not document as required. Each one found not by a tester running test scripts, but by an operator trying to do real work and noticing when the outcome did not match the expectation.
+It was the third platform bug this fleet had surfaced in two weeks — each one a tool that accepted a call and quietly did less than it claimed, and each one found not by a tester running test scripts, but by an operator trying to do real work and noticing when the outcome did not match the expectation.
 
 Every bug was reported to the platform vendor. Every one was fixed. The agents had become the platform's most effective QA layer — not because they were tasked with testing, but because they were tasked with operating.
 
@@ -331,7 +309,7 @@ Every bug was reported to the platform vendor. Every one was fixed. The agents h
 
 With the platform bugs fixed, the cascade ran again.
 
-`mark_paid`: confirmed. `send_contract_for_signature`: called. This time the database updated. `sent_at` set. `accept_token` generated.
+The invoice was marked paid — confirmed. The contract was sent again — and this time the database updated: sent for real, signature link created.
 
 But the signing URL pointed to an empty document.
 

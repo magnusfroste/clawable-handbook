@@ -10,7 +10,7 @@ faq:
   - q: "How much does an autonomous operator cost compared to a human?"
     a: "€50-300/month vs €3,500-7,500 for a human employee. The operator runs 168 hours/week vs 40, onboards in 2-4 weeks vs 2-6 months, and accumulates institutional memory instead of walking out the door."
   - q: "Where does my SaaS platform sit on the agent-readiness curve?"
-    a: "Every SaaS is somewhere on L1–L4: L1 Reachable (MCP exists, basic CRUD), L2 Operable (full business skills, tight schemas), L3 Resilient (observability, idempotency, self-healing), L4 Federation-Ready (A2A, event subscriptions). See chapter 11's Agent-Readiness Map by Category for a detailed breakdown across CRM, ERP, HCM, accounting, and more."
+    a: "Every SaaS is somewhere on L1–L4: L1 Reachable (an agent can connect and do the basics), L2 Operable (an agent can run real business processes), L3 Resilient (the connection stays reliable and honest under load), L4 Federation-Ready (agents can coordinate with other agents). See chapter 11's Agent-Readiness Map by Category for a detailed breakdown across CRM, ERP, HCM, accounting, and more."
 ---
 
 > If you were handed this handbook before a board meeting and have ten minutes before it starts, read this page. The rest of the handbook defends every claim below with sources, live logs, and practical detail.
@@ -27,7 +27,7 @@ The SaaS stack your business runs on has reached the limit of what rule-based au
 
 - **2022–2024** — Language models became capable enough to reason about business data, not just generate text.
 - **Late 2024** — Anthropic released MCP, a standardized protocol for connecting agents to software. USB-C for AI.
-- **2025** — OpenClaw (Peter Steinberger) showed what a reliable, durable agent architecture looks like: identity as files, heartbeat as cron, memory as markdown. Hundreds of thousands of stars on GitHub.
+- **2025** — OpenClaw (Peter Steinberger) showed what a reliable, durable agent architecture looks like: the agent's identity, schedule, and memory all live in plain text files a human can read and correct. Hundreds of thousands of stars on GitHub.
 - **2026** — The boardroom caught up. Ellison said it. HBR coined "Agent Manager." McKinsey published a four-layer accountability framework. The infrastructure is shipping. The governance vocabulary exists. The experiments are being run and logged.
 
 ---
@@ -63,10 +63,10 @@ The operator does not replace judgment, relationship work, or creative strategy.
 
 Every SaaS platform is somewhere on this curve. You can identify yours in a fifteen-minute audit.
 
-- **L1 Reachable** — MCP server exists, basic CRUD works. Most platforms in early 2026.
-- **L2 Operable** — Full business skills exposed, descriptions are briefings, schemas are tight. The threshold for a real deployment.
-- **L3 Resilient** — Observability, idempotency, self-healing. FlowWink is here in April 2026.
-- **L4 Federation-Ready** — A2A, event subscriptions, absence-detection primitives. The destination.
+- **L1 Reachable** — an agent can connect and do the basics. Most platforms in early 2026.
+- **L2 Operable** — an agent can run real business processes end to end. The threshold for a real deployment.
+- **L3 Resilient** — the connection stays reliable, observable, and honest under load. FlowWink is here in April 2026.
+- **L4 Federation-Ready** — agents can coordinate with other agents. The destination.
 
 Deploying an operator against an L1 platform produces demos. Deploying against an L2+ platform produces business outcomes. If your SaaS is below L2, the work is clear and the timeline is weeks, not quarters. (The full technical specification — what each level requires and how to reach it — is in the Builder Edition.)
 

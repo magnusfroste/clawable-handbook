@@ -99,11 +99,11 @@ Not because your QA team is incompetent. Because your QA team tested what develo
 
 ---
 
-In May 2026, a finance operator running on FlowWink called `send_contract_for_signature` on a 422,400 SEK renewal contract. The tool returned `status: success`. The operator filed the finding, marked the task complete.
+In May 2026, a finance operator running on FlowWink told the platform to send a 422,400 SEK renewal contract for signature. The tool answered: success. The operator filed the finding, marked the task complete.
 
-Then it ran a verification check.
+Then it ran a verification check against the record.
 
-`sent_at: null. accept_token: null.`
+Sent: never. Signature link: never created.
 
 Nothing had happened. The contract had not been sent. The signing URL had not been generated. The success message was genuine in the technical sense — the code path had reached a return statement — but the operation had never executed. A handler was missing. The tool had accepted the call, returned a polite confirmation, and left the database exactly as it found it.
 
@@ -137,7 +137,7 @@ Until an agent does.
 
 The CEO question is not "are my vendors building good software?" They are trying. The question is: **"What are my tools telling me is 'done' right now, that isn't?"**
 
-How many contracts in your system are marked "sent for signature" with a null sent_at? How many invoices are marked "processed" with the ledger unchanged? How many deal updates were "saved" to a database that never received the write?
+How many contracts in your system are marked "sent for signature" that were never actually sent? How many invoices are marked "processed" with the ledger unchanged? How many deal updates were "saved" to a database that never received them?
 
 You do not know. You have never had a mechanism to know.
 

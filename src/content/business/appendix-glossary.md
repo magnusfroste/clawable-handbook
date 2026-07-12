@@ -61,10 +61,10 @@ The builder edition carries a wider technical vocabulary. This glossary covers o
 
 | Term | Definition |
 |------|------------|
-| **L1 Reachable** | Platform exposes MCP. Basic CRUD works. Agent can answer questions and execute explicit commands. |
-| **L2 Operable** | Full business skills exposed. Descriptions are briefings, schemas are tight. Agent can run end-to-end workflows. |
-| **L3 Resilient** | Observability, idempotency, self-healing. Agent can run autonomously on a heartbeat. |
-| **L4 Federation-Ready** | A2A, event subscriptions, absence-detection primitives. Agent can participate in a multi-agent network. |
+| **L1 Reachable** | An agent can connect and do the basics — answer questions, execute explicit commands. |
+| **L2 Operable** | An agent can run real business processes end to end. The threshold for a real deployment. |
+| **L3 Resilient** | The connection stays reliable, observable, and honest under load. An agent can run autonomously on a schedule. |
+| **L4 Federation-Ready** | Agents can coordinate with other agents and react to events. The destination. |
 
 ---
 

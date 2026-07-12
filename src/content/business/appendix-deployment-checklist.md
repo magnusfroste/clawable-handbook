@@ -8,7 +8,7 @@ appendix: true
 
 > A checklist is a form of respect — for the people who will read the operator's findings, and for the business data it will touch. The operator runs autonomously. You are responsible for what it does.
 
-The builder edition carries an infrastructure-level checklist — Supabase, edge functions, RLS, cron jobs. This version is different. It assumes the operator runtime (an OpenClaw instance on ClawClass, or equivalent) is already running somewhere. What it checks is whether the operator is ready to be *given* a business.
+The builder edition carries a deeper, infrastructure-level checklist for the technical team. This version is different. It assumes the operator is already running somewhere. What it checks is whether the operator is ready to be *given* a business.
 
 Four phases, one go/no-go table.
 
@@ -18,7 +18,7 @@ Four phases, one go/no-go table.
 
 Done before the operator sees your data.
 
-- [ ] **MCP surface audited.** You have walked every tool the target platform exposes. For each tool: does it return consistent structured output? Does its schema validate under strict models (GPT-4.1, not just Claude)? Are there tools the business requires that do not exist? (See chapter 5.)
+- [ ] **MCP surface audited.** You have walked every tool the target platform exposes. For each tool: does it return clean, predictable data — regardless of which AI model reads it? Are there tools the business requires that do not exist? (See chapter 5.)
 - [ ] **Gap list recorded.** The tools that are missing, broken, or ambiguous are written down. You know which gaps the platform vendor will fix and which gaps the operator must work around.
 - [ ] **Authentication scoped.** The operator authenticates with its own account or API key — not a human's shared credentials. The scope of the key matches the skills the operator is allowed to call.
 - [ ] **Approval tiers assigned.** Every skill in the operator's registry has an explicit trust level: `auto` (low-stakes, logged), `notify` (medium, logged + announced), or `approve` (high, queued for human sign-off). No skill inherits a default — every one is a decision.
@@ -89,7 +89,7 @@ If any row fails, do not proceed. Fix the failing row first. The cost of waiting
 
 Know these before you need them.
 
-**Immediate pause.** The Agent Manager has a one-command pause. For an OpenClaw deployment, this is typically a `tool_policy` update that blocks all skills, or disabling the heartbeat cron.
+**Immediate pause.** The Agent Manager has a one-command pause — one action that blocks every skill, or switches off the operator's schedule entirely.
 
 **Review recent actions.** Every action the operator has taken in the last 24 hours is readable from the activity log. Know where that log lives. Know how to filter it by time range.
 

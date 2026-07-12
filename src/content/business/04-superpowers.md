@@ -13,7 +13,7 @@ Then someone pointed at it. One sentence dispatched to the operator: handle the 
 
 Four minutes later:
 
-The operator had run a KYC check on the company — found the existing lead record, created a missing company record to complete the profile. It had written and sent a personal renewal email to Johan Lindvall, referencing the contract expiry date and proposing continuation terms. It had created a renewal deal in the CRM with the estimated contract value. It had filed a CRITICAL finding: contract expires in eight days, no buffer, renewal conversation not started. And it had written a follow-up plan: call on May 16, escalate to principal on May 18 if no response.
+The operator had run a know-your-customer check on the company — found the existing lead record, created a missing company record to complete the profile. It had written and sent a personal renewal email to Johan Lindvall, referencing the contract expiry date and proposing continuation terms. It had created a renewal deal in the CRM with the estimated contract value. It had filed a CRITICAL finding: contract expires in eight days, no buffer, renewal conversation not started. And it had written a follow-up plan: call on May 16, escalate to principal on May 18 if no response.
 
 Five actions. Four minutes. No instructions beyond the situation.
 
@@ -93,7 +93,7 @@ The content burst followed by silence (chapter 3) is the clearest example. A fre
 
 The same logic applies to financial processes. An imbalance in the P&L is a symptom. Tracing it to a specific journal entry posted to the wrong account — proposing a correcting entry, recommending whether to lock the period — is diagnosis. Once you know the cause, you fix the process. Once you fix the process, the error does not recur.
 
-The business value compounds. A company that corrects imbalances without understanding their cause repeats them every period. The difference between €9.50 and €1.10 per report — for a company producing 200 reports per year — is €1,680 annually, not from working faster but from stopping the error at its source.
+The business value compounds. A company that corrects imbalances without understanding their cause repeats them every period. The difference between a report produced by hand (around €9.50) and one produced by the operator (around €1.10) — for a company producing 200 reports per year — is €1,680 annually, not from working faster but from stopping the error at its source.
 
 ---
 

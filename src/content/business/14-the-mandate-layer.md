@@ -64,8 +64,6 @@ OpenClaw operators read three workspace files at the start of every session. `SO
 
 The mandate boundary lives in `AGENTS.md`. When the operator encounters a situation that tests the boundary, it does not consult a rules engine or call an approval API. It re-reads its own operating rules — the document it has already internalised — and applies judgment. The governance is not enforced from outside. It is part of how the operator works.
 
-(In the Clawable deployment documented in chapter three, the mandate was placed in `SOUL.md` — which also works, since both files are loaded every session. `AGENTS.md` is the canonical location per OpenClaw's own conventions, and where we recommend you put it.)
-
 This matters for three reasons that business leaders care about:
 
 **It is readable.** Anyone on the team — the Agent Manager, legal, compliance, the board — can open `AGENTS.md` and read exactly what the operator has been told it can and cannot do. No vendor interpretation layer. No black-box model behaviour. Plain text, version-controlled, auditable.
@@ -140,7 +138,7 @@ The sales operator was running its pipeline sweep. It found the Norrvind Motors 
 
 But it did not send the contract.
 
-Not because it chose not to. Because `send_contract_for_signature` was not in its tool inventory. The operator's MCP access was scoped to CRM: leads, deals, outreach, tasks, bookings. Contract execution was Finance territory, with its own operator and its own access surface.
+Not because it chose not to. Because the ability to send a contract for signature was not among its tools. The operator's access was scoped to CRM: leads, deals, outreach, tasks, bookings. Contract execution was Finance territory, with its own operator and its own access surface.
 
 The operator recognised the boundary. It escalated: *"Norrvind Motors contract 79ea47c9 pending 17 days, no follow-up logged. Outside my tool scope — requires Finance or principal action."*
 

@@ -59,7 +59,7 @@ OpenClaw takes a different approach. Instead of building everything from scratch
 
 The architecture is deliberately simple. Three files define the operator: SOUL.md (who the agent is — personality, boundaries, tone), AGENTS.md (how the agent behaves — rules, tools, memory), and HEARTBEAT.md (what the agent does periodically — checks, scans, maintenance). You don't write orchestration logic. You don't implement MCP clients. You describe what you want, and the framework handles the how.
 
-Setup time: about an hour to a working operator. You install OpenClaw, write your three configuration files, point it at your MCP servers, and run your first SIM. If the skill audit was done right, you'll see your first automated business process on the same day.
+Setup time: about an hour to a working operator. You install OpenClaw, write your three configuration files, point it at your systems, and run your first trial cycle against real business data. If the skill audit was done right, you'll see your first automated business process on the same day.
 
 Cost: free. Open source. No licensing fees. No per-user charges. No vendor lock-in. If OpenClaw disappears tomorrow, the code is on your machine and the MCP servers are still running.
 
@@ -90,22 +90,11 @@ OpenClaw gives you speed, flexibility, and zero licensing cost, with the trade-o
 
 The table tells the story. For speed, OpenClaw wins. For cost, OpenClaw wins. For flexibility, OpenClaw wins. For enterprise support guarantees, proprietary platforms win. For absolute control, building your own wins — if you have the resources and the patience.
 
-### New Entrant: OpenAI Agents SDK (April 2026)
+### New Entrant: OpenAI's Agent Framework (April 2026)
 
-In April 2026, OpenAI released a major update to its Agents SDK that's worth noting:
+One development worth noting: in April 2026, OpenAI rebuilt its own agent framework around the very same building blocks OpenClaw pioneered — the same protocol for reaching business systems, the same text-file instructions, the same skill pattern. When the company that had its own competing approach adopts your architecture, the architecture has won.
 
-- **MCP as first-class primitive** — OpenAI now supports MCP for tool integration
-- **AGENTS.md support** — same pattern OpenClaw uses for custom instructions
-- **Skills via agentskills.io** — standardized skill discovery
-- **Native sandbox execution** — E2B, Cloudflare, Daytona, Modal, Vercel
-
-This is significant because it validates the same architecture OpenClaw pioneered. OpenAI and OpenClaw now share MCP, AGENTS.md, and Skills as core primitives.
-
-**Key difference:** OpenAI's SDK is model-locked (OpenAI models only) and proprietary. OpenClaw is model-agnostic and open source. OpenAI gives you a polished harness for their models; OpenClaw gives you an open framework that works with any provider.
-
-**When to consider OpenAI Agents SDK:** You're committed to OpenAI models and want a turnkey harness optimized for them.
-
-**When to stick with OpenClaw:** You want flexibility across models, no vendor lock-in, and community-driven innovation.
+The difference that matters for your decision: OpenAI's framework only runs OpenAI's models, and it is proprietary. OpenClaw runs any model and is open source. If you are fully committed to OpenAI and want their polished package, it is a reasonable choice. If you want the freedom to switch models — and the next section explains why that freedom became a board-level issue — OpenClaw keeps every door open.
 
 ### The Labs Came From the Other Side
 

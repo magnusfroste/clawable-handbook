@@ -59,7 +59,7 @@ Fortnox is Sweden's leading cloud-based business administration platform. Nearly
 
 The answer reveals the trap in practice.
 
-Fortnox itself has not shipped an official MCP server. The platform exposes a well-documented RESTful API — and the community did not wait for more. Two open-source projects mapped Fortnox's full API surface to MCP before Fortnox did: `erp-mafia/fortnox-mcp` (Jakob Wennberg, January 2026) and `Proviscale/fortnox-mcp-server` (Viggo Johansson, April 2026). Both are MIT-licensed, published to npm, and installable in minutes. An agent can now read accounts, check invoice status, create customers, file vouchers, and run reports against Fortnox — through a community-built MCP surface. That is worth noting: the ecosystem is moving faster than the vendors.
+Fortnox itself has not shipped an official agent doorway. But the community did not wait: two independent open-source projects connected Fortnox's full surface to the MCP standard before Fortnox did — free, and installable in minutes. An agent can now read accounts, check invoice status, create customers, file vouchers, and run reports against Fortnox, through doors the vendor never built. That is worth noting: the ecosystem is moving faster than the vendors.
 
 The platform's own AI features add intelligence within the same boundary: automated categorization, anomaly detection, natural language queries.
 

@@ -146,9 +146,9 @@ The transition is real and the displacement of specific roles is real. What hist
 
 ## The Community
 
-Building with OpenClaw means building in the open. A practitioner community of hundreds of thousands — running their own operators, publishing SIM results, contributing skills, and solving problems in public that every other deployment will eventually face.
+Building with OpenClaw means building in the open. A practitioner community of hundreds of thousands — running their own operators, publishing the results of their trial runs, contributing skills, and solving problems in public that every other deployment will eventually face.
 
-The business that participates in this community — that publishes its SIM results, contributes its learnings, and engages with the problems others are solving — builds faster than the business that treats its operator deployment as a proprietary advantage to be protected.
+The business that participates in this community — that shares what its operator runs produced, contributes its learnings, and engages with the problems others are solving — builds faster than the business that treats its operator deployment as a proprietary advantage to be protected.
 
 The protocol is open. The framework is open. The moat, if there is one, is operational knowledge: the specific context of your business, your customers, and your processes that no competitor can copy because it lives in your operator's memory, not in your code.
 
@@ -164,7 +164,7 @@ But there is a question sitting at the edge of it that this handbook does not an
 
 Not better because you updated AGENTS.md. Better because it noticed a pattern it had not been told to look for, built a skill from that pattern, tested it against real data, and added it to its own repertoire. Better because every finding made it slightly more capable of finding the next thing.
 
-That is a different kind of system. It is the subject of *The Learning Operator* — the third handbook in this series, built on [Hermes Agent](https://github.com/nousresearch/hermes-agent) by NousResearch: the only agent framework with a built-in learning loop. Skills created from experience. Skills that self-improve during use. 144k GitHub stars. `hermes claw migrate` — explicitly positioned as what you go to after OpenClaw.
+That is a different kind of system. It is the subject of *The Learning Operator* — the third handbook in this series, built on [Hermes Agent](https://github.com/nousresearch/hermes-agent) by NousResearch: the only agent framework with a built-in learning loop. Skills created from experience. Skills that self-improve during use. Explicitly positioned as where you go after OpenClaw.
 
 The question Book 3 answers is not *whether* to deploy an autonomous operator. You already know the answer. The question is: once it is running well, what do you do with everything it has learned?
 
@@ -186,7 +186,7 @@ The question Book 3 answers is not *whether* to deploy an autonomous operator. Y
 
 Before you close this handbook, there is something documented in the Builder Edition that is too far ahead to prove in these pages — but worth knowing is already running in production.
 
-In Q1 2026, FlowPilot — FlowWink's embedded agent — dispatched a QA assignment to an external OpenClaw instance via Google's A2A protocol. Not a human initiating a task. One agent instructing another. The external agent connected to FlowWink via MCP, ran a structured audit, and reported its findings back through the same infrastructure. FlowPilot picked up those findings on its next heartbeat cycle, created improvement objectives, and a portion of them were resolved as permanent fixes to the platform's source code — changes that now benefit every future installation automatically.
+In Q1 2026, one agent handed work to another — and acted on the result — with no human anywhere in the chain. FlowPilot, FlowWink's embedded agent, dispatched a quality-audit assignment to an external OpenClaw instance over the emerging agent-to-agent protocols. The external agent connected, ran a structured audit, and reported its findings back through the same channel. FlowPilot picked up those findings on its next heartbeat cycle, created improvement objectives, and a portion of them were resolved as permanent fixes to the platform's source code — changes that now benefit every future installation automatically.
 
 One agent improving another agent's operational environment. Autonomously. In a closed loop. Without a human in the dispatch chain.
 

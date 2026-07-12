@@ -61,7 +61,7 @@ The organizations that will lead in 2028 are not the ones that deployed the most
 
 Twenty-five years ago, Elon Musk looked at the space industry's most settled assumption and refused it: rockets that burn up after one flight are not a law of physics — they are a habit the industry had stopped questioning. The reframe was not a better rocket. It was first principles applied to a cost everyone had normalized. Today the rockets land routinely, and nobody remembers why disposable ever seemed reasonable.
 
-Apply the same first principles to business software, and the question gets uncomfortable fast. What *is* a SaaS application, stripped to its physics? A data layer. Business logic. Interfaces. And the judgment of the people using it. Satya Nadella — the man who sells more business software than anyone alive — asked the question out loud in December 2024: business applications are "CRUD databases with business logic," and in the agent era the logic moves out of the application and into the agent tier. His conclusion, verbatim: *"SaaS is dead."* `validated`
+Apply the same first principles to business software, and the question gets uncomfortable fast. What *is* a SaaS application, stripped to its physics? A data layer. Business logic. Interfaces. And the judgment of the people using it. Satya Nadella — the man who sells more business software than anyone alive — asked the question out loud in December 2024: business applications are "CRUD databases with business logic" — store-and-retrieve plumbing with rules on top — and in the agent era the logic moves out of the application and into the agent tier. His conclusion, verbatim: *"SaaS is dead."* `validated`
 
 This handbook has already shown you each piece of the decomposition, running. The business logic lives in mandate files you own — plain markdown, version-controlled, portable (chapter fourteen). The interfaces become loop-engineered peepholes built where the human stands, in an afternoon (chapter eleven). The judgment stays human. Which leaves exactly one component with genuine gravity: **the data layer, and the operational wisdom accumulated on top of it.** Both ownable. Neither requiring a subscription.
 
@@ -87,7 +87,7 @@ The direction from here is measurable, not speculative. Three horizons, with dat
 - Governance frameworks (McKinsey four-layer, Singapore AIGL) become enterprise default
 - Regulatory frameworks begin catching up to autonomous-action liability
 
-*What this looks like in a log file, not a forecast: in June 2026, a second external agent — running on entirely different infrastructure — was wired into a live FlowWink instance as a peer operator. A scoped token minted in the federation admin, a dispatch surface of two tools instead of 300 schemas, connection verified within the hour. No account was created. Nobody logged in. One operator granting another operator a mandate-shaped key.* `validated`
+*What this looks like in a log file, not a forecast: in June 2026, a second external agent — running on entirely different infrastructure — was wired into a live FlowWink instance as a peer operator. A limited, revocable key issued in minutes, opening exactly two actions instead of the platform's full toolset, connection verified within the hour. No account was created. Nobody logged in. One operator granting another operator a mandate-shaped key.* `validated`
 
 ### Horizon 2 — 2027 → 2029: Structural Reorganization
 

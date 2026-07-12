@@ -21,7 +21,7 @@ We have had SaaS since 1999. Salesforce. HubSpot. Fortnox. Odoo. These tools str
 
 And the problems remained.
 
-According to Salesforce's own State of Sales report — surveying 5,500 salespeople across 27 countries — fewer than 30 percent of a salesperson's time goes to actual selling; the figure has held between 28 and 30 percent across multiple editions of the report (source: Appendix, `validated`). Stampli found that 67 percent of AP teams still manually enter invoices, despite having ERP systems built to handle exactly that (source: Appendix, `validated`). GBTA research found that a single overnight expense report costs 58 dollars and takes 20 minutes to file, and one in five contains an error that costs another 52 dollars to fix (source: Appendix, `validated`).
+According to Salesforce's own State of Sales report — surveying 5,500 salespeople across 27 countries — fewer than 30 percent of a salesperson's time goes to actual selling; the figure has held between 28 and 30 percent across multiple editions of the report (source: Appendix, `validated`). Stampli found that 67 percent of accounts-payable teams still manually enter invoices, despite having ERP systems built to handle exactly that (source: Appendix, `validated`). GBTA research found that a single overnight expense report costs 58 dollars and takes 20 minutes to file, and one in five contains an error that costs another 52 dollars to fix (source: Appendix, `validated`).
 
 These numbers have not improved in a decade of digital transformation.
 
