@@ -23,6 +23,12 @@ cutoff (ch 7), BCG AI at Work 2026 (chs 11, 15), all-four-payment-giants
    builder ch 14 (2.0 section gets its production numbers), business ch 11
    (the value equation gets embedded-operator evidence). This is the
    book's own verification-funnel answer: don't claim it — log it.
+   **Day-1 intake landed:** `docs/fieldreport-flowpilot-proofweek-2026-07.md`
+   — findings 1–6 accepted for the August pass (Curator's first live cycle
+   with the rejection-note-feeds-next-round beat; lived-in memory/175 rows;
+   self-audit 404 — gated on closing the fix loop; dial inheritance proof;
+   hollow-turn 2/3+1 → 5/5+0; fleet security sweep). Finding 7 (naming as
+   drift) held, sidebar at most. Await days 2–10 before weaving.
 1. **Sierra's monolith counterargument** — "if you want a multi-agent
    system so each team can own an agent, you're shipping your org chart."
    The builder track (ch 33 ClawClass) presents swarms without this
