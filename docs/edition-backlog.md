@@ -72,6 +72,14 @@ cutoff (ch 7), BCG AI at Work 2026 (chs 11, 15), all-four-payment-giants
     tolerance question: can this workflow tolerate what the agent gets
     wrong? Builder ch 30/31.
 
+7. **The agent web gets an economy** (Cloudflare pay-per-request bot
+   traffic, via The Atlas Jul 10; + JPMorgan on-prem AI via Bussmann
+   briefing Jul 11): machine traffic becomes a paying customer class —
+   pairs with ch 13's payment giants and the agent-readable thesis;
+   JPMorgan on-prem = sovereignty proof for ch 11's reflection and
+   ch 15's data question. Also: Microsoft/AWS "FDE" (forward-deployed
+   engineers) = the market naming loop-engineering-adjacent work.
+
 ## Standing patterns to watch
 
 - Agent **unit economics** is the market's biggest blind spot → the
