@@ -188,7 +188,7 @@ Day 1, 14:00 — FlowPilot triggers scheduled QA objective
      ├── ClawOne creates beta_test_session
      │   Scenario: "Skill Description Quality Audit"
      │
-     ├── ClawOne examines 100+ skills
+     ├── ClawOne examines the skill catalog
      │   Logs exchanges: observation, observation, question, observation
      │
      ├── ClawOne produces 6 findings:
@@ -279,7 +279,7 @@ This is stagnation detection (see [Chapter 21](/builder/21-stagnation-and-drift)
 
 2. **Scope creep in audits** — ClawOne occasionally tried to audit things outside its expertise (UI design, pricing strategy). The scenario field in `beta_test_sessions` keeps audits focused.
 
-3. **Token cost** — A thorough audit that reads 100+ skill descriptions, the soul file, recent memories, and objectives is expensive. Budget accordingly.
+3. **Token cost** — A thorough audit that reads hundreds of skill descriptions, the soul file, recent memories, and objectives is expensive. Budget accordingly.
 
 ---
 

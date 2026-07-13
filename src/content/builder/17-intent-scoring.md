@@ -1,19 +1,19 @@
 ---
 title: "Intent Scoring — Multilingual Skill Selection"
-description: "How an agent with 100+ skills picks the right one every time — synonym expansion, trigger matching, historical boosting, and why it works in Swedish."
+description: "How an agent with 300+ skills picks the right one every time — synonym expansion, trigger matching, historical boosting, and why it works in Swedish."
 order: 17
 icon: "target"
 ---
 
 ## Why Not Just Let the LLM Choose?
 
-With 10 skills, you can. With 100+, you can't — for three reasons:
+With 10 skills, you can. With 300+, you can't — for three reasons:
 
-1. **Token cost** — 100+ skills × ~97 tokens metadata each = ~10K+ tokens. With intent filtering, it's 25 skills × ~97 = ~2.4K tokens. Thousands of tokens saved per request.
+1. **Token cost** — 300+ skills × ~97 tokens metadata each = ~30K tokens. With intent filtering, it's 25 skills × ~97 = ~2.4K tokens. Over 90 percent of the metadata cost removed, on every request.
 
 2. **Selection accuracy** — LLMs struggle with large tool sets. OpenAI documents a 128-tool limit, but accuracy degrades well before that. With fewer, more relevant options, the model picks better.
 
-3. **Hallucination reduction** — More tools in the prompt means more names for the model to confuse. Reducing from 100+ to 25 cuts the surface area for phantom tool calls dramatically.
+3. **Hallucination reduction** — More tools in the prompt means more names for the model to confuse. Reducing from 300+ to 25 cuts the surface area for phantom tool calls dramatically.
 
 ---
 
@@ -197,7 +197,7 @@ The intent scorer embodies a specific philosophy about agent architecture:
 
 3. **Language-aware, not language-dependent** — Swedish synonyms work alongside English ones. Adding German, Spanish, or Japanese is a matter of extending the map — no architectural changes needed.
 
-4. **Observable** — The scorer logs its work: `[intent-scorer] 100+ skills → 25 (18 intent-matched, expanded: 12 terms)`. You can always see what happened and why.
+4. **Observable** — The scorer logs its work: `[intent-scorer] 300+ skills → 25 (18 intent-matched, expanded: 12 terms)`. You can always see what happened and why.
 
 ---
 

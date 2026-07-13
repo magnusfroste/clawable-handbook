@@ -71,7 +71,7 @@ Phase 2 (on-call): Load full instructions when LLM calls the skill (~500 tokens/
 Phase 3 (budget): Compress or drop skills as context fills up
 ```
 
-**The anti-pattern:** Loading all 100+ skill instructions into the system prompt. You'll hit context limits before the first tool call.
+**The anti-pattern:** Loading all 300+ skill instructions into the system prompt. You'll hit context limits before the first tool call.
 
 ---
 

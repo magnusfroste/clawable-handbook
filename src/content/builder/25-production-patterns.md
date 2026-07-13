@@ -170,7 +170,7 @@ Without these layers, we observed:
 
 ### The Problem
 
-At 10 skills, you can send everything to the LLM. At 100+, you can't — you'll consume 60% of your context window before the agent starts reasoning. But static truncation is too blunt: it doesn't know which skills matter for the current task.
+At 10 skills, you can send everything to the LLM. At 300+, you can't — you'd consume most of your context window before the agent starts reasoning. But static truncation is too blunt: it doesn't know which skills matter for the current task.
 
 ### The Pattern
 
@@ -181,7 +181,7 @@ Token budget used:     <50%          50-75%          >75%
                         │              │               │
                    ┌────┴────┐   ┌────┴────┐    ┌────┴────┐
                    │  FULL   │   │ COMPACT  │    │  DROP   │
-                   │All 100+ │   │ All 100+ │    │ Top 20  │
+                   │All 300+ │   │ All 300+ │    │ Top 20  │
                    │ skills  │   │ truncated│    │ compact │
                    │ w/full  │   │ desc (80 │    │ format  │
                    │ desc    │   │ chars)   │    │ only    │
@@ -218,8 +218,8 @@ if (newTier !== currentTier) {
 
 | Tier | Skills loaded | Tokens consumed | % of 128K budget |
 |------|--------------|-----------------|-------------------|
-| Full | 100+ | ~10,000+ | ~8% |
-| Compact | 100+ | ~4,000+ | ~3% |
+| Full | 300+ | ~30,000+ | ~23% |
+| Compact | 300+ | ~12,000+ | ~9% |
 | Drop | 20 | ~800 | 0.6% |
 
 The difference between Full and Drop is significant — enough for ~15 additional conversation turns or a full plan decomposition.
@@ -428,7 +428,7 @@ These six patterns aren't independent. They compound:
 
 1. **Opt-in agent** lets you start without risk → builds trust
 2. **Module bootstrap** means each new capability arrives fully wired → no drift
-3. **Skill budget** ensures 100+ skills don't overwhelm the model → consistent quality
+3. **Skill budget** ensures 300+ skills don't overwhelm the model → consistent quality
 4. **Five-layer resilience** catches failures before they cascade → uptime
 5. **Instance health** detects when something breaks → proactive fixes
 6. **AI fallback chain** ensures the agent always has a model to reason with → availability

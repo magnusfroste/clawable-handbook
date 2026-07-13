@@ -67,7 +67,7 @@ This is not an argument against embedded agents. It is an argument about what ea
 
 ## The Real Cost Question
 
-Building FlowPilot took months of specialist engineering: an agent brain with 130-plus skills, its own memory system, safety rails, self-healing, and dozens of custom connections into the platform's machinery. Estimated effort: six to twelve months of dedicated development. (The full architecture is documented in the Builder Edition.)
+Building FlowPilot took months of specialist engineering: an agent brain running the platform's full 300+ skill catalog, its own memory system, safety rails, self-healing, and dozens of custom connections into the platform's machinery. Estimated effort: six to twelve months of dedicated development. (The full architecture is documented in the Builder Edition.)
 
 Connecting Clawable to the same platform via MCP required deploying the MCP server FlowPilot had already built, registering as a peer, and writing tool descriptions. Estimated effort: one to two weeks.
 

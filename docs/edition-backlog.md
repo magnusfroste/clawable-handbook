@@ -15,6 +15,14 @@ cutoff (ch 7), BCG AI at Work 2026 (chs 11, 15), all-four-payment-giants
 
 ## For August (strongest candidates)
 
+0. **FlowPilot 2.0 proof weeks** — a 10-day production monitoring of
+   FlowPilot running live at www.liteit.se (flowwink-local session,
+   started ~Jul 12). First real longitudinal data on an embedded operator
+   in production: follow-through completion rate, composite-pipeline runs,
+   Curator proposals accepted/rejected, hollow-turn rate. Natural homes:
+   builder ch 14 (2.0 section gets its production numbers), business ch 11
+   (the value equation gets embedded-operator evidence). This is the
+   book's own verification-funnel answer: don't claim it — log it.
 1. **Sierra's monolith counterargument** — "if you want a multi-agent
    system so each team can own an agent, you're shipping your org chart."
    The builder track (ch 33 ClawClass) presents swarms without this

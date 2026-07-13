@@ -1,6 +1,6 @@
 ---
 title: "The Token Economy"
-description: "Context budget management — how to run 100+ skills without hitting the context ceiling. Prompt compilation, lazy loading, and graceful degradation."
+description: "Context budget management — how to run 300+ skills without hitting the context ceiling. Prompt compilation, lazy loading, and graceful degradation."
 order: 19
 icon: "calculator"
 ---
@@ -80,7 +80,7 @@ Each skill has two parts:
 1. **Metadata** — name, description, JSON schema (~100 tokens)
 2. **Instructions** — detailed usage guide, edge cases, decision tables (~500-2,000 tokens)
 
-With 100+ skills, loading all instructions costs 50K+ tokens. That's nearly half the context window consumed by information the agent *might* need.
+With 300+ skills, loading all instructions would cost well over 100K tokens — most of the context window consumed by information the agent *might* need.
 
 ### The Solution
 
@@ -152,7 +152,7 @@ const intent = classifyIntent(userMessage);
 const relevantSkills = allSkills.filter(s =>
   intent.includes(s.category) || s.category === 'core'
 );
-// 100+ skills → typically 30-50 per request
+// 300+ skills → typically 30-50 per request
 ```
 
 This means the agent never sees all skills simultaneously. It sees 30-50 relevant skills plus core utilities, keeping the metadata cost around 5-8K tokens.
@@ -249,7 +249,7 @@ This pattern — **pointers in context, data in memory** — is how you scale be
 
 ## The Context Stack — Where Every Token Goes
 
-Understanding the total context cost requires seeing the full stack. Here is a real breakdown from a FlowPilot instance with 100+ skills:
+Understanding the total context cost requires seeing the full stack. Here is a real breakdown from a FlowPilot instance running the 300+ skill catalog:
 
 ```
 Layer                                   Tokens     % of 128K
@@ -265,7 +265,7 @@ Conversation history                   ~5-15K     4-12%
 Total:                                 ~25-35K    ~20-27%
 ```
 
-The key insight: **with 100+ skills, the system uses only ~25% of the context window.** This leaves 75% for the model's reasoning chain and tool call responses.
+The key insight: **with a 300+ skill catalog, the system uses only ~25% of the context window** — because the scorer loads a filtered fraction, never the catalog. This leaves 75% for the model's reasoning chain and tool call responses.
 
 ### Scaling Thresholds
 
