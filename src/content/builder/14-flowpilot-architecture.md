@@ -9,7 +9,7 @@ icon: "bolt"
 
 The Business Edition maps the embedded vs. external decision at a strategic level. FlowPilot is embedded depth made concrete — the reference implementation of what it means to build natively agentic rather than bolt on an agent after the fact.
 
-FlowPilot is FlowWink's native agent. It runs on the same database, the same authentication layer, and the same runtime as the rest of the platform. An external operator reads FlowWink through a 300+ skill MCP surface. FlowPilot reads the database directly.
+FlowPilot is FlowWink's built-in operator — shipped as the platform's flagship **opt-in module**, not hardwired into it. The stack layers cleanly: the platform (skills, modules, event bus) is always on; **FlowChat**, the chat surface, is always on; FlowPilot is the operator layer on top, driving the same reasoning loop FlowChat uses — the difference is who initiates the turn, a human typing or the heartbeat acting on an objective. Switch it off and the platform loses autonomy, not capability. It runs on the same database, the same authentication layer, and the same runtime as the rest of the platform. An external operator reads FlowWink through the 300+ skill MCP surface. FlowPilot reads the database directly.
 
 For a builder, the architectural details matter because they determine what the agent can and cannot do. Three consequences follow from the depth.
 

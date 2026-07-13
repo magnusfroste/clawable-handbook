@@ -125,7 +125,7 @@ These processes are repetitive, rule-governed, data-rich, and currently consumin
 
 **Time saving:** 60–70% of tickets fully resolved without human
 **Cost benchmark:** Human support ticket: $8–25 → agent-resolved: $0.05–0.20
-**Flowwink relevance:** Public Chat surface handles this natively. Knowledge base + booking integration = fully autonomous first-contact experience.
+**Flowwink relevance:** FlowChat's visitor scope handles this natively. Knowledge base + booking integration = fully autonomous first-contact experience.
 
 ---
 

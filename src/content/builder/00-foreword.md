@@ -77,7 +77,7 @@ Not in theory. In code, in production systems, in verified claims against OpenCl
 The narrative arc is deliberate:
 
 1. **What agentic is** — agency, persistence, adaptation, and control-plane design
-2. **How to build it for business** — FlowPilot/Flowwink as a production SaaS ERP with a native autonomous agent
+2. **How to build it for business** — FlowWink as a Business Operating System operable by any agent, with FlowPilot as its built-in operator
 3. **How to prove it stays agentic** — testing, governance, and drift controls
 4. **How to improve it continuously** — external autonomous agents auditing and upgrading the system in a closed loop
 
@@ -85,7 +85,7 @@ We cover:
 - OpenClaw's actual architecture — system prompt, workspace files, heartbeat, skills, sessions — and what the source code actually confirms
 - The agentic control plane — how Claude Code, Codex, Antigravity, Cursor, and Cline work under the hood, why thin wrappers fail, and what a defensible moat requires
 - The API layer — the three diverging formats (Chat Completions, Responses, Messages) and how adapters like LiteLLM preserve portability
-- Flowwink as a production self-hosted SaaS/ERP stack — CMS, CRM, e-commerce, booking, and more — with FlowPilot designed as a native autonomous agent from day one
+- Flowwink as a production self-hosted Business Operating System — 63 modules across CMS, CRM, commerce, finance, HR, and operations, every capability exposed as an agent skill — with FlowPilot as the built-in operator and the freedom to bring your own
 - Agent-Driven Development (ADD): how agents test and evaluate other agents through A2A dispatch, MCP inspection, and structured findings
 - The governance shift — the Agent Manager role, McKinsey's accountability model, and who is responsible when an agent makes a bad decision
 - The two production failure modes teams repeatedly hit — stagnation and drift — and practical ways to manage both
@@ -95,7 +95,7 @@ We cover:
 
 This is a handbook, not a product brochure.
 
-Flowwink is a self-hosted SaaS ERP — comparable to Odoo in scope. Without FlowPilot it is a capable classic platform. With FlowPilot it becomes a **Business Operating System (BOS)**: the agent operates the business autonomously while the human sets direction. FlowPilot is not a plugin or an add-on — the platform and the agent were designed together from the start.
+Flowwink is a self-hosted **Business Operating System (BOS)** — comparable to Odoo in scope, but built on a different premise: every capability of its 63 modules is exposed as an agent skill over MCP, so the platform is operable by *any* agent. It ships with one — **FlowPilot**, the flagship module: an opt-in operator layer that adds soul, objectives, heartbeat, memory, and trust gating on top of the always-on platform. Switch FlowPilot off and FlowWink is still a fully capable classic platform, still agent-operable from outside. Switch it on and there is a colleague behind the interface that also acts when nobody is typing. The platform and the agent were designed together — but the architecture never locks you to the built-in operator. Bring your own.
 
 ### The Market This Disrupts
 

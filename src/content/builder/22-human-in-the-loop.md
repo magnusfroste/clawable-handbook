@@ -57,23 +57,24 @@ Is the action reversible?
 
 ---
 
-## The Three Trust Tiers
+## The Four Trust Levels
 
-FlowPilot implements three execution modes, not two. The binary `requires_approval` flag is the simplified view. Mapping rule: `approve` = `requires_approval: true`; `auto` and `notify` = `requires_approval: false` (with different post-action reporting behavior). The full implementation has:
+FlowPilot implements four execution modes, not two. The binary `requires_approval` flag is the simplified view. Mapping rule: `approve` = `requires_approval: true`; `auto` and `notify` = `requires_approval: false` (with different post-action reporting behavior). The full implementation has:
 
 | Tier | Value | Behavior | Example |
 |------|-------|----------|---------|
 | **Auto** | `auto` | Execute silently, log to activity | Web search, analytics lookup, lead scoring |
 | **Notify** | `notify` | Execute, then send report to admin | Blog draft created, memory written, A2A message sent |
 | **Approve** | `approve` | Block execution until admin confirms | Newsletter send, financial transaction, site settings |
+| **Blocked** | `blocked` | Disabled — excluded from skill scoring entirely | A skill taken out of service pending review |
 
-### Why Three Tiers?
+### Why Graduated Levels?
 
 The binary model creates a false choice: either the agent waits for human approval on everything useful, or it acts silently on everything. **Notify** breaks the deadlock.
 
 A blog draft is not dangerous — but the admin probably wants to know it happened. With `notify`, the agent creates the draft immediately (no blocking) and sends a summary to the Activity Feed. The admin reviews at their convenience. If they don't like it, they delete it. No harm done.
 
-A newsletter send is irreversible — 10,000 people will receive it. That requires `approve`: the agent queues it, the admin must explicitly confirm.
+A newsletter send is irreversible — 10,000 people will receive it. That requires `approve`: the agent queues it, the admin must explicitly confirm. And `blocked` is the circuit breaker: a skill taken out of service disappears from the agent's skill scoring entirely — it cannot even be considered.
 
 ```
 auto:    Act → Log
@@ -223,7 +224,7 @@ The human doesn't disappear in an agentic system. Their role shifts:
 | Full autonomy on everything | One bad hallucination = disaster | Approval gates on destructive actions |
 | Approval on everything | Agent can't operate autonomously | Graduated autonomy based on risk |
 | No approval workflow | Admin can't review pending actions | Activity Feed with approve/reject |
-| Binary autonomy | All-or-nothing approach | Three-tier trust model (auto/notify/approve) |
+| Binary autonomy | All-or-nothing approach | Four-level trust model (auto/notify/approve/blocked) |
 | No tool_policy | Can't temporarily adjust behavior | Global policy override in agent_memory |
 
 ---

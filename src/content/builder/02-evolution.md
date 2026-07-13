@@ -93,7 +93,7 @@ This was the "capable contractor who does great work but never shows initiative"
 
 OpenClaw proved the pattern for individuals. FlowPilot is the same pattern applied to a full business platform.
 
-[Flowwink](https://github.com/magnusfroste/flowwink) is a self-hosted SaaS ERP — CMS, CRM, e-commerce, booking, newsletters, webinars, and tickets. Without FlowPilot it is a capable classic platform: humans log in, click, configure. With FlowPilot it becomes a **Business Operating System (BOS)**: the agent operates the platform autonomously, and the human sets direction. FlowPilot is not bolted on — it is a native first-class component designed into the architecture from the start.
+[Flowwink](https://github.com/magnusfroste/flowwink) is a self-hosted **Business Operating System (BOS)** — CMS, CRM, e-commerce, booking, newsletters, webinars, and tickets, with every capability exposed as an agent skill over MCP. The platform is agent-agnostic: any operator can run it, humans can run it manually, or you can switch on **FlowPilot** — the flagship opt-in operator module that adds soul, objectives, heartbeat, memory, and trust gating on top of the always-on platform. The platform and the operator were designed together, but the architecture never assumes the built-in one. Bring your own.
 
 ```
 ┌─────────────────────────────────────────────┐

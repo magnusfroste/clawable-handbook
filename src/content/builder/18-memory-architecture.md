@@ -19,7 +19,7 @@ LLMs are stateless. Each API call starts fresh. Without a memory system, the age
 
 **OpenClaw's solution** (verified from source): Workspace files (`AGENTS.md`, `SOUL.md`, `TOOLS.md`, `IDENTITY.md`, `USER.md`, `HEARTBEAT.md`, `MEMORY.md`) are injected into every agent turn. Daily memory files (`memory/*.md`) are accessed on-demand via `memory_search` and `memory_get` tools. Simple, no database required, but all injected files consume tokens (capped at 20k per file, 150k total).
 
-**Flowwink's evolution**: A 4-tier PostgreSQL system with vector search, designed for self-hosted business operations where each instance has its own database and memory is organized via RLS.
+**Flowwink's evolution**: A 4-tier PostgreSQL system with vector search, designed for self-hosted business operations where each instance has its own database and memory is organized via RLS. (The platform's own docs describe the same system as three memory *types* — working, episodic, semantic; the four tiers below are the implementation view of those three, with session memory as the ephemeral layer underneath.)
 
 ```
 L1: Session Memory (ephemeral)

@@ -40,10 +40,9 @@ appendix: true
 
 | Term | Definition |
 |------|-----------|
-| **Flowwink** | An open-source, self-hosted business platform — like Odoo meets Supabase. Each business runs its own isolated instance. Bundles CMS, CRM, blog, newsletter, booking, e-commerce, and more. |
-| **FlowPilot** | The autonomous agent that operates a Flowwink instance. Runs the heartbeat protocol, manages content, qualifies leads, and executes business operations without being asked. |
-| **FlowAgent** | The admin-facing agent surface in Flowwink. Handles interactive conversations with the business owner/admin via the admin panel. |
-| **Public Chat** | The visitor-facing agent surface in Flowwink. Read-only + booking scope. Answers questions from the knowledge base and captures leads. |
+| **Flowwink** | The self-hosted **Business Operating System (BOS)** — 60+ modules and 300+ skills exposed over MCP, operable by any agent. Ships with FlowPilot but is agent-agnostic: bring your own operator, or run it as pure SaaS with humans. Each business runs its own isolated instance. |
+| **FlowPilot** | Flowwink's flagship **opt-in operator module** — soul, objectives, heartbeat, memory, reflection, and trust gating layered on top of the always-on platform. The included default operator, swappable for any external agent. |
+| **FlowChat** | The always-on chat surface beneath FlowPilot (Platform → FlowChat → FlowPilot). Runs in two scopes: admin (internal skills) and visitor (external, read-only + booking). FlowPilot drives the same reasoning loop FlowChat uses — the difference is who initiates the turn. |
 | **Edge Function** | A serverless function running on Supabase (Deno runtime). Flowwink's agent surfaces, heartbeat, and A2A communication are all implemented as edge functions. |
 | **Instance** | A single Flowwink deployment serving one business. Each instance has its own database, auth, edge functions, and agent. Self-hosted or running in an isolated cloud container. |
 
@@ -54,7 +53,7 @@ appendix: true
 | Term | Definition |
 |------|-----------|
 | **A2A (Agent-to-Agent)** | Communication between agents. Three levels exist: intra-process (OpenClaw sessions), inter-instance (Flowwink custom A2A), and inter-organizational (Google A2A protocol). |
-| **Approval Gate** | A mechanism that pauses agent execution and requires human approval before a high-risk action is performed. Configured per skill via `requires_approval`. |
+| **Approval Gate** | A mechanism that pauses agent execution and requires human approval before a high-risk action is performed. Configured per skill via `trust_level` (`auto`/`notify`/`approve`/`blocked`); the binary `requires_approval` is the simplified view. |
 | **Autonomy Spectrum** | The range from full human control to full agent autonomy. Different actions sit at different points. Calibrated through graduated trust phases (Observer → Assistant → Operator → Director). |
 | **Drift** | A long-term failure mode where an agent's behavior, tone, and judgment gradually shift from the original design — without anyone changing the configuration. Caused by memory accumulation, reflection loop bias, and soul mutation. |
 | **Handler** | The routing mechanism that determines how a skill is executed. Flowwink handlers include: `edge:`, `module:`, `db:`, `webhook:`, `a2a:`, `responses:`. |
@@ -98,7 +97,7 @@ appendix: true
 |------|-----------|
 | **McKinsey Four-Layer Model** | Accountability framework: Design (who built the skill), Deploy (who authorized it), Operate (who monitors it), Review (who audits it). From *Trust in the Age of Agents* (March 2026). |
 | **Singapore AIGL** | AI Governance Lab framework for autonomous agents. Key principles: oversight proportional to autonomy, attributable accountability, transparency to affected parties, reversibility by design. |
-| **10 Laws of Agentic Architecture** | Flowwink's architectural constraints: skills as knowledge containers, cost optimization, lazy loading, self-modification, handler routing, scope isolation, approval gating, self-healing, heartbeat protocol, unified reasoning core. |
+| **10 Laws of Agentic Architecture** | Flowwink's architectural constraints: skills as knowledge containers, cost optimization, lazy loading, self-modification (since FlowPilot 2.0 always human-gated via the Skill Curator), handler routing, scope isolation, approval gating, self-healing, heartbeat protocol, unified reasoning core. |
 | **The Responsibility Chain** | For any agent action: who built the skill → who configured it → who trained the agent → who monitors it → who owns the organization. Each layer carries a portion of accountability. |
 
 ---

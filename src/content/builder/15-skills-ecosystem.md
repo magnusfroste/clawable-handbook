@@ -208,7 +208,7 @@ OpenClaw uses file-based `SKILL.md` files with automatic discovery. Flowwink use
 | Multi-instance | No (single user) | Yes (RLS per instance) |
 | Versioning | Git | Database history |
 | Loading | Lazy: model reads `SKILL.md` on demand | Full tool definitions injected per session |
-| Registry | ClawHub marketplace | Curated 73-skill library |
+| Registry | ClawHub marketplace | Shared 300+ skill catalog (one metadata set, embedded + external consumers) |
 
 Both patterns work. The file-based approach is simpler for personal use. The database approach is necessary for business operations.
 

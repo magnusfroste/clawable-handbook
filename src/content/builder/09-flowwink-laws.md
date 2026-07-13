@@ -130,9 +130,9 @@ Every skill MUST define scope: `internal`, `external`, or `both`.
 
 **Implementation:**
 ```
-internal  → Only FlowAgent (admin) can use
-external  → Only Public Chat (visitors) can use
-both      → Either agent can use
+internal  → Only FlowChat's admin scope (and FlowPilot) can use
+external  → Only FlowChat's visitor scope can use
+both      → Either scope can use
 ```
 
 **The anti-pattern:** One agent serving both visitors and admins with the same tool set. Security nightmare.
@@ -199,17 +199,19 @@ All agent surfaces (interactive, autonomous, visitor chat) MUST share the same r
 
 **Why:** If the interactive agent and the heartbeat agent use different reasoning code, they'll behave differently. Bugs fixed in one won't be fixed in the other. Features added to one won't appear in the other.
 
+This law is why the platform's layering works the way it does today: **FlowChat** — the always-on chat surface — owns the reasoning entry point, and **FlowPilot** drives *the same loop* from its heartbeat. Not two brains; one loop, two initiators. The only difference between a human typing into FlowChat and FlowPilot acting on an objective is who started the turn.
+
 **Implementation:**
 ```
-chat-completion ──┐
-agent-operate   ──┼──→ agent-reason.ts (shared module)
-heartbeat       ──┘
+FlowChat (human-initiated)  ──┐
+heartbeat (FlowPilot)       ──┼──→ shared reasoning loop
+external (A2A / dispatch)   ──┘
 ```
 
-All three surfaces call the same `reason()` function with different configurations:
-- `chat-completion`: scope=external, streaming
-- `agent-operate`: scope=internal, streaming
-- `heartbeat`: scope=internal, non-streaming
+All surfaces call the same reasoning core with different configurations:
+- FlowChat visitor scope: external, streaming
+- FlowChat admin scope: internal, streaming
+- heartbeat: internal, non-streaming
 
 **The anti-pattern:** Separate reasoning logic for each surface. Maintenance nightmare, inconsistent behavior.
 

@@ -251,7 +251,7 @@ The OpenClaw kernel gives the world a common agent base:
 - **openclaw-cn** = regional fork — localized for a specific market, maintained independently
 - **EdgeClaw** = research fork — Tsinghua/OpenBMB pushing edge-cloud architecture
 - **NemoClaw** = enterprise distribution — NVIDIA hardware + security layer
-- **Flowwink** = self-hosted platform — same kernel, PostgreSQL + Supabase + business ERP shell
+- **Flowwink** = self-hosted Business Operating System — same design principles, PostgreSQL + Supabase, 60+ MCP-exposed modules, operable by any agent
 
 The VS Code parallel also holds. Cursor and Windsurf took VS Code's base in different directions — Cursor toward deep codebase indexing, Windsurf toward AI-native IDE design. Both ended up worth billions. The same trajectory is playing out here: the most focused, opinionated forks — the ones that solve a real problem for a real audience — will compound while generic forks stagnate.
 

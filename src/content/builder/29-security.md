@@ -339,7 +339,7 @@ The solution: Two separate agent surfaces with different permissions.
 
 ```
 ┌─────────────────────────────────────────────────┐
-│  Public Chat Agent (visitor scope)              │
+│  FlowChat (visitor scope)                       │
 │  ├── Read-only tools                            │
 │  ├── Lead capture                               │
 │  ├── Booking                                    │

@@ -7,7 +7,7 @@ icon: "cube"
 
 ## What Is Flowwink?
 
-Flowwink is a **Business Operating System (BOS)** — an open-source, self-hosted platform where an autonomous AI agent (FlowPilot) operates your entire business. Think Odoo meets OpenClaw: the full business platform, with the autonomous operator built in from the start. Each business runs its own isolated instance (self-hosted or in a managed cloud container), just like n8n or Supabase itself.
+Flowwink is a **Business Operating System (BOS)** — an open-source, self-hosted platform where every module exposes its capabilities as agent skills over MCP, so *any* operator can run the business: the built-in FlowPilot, an external agent like OpenClaw, or humans clicking through the UI. Think Odoo meets OpenClaw: the full business platform, shipping with a default operator but never locked to it. Each business runs its own isolated instance (self-hosted or in a managed cloud container), just like n8n or Supabase itself.
 
 ### The Three Eras of Business Software
 
@@ -41,7 +41,7 @@ FlowPilot autonomously manages the entire pipeline: qualifying leads, drafting p
 
 **With FlowPilot**, the same platform becomes autonomous. The agent operates the CMS, writes blog posts, qualifies leads, sends newsletters, analyzes performance — all without being asked. The platform becomes a digital employee.
 
-This dual nature — **tool when you're driving, employee when you're not** — is what makes Flowwink unique. The rest of this chapter dissects how both modes work architecturally.
+This dual nature — **tool when you're driving, employee when you're not** — plus a third mode in between: any external operator can run the same platform over MCP. That triangle is what makes Flowwink unique. The rest of this chapter dissects how the modes work architecturally.
 
 ---
 
@@ -243,7 +243,7 @@ Flowwink runs on Supabase Edge Functions (Deno). Each function serves a specific
 |---------------|---------|---------|
 | `agent-operate` | Admin sends message | Interactive session — admin talks to FlowPilot |
 | `chat-completion` | Visitor sends message | Public chat — visitor talks to the public-facing agent |
-| `flowpilot-heartbeat` | 12h cron | Autonomous cycle — 7-step protocol (self-heal, propose, plan, advance, automate, reflect, remember) |
+| `flowpilot-heartbeat` | Hourly cron (+ 5-min follow-through sweep) | Autonomous cycle — follow-through pre-pass, then the 7-step protocol (self-heal, propose, plan, advance, automate, reflect, remember) |
 | `agent-execute` | Called by reason core | Skill execution gateway — routes to correct handler, enforces approval gating |
 | `agent-reason` | Called by any surface | Shared reasoning core — ReAct loop, prompt compilation, tool routing |
 | `signal-ingest` | Webhook | External event ingestion — form submissions, payment events, etc. |
@@ -255,21 +255,21 @@ Flowwink runs on Supabase Edge Functions (Deno). Each function serves a specific
 
 **Key principle:** `agent-reason` is the shared module. `agent-operate`, `chat-completion`, and `flowpilot-heartbeat` all call it with different configurations — scope, streaming mode, and context. No logic duplication.
 
-### The Dual-Agent Architecture
+### FlowChat — One Chat Surface, Two Scopes
 
-Flowwink runs **two separate agent surfaces** that share the same reasoning core but have different capabilities:
+The always-on chat layer is called **FlowChat**, and it runs in two scopes that share the same reasoning core but have different capabilities:
 
 ```
 ┌──────────────────────────────────────────────┐
-│              agent-reason.ts                  │
-│         (shared reasoning module)             │
+│           shared reasoning loop               │
+│      (chat-completion entry point)            │
 └──────────────────┬───────────────────────────┘
                    │
         ┌──────────┴──────────┐
         ▼                     ▼
 ┌───────────────┐    ┌──────────────────┐
-│  FlowAgent    │    │  Public Chat     │
-│  (admin)      │    │  (visitors)      │
+│  FlowChat     │    │  FlowChat        │
+│  admin scope  │    │  visitor scope   │
 │               │    │                  │
 │  scope:       │    │  scope:          │
 │  internal     │    │  external        │
@@ -287,19 +287,19 @@ Flowwink runs **two separate agent surfaces** that share the same reasoning core
 └───────────────┘    └──────────────────┘
 ```
 
-**FlowAgent** (admin-side, `agent-operate`):
-- Triggered by the business owner via the admin UI
+**Admin scope** (the business owner, via the admin UI):
 - Has access to ALL skills marked `internal` or `both`
 - Can draft content, manage CRM, analyze data, send newsletters
-- Destructive actions require approval (`requires_approval: true`)
+- Gated actions follow the skill's trust level (`auto`/`notify`/`approve`/`blocked`)
 
-**Public Chat** (visitor-side, `chat-completion`):
-- Triggered by website visitors
+**Visitor scope** (website visitors):
 - Only has access to skills marked `external` or `both`
 - Can answer questions from knowledge base, book appointments, capture lead info
 - Cannot modify any data — read-only + booking
 
 **Why this matters:** The scope system (`internal`/`external`/`both`) enforces this separation at the architecture level. A visitor can never accidentally access admin tools. An admin can never accidentally expose internal operations to visitors.
+
+And this is where the layering completes: **FlowPilot, the opt-in operator module, drives the exact same loop** — the only difference is who initiates the turn. A human typing into FlowChat, or the heartbeat acting on an objective. Switch FlowPilot off and FlowChat still works; you lose autonomy, not capability. The Tesla analogy from the platform's own docs: the platform is the car, FlowChat is the built-in chat with the car, FlowPilot is Autopilot.
 
 ### Flowwink's Prompt Architecture
 
@@ -395,7 +395,7 @@ The concept categories (`soul`, `identity`, `agents`, `facts`, `preferences`) mi
 
 In Flowwink:
 - Interactive = `agent-operate` (admin) / `chat-completion` (visitor)
-- Autonomous = `flowpilot-heartbeat` (12h cron)
+- Autonomous = `flowpilot-heartbeat` (hourly cron, plus a 5-minute follow-through sweep)
 - External = `signal-ingest` (webhook endpoint)
 
 **All three surfaces share the same reasoning core.** This is LAW 10: Unified Reasoning Core. No logic duplication.
@@ -485,7 +485,7 @@ Each layer can evolve independently. You can add new channels without touching t
 
 This is the principle that makes agentic systems maintainable: **separation of concerns at the architectural level.**
 
-OpenClaw proved the pattern with a very large GitHub star count (hundreds of thousands as of the April 2026 snapshot cited in `SOURCES.md`) and production deployments worldwide. Flowwink is a separate product — a full self-hosted SaaS ERP where the autonomous agent is a native first-class component, not a layer added on top.
+OpenClaw proved the pattern with a very large GitHub star count (hundreds of thousands as of the April 2026 snapshot cited in `SOURCES.md`) and production deployments worldwide. Flowwink is a separate product — a self-hosted Business Operating System, agent-agnostic over MCP, that ships with FlowPilot as its built-in, opt-in operator layer.
 
 ---
 

@@ -237,7 +237,7 @@ This is the kind of observation that requires reading the soul file, remembering
 
 > *"12 of 100+ skills have descriptions under 40 characters. The intent scorer cannot reliably distinguish these from each other. Recommend expanding with Use when/NOT for markers."*
 
-FlowPilot had been creating skills autonomously (Law 4), but some self-created skills had minimal descriptions. ClawOne identified the pattern and FlowPilot fixed it by running `skill_update` on each one.
+FlowPilot had been creating skills autonomously (Law 4), but some self-created skills had minimal descriptions. ClawOne identified the pattern; the fix followed the governed path — improved descriptions drafted, staged for approval, and applied once a human signed off. (Today that loop is formalized as the Skill Curator: skill self-modification is always approve-gated.)
 
 ### 3. Memory Accumulation
 

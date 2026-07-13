@@ -175,7 +175,7 @@ Looking across Claude Code, Cline, Roo, OpenClaw, and Flowwink, the same archite
 | Tool permissions | 5-layer model | `TOOLS.md` + policy | skill scope + approval gates |
 | Memory | `~/.claude/sessions/` | `memory/*.md` | PostgreSQL + pgvector |
 | Subagents | `Task` tool | `sessions_spawn` | `agent-execute` parallel |
-| Heartbeat | — | `HEARTBEAT.md` cron | 12h Supabase cron |
+| Heartbeat | — | `HEARTBEAT.md` cron | Hourly Supabase cron |
 | Skills | MCP servers | `SKILL.md` + ClawHub | `agent_skills` DB table |
 
 These are not coincidences. This is the architecture of an autonomous agent. Everyone building in this space discovers it.

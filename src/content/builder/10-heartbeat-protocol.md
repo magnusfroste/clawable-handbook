@@ -167,9 +167,9 @@ advance_plan(objective_id, chain=true)
   │
   ├── Load current plan state
   ├── Find next pending step
-  ├── Execute via agent-execute (up to 4 steps per call)
+  ├── Execute via agent-execute (one skill per heartbeat)
   ├── Update step status (done/pending/failed)
-  └── Continue to next objective if time permits
+  └── Multi-step plans advance across successive heartbeats
 ```
 
 **Priority scoring** determines which objectives get advanced first:
@@ -262,13 +262,14 @@ The heartbeat frequency is admin-configurable:
 
 | Job | Default Schedule | Configurable |
 |-----|-----------------|--------------|
-| `flowpilot-heartbeat` | Twice daily (00:00, 12:00) | Frequency + hours + timezone |
+| `flowpilot-heartbeat` | Hourly | Frequency + hours + timezone |
+| `flowpilot-followthrough` | Every 5 minutes | Fixed (engine plumbing) |
 | `flowpilot-daily-briefing` | 07:00 local | Hour + timezone |
 | `flowpilot-learn` | 03:00 local | Hour + timezone |
 | `automation-dispatcher` | Every minute | Fixed |
 | `publish-scheduled-pages` | Every minute | Fixed |
 
-**Why twice daily?** CMS operations are less time-sensitive than personal assistant tasks. A blog post doesn't need to be published within 30 minutes. But a lead should be qualified within hours, not days.
+**Why hourly, not faster?** The reasoning cycle is the expensive part — an hourly cadence keeps a lead qualified within hours, not days, without burning tokens on empty cycles. What must not wait an hour is completing what a human already approved: that is the follow-through sweep's job, and it runs every five minutes as a deterministic pass — no reasoning, no tokens, just finishing the chain. (FlowPilot 2.0 also runs the same follow-through as a pre-pass at the start of every heartbeat, so the operator sees the completed results in its own context.)
 
 ---
 
@@ -318,7 +319,7 @@ HEARTBEAT REPORT (fp_m2x7k9_abc123):
 - Self-heal: 0 skills quarantined
 - Proposed: 1 new objective ("Competitive analysis for Q2")
 - Planned: 2 objectives decomposed
-- Advanced: 3 plan steps executed (blog post drafted, SEO audit completed)
+- Advanced: plan steps executed across the day's heartbeats (blog post drafted, SEO audit completed)
 - Automated: 2 automations executed (daily digest, lead qualification)
 - Reflected: 7-day performance analyzed, 2 learnings persisted
 - Remembered: 3 new memories saved
@@ -337,7 +338,7 @@ A common source of confusion: **autonomous operation** and **automations** are n
 |--|----------------------|-------------|
 | **Who decides?** | The agent reasons about what to do | A predefined rule triggers execution |
 | **What runs?** | The full ReAct loop (reason → plan → act) | A specific skill with stored parameters |
-| **When?** | On schedule (12h cron) | When due (cron, event, signal) |
+| **When?** | On schedule (hourly cron) | When due (cron, event, signal) |
 | **Example** | "I notice leads are dropping — let me research and write a blog post" | "Every day at 09:00, qualify new leads" |
 | **Thinking** | Full LLM reasoning | None — deterministic execution |
 

@@ -25,11 +25,11 @@ To read this chapter clearly, it helps to separate three distinct things that ar
 
 | Role | What it is | Who runs it |
 |------|-----------|-------------|
-| **FlowPilot** | The autonomous operator built natively into Flowwink | The Flowwink platform |
+| **FlowPilot** | Flowwink's built-in opt-in operator module | The Flowwink platform |
 | **QA Claw** | A stock OpenClaw instance on a VPS, peered with FlowPilot via A2A | The Clawable project |
 | **Dev Claw** | A stock OpenClaw instance configured as a development agent | The Clawable project |
 
-FlowPilot was built first — a native component of Flowwink, following OpenClaw's design principles but with its own B2B architecture. Once FlowPilot was operational, pairing it with stock OpenClaw instances became the natural next step. The QA Claw tests what FlowPilot produces. The Dev Claw helped build Flowwink and helped write this handbook.
+FlowPilot was built first — Flowwink's flagship operator module, following OpenClaw's design principles but with its own B2B architecture. Once FlowPilot was operational, pairing it with stock OpenClaw instances became the natural next step. The QA Claw tests what FlowPilot produces. The Dev Claw helped build Flowwink and helped write this handbook.
 
 All three are part of the same story: **building a production agentic system, then using agents to improve it autonomously.**
 
@@ -250,7 +250,7 @@ That is the proof of concept. Not a demo. Not a prototype. A live, sustained aut
 
 Stock OpenClaw works brilliantly for a wide range of use cases — personal assistants, QA peers, specialist agents, development support. If that is what you need, you can stop reading this chapter and start configuring.
 
-But if you want to put the genie in the bottle — to make an autonomous agent a native first-class component of *your* platform, your business, your product — the architecture goes deeper. The business logic, the memory, the skills, and the governance need to be designed together from the start.
+But if you want to put the genie in the bottle — to ship an autonomous operator as a first-class part of *your* platform, your business, your product — the architecture goes deeper. The business logic, the memory, the skills, and the governance need to be designed together — even when the operator itself ships as an opt-in module.
 
 That is what the rest of this handbook is for.
 

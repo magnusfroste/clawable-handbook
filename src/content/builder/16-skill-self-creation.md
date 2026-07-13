@@ -25,31 +25,30 @@ FlowPilot has 7 built-in skills for self-modification:
 
 | Skill | Purpose | Safety |
 |-------|---------|--------|
-| `skill_create` | Register a new skill at runtime | `requires_approval = true` |
-| `skill_update` | Modify an existing skill's metadata | Logged to audit trail |
-| `skill_instruct` | Update a skill's instructions | Logged |
+| `skill_create` | Register a new skill at runtime | Trust `approve` — human gate |
+| `skill_update` | Modify an existing skill's metadata | Trust `approve` — human gate, audit-logged |
+| `skill_instruct` | Update a skill's instructions | Trust `approve` — human gate, staged via the Curator |
 | `skill_disable` | Disable a malfunctioning skill | Immediate, logged |
-| `soul_update` | Evolve the agent's personality | `requires_approval = true` |
+| `soul_update` | Evolve the agent's personality | Trust `approve` — human gate |
 | `reflect` | Analyze performance and save learnings | Auto, saves to memory |
-| `propose_objective` | Create a new strategic goal | `requires_approval = true` |
+| `propose_objective` | Create a new strategic goal | Trust `approve` — human gate |
 
 ### The Safety Principle
 
-Every self-modification skill follows one rule: **create freely, deploy carefully.**
+Every self-modification skill follows one rule: **propose freely — a human is editor-in-chief.**
 
-- New skills default to `requires_approval = true` — the agent can design them, but a human must approve before they execute
-- Every modification is logged to `agent_activity` with full before/after state
-- The `trust_level` enum (`built_in`, `user_created`, `agent_created`) tracks provenance
-- Agent-created skills start at the lowest trust level and can be promoted
+- The agent can draft new skills and improvements without limit, but skill self-modification is pinned to the `approve` trust level by policy — the one dial that never opens implicitly, in any posture. Since FlowPilot 2.0, the human-gated Skill Curator runs this loop daily: evidence in, drafted improvements out, human decision in `/admin/approvals`, follow-through applies what's approved (chapter 14).
+- Every modification is logged to `agent_activity` with full before/after state — the previous text is returned and logged, so undo is one update
+- Provenance is tracked separately on `origin` (`built_in` / `user` / `agent`); execution gating lives on `trust_level` (`auto` / `notify` / `approve` / `blocked`)
+- Agent-created skills start at `approve` and can be promoted as they earn trust
 
 ```typescript
 // When the agent creates a skill
 await supabase.from('agent_skills').insert({
   name: 'reverse_charge_vat',
   handler: 'module:accounting',
-  origin: 'agent',           // Agent-created
-  trust_level: 'agent_created',  // Lowest trust
-  requires_approval: true,    // Human must approve first use
+  origin: 'agent',           // Provenance: agent-created
+  trust_level: 'approve',    // Human must approve every execution — until promoted
   instructions: '...',
   tool_definition: { ... },
 });
@@ -193,7 +192,7 @@ New skills and templates require human approval before first execution. The agen
 Every agent-created artifact carries its origin:
 ```sql
 origin = 'agent'           -- vs 'built_in' or 'user'
-trust_level = 'agent_created'  -- lowest trust tier
+trust_level = 'approve'    -- human gate on every execution, until promoted
 ```
 
 ### 3. Self-Healing (Law 8)

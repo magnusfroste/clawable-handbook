@@ -175,7 +175,7 @@ interface TokenBudget {
 
 The budget serves two purposes:
 
-1. **Cost control** — An autonomous heartbeat that runs 48 times/day must not burn unlimited API credits. Each run has a token ceiling.
+1. **Cost control** — An autonomous heartbeat that runs 24 times/day must not burn unlimited API credits. Each run has a token ceiling.
 
 2. **Graceful degradation** — When the budget runs low, the agent saves its progress and exits cleanly rather than crashing mid-task.
 
@@ -212,9 +212,9 @@ The default is always `fast`. Skills can specify a `preferred_provider` to overr
 
 ### The Math
 
-A heartbeat running 48 times/day with the `fast` tier:
-- ~10K tokens per run × 48 runs = 480K tokens/day
-- Cost: ~$0.19/day = **$5.70/month**
+A heartbeat running hourly (24 times/day) with the `fast` tier:
+- ~10K tokens per run × 24 runs = 240K tokens/day
+- Cost: ~$0.10/day = **$2.90/month**
 
 The same heartbeat with `reasoning` for everything:
 - Cost: ~$4.80/day = **$144/month**
@@ -338,7 +338,7 @@ Monthly Cost = (heartbeat_runs/day × 30)
 
 | Variable | How to Estimate | Typical Range |
 |----------|----------------|--------------|
-| `heartbeat_runs/day` | Admin-configured schedule | 2 (twice daily) |
+| `heartbeat_runs/day` | Admin-configured schedule | 24 (hourly default) |
 | `avg_tokens_per_run` | From activity logs after first week | 8,000–15,000 |
 | `operate_sessions/day` | How often admin interacts | 2–10 |
 | `avg_tokens_per_session` | From activity logs | 3,000–8,000 |
