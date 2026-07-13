@@ -28,10 +28,19 @@ cutoff (ch 7), BCG AI at Work 2026 (chs 11, 15), all-four-payment-giants
    The builder track (ch 33 ClawClass) presents swarms without this
    counterweight; adding the tension makes the swarm argument stronger.
    Also: outcome-based pricing for high-value agent work.
-2. **The verification funnel** (MIT Sloan/Demirer via FT): +300% output →
+2. **The verification funnel / evaluation gap** (MIT Sloan/Demirer via FT
+   + VentureBeat "evaluation gap", Carl Franzen, Jul 10 2026): +300% output →
    +30% outcomes; human review is the choke point. NBER: ~90% of firms
-   report zero measurable AI productivity impact over 3 years. Quantifies
-   the auditability flex. Candidates: business ch 8/12, builder ch 30.
+   report zero measurable AI productivity impact over 3 years. VB Pulse
+   (Jun 2026, n=157, directional): 50% shipped an agent that passed internal
+   evals yet caused a customer-facing failure; 66% moving to zero-human
+   deployment while only 5% fully trust the evals that would gate it; big
+   enterprises fastest AND failing most (70%/54%). Article's prescriptions
+   (autonomy expands by risk not ambition; earned zero-human; every incident
+   becomes a regression test) = ch 14's mandate layer + the 2.0 Curator,
+   independently arrived at. Quantifies the auditability flex. Candidates:
+   business ch 8/12/14, builder ch 30. URL:
+   venturebeat.com/orchestration/enterprise-ai-is-entering-an-evaluation-gap-agents-are-gaining-autonomy-faster-than-companies-can-verify-them
 3. **Singapore IMDA agentic governance framework** — govern at the tool
    layer, not the prompt layer; measure the *override rate* (too low =
    rubber-stamping); logs must live where the agent cannot edit them.
