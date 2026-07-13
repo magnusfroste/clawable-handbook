@@ -47,7 +47,7 @@ The handbook practices what it preaches: it exposes its own **MCP surface** (Str
 claude mcp add --transport http clawable https://www.clawable.org/api/mcp
 ```
 
-Tools: `list_chapters`, `read_chapter`, `search_handbook`. Every chapter is also available as [`llms.txt`](https://www.clawable.org/llms.txt) and raw markdown. The book about MCP speaks MCP.
+No API key needed. Tools: `list_chapters`, `read_chapter`, `search_handbook`. Every chapter is also available as [`llms.txt`](https://www.clawable.org/llms.txt) and raw markdown. The book about MCP speaks MCP.
 
 ---
 
