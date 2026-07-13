@@ -21,7 +21,19 @@ For a builder, the architectural details matter because they determine what the 
 
 **Context an external operator cannot see.** The FlowWink MCP surface exposes 300+ skills — comprehensive but still a surface. FlowPilot sees every table, every row, every row-level security policy that governs human users. When a customer's history spans CRM, billing, support, and content, FlowPilot holds the full record in one reasoning context. An external operator holds what the MCP surface returns.
 
-**Runtime skill evolution.** FlowPilot can register a new skill, update an existing one, or retire one that no longer fits — at runtime, without a deployment. When FlowWink's MCP surface adds a new tool, FlowPilot can examine it on the next heartbeat cycle and decide whether to incorporate it. The skill registry is not a config file that humans maintain. It is state the agent manages as part of operating.
+**Runtime skill evolution.** FlowPilot can register a new skill, update an existing one, or retire one that no longer fits — at runtime, without a deployment. When FlowWink's MCP surface adds a new tool, FlowPilot can examine it on the next heartbeat cycle and decide whether to incorporate it. The skill registry is not a config file that humans maintain. It is state the agent manages as part of operating — with one hard exception, covered below: changing a skill's *own instructions* is always human-gated.
+
+---
+
+## FlowPilot 2.0 — What the Embedded Loop Learned From Hermes (July 2026)
+
+The defining engineering problem of the embedded half is time. An external session-based agent that hits an approval gate simply retries in-session, on the next turn. An embedded cron-driven operator's "next turn" is the next heartbeat — minutes or hours later, in a fresh context, with no memory of the chain it was walking. FlowPilot 2.0 (July 2026) closed that gap by adopting three patterns from Hermes Agent — the loop-first architecture the industry converged on for embedded domain agents. *(Design doc: `docs/architecture/flowpilot-2.0.md` in the FlowWink repo.)*
+
+**Follow-through.** The audit that triggered 2.0 found a silent failure mode worth internalizing: 24 approved-but-never-executed actions had accumulated in the approval queue. A human had said yes — payroll payments, bulk emails, expense bookings — and nothing ever came back to run them. The external agent never hits this (it retries in-session); the cron-driven operator hit it structurally. The fix is a deterministic pre-pass at the start of every heartbeat that finds fresh approved actions and completes them. The general lesson: in a heartbeat architecture, approval is not the end of the chain — something has to come back.
+
+**Pipeline collapse.** Known multi-step chains — the bookkeeping sweep, month-end invoicing — are collapsed into single composite skills that run deterministically in-process: Hermes's "zero-context-cost turns." The reasoning loop invokes one skill; the chain no longer depends on the agent hand-walking seven steps across heartbeats with the state held in context. One invariant makes this safe by construction: a composite is never a way around a stricter gate on an inner skill — an approve-gated step inside the chain makes the composite queue and report, not bypass.
+
+**The Skill Curator — a human-gated learning loop.** Daily, the Curator reads the evidence trail (failed executions, human-rejected approvals with notes, negative outcomes), drafts improved instructions for the worst-offending skills, and stages the changes for human approval. The agent proposes; the human is editor-in-chief; the follow-through pass applies what gets approved. Skill self-modification is pinned to the approve level by policy — the one trust dial that never opens implicitly, in any posture. This is the Hermes learning loop with a governance boundary drawn where a production business needs it: the system improves itself, but never silently.
 
 ---
 

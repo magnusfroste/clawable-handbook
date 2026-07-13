@@ -164,7 +164,7 @@ But there is a question sitting at the edge of it that this handbook does not an
 
 Not better because you updated AGENTS.md. Better because it noticed a pattern it had not been told to look for, built a skill from that pattern, tested it against real data, and added it to its own repertoire. Better because every finding made it slightly more capable of finding the next thing.
 
-That is a different kind of system. It is the subject of *The Learning Operator* — the third handbook in this series, built on [Hermes Agent](https://github.com/nousresearch/hermes-agent) by NousResearch: the only agent framework with a built-in learning loop. Skills created from experience. Skills that self-improve during use. Explicitly positioned as where you go after OpenClaw.
+That is a different kind of system. It is the subject of *The Learning Operator* — the third handbook in this series, built on [Hermes Agent](https://github.com/nousresearch/hermes-agent) by NousResearch: the framework where the learning loop is native — skills created from experience, skills that self-improve during use. The pattern is already spreading: FlowWink's own embedded agent now runs a human-gated version of it, drafting improvements to its own skills for a human to approve. But Hermes is where the loop is the architecture, not a feature — explicitly positioned as where you go after OpenClaw.
 
 The question Book 3 answers is not *whether* to deploy an autonomous operator. You already know the answer. The question is: once it is running well, what do you do with everything it has learned?
 
