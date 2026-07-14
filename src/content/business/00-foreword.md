@@ -102,6 +102,8 @@ When you have seen the pattern enough times, you recognize the window while it i
 
 *With equal thanks to **Anton Osika and the Lovable team** — for building the platform that made FlowWink possible. FlowWink exists because Lovable made it buildable in weeks. This handbook's proof exists because FlowWink does. The combination of Lovable for building SaaS and OpenClaw for operating it is, we believe, the fastest path from idea to running business that has ever existed.*
 
+*And beneath all of it, thanks to the **Supabase team** — the data layer everything in this book rests on. The database the operators read, the security policies that scope what they may touch, the functions their skills run through, the vector memory they think with: Postgres, auth, edge functions, row-level security. Lovable made FlowWink buildable in weeks; Supabase is what it has run on every minute since.*
+
 *FlowWink is self-hosted, open source, and available at [github.com/magnusfroste/flowwink](https://github.com/magnusfroste/flowwink).*
 
 *The claw is the law.*

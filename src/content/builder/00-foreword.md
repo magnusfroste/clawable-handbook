@@ -145,6 +145,8 @@ How large is the opportunity for those who actually understand how it works?
 
 *With genuine and deep thanks to Peter Steinberger — for choosing to build in the open, share generously, and show that one person with the right idea can still change the direction of an entire industry.*
 
+*And to the teams whose platforms carry every proof in this book: **Anton Osika and Lovable**, which made FlowWink buildable in weeks — and **Supabase**, which everything runs on: the Postgres the operators read, the RLS that scopes them, the edge functions their skills execute through, the pgvector they remember with. When this handbook talks about auditable stacks, that is the stack.*
+
 *The claw is the law.*
 
 ---

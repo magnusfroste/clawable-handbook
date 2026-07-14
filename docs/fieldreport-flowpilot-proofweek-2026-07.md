@@ -50,8 +50,14 @@ only in the code; it's written into who the agent believes it is.
 Unprompted, the daily self-reflection logged: *"`send_webinar_reminders` fails — edge
 function returned HTTP 404"* and *"317 skills never used — consider disabling or
 promoting."* Textbook drift (a function/deploy out of sync, universal), surfaced by the
-agent reasoning about itself, and closable in minutes. An operator that keeps an audit
-trail on *its own* fitness.
+agent reasoning about itself.
+
+**Loop closed same day:** the 404 was one edge function that had never been deployed to
+the instance (the code existed in the repo; the deploy step was the gap). Deployed it —
+and, checking the rest of the fleet, found the same drift on all four instances and
+deployed there too. Verified: `{"success":true, "errors":[]}` on every instance. The
+agent flagged it, a one-line fix cleared it fleet-wide, and the sweep now runs clean.
+Finding → repro → fixed in one session.
 
 ## 4. Dial inheritance — you can't escalate privilege by wrapping `validated`
 **Serves:** business ch 14 (mandate layer) · builder ch 14.
