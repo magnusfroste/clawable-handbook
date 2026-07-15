@@ -72,7 +72,7 @@ The builder edition carries a wider technical vocabulary. This glossary covers o
 
 | Term | Definition |
 |------|------------|
-| **OpenClaw** | The open-source agent runtime Peter Steinberger released in 2025. The reference architecture for identity-as-files, heartbeat-as-cron, memory-as-markdown. |
+| **OpenClaw** | The open-source agent runtime Peter Steinberger released in January 2026. The reference architecture where the agent's identity, schedule, and memory live in plain text files a human can read and correct. |
 | **ClawClass** | The multi-tenant deployment layer that runs multiple OpenClaw operators side by side on shared infrastructure. Where Clawable lives in production. |
 | **Clawable** | The reference external operator in this handbook. An OpenClaw instance deployed on ClawClass that reads FlowWink via MCP. |
 | **FlowWink** | The self-hosted business operating system used as the reference platform throughout this handbook. Combines CRM, ERP, and CMS in one data model — deal pipeline, quote-to-cash, accounting, contracts, content publishing, HR. Comparable to Odoo but built natively for the agent era. |
