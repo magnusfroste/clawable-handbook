@@ -50,7 +50,7 @@ The builder edition carries a wider technical vocabulary. This glossary covers o
 
 | Term | Definition |
 |------|------------|
-| **Approval Gate** | A configuration that pauses the operator before a high-risk action and requires human approval. Every skill carries a trust level: `auto`, `notify`, or `approve`. |
+| **Approval Gate** | A configuration that pauses the operator before a high-risk action and requires human approval. Every skill carries a trust level: `auto`, `notify`, `approve`, or `blocked` (taken out of service entirely). |
 | **McKinsey Four-Layer Model** | Accountability framework: Design (who built the skill), Deploy (who authorized it), Operate (who monitors it), Review (who audits it). From *Trust in the Age of Agents* (March 2026). |
 | **Stagnation** | A long-term failure mode where the operator stops learning and settles into repetitive output. Caused by memory saturation, checklist ossification, no external stimulation. |
 | **Drift** | A long-term failure mode where the operator's behavior shifts away from its original design over time. Caused by reflection-loop bias, content exposure, soul mutation. |
@@ -76,7 +76,7 @@ The builder edition carries a wider technical vocabulary. This glossary covers o
 | **ClawClass** | The multi-tenant deployment layer that runs multiple OpenClaw operators side by side on shared infrastructure. Where Clawable lives in production. |
 | **Clawable** | The reference external operator in this handbook. An OpenClaw instance deployed on ClawClass that reads FlowWink via MCP. |
 | **FlowWink** | The self-hosted business operating system used as the reference platform throughout this handbook. Combines CRM, ERP, and CMS in one data model — deal pipeline, quote-to-cash, accounting, contracts, content publishing, HR. Comparable to Odoo but built natively for the agent era. |
-| **FlowPilot** | FlowWink's native agent — runs embedded inside the platform, on the same database and runtime. |
+| **FlowPilot** | FlowWink's native agent — runs embedded inside the platform, on the same database and runtime. Ships as an opt-in module: switch it off and the platform still works, operated by humans or by an external agent. |
 
 ---
 
