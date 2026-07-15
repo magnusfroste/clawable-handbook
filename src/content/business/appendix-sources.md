@@ -26,6 +26,7 @@ This appendix lists the primary sources behind every numeric, institutional, or 
 | [steipete.me: OpenClaw, OpenAI and the future](https://steipete.me/posts/2026/openclaw) (Feb 14, 2026) | Steinberger's own post — builder-not-founder quote | `validated` |
 | [Lex Fridman Podcast #491](https://www.youtube.com/watch?v=YFjfBk8HI5o) (Feb 11, 2026) | Peter Steinberger interview | `validated` |
 | [Fortune: Who is Peter Steinberger?](https://fortune.com/2026/02/19/openclaw-who-is-peter-steinberger-openai-sam-altman-anthropic-moltbook/) | Background profile | `validated` |
+| [Fast Company AI 20: How Peter Steinberger built OpenClaw](https://www.fastcompany.com/91550800/how-peter-steinberger-built-openclaw) (Jun 18, 2026) | Launched November 2025 (quiet start, worked in public on Discord); ~500,000 systems running worldwide; joined OpenAI in February, works across product teams incl. Codex on agent/multiagent systems; SF event 1,300 signups for 500-capacity space | `validated` |
 | [CNBC: Jensen Huang "next ChatGPT"](https://www.cnbc.com/2026/03/17/nvidia-ceo-jensen-huang-says-openclaw-is-definitely-the-next-chatgpt.html) | Jensen Huang quotes, GTC 2026 | `validated` |
 | [TechMarketer: GTC 2026 full breakdown](https://thetechmarketer.com/nemoclaw-nvidia-ai-agent-framework/) | All Huang quotes verified in full text | `validated` |
 | [openclaw v2026.3.28 release](https://github.com/openclaw/openclaw/releases/tag/v2026.3.28) | Async approval, plugin gating | `validated` |

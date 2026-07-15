@@ -67,6 +67,7 @@ All major claims in this handbook are sourced. This appendix lists primary sourc
 | [steipete.me: OpenClaw, OpenAI and the future](https://steipete.me/posts/2026/openclaw) (Feb 14, 2026) | Steinberger's own post | ✅ Fetched full text |
 | [Lex Fridman Podcast #491](https://www.youtube.com/watch?v=YFjfBk8HI5o) (Feb 11, 2026) | Peter Steinberger interview | ✅ |
 | [Fortune: Who is Peter Steinberger?](https://fortune.com/2026/02/19/openclaw-who-is-peter-steinberger-openai-sam-altman-anthropic-moltbook/) | Background profile | ✅ |
+| [Fast Company AI 20: How Peter Steinberger built OpenClaw](https://www.fastcompany.com/91550800/how-peter-steinberger-built-openclaw) (Jun 18, 2026) | Launched Nov 2025, quiet start → public Discord showcase → Jan 2026 takeoff; ~500K systems running worldwide; at OpenAI works across product teams incl. Codex on agent/multiagent systems | ✅ Fetched full text |
 | [OfficeChai: More than a decade in the making](https://officechai.com/ai/how-peter-steinbergers-openclaw-success-was-more-than-a-decade-in-the-making/) | Career history | ✅ |
 
 ---

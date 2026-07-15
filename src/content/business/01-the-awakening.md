@@ -17,7 +17,7 @@ This is not a prediction. It is a report on what has already happened.
 
 ## The Signal in January 2026
 
-In January 2026, an Austrian developer named Peter Steinberger pushed his side project to GitHub. He had built it for fun — an AI assistant with memory, purpose, and a schedule it keeps even when no one is watching. In six weeks it passed 346,000 GitHub stars, one of the fastest-growing open-source projects ever recorded. Jensen Huang took the GTC stage and compared it to HTML and Linux in importance. The project was called OpenClaw.
+In November 2025, an Austrian developer named Peter Steinberger released a side project he had built for fun — an AI assistant with memory, purpose, and a schedule it keeps even when no one is watching. The first response was muted; he kept working in public, showing rather than telling. Then, in January 2026, it took off: 346,000 GitHub stars in six weeks, one of the fastest-growing open-source projects ever recorded, and by mid-2026 roughly half a million systems worldwide running it. Jensen Huang took the GTC stage and compared it to HTML and Linux in importance. The project was called OpenClaw.
 
 Four signals confirmed this was structural, not a moment:
 

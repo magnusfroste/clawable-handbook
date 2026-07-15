@@ -16,15 +16,15 @@ icon: "book-open"
 
 ## The Event That Changed Everything
 
-In January 2026, an Austrian developer pushed his side project to GitHub.
+In November 2025, an Austrian developer released his side project to the world — and almost nobody noticed.
 
 Peter Steinberger had built it for fun. He wanted an AI assistant that lived on his devices, talked on his channels, and actually remembered what he said. Not a chatbot. Not a tool you open and close. Something more like a colleague.
 
 He called it OpenClaw.
 
-In six weeks the project passed 100,000 GitHub stars. Then 200,000. Then 346,000 — one of the fastest-growing open-source projects on record, according to coverage cited in `SOURCES.md`. Reports described lines outside tech offices in San Francisco and China. Jensen Huang took the GTC stage and called it "the operating system for personal AI — as big a deal as HTML, as big a deal as Linux." Sam Altman called. Lex Fridman wanted an episode. Mark Zuckerberg watched with interest.
+The launch was quiet. His first posts about it barely registered — *"it almost felt like a challenge: why can't I explain how awesome this is?"* So he stopped explaining and started showing: a public Discord where anyone could watch him improve his agent, automate his house, throw weird problems at it. Showing worked. In January 2026 the project took off — 100,000 GitHub stars in weeks. Then 200,000. Then 346,000 — one of the fastest-growing open-source projects on record, according to coverage cited in `SOURCES.md`. Reports described lines outside tech offices in San Francisco and China; an SF community event drew 1,300 signups for a 500-person space. Jensen Huang took the GTC stage and called it "the operating system for personal AI — as big a deal as HTML, as big a deal as Linux." Sam Altman called. Lex Fridman wanted an episode. Mark Zuckerberg watched with interest. By mid-2026, roughly half a million systems worldwide were running it.
 
-Peter Steinberger thanked everyone, submitted his job application, and joined OpenAI — not to build a company, but to change the world faster.
+Peter Steinberger thanked everyone, submitted his job application, and joined OpenAI — not to build a company, but to change the world faster. He works across product teams there, including Codex, building agent and multiagent systems: the man who designed the operator framework now builds the frontier's agent layer from the inside.
 
 ---
 

@@ -27,7 +27,7 @@ The SaaS stack your business runs on has reached the limit of what rule-based au
 
 - **2022–2024** — Language models became capable enough to reason about business data, not just generate text.
 - **Late 2024** — Anthropic released MCP, a standardized protocol for connecting agents to software. USB-C for AI.
-- **January 2026** — OpenClaw (Peter Steinberger) showed what a reliable, durable agent architecture looks like: the agent's identity, schedule, and memory all live in plain text files a human can read and correct. Hundreds of thousands of stars on GitHub in weeks.
+- **November 2025 → January 2026** — OpenClaw (Peter Steinberger) launched quietly, then became one of the fastest-growing open-source projects ever: a reliable, durable agent architecture where identity, schedule, and memory live in plain text files a human can read and correct. Roughly half a million systems run it today.
 - **2026** — The boardroom caught up. Ellison said it. HBR coined "Agent Manager." McKinsey published a four-layer accountability framework. The infrastructure is shipping. The governance vocabulary exists. The experiments are being run and logged.
 
 ---
