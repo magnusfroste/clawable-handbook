@@ -15,6 +15,22 @@ cutoff (ch 7), BCG AI at Work 2026 (chs 11, 15), all-four-payment-giants
 
 ## For August (strongest candidates)
 
+00. **EXPERIMENT — Live Proof II: the seams between vendors.** The book's
+    strongest remaining proof to produce. The April 19 finding was
+    cross-MODULE (seams inside one platform, one data model — ch 8 now
+    frames this honestly: "consider what vendor boundaries hide between
+    five"). The cross-system equivalent is a prediction the book makes —
+    and it is runnable, not just arguable: point Clawable at FlowWink
+    PLUS a second live surface simultaneously (Fortnox via the community
+    MCP servers named in ch 8, or any real second system) and log the
+    first true cross-vendor finding — e.g. an unpaid invoice in system A
+    correlated with a stalled deal in system B. Wider, darker seams, no
+    shared schema → expect the finding to be larger, not smaller. Natural
+    order to flowwink-local session once the proof week ends (~Jul 22);
+    operator infra already running. Homes: ch 3 gets a fifth act or ch 8
+    gets its closing proof; TL;DR + canonical numbers updated if a
+    headline figure emerges. Until run: everything stays hypothesis-tagged.
+
 0. **FlowPilot 2.0 proof weeks** — a 10-day production monitoring of
    FlowPilot running live at www.liteit.se (flowwink-local session,
    started ~Jul 12). First real longitudinal data on an embedded operator
