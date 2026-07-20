@@ -23,7 +23,7 @@ If that sounds like a technical detail, remember what the shipping container did
 
 **Three: Schema consistency across models.** A tool that works with one model and fails with another is not a reliable tool. The MCP schemas should validate correctly against strict-model agents — properly typed properties, defined array items, required fields that are actually required. If the schema is loose, ask the vendor to tighten it. This is not a model problem. It is a vendor discipline problem.
 
-In the FlowWink deployment documented in chapter three, the `manage_quote` tool failed mid-negotiation because the platform's quotes table required a `quote_number` field that the tool schema did not auto-generate and did not document as required. The operator caught the error, delivered the pricing in the email body instead, and the customer received a complete answer — but the agent had just discovered a platform bug the vendor did not know existed. Schema inconsistency is invisible until an agent hits it. That is when it becomes your problem, not the vendor's.
+In the FlowWink deployment documented in chapter three, the quoting tool failed mid-negotiation because the platform required a field the tool neither filled in nor documented as required. The operator caught the error, delivered the pricing in the email body instead, and the customer received a complete answer — but the agent had just discovered a platform bug the vendor did not know existed. Schema inconsistency is invisible until an agent hits it. That is when it becomes your problem, not the vendor's.
 
 **Four: A documented path to agent-readiness.** Ask your vendors: "What is your timeline for making this platform fully agent-operable?" If the answer is a roadmap item more than six months out, you are not planning — you are hoping. The vendors who are serious about agentic operations will have a timeline. The ones who are not will give you AI features that look impressive and do not actually enable autonomous operation.
 
@@ -99,13 +99,11 @@ Not because your QA team is incompetent. Because your QA team tested what develo
 
 ---
 
-In May 2026, a finance operator running on FlowWink told the platform to send a 422,400 SEK renewal contract for signature. The tool answered: success. The operator filed the finding, marked the task complete.
+Chapter three showed this moment from inside the seven-week cascade — the wall the 422,400 SEK renewal hit on its way to signature. Here it is from the vendor's side, because every platform you run has a version of it. A finance operator told the platform to send the contract for signature. The tool answered: success. The operator filed the finding, marked the task complete.
 
-Then it ran a verification check against the record.
+Then it ran a verification check against the record. The contract had never been sent. No signature link had ever been created.
 
-Sent: never. Signature link: never created.
-
-Nothing had happened. The contract had not been sent. The signing URL had not been generated. The success message was genuine in the technical sense — the code path had reached a return statement — but the operation had never executed. A handler was missing. The tool had accepted the call, returned a polite confirmation, and left the database exactly as it found it.
+Nothing had happened. The success message was genuine in the technical sense — the code path had reached a return statement — but the operation had never executed. A handler was missing. The tool had accepted the call, returned a polite confirmation, and left the database exactly as it found it.
 
 A human would have moved on. We are trained to trust confirmation dialogs. When software says "done," we believe it. That is not naivety — it is the only practical way to use software at scale.
 
@@ -115,11 +113,11 @@ It was not. And the agent reported exactly why.
 
 ---
 
-Over two weeks of operational running, that same fleet found five broken tools. None were read-only tools — no dashboards, no reports, no list operations. Every single one was a write tool: mark invoice paid, send contract for signature, update deal stage, close accounting period. The tools that move money and close deals.
+Over seven weeks of operational running, that same fleet found five broken tools. None were read-only tools — no dashboards, no reports, no list operations. Every single one was a write tool: mark invoice paid, send contract for signature, update deal stage, close accounting period. The tools that move money and close deals.
 
 That is not a coincidence. It is selection pressure. Agents find write-tool bugs because agents actually try to write. A passive integration, a reporting dashboard, a human clicking through a UI — none of them call the same sequence of operations at the same depth. Agents do. And when the operation fails silently — when the tool says "done" and the ledger disagrees — the agent is the first system with a reason to notice.
 
-Every bug was reported to the vendor with precise reproduction steps: tool called, arguments passed, return value received, database state observed. Every bug was fixed. Five tools that had been silently misfiring in production, patched in two weeks — not because a QA sprint was scheduled, but because an operator tried to do its job.
+Every bug was reported to the vendor with precise reproduction steps: tool called, arguments passed, return value received, database state observed. Every bug was fixed — each within days of its report. Five tools that had been silently misfiring in production, found and closed not because a QA sprint was scheduled, but because an operator tried to do its job.
 
 ---
 
