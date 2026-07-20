@@ -67,7 +67,7 @@ But the Fortnox agent — and the community MCP surface — operates inside the 
 
 The business reality that matters lives at the intersection of these systems. The Fortnox surface, capable as it is within its domain, cannot see that intersection.
 
-The external agent layer — Clawable, in our implementation — reads Fortnox through its MCP surface *alongside* every other system. It can correlate an unpaid Fortnox invoice with a stalled Salesforce deal with a customer support ticket in Intercom. The cross-system insight is what produced the EUR 1.1 million finding documented in chapter three.
+An external agent layer — the architecture Clawable implements — reads Fortnox through its MCP surface *alongside* every other system: it can correlate an unpaid Fortnox invoice with a stalled CRM deal and an open support ticket in Intercom. And here is what makes that claim credible rather than speculative. The €1.1 million finding in chapter three did not even require a second vendor — the silos were *modules inside one platform*, CRM and contracts and finance on a single data model, and the exposure still hid in the seams until something read across them. If that is what module boundaries hide within one system, consider what vendor boundaries hide between five.
 
 An agent operating only inside Fortnox would never have found it. Not because Fortnox is poorly built. Because it is structurally incapable of seeing outside its platform.
 
