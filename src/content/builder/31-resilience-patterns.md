@@ -238,10 +238,10 @@ Without this distinction, a single "no leads to qualify today" result would abor
 When the heartbeat itself fails repeatedly, the system backs off the schedule:
 
 ```
-Normal schedule:   Every 12 hours
-1st failure:       Next run in 12h (unchanged)
-2nd failure:       Next run in 24h
-3rd failure:       Next run in 48h + admin notification
+Normal schedule:   Hourly
+1st failure:       Next run in 1h (unchanged)
+2nd failure:       Next run in 2h
+3rd failure:       Next run in 4h + admin notification
 4th+ failure:      Heartbeat paused, admin must manually resume
 ```
 
@@ -254,7 +254,7 @@ async function scheduleNextHeartbeat(
 ): Promise<void> {
   const consecutiveFailures = await getConsecutiveHeartbeatFailures(supabase);
 
-  const baseInterval = 12 * 60 * 60 * 1000; // 12 hours
+  const baseInterval = 60 * 60 * 1000; // 1 hour
   const multiplier = Math.min(Math.pow(2, consecutiveFailures - 1), 4); // Max 4x
   const nextInterval = baseInterval * multiplier;
 

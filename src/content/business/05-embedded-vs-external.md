@@ -23,7 +23,7 @@ There is another model. And understanding the difference between them is the mos
 
 ## Inside the System: The Embedded Agent
 
-FlowWink built an embedded agent called FlowPilot. It lived inside the platform — sharing its database, its authentication layer, its runtime. It had direct access to every table, governed by the same row-level security policies as human users. It ran a heartbeat loop every twelve hours without being asked: evaluate objectives, plan actions, execute, reflect, remember. It could qualify a lead, publish content, detect a stale contract, and fix its own failing skills — all without any external trigger.
+FlowWink built an embedded agent called FlowPilot. It lived inside the platform — sharing its database, its authentication layer, its runtime. It had direct access to every table, governed by the same row-level security policies as human users. It ran a heartbeat loop every hour without being asked: evaluate objectives, plan actions, execute, reflect, remember. It could qualify a lead, publish content, detect a stale contract, and fix its own failing skills — all without any external trigger.
 
 This is what embedded depth looks like. Sub-millisecond database access. No network hops. A persistent memory across sessions. Objective-driven autonomy that does not wait to be called.
 
