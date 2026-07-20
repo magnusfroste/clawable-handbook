@@ -67,7 +67,7 @@ This is not an argument against embedded agents. It is an argument about what ea
 
 ## The Real Cost Question
 
-Building FlowPilot took months of specialist engineering: an agent brain running the platform's full 300+ skill catalog, its own memory system, safety rails, self-healing, and dozens of custom connections into the platform's machinery. Estimated effort: six to twelve months of dedicated development. (The full architecture is documented in the Builder Edition.)
+Building FlowPilot took weeks of dedicated, AI-assisted engineering — not the year it would have demanded a generation of tooling ago: an agent brain running the platform's full 300+ skill catalog, its own memory system, safety rails, self-healing, and dozens of custom connections into the platform's machinery. Estimated effort: six to twelve weeks of focused development. (The full architecture is documented in the Builder Edition.)
 
 Connecting Clawable to the same platform via MCP required deploying the MCP server FlowPilot had already built, registering as a peer, and writing tool descriptions. Estimated effort: one to two weeks.
 
@@ -91,7 +91,7 @@ This is the architecture that does not force a false choice. Native agents are d
 
 ## For Most Businesses, the Answer Is Already Clear
 
-If you are a SaaS vendor building your own platform, embedded may be the right investment — six to twelve months to create a proactive, self-healing agent that knows your product from the inside.
+If you are a SaaS vendor building your own platform, embedded may be the right investment — six to twelve weeks of focused, AI-assisted development to create a proactive, self-healing agent that knows your product from the inside. That is what FlowPilot took.
 
 If you are a business operating across Salesforce, Fortnox, HubSpot, and four other tools, the external operator is not the consolation prize. It is the faster path, the more flexible architecture, and the only model that can see across all of them at once.
 
