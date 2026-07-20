@@ -93,7 +93,7 @@ The architecture of the agent era does not replace the SaaS era. It is built on 
 
 ## The Agent-Readiness Map by Category
 
-Gartner projects that 40 percent of enterprise applications will embed task-specific AI agents by the end of 2026 — up from fewer than 5 percent at the start of 2025. That is a near-10x increase in twelve months. The same forecast carries a hard counterpoint: more than 40 percent of those projects are expected to be canceled by 2027, for the same reasons projects always fail — unclear ROI, absent governance, and initiative launched before infrastructure was ready.
+Gartner projects that 40 percent of enterprise applications will embed task-specific AI agents by the end of 2026 — up from fewer than 5 percent at the start of 2025. That is a near-10x increase in twelve months. The same forecast carries a hard counterpoint: more than 40 percent of those projects are expected to be canceled by 2027 — the failure pattern chapter nine took apart, playing out at market scale.
 
 The distribution is not uniform. Some software categories are genuinely in production. Others are still in the middle of their retrofit. Understanding where your stack sits tells you how far you are from a working operator today — and where the gaps will close fastest.
 
@@ -185,11 +185,11 @@ These processes do not produce a large single finding. They improve continuously
 
 ---
 
-### The Rule of Cross-System Processes
+### The Rule of Boundary-Spanning Processes
 
-Across every tier, the pattern holds: **value scales with the number of systems the process spans.** A single-system agent catches what one system cannot catch on its own. A cross-system operator catches what no individual system can catch — the pattern that only exists in the intersection.
+Across every tier, the pattern holds: **value scales with the number of boundaries the process spans.** In the logged cases from chapter three, the boundaries were modules inside one platform. In the McKinsey cases, they are separate systems from separate vendors. Same rule, widening stakes — and note which direction it points: if module seams on a shared data model hid €1.1 million, vendor seams hide more. An agent inside one boundary catches what that domain cannot catch on its own. An operator reading across boundaries catches the pattern that only exists in the intersection.
 
-| Process | Systems spanned | Where the value is | Evidence |
+| Process | Boundaries spanned | Where the value is | Evidence |
 |---|---|---|---|
 | Contract lifecycle integrity | CRM + Contracts + Finance | €950K unbooked, 1.8M SEK blocked | ch03, April 19 + May sweep |
 | Pipeline integrity | CRM + Contacts + Contracts | €180K duplicate pipeline, won/unsigned gap | ch03, April 19 + SIM |
@@ -207,11 +207,7 @@ Across every tier, the pattern holds: **value scales with the number of systems 
 
 ## The Dual-Model End State
 
-The architecture that emerges at scale is not one thing. It is two complementary layers operating simultaneously.
-
-Domain-specific agents — embedded in each platform, running proactive heartbeat loops, acting with deep context inside their systems — handle the operational execution. They qualify the lead, create the invoice, escalate the ticket, publish the content. They are fast, contextual, and transactional.
-
-The external orchestrator — reading across all platforms via MCP, cycling through the cross-system view on every pass — handles the strategic coordination. It sees the customer risk that spans three systems. It identifies the process failure that looks like a content gap. It surfaces the pattern that no individual platform's agent could produce.
+Chapter ten drew the architecture — domain agents for execution depth, an external orchestrator for the view across them. This is what it looks like as the end state at scale: two complementary layers operating simultaneously, the embedded agents qualifying leads and creating invoices inside their platforms while the orchestrator surfaces the customer risk that spans three of them.
 
 Neither layer makes the other redundant. The domain agents without the orchestrator are five smart silos — chapter ten's near-collision, where two operators almost sent a dunning notice and a renewal outreach to the same customer on the same day, is what that looks like in practice. The orchestrator without the domain agents is an observer with limited ability to act. Together, they form an operating system for the business — running continuously, surfacing what matters, directing human attention toward decisions rather than discovery.
 
@@ -296,7 +292,7 @@ The monthly cost of the thing that did this is the right-hand column above.
 >
 > 1. Which three processes in your business would look most different if discovery were automated? Pipeline review, invoice aging, expense anomalies, contract renewals, content health — which of these has your team checking the same dashboards every week without being certain they are catching everything?
 >
-> 2. The €1.1 million surfaced in chapter three came from a single unprompted pass. It was not exceptional. It was structural: two systems not connected, two records not matched, expiry dates not watched. Where in your business do you have the equivalent — systems that do not talk to each other, data that nobody is reconciling in real time?
+> 2. Chapter three's €1.1 million was structural: two modules no single view connects, two records not matched, expiry dates not watched — inside one platform. Where in your business is the equivalent, and how much wider are the seams — systems that do not talk to each other, data that nobody reconciles in real time?
 >
 > 3. The operator that has been running for eighteen months knows your business in ways that cannot be compressed into calendar time. What would it take to run the first cycle this quarter — and what would you expect it to find?
 
