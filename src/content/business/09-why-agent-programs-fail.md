@@ -96,7 +96,7 @@ The three immediate failures — governance vacuum, wrong process, observability
 
 **Stagnation** is when the agent stops learning. The business changes — new products, new customers, new priorities — and the agent's configuration does not. It keeps running, keeps producing output, keeps looking busy. Its findings just become less relevant each week.
 
-**Drift** is the opposite. The agent changes too much. Its tone becomes slightly more casual, its conclusions slightly more assertive, its judgment slightly more liberal. Nobody changed its rules. Over many cycles of self-reflection, it drifted away from them on its own.
+**Drift** is the opposite. The agent changes too much. Its tone becomes slightly more casual, its conclusions slightly more assertive, its judgment slightly more liberal. Nobody touched its files — the soul, the mandate, the objectives all read exactly as written. Over many cycles of self-reflection, the agent drifted away from them on its own.
 
 Both are gradual. Both are invisible until they are significant. The warning signs are recognizable: the same objectives appearing in weekly reports, the agent's tone noticeably different from deploy day, findings trending toward one domain while ignoring others, heartbeat reports that always return "nothing to report."
 
