@@ -45,19 +45,19 @@ The technical specification — A2A protocol modes, authentication model, skill 
 
 The abstract problem — five agents, five silos — is easy to accept in theory. What is harder to see until you have run it is how the gap expresses itself in real, specific customer moments.
 
-In May 2026 we ran a test with three specialist operators deployed in parallel: one for sales (CRM, leads, deals), one for operations (orders, inventory, fulfilment), and one for finance (invoices, contracts, expenses). Each had a domain-specific mandate and a clear brief. Each ran its morning sweep independently.
+In May 2026 we recreated the five-silo condition in miniature: three specialist operators deployed in parallel on one platform — one for sales (CRM, leads, deals), one for operations (orders, inventory, fulfilment), one for finance (invoices, contracts, expenses) — each with a domain-scoped mandate standing in for a separate vendor's wall. Note how conservative the setup is: these walls were thin, domains on a shared data model. Vendor walls are thicker. Each operator ran its morning sweep independently.
 
 Both the sales operator and the finance operator flagged the same customer — Apexira AB — within the same cycle. The sales operator had found an active renewal inquiry, sent outreach to the customer's purchasing manager, and created a deal for 422,400 SEK. The finance operator had found an overdue invoice (23,125 SEK, six days late, never opened by the recipient) and asked: *"Shall I send a dunning notice? The customer has not even opened the invoice — it may be a delivery problem rather than unwillingness to pay."*
 
 Neither agent knew what the other had done.
 
-Had both acted without a coordination layer, Apexira AB would have received a renewal outreach email and a dunning notice on the same day, from what would appear to be different parts of the same business. The finance operator's caution was correct — it escalated rather than acted unilaterally. But the escalation went to a human, not to the sales operator. The cross-system awareness that would have made the right action obvious — *the customer is mid-renewal conversation, hold the dunning, coordinate with sales first* — existed nowhere in the system.
+Had both acted without a coordination layer, Apexira AB would have received a renewal outreach email and a dunning notice on the same day, from what would appear to be different parts of the same business. The finance operator's caution was correct — it escalated rather than acted unilaterally. But the escalation went to a human, not to the sales operator. The cross-domain awareness that would have made the right action obvious — *the customer is mid-renewal conversation, hold the dunning, coordinate with sales first* — existed nowhere in the system. And if the gap opens this easily between domains on one shared platform, it is already open between your actual vendors.
 
 This is the coordination gap made concrete. Three locally reasonable agents. One customer experience that would have been incoherent if they had all acted without a layer above them. The orchestrator is not an architectural luxury. It is the thing that turns three correct domain decisions into one coherent customer moment.
 
 In a follow-up test two days later, we added the coordination layer: a fourth operator above the three specialists, configured to read cross-domain signals and dispatch coordination instructions to specialist inboxes. When the finance operator flagged an overdue invoice for a customer mid-negotiation, it correctly escalated rather than sending dunning — following its mandate. The orchestrator independently identified the same pattern, cross-referenced the active deal, and dispatched a coordination note to both the sales operator (informing it of the financial risk) and the finance operator (confirming the hold). The orchestrator acted without human instruction, based solely on patterns it read across domains.
 
-Two findings from that run were not anticipated in the design. First, the finance operator's mandate-level behaviour — escalating rather than acting unilaterally on dunning when a customer was in active sales dialogue — produced the correct outcome *before* the orchestrator intervened. The domain mandates functioned as a first-pass coordination layer. Second, a customer with an expiring contract and no renewal deal in the pipeline was flagged proactively by both the sales and coordination operators without being explicitly asked. The absence of a renewal deal was the signal, not any active trigger. Detection of what is missing — what should be there but is not — is a class of awareness that rule-based workflows cannot produce.
+Two findings from that run were not anticipated in the design. First, the finance operator's mandate-level behaviour — escalating rather than acting unilaterally on dunning when a customer was in active sales dialogue — produced the correct outcome *before* the orchestrator intervened. The domain mandates functioned as a first-pass coordination layer. Second, a customer with an expiring contract and no renewal deal in the pipeline was flagged proactively by both the sales and coordination operators without being explicitly asked — absence as signal, the superpower from chapter four, showing up unprompted in a coordination test.
 
 ---
 
@@ -65,7 +65,7 @@ Two findings from that run were not anticipated in the design. First, the financ
 
 The coordination gap discussion above is about operators that *should* coordinate but do not. There is a related question that the literature has not yet addressed: what happens when two operators both *do* act on the same situation — not because anyone planned it, but because both independently determined it was the right thing to do?
 
-In May 2026, a high-value inbound arrived at 07:17. Strömkraft AB: 180 employees, board meeting at 15:00, asking for a written enterprise proposal before 14:00. The information landed in two places simultaneously — in the sales operator's inbox and in the COO orchestrator's morning sweep queue.
+Return to the 07:17 inbound from chapter three's stressed morning — Strömkraft AB: 180 employees, board meeting at 15:00, a written enterprise proposal needed before 14:00. Chapter three told you how the sales operator handled it. What it did not tell you is that the information landed in two places simultaneously — in the sales operator's inbox and in the COO orchestrator's morning sweep queue.
 
 Both operators acted.
 
@@ -89,13 +89,9 @@ Explicit agent-to-agent coordination adds the next layer: an orchestrator that c
 
 ## When to Use Each Layer
 
-Not every enterprise needs all three architectural layers. The choice depends on what you own, what you are trying to coordinate, and how much you are willing to invest.
+Not every enterprise needs all three architectural layers. Chapter five already made the two-way call — build embedded if you own the platform, connect an external operator if you don't. This chapter adds the third answer.
 
-If you are a SaaS vendor building intelligence into your own platform, the embedded agent is the right investment. You control the codebase, you have full access to the data model, and the agent's depth of context creates direct competitive advantage. This is the FlowPilot pattern — an agent that runs inside the platform, shares its database, and can act proactively without an external trigger.
-
-If you are a business operating across multiple platforms you did not build and cannot modify, the external operator is the faster path. It requires no changes to any platform it connects to. It becomes capable as soon as those platforms have MCP servers. It can coordinate across all of them from day one.
-
-If you have both — some platforms you built and control, others you license and use — the hybrid is the honest answer. Embedded agents where you have depth. External orchestrator for coordination. MCP as the protocol that connects both layers.
+If you have both — some platforms you built and control, others you license and use — the hybrid is the honest architecture. Embedded agents where you have depth. External orchestrator for coordination. MCP as the protocol that connects both layers.
 
 The decision is not about which model is theoretically superior. It is about which combination of capabilities your business actually needs, which platforms you actually control, and what the cost of building versus connecting looks like in your specific context.
 
