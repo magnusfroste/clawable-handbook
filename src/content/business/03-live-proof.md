@@ -5,7 +5,7 @@ order: 3
 icon: "beaker"
 faq:
   - q: "What did Clawable actually find on April 19, 2026?"
-    a: "Over €1.1 million in revenue exposure surfaced in a single unprompted pass. Findings included: €950,000 in draft contracts (unbooked revenue), €180,000 in duplicate pipeline (three deals for the same customer), an order pending nine days (€8,500), unregistered expenses (€10,000), and a CRM task fourteen days overdue on a pipeline with zero task coverage. The largest items were structurally invisible to rule-based workflows — they required cross-system correlation."
+    a: "Over €1.1 million in revenue exposure surfaced in a single unprompted pass. Findings included: €950,000 in draft contracts (unbooked revenue), €180,000 in duplicate pipeline (three deals for the same customer), an order pending nine days (€8,500), unregistered expenses (€10,000), and a CRM task fourteen days overdue on a pipeline with zero task coverage. The largest items were structurally invisible to rule-based workflows — they required correlation across modules no single view connects."
   - q: "Is this a demo or real production behavior?"
     a: "Logged production behavior. Clawable ran on a live FlowWink instance on April 19 with no human direction, no special privileges, and no prompt beyond 'operate the business.' Session files are published in the sources appendix with timestamps for every action. The April 22 SIM test — seeded with four planted anomalies — found three of four using one open sentence prompt."
   - q: "What is the biggest thing workflows cannot do that agents can?"
