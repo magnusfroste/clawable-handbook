@@ -113,7 +113,7 @@ Total time: one sweep. The thread chapter three left hanging closes here.
 
 The point is not the contract. The point is that the unsigned contract was invisible to every other system in the business. The finance system saw no alert — there was no invoice yet. The CRM saw no problem — the deal had not been formally opened. The calendar saw no flag — there was no missed deadline, just an absence of one. The only place where "a contract exists, work has started, and no one has confirmed it is signed" is a problem is inside an agent that holds the contract layer, the CRM, and the calendar simultaneously and knows what the combination implies.
 
-A workflow monitors events. A signed contract is an event. An unsigned contract is not an event. It is a silence. And silence has no webhook.
+A workflow monitors events. A signed contract is an event. An unsigned contract is not an event. It is a silence. And — the refrain this book keeps returning to, because every domain re-proves it — silence has no webhook.
 
 ---
 
