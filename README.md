@@ -53,7 +53,7 @@ No API key needed. Tools: `list_chapters`, `read_chapter`, `search_handbook`. Ev
 
 ## The Experiment
 
-**Platform:** [FlowWink](https://github.com/magnusfroste/flowwink) — the self-hosted **Business Operating System** (CRM, Orders, Invoicing, Contracts, Expenses, Content, Newsletter, Support, Recruitment, Analytics), where every capability is exposed as an agent skill over MCP: 300+ skills across 60+ modules, operable by any agent. Built with [Lovable](https://lovable.dev) in weeks. Open source.
+**Platform:** [FlowWink](https://github.com/magnusfroste/flowwink) — the self-hosted **Business Operating System** (CRM, Orders, Invoicing, Contracts, Expenses, Content, Newsletter, Support, Recruitment, Analytics), where every capability is exposed as an agent skill over MCP: 500+ skills across 68 modules, operable by any agent. Built with [Lovable](https://lovable.dev) in weeks. Open source.
 
 **Operator:** An external [OpenClaw](https://github.com/openclaw/openclaw) instance connected to FlowWink via MCP.
 
