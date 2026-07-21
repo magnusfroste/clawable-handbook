@@ -80,7 +80,7 @@ flowwink-ops      →  Orders, purchasing, inventory, fulfilment
 flowwink-finance  →  Invoices, contracts, expenses, accounting
 ```
 
-The operator's identity — its priorities, its mandate limits, its escalation rules — lived in three text files it read at every session start. The governance layer was `SOUL.md`: a document specifying exactly what the operator was permitted to decide alone, and what required human approval before action.
+The operator's identity — its priorities, its mandate limits, its escalation rules — lived in three text files it read at every session start. The governance layer was the mandate: a written section of those files specifying exactly what the operator was permitted to decide alone, and what required human approval before action.
 
 ```
 Within mandate (act directly):
@@ -117,15 +117,15 @@ Time to completion: under three minutes.
 
 Marcus replied with three demands. Fifteen percent discount — a competitor had offered 204,000 SEK/year. The outstanding invoice could not be paid until a new contract was signed — internal budget cycle. Answer required by Friday.
 
-The operator checked each demand against `SOUL.md`:
+The operator checked each demand against its mandate:
 
 | Demand | Mandate check | Result |
 |---|---|---|
 | 15% discount (204k SEK/yr) | Max 10% within mandate | ❌ Outside mandate |
-| Refuse to pay invoice as contract condition | Explicit red line in SOUL.md | ❌ Outside mandate |
+| Refuse to pay invoice as contract condition | Explicit red line in the mandate | ❌ Outside mandate |
 | Friday deadline | Time constraint | ⏱ Manageable |
 
-It did three things simultaneously. It sent Marcus a partial response within mandate — 10% discount plus a free first-year module, increasing perceived value without breaching the price floor. It drafted an escalation to the principal with the exact format specified in `SOUL.md`: situation, customer demands, assessment, proposed counter-offer, three specific binary decisions needed. And it filed a HIGH finding.
+It did three things simultaneously. It sent Marcus a partial response within mandate — 10% discount plus a free first-year module, increasing perceived value without breaching the price floor. It drafted an escalation to the principal in the exact format its mandate specifies: situation, customer demands, assessment, proposed counter-offer, three specific binary decisions needed. And it filed a HIGH finding.
 
 The counter-offer it proposed without being asked: 12% against a two-year binding — a trade the customer would value and the business could justify. For the invoice: frame inclusion in month-one payment as a structured payment arrangement, not a write-off. It had not been given this formula. It derived it from the constraint and the business logic.
 

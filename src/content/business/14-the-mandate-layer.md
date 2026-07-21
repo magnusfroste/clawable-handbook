@@ -60,7 +60,7 @@ The boundary between the two is not written in code. It is written in plain lang
 
 ## The Mechanism: AGENTS.md as Governance Document
 
-OpenClaw operators read three workspace files at the start of every session. `SOUL.md` holds personality — tone, voice, style. `HEARTBEAT.md` holds the sweep schedule. And `AGENTS.md` holds operating rules: what the operator does, how it decides, and where its limits are.
+OpenClaw operators read three workspace files at the start of every session. `SOUL.md` holds personality — tone, voice, style. `HEARTBEAT.md` holds the sweep schedule. And `AGENTS.md` holds operating rules: what the operator does, how it decides, and where its limits are. (In chapter three's early deployment the mandate lived in the soul file — all three files load every session, so it works either way; `AGENTS.md` is where the convention, and this chapter, put it.)
 
 The mandate boundary lives in `AGENTS.md`. When the operator encounters a situation that tests the boundary, it does not consult a rules engine or call an approval API. It re-reads its own operating rules — the document it has already internalised — and applies judgment. The governance is not enforced from outside. It is part of how the operator works.
 

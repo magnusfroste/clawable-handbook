@@ -71,7 +71,7 @@ These processes are repetitive, rule-governed, data-rich, and currently consumin
 
 **Time saving:** 60–80% reduction in the lead-to-first-contact cycle
 **Cost benchmark:** Manual lead qualification at $3–8/lead → automated at $0.10–0.40/lead
-**Flowwink relevance:** FlowPilot's `qualify_lead` skill runs this natively. No configuration needed beyond defining the scoring rubric in SOUL.md.
+**Flowwink relevance:** FlowPilot's `qualify_lead` skill runs this natively. No configuration needed beyond defining the scoring rubric in the operator's mandate file.
 
 ---
 
