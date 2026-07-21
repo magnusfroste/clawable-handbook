@@ -17,24 +17,15 @@ OpenClaw proved the personal pattern (one agent with identity and memory). Floww
 
 ## Three-Channel Architecture
 
-FlowWink exposes capabilities through three complementary channels — each serving different audiences and use cases:
+FlowWink exposes capabilities through three complementary channels — each serving a different audience:
 
-| Channel | Purpose | Auth | Transport |
-|---------|---------|------|-----------|
-| **Skills** | FlowPilot autonomy — agent reasons and executes | Service role JWT | Edge Function (`agent-execute`) |
-| **A2A** | Peer-to-peer agent collaboration (e.g., OpenClaw) | Bearer token (hashed) | JSON-RPC via `a2a-ingest` |
-| **MCP** | External AI clients (Cursor, Claude Desktop) | API Key (SHA-256 hashed) | Streamable HTTP via `mcp-server` |
+| Channel | Purpose | Best For | Auth | Transport |
+|---------|---------|----------|------|-----------|
+| **Skills** | FlowPilot autonomy — agent reasons and executes | Internal operations | Service role JWT | Edge Function (`agent-execute`) |
+| **A2A** | Peer-to-peer agent collaboration (e.g., OpenClaw) | Multi-tenant business collaboration | Bearer token (hashed) | JSON-RPC via `a2a-ingest` |
+| **MCP** | External AI clients (Cursor, Claude Desktop) | IDE and external tool integration | API Key (SHA-256 hashed) | Streamable HTTP via `mcp-server` |
 
-### Channel Comparison
-
-| Approach | Scope | Best For |
-|----------|-------|----------|
-| **OpenClaw Sessions** | Intra-process: agents within one OpenClaw instance | Sub-agent spawning, session coordination |
-| **Google A2A Protocol** | Inter-organization: standardized discovery + task delegation | Cross-company agent federation |
-| **Flowwink A2A** | Inter-tenant: FlowPilot agents via Supabase Edge Functions | Multi-tenant business collaboration |
-| **MCP (Model Context Protocol)** | External AI clients | Cursor, Claude Desktop, IDE integration |
-
-OpenClaw's session tools handle coordination within a single instance. Google's A2A protocol standardizes cross-organizational agent communication. Flowwink's A2A enables multi-tenant business scenarios. **MCP** is the newest channel — exposing FlowPilot skills to external AI clients via the Model Context Protocol (Streamable HTTP transport, API key authentication).
+For orientation in the wider landscape: OpenClaw's session tools handle coordination *within* a single instance. Google's A2A protocol standardizes *cross-organizational* agent communication. Flowwink's A2A sits between them — inter-tenant business collaboration, implemented on Supabase Edge Functions.
 
 ### A2A and MCP: Different Layers, Not Rivals
 
@@ -70,26 +61,7 @@ OpenClaw (Specialist)
 FlowPilot receives results → acts on them
 ```
 
-### The @-Command System
-
-FlowPilot uses a single `UnifiedChat` component for both admin and visitor scopes. The only difference is the `scope` prop (`admin` vs `visitor`), which determines available skills and UI features.
-
-**@-Command System** — Typing `@` in the chat input opens a floating command palette (similar to Claude's `/` commands):
-
-- Commands are **auto-generated from `agent_skills`** in the database
-- Admin scope sees all internal + both-scoped skills
-- Visitor scope sees external + both-scoped skills
-- Built-in commands: `@help`, `@objectives`, `@activity`, `@migrate`
-- Selecting a command prefixes the message: `@blog Write about AI trends`
-
-**Key files:**
-- `src/components/chat/UnifiedChat.tsx` — Single chat component for both scopes
-- `src/components/chat/UnifiedChatInput.tsx` — Input with @-detection
-- `src/components/chat/CommandPalette.tsx` — Floating skill command menu
-- `src/pages/admin/CopilotPage.tsx` — Admin page using `UnifiedChat scope="admin"`
-- `src/components/chat/ChatConversation.tsx` — Thin wrapper using `UnifiedChat scope="visitor"`
-
-**A2A readiness:** Future agent-to-agent communication uses the same pattern — `@a2a:agent-name message`.
+FlowPilot's chat exposes skills through an @-command palette, auto-generated from `agent_skills` and scoped per surface. The detail that matters here: agent-to-agent communication uses the same pattern — `@a2a:agent-name message`.
 
 ### Mode 1: Structured (Skill Execution)
 
@@ -114,31 +86,6 @@ Server → { result: "Yes. 1000 units, 2-week lead time, 45,000 SEK ex VAT." }
 **When to use:** Exploratory questions, unknown capabilities, nuanced requests.
 
 ---
-
-## The Architecture
-
-```
-┌─────────────────────────────────────────────────┐
-│                  FlowPilot (Operator)            │
-│                                                  │
-│  agent-reason → agent-execute → skill handler    │
-│                        │                         │
-│              ┌─────────┴──────────┐              │
-│              │    a2a: handler    │              │
-│              └─────────┬──────────┘              │
-│                        │                         │
-│         ┌──────────────┼──────────────┐          │
-│         ▼              ▼              ▼          │
-│   a2a-outbound   a2a-ingest    a2a-chat         │
-│   (we call out)  (peers call)  (free-text)      │
-│         │              │              │          │
-└─────────┼──────────────┼──────────────┼──────────┘
-          ▼              ▼              ▼
-    ┌──────────┐  ┌──────────┐  ┌──────────┐
-    │ Peer A   │  │ Peer B   │  │ Peer C   │
-    │(OpenClaw)│  │(Supplier)│  │(Partner) │
-    └──────────┘  └──────────┘  └──────────┘
-```
 
 ## Flowwink's A2A Architecture
 
@@ -291,196 +238,21 @@ OpenClaw receives:
 
 ---
 
-## MCP — Model Context Protocol (Universal Channel)
+## MCP — The Third Channel
 
-**MCP** is Flowwink's third channel — designed for external AI clients rather than agent-to-agent communication. It exposes the platform's shared skill catalog to tools like Cursor, Claude Desktop, and other MCP-compatible clients — the same 500+ skills FlowPilot scores internally.
+**MCP** is Flowwink's third channel — for external AI clients rather than agent peers. It exposes the same 500+ skill catalog FlowPilot scores internally to Cursor, Claude Desktop, and any MCP-compatible client, over Streamable HTTP with SHA-256-hashed API keys. The `mcp-server` edge function dynamically publishes skills where `mcp_exposed = true`; the admin controls exposure per skill via the shield toggle in the Engine Room UI.
 
-### How MCP Differs from A2A
-
-| | A2A | MCP |
-|--|-----|-----|
-| **Audience** | Other agents | AI clients (Cursor, Claude Desktop) |
-| **Protocol** | JSON-RPC 2.0 | Model Context Protocol |
-| **Transport** | HTTP POST | Streamable HTTP |
-| **Auth** | Bearer token (hashed) | API Key (SHA-256 hashed) |
-| **Discovery** | Agent Card | Dynamic tool exposure |
-
-### MCP Configuration
-
-**Server endpoint:** `https://<project>.supabase.co/functions/v1/mcp-server`
-
-The MCP server dynamically exposes skills where `mcp_exposed = true` in the `agent_skills` table. Admin controls which skills are public via the Engine Room UI (shield toggle).
-
-**Cursor / Claude Desktop configuration:**
-
-```json
-{
-  "mcpServers": {
-    "flowwink": {
-      "transport": "streamable-http",
-      "url": "https://<project-ref>.supabase.co/functions/v1/mcp-server",
-      "headers": {
-        "Authorization": "Bearer fwk_<your-api-key>"
-      }
-    }
-  }
-}
-```
-
-**Key distinction:** While A2A is for agent-to-agent collaboration, MCP is for human-to-agent collaboration through external AI tools. Both use the same skill engine underneath — the channel just changes who can invoke it.
+The contrast with A2A is audience, not engine. A2A is agent-to-agent collaboration; MCP is human-to-agent collaboration through external tools. Both invoke the same skill engine underneath — the channel just changes who can call it. [Chapter 12](/builder/12-mcp-deep-dive) owns the full MCP surface, including client configuration.
 
 ---
 
-## The Agentic Web — A Vision
+## The Agentic Web — A Hypothesis
 
-*A reading note: this section is a scenario, not architecture. It shows where the primitives above lead once they federate across company boundaries. If you are here for the implementation, skip ahead to [Adding a New Peer](#adding-a-new-peer) — but come back. This is why the plumbing matters.*
+*A reading note: this section is a hypothesis about where A2A leads, not shipped architecture. Every primitive it uses exists today. The market it describes does not — yet.* `hypothesis`
 
-*This is not science fiction. Every technical primitive described below exists today.*
+Picture procurement in 2027. A manager needs 4,000 industrial components by a fixed date. She types one sentence into FlowPilot. The agent publishes a structured request — spec, quantity, deadline, and a `responseSchema` describing the answer format it needs — to every registered supplier agent. Within a minute, dozens of supplier agents have checked live stock and responded: firm quotes, instant declines, and one `pending_review` where the order value exceeded a supplier agent's autonomy and triggered *their* human-in-the-loop. FlowPilot filters, ranks, and recommends. The manager makes two decisions in three minutes, with a full audit trail. Every step maps to primitives already in this chapter: `responseSchema`, Agent Cards, bearer tokens, `pending_review` as a first-class state, the `a2a_activity` log.
 
----
-
-Picture a Thursday morning in 2027. A procurement manager at a mid-sized manufacturing company in Gothenburg needs 4,000 units of a specialized industrial component. She doesn't open a browser. She doesn't call a supplier. She opens her company's FlowPilot interface and types:
-
-*"We need 4,000 units of DIN rail terminal blocks, 2.5mm², grey, by April 28. Get me three competitive offers."*
-
-FlowPilot acknowledges the objective and begins.
-
----
-
-### 07:42 — The Buyer Agent Posts Requirements
-
-FlowPilot creates a structured procurement request and publishes it to the company's `signal-ingest` endpoint — visible to any registered supplier agent:
-
-```json
-{
-  "type": "procurement_request",
-  "ref": "PR-2027-0847",
-  "product": "DIN rail terminal block",
-  "spec": { "size": "2.5mm²", "color": "grey", "standard": "IEC 60947-7-1" },
-  "quantity": 4000,
-  "currency": "SEK",
-  "delivery_required_by": "2027-04-28",
-  "responseSchema": {
-    "unit_price_sek": "number",
-    "total_price_sek": "number",
-    "delivery_date": "string",
-    "moq": "number",
-    "validity_days": "number",
-    "status": "quoted | declined | pending_review"
-  }
-}
-```
-
-Forty-three supplier agents have registered as potential partners. They all receive the signal simultaneously.
-
----
-
-### 07:42:03 — The Responses Begin
-
-**Supplier A — Phoenix Components, Hamburg**
-Their agent checks real-time stock, runs a pricing calculation, and responds in 3 seconds:
-
-```json
-{
-  "unit_price_sek": 4.20,
-  "total_price_sek": 16800,
-  "delivery_date": "2027-04-24",
-  "moq": 500,
-  "validity_days": 14,
-  "status": "quoted"
-}
-```
-
-**Supplier B — NordElec, Stockholm**
-Their agent checks inventory. Stock is low. They decline immediately:
-
-```json
-{
-  "status": "declined",
-  "reason": "Insufficient stock. Currently 1,200 units available."
-}
-```
-
-**Supplier C — Weidmüller distributor, Malmö**
-Their agent finds a pricing match but the order value exceeds their autonomous approval limit. They invoke their own Human-in-the-Loop:
-
-```json
-{
-  "status": "pending_review",
-  "estimated_response_by": "2027-04-03T14:00:00Z",
-  "preliminary_price_range": "4.10–4.35 SEK/unit",
-  "note": "Order value requires sales manager approval. Response guaranteed within 6 hours."
-}
-```
-
-**Supplier D — 18 others**
-Seventeen agents respond as `declined` within 10 seconds — wrong spec, wrong geography, minimum order too high. One responds with a counter-offer: same spec, 4,200 SEK/unit, but delivery April 30 — two days late.
-
----
-
-### 07:43 — FlowPilot Compiles and Reasons
-
-Seven minutes after the manager typed her request, FlowPilot has:
-
-- Received 43 responses
-- Filtered to spec-compliant offers: 4
-- Ranked by price × delivery reliability score
-- Identified one pending HIL at Supplier C with a 6-hour SLA
-
-It presents a summary in the admin interface:
-
-> **3 qualified offers received. 1 pending review (ETA 14:00). Recommend: Supplier A at 16,800 SEK with April 24 delivery — 4 days margin. Shall I request formal order confirmation?**
-
-The procurement manager reads it. Types: *"Yes — go ahead with Supplier A. And follow up with Supplier C when their review is done."*
-
----
-
-### 14:07 — Supplier C's Human Approves
-
-The sales manager at the Malmö distributor reviews the offer. Approves. Their FlowPilot sends:
-
-```json
-{
-  "status": "quoted",
-  "unit_price_sek": 4.15,
-  "total_price_sek": 16600,
-  "delivery_date": "2027-04-26",
-  "validity_days": 7
-}
-```
-
-FlowPilot receives it, logs it in the procurement history, and sends the manager a notification:
-
-> **Supplier C responded at 14:07 — 16,600 SEK, April 26 delivery. 200 SEK cheaper than Supplier A, 2 days later. Order already confirmed with Supplier A. Archive this offer?**
-
-The manager doesn't need to respond. She has the full audit trail. The agent managed the process. She made two decisions in three minutes.
-
----
-
-### What Just Happened — The Technical Reality
-
-This scenario uses exactly the infrastructure described in this handbook:
-
-| Step | Technology |
-|------|------------|
-| Buyer publishes requirements | `signal-ingest` endpoint + `responseSchema` |
-| Supplier agents receive | `agent_automations` event trigger |
-| Structured responses | A2A v0.3.0 JSON-RPC with `responseSchema` |
-| Stock check (Supplier A) | `db:` skill handler → internal ERP query |
-| Instant decline (Supplier B) | Agent reasoning → `declined` status |
-| HIL approval (Supplier C) | `requires_approval: true` → `pending_review` |
-| Buyer agent compiles | `agent-reason` ReAct loop |
-| Audit trail | `a2a_activity` log — every interaction stored |
-
-No central portal. No procurement platform subscription. No phone calls. Forty-three agents contacted, evaluated, and responded in under 60 seconds. One human made two decisions in three minutes.
-
----
-
-### Why This Wasn't Possible Before
-
-EDI — Electronic Data Interchange — has existed since the 1970s. Structured business messages between computer systems are not new. APIs have existed since the early 2000s. And yet procurement still looks like it did decades ago: portals, emails, spreadsheets, phone calls.
-
-The difference is not the technology for sending structured data. The difference is **what sits at each end of the wire.**
+Why wasn't this possible before? EDI has moved structured business messages since the 1970s, APIs since the 2000s — and procurement still looks like portals, emails, and phone calls. The difference is not the wire format. It is **what sits at each end of the wire.**
 
 | Capability | Without agentic AI | With agentic AI |
 |------------|-------------------|-----------------|
@@ -490,26 +262,9 @@ The difference is not the technology for sending structured data. The difference
 | **Zero integration cost** | EDI requires months of pairwise integration per supplier | New supplier exposes an Agent Card — the agent reads it and knows what to ask |
 | **Flexible schemas** | EDI requires strictly pre-agreed message formats | `responseSchema` is a *suggestion* — supplier's LLM does its best to comply |
 
-The decisive step is that **a central portal is no longer required**. No third-party platform owning the relationship. No integration team mapping EDI schemas. Just two Agent Cards, a bearer token, and a shared JSON-RPC format.
+`responseSchema` is the key primitive. It lets an agent that has never met another agent say: *"I don't know exactly how you respond, but here's the structure I need — do your best."* Structured machine-to-machine negotiation without pre-agreed schemas — the thing EDI could never do. And no central portal required: just two Agent Cards, a bearer token, and a shared JSON-RPC format.
 
-`responseSchema` is the key primitive. It lets an agent that has never met another agent say: *"I don't know exactly how you respond, but here's the structure I need — do your best."* And the other agent, driven by an LLM with genuine generalization capability, can actually follow it.
-
-That is what EDI could never do. That is what agentic AI makes possible.
-
-### Why This Matters Beyond Procurement
-
-The procurement scenario is illustrative but the pattern generalizes to everything that currently requires centralized intermediaries:
-
-- **Recruitment**: Company agent posts requirements → candidate agents respond with fit scores and availability → recruiters review shortlist
-- **Real estate**: Buyer agent broadcasts criteria → listing agents respond with matches → viewing scheduled by agents
-- **Logistics**: Shipper agent broadcasts route → carrier agents bid → optimal carrier selected
-- **Legal**: Company agent requests contract review → law firm agents respond with capacity and rate → engagement confirmed
-
-Every market that currently requires a directory, a portal, a broker, or a platform is a candidate for disintermediation by A2A agent networks.
-
-The web became decentralized with HTTP. Commerce became decentralized with APIs. The next layer — **negotiation, qualification, and commitment** — is about to become decentralized with A2A.
-
-The `responseSchema` field is a small technical detail. But it encodes a large philosophy: **agents that can speak a common structured language can transact without humans in the middle.** The humans set the objectives. The agents handle the market.
+If the hypothesis holds, it generalizes beyond procurement to every market that currently needs a directory, a broker, or a platform in the middle. The humans set the objectives. The agents handle the market. Whether it plays out this way is unproven — but the primitives are shipping now.
 
 ---
 
@@ -530,34 +285,13 @@ The peer can now call us and we can call them.
 
 The vision is compelling. The implementation has sharp edges. Here are the patterns that matter when you're actually building A2A integrations:
 
-### 1. Error Handling Between Agents
+### 1. Error Handling and Timeouts
 
-Agents go down. Networks fail. LLMs hallucinate. Your A2A integration must handle all three:
+Agents go down, networks fail, LLMs hallucinate. Retry 5xx and timeouts with exponential backoff (max 3 attempts); treat 401/403 as a revoked token — log, alert, never retry; treat a 200 that doesn't match your `responseSchema` as best-effort and extract what you can. **The key rule:** never let a peer's failure crash your own reasoning loop. Wrap every outbound call so a failure degrades to a message your LLM can work with: *"Peer agent unavailable. Proceeding without external input."*
 
-```
-Call peer agent
-  │
-  ├── HTTP error (5xx, timeout) → retry with exponential backoff (max 3 attempts)
-  ├── HTTP 403/401 → token expired or revoked → log, alert admin, do NOT retry
-  ├── HTTP 200 but response doesn't match responseSchema → treat as best-effort, extract what you can
-  └── HTTP 200, valid response → process normally
-```
+Set explicit timeouts on every call — roughly 30s for structured skill calls, 60s for conversational chat, 120s for complex tasks like QA audits where the agent browses and iterates. If a peer answers `"status": "pending_review"` (their human-in-the-loop), log the pending state and schedule a follow-up — don't poll.
 
-**The key rule:** never let a peer agent's failure crash your own agent's reasoning loop. Wrap every outbound A2A call in a try/catch that returns a graceful degradation message to your agent's LLM: *"Peer agent unavailable. Proceeding without external input."*
-
-### 2. Timeouts and SLAs
-
-Set explicit timeouts on every A2A call. An agent that waits indefinitely for a peer response will consume tokens and block its own heartbeat cycle.
-
-| Call type | Recommended timeout | Why |
-|-----------|-------------------|-----|
-| Structured skill call | 30s | Deterministic — should be fast |
-| Conversational chat | 60s | LLM reasoning takes time |
-| Complex task (QA audit) | 120s | Agent may browse, reason, iterate |
-
-If a peer responds with `"status": "pending_review"` (human-in-the-loop on their side), log the pending state and schedule a follow-up check — don't poll.
-
-### 3. Schema Versioning
+### 2. Schema Versioning
 
 `responseSchema` is a suggestion, not a contract. But your code that *parses* the response needs to be defensive:
 
@@ -566,7 +300,7 @@ If a peer responds with `"status": "pending_review"` (human-in-the-loop on their
 - **Version your schemas** — when you change what you ask for, bump a version field so peers can distinguish old vs new requests
 - **Degrade gracefully** — if the peer returns free text instead of JSON, log the raw response and present it to the admin rather than crashing
 
-### 4. Trust and Authentication
+### 3. Trust and Authentication
 
 Bearer tokens are the minimum. For production A2A networks:
 
@@ -575,75 +309,17 @@ Bearer tokens are the minimum. For production A2A networks:
 - **Log everything** — every inbound and outbound A2A call should be logged with timestamp, peer identity, payload hash, and response status. This is your audit trail
 - **Allowlist, don't blocklist** — only communicate with explicitly registered peers. Never auto-discover and auto-trust
 
-### 5. Idempotency
+### 4. Idempotency and Testing
 
-A2A calls can be retried (network glitch, timeout, unclear response). Design your skill handlers to be idempotent:
+A2A calls get retried — network glitch, timeout, unclear response — so skill handlers with side effects must be idempotent: include a unique `request_id` in every call, and if the receiver has already processed that ID, return the cached response instead of executing again.
 
-- Include a unique `request_id` in every A2A call
-- On the receiving side, check if a request with that ID was already processed
-- If yes, return the cached response — don't execute the skill again
-
-This matters most for skills that have side effects: creating records, sending emails, modifying state.
-
-### 6. Testing A2A Integrations
-
-You cannot test A2A by hoping it works in production. Build a testing discipline:
-
-- **Mock peers** for unit tests — a simple HTTP server that returns predefined responses
-- **Contract tests** — verify that your Agent Card accurately describes your skills (what you claim to expose is what you actually handle)
-- **Chaos testing** — what happens when a peer returns garbage? Times out? Returns HTTP 500? Your agent should handle all three without breaking its own loop
-- **End-to-end** — run two actual agents in a test environment and verify a full cycle: call → reason → respond → parse
+And test the integration before production: mock peers for unit tests, contract tests that verify your Agent Card matches what you actually handle, chaos tests (garbage responses, timeouts, HTTP 500 — none should break your loop), and one end-to-end run with two real agents covering the full cycle: call → reason → respond → parse.
 
 ---
 
-## From Vision to Reality: What Enterprise A2A Still Needs
+## What Enterprise A2A Still Needs
 
-The procurement scenario earlier in this chapter is built on real primitives. But moving from "two agents exchanging JSON" to "enterprise procurement via A2A" requires solving problems that don't yet have standard answers:
-
-### Standards and Interoperability
-
-- **Google A2A v0.3.0** defines Agent Cards, task lifecycle (submitted → working → completed/failed), JSON-RPC messaging, and streaming support. It is the closest thing to a standard, but adoption is early and the spec is still evolving
-- **No universal Agent Card directory** exists. In the procurement scenario, 43 suppliers had pre-registered. In the real world, agent discovery at scale needs something like DNS for agents — and that infrastructure doesn't exist yet
-- **Schema negotiation** is unsolved. `responseSchema` works for simple cases. For complex B2B transactions (purchase orders, invoices, delivery schedules), industry-specific schemas like OASIS UBL or EDIFACT will need A2A bindings
-
-### Compliance and Audit
-
-- **Public procurement** in the EU requires audit trails, equal treatment of bidders, and documented evaluation criteria. An A2A procurement system must produce a compliance-ready audit log — not just `agent_activity` entries but structured records that satisfy procurement law
-- **GDPR** — when agents exchange data about contacts, leads, or customers across organizational boundaries, data processing agreements (DPAs) are required. Who is the data controller? Who is the processor? These questions are unanswered for agent-to-agent data flows
-- **Liability** — if Supplier A's agent quotes a price that turns out to be wrong (stock was stale, currency conversion was off), who bears the loss? The legal frameworks for automated B2B transactions are still being written
-
-### What the Community Is Discussing
-
-The OpenClaw community and broader agentic AI ecosystem are actively debating A2A patterns. Common threads from GitHub issues, Discord discussions, and blog posts:
-
-- **Agent reputation systems** — how do you trust a peer agent you've never interacted with? Proposals range from simple "trust scores" based on interaction history to cryptographic attestation chains
-- **Payment rails** — can agents pay each other? Micropayments for API calls? Escrow for larger transactions? No standard exists but several projects are experimenting
-- **Multi-hop coordination** — Agent A calls Agent B, which calls Agent C. How does error handling, timeout, and accountability work across chains? Most current implementations only handle direct peer-to-peer
-- **Rate limiting and fair use** — in an open A2A network, how do you prevent one aggressive agent from overwhelming others? The equivalent of API rate limiting for agent networks
-
-These are not problems Flowwink alone will solve. They require ecosystem-level coordination — standards bodies, community conventions, and likely regulatory input. The Clawable handbook will track this space as it develops.
-
----
-
-## The Future: Agent Networks
-
-A2A communication enables agent networks:
-
-```
-┌─────────┐     ┌─────────┐     ┌─────────┐
-│ Agent A │────►│ Agent B │────►│ Agent C │
-│ (CRM)   │     │ (Content)│    │ (Sales) │
-└────┬────┘     └────┬────┘     └────┬────┘
-     │               │               │
-     └───────────────┼───────────────┘
-                     │
-              ┌──────┴──────┐
-              │  Agent D    │
-              │ (Analytics) │
-              └─────────────┘
-```
-
-Each agent specializes. They coordinate through A2A protocols. The network is more capable than any individual agent.
+Moving from two agents exchanging JSON to enterprise-grade federation requires answers that don't yet exist: a mature standard (Google A2A v0.3.0 is closest, adoption early), agent discovery at scale (something like DNS for agents), compliance-ready audit trails that satisfy procurement law, GDPR data-processing agreements for agent-to-agent flows, and liability rules for when an agent quotes wrong. These need ecosystem-level coordination — standards bodies, community conventions, regulatory input — not one vendor. The handbook tracks this space as it develops.
 
 ---
 

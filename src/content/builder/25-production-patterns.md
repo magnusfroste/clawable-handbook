@@ -424,16 +424,7 @@ async function resolveAiConfig(
 
 ## The Meta-Pattern: Compound Reliability
 
-These six patterns aren't independent. They compound:
-
-1. **Opt-in agent** lets you start without risk → builds trust
-2. **Module bootstrap** means each new capability arrives fully wired → no drift
-3. **Skill budget** ensures 500+ skills don't overwhelm the model → consistent quality
-4. **Five-layer resilience** catches failures before they cascade → uptime
-5. **Instance health** detects when something breaks → proactive fixes
-6. **AI fallback chain** ensures the agent always has a model to reason with → availability
-
-Together, they solve the real problem with autonomous agents: **it's not hard to make an agent that works. It's hard to make an agent that keeps working.**
+These six patterns aren't independent — the opt-in agent lowers the stakes, bootstrap and instance health keep deployments true, the skill budget and resilience stack keep the reasoning loop alive, and the fallback chain keeps a model underneath it all. Together they solve the real problem with autonomous agents: **it's not hard to make an agent that works. It's hard to make an agent that keeps working.**
 
 ---
 

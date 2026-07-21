@@ -127,57 +127,7 @@ The same pattern applies to:
 | Booking | Service-specific scheduling rules | `agent_memory` |
 | Email | Newsletter templates, subject line patterns | `agent_memory` |
 
-The mechanism is identical:
-1. Encounter a new pattern
-2. Search memory for existing knowledge
-3. If not found, reason from domain instructions
-4. Create and store for future use
-5. Retrieve and refine on subsequent encounters
-
----
-
-## The Self-Creation Lifecycle
-
-```
-         ┌─────────────────────────────┐
-         │  ENCOUNTER                  │
-         │  Agent faces new situation  │
-         └──────────┬──────────────────┘
-                    │
-         ┌──────────▼──────────────────┐
-         │  SEARCH                     │
-         │  Check memory for existing  │
-         │  knowledge or template      │
-         └──────────┬──────────────────┘
-                    │
-            Found?──┤
-           Yes │    │ No
-               │    │
-    ┌──────────▼┐  ┌▼─────────────────┐
-    │  APPLY    │  │  REASON           │
-    │  Use it   │  │  Use domain       │
-    │           │  │  knowledge to      │
-    └───────────┘  │  construct new     │
-                   └──────┬────────────┘
-                          │
-               ┌──────────▼────────────┐
-               │  VALIDATE             │
-               │  Cross-check against  │
-               │  known-good data      │
-               └──────────┬────────────┘
-                          │
-               ┌──────────▼────────────┐
-               │  SAVE                 │
-               │  Store with embedding │
-               │  for future retrieval │
-               └──────────┬────────────┘
-                          │
-               ┌──────────▼────────────┐
-               │  APPLY                │
-               │  Use the new template │
-               │  or skill             │
-               └───────────────────────┘
-```
+The mechanism is the accounting flow above with the domain swapped out. Encounter, search, reason, validate, save, reuse — the loop is the same whether the crystallized knowledge is a debit/credit pattern or a proven headline.
 
 ---
 
@@ -204,17 +154,10 @@ Every creation, modification, and usage is logged to `agent_activity`. Operators
 ### 5. Scope Isolation (Law 6)
 Agent-created skills inherit the scope of their creator. An external-facing chat agent cannot create internal-scope skills.
 
----
+### 6. Validation Against Reference Data
+Every agent-created template is cross-checked against known-good data before use — the accounting templates validate against the `chart_of_accounts` table. Self-creation without validation just automates the production of mistakes.
 
-## The Anti-Patterns
-
-| Anti-Pattern | Risk | Mitigation |
-|---|---|---|
-| No self-creation | Agent never improves | Implement `skill_create` + template memory |
-| Unrestricted creation | Agent creates dangerous tools | `requires_approval = true` for all new skills |
-| No provenance tracking | Can't distinguish agent-created from human-defined | `origin` + `trust_level` columns |
-| No validation | Agent creates incorrect templates | Cross-check against reference data |
-| No compound learning | Agent creates but never reuses | Embedding-based memory search |
+The failure modes run in both directions. Skip the guard rails and the agent can create dangerous or incorrect tools. Skip self-creation entirely and you get the opposite failure: an agent that never improves, or one that creates knowledge but never retrieves it because nothing indexes it for reuse. The guard rails are what make the capability safe to keep switched on.
 
 ---
 

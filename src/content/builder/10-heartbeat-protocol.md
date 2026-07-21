@@ -106,15 +106,13 @@ HEARTBEAT REPORT (fp_m2x7k9_abc123):
 - Duration: 45s | Tokens: 12,400 | Status: HEARTBEAT_OK
 ```
 
-The admin sees this in the Activity Feed the next morning. No action needed — FlowPilot handled it.
+The admin sees this in the Activity Feed the next morning, and the report itself feeds into the next heartbeat's context. No action needed — FlowPilot handled it.
 
 ---
 
-Each step in that cycle has a specific implementation. Here's how they work under the hood.
+You've now seen each step do its job. Here's the implementation payload behind them.
 
 ### Step 1: Self-Heal
-
-Before doing anything new, the agent checks for problems:
 
 ```
 runSelfHealing(supabase)
@@ -125,11 +123,9 @@ runSelfHealing(supabase)
   └── Return healing report
 ```
 
-**Why first?** Because a broken skill will cause cascading failures. Better to quarantine it before the agent tries to use it.
-
 ### Step 2: Propose
 
-The agent analyzes current state and creates new objectives if gaps are found:
+The gap heuristics that trigger a new objective:
 
 ```
 Input: Site stats (7 days), recent activity, current objectives
@@ -140,27 +136,11 @@ Input: Site stats (7 days), recent activity, current objectives
   └── No action in 3+ days? → propose_objective("Re-engage audience")
 ```
 
-**This is proactive reasoning.** The agent identifies problems before being told about them.
-
 ### Step 3: Plan
 
-For objectives without plans, the AI decomposes them into executable steps:
-
-```
-decompose_objective("Increase blog output to 4 posts/month")
-  │
-  ├── Step 1: Research trending topics (search_web)
-  ├── Step 2: Draft first blog post (write_blog_post)
-  ├── Step 3: SEO optimization (seo_audit_page)
-  ├── Step 4: Schedule publication (publish_scheduled_content)
-  └── Step 5: Share on social (generate_social_post)
-```
-
-Plans are stored in the objective's `progress.plan` JSON. Steps persist between heartbeats — the agent picks up where it left off.
+`decompose_objective()` breaks an objective into executable steps, stored in the objective's `progress.plan` JSON. Steps persist between heartbeats — the agent picks up where it left off.
 
 ### Step 4: Advance
-
-The agent executes the highest-priority plan steps:
 
 ```
 advance_plan(objective_id, chain=true)
@@ -184,8 +164,6 @@ advance_plan(objective_id, chain=true)
 
 ### Step 5: Automate
 
-The agent executes any automations that are due:
-
 ```
 automation-dispatcher
   │
@@ -205,8 +183,6 @@ Automations can be triggered by:
 
 ### Step 6: Reflect
 
-The agent analyzes its own performance:
-
 ```
 reflect()
   │
@@ -217,11 +193,7 @@ reflect()
   └── Return reflection summary
 ```
 
-**This is the learning loop.** The agent doesn't just execute — it evaluates its own execution and improves.
-
 ### Step 7: Remember
-
-New insights are saved to persistent memory:
 
 ```
 memory_write({
@@ -233,26 +205,7 @@ memory_write({
 })
 ```
 
-These memories are loaded into future heartbeats and conversations. The agent literally gets smarter over time.
-
----
-
-## Context Loading
-
-Before reasoning, the heartbeat loads context in parallel:
-
-```
-Parallel Context Loading:
-  ├── Soul & Identity (agent_memory)
-  ├── Memories (30 most recent)
-  ├── Objectives (priority-sorted)
-  ├── Recent activity (24h)
-  ├── Site stats (7 days)
-  ├── Enabled automations (with DUE markers)
-  └── Self-healing report
-```
-
-This context is injected into the system prompt via the 6-layer prompt compiler. The agent sees the full state of the business before it starts reasoning.
+Everything these steps consume — soul, memories, objectives, stats, automations, the self-heal report — arrives through the parallel context load you saw at 00:00, injected via the 6-layer prompt compiler (chapter 19 owns the compiler).
 
 ---
 
@@ -307,26 +260,6 @@ Do not leave the task incomplete without explanation."
 The nudge fires after detecting N consecutive turns with no tool call and no `HEARTBEAT_OK` signal. Maximum 2 nudges per session — if the agent still doesn't respond meaningfully, the session aborts and logs a stall event.
 
 Without the nudge, stalls are invisible: the heartbeat appears to have run, token costs are incurred, but nothing actually happened.
-
----
-
-## The Heartbeat Report
-
-After each heartbeat, a summary is logged:
-
-```
-HEARTBEAT REPORT (fp_m2x7k9_abc123):
-- Self-heal: 0 skills quarantined
-- Proposed: 1 new objective ("Competitive analysis for Q2")
-- Planned: 2 objectives decomposed
-- Advanced: plan steps executed across the day's heartbeats (blog post drafted, SEO audit completed)
-- Automated: 2 automations executed (daily digest, lead qualification)
-- Reflected: 7-day performance analyzed, 2 learnings persisted
-- Remembered: 3 new memories saved
-- Duration: 45s | Tokens: 12,400 | Status: HEARTBEAT_OK
-```
-
-This report is visible in the admin Activity Feed and feeds into the next heartbeat's context.
 
 ---
 

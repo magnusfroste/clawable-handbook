@@ -11,9 +11,7 @@ Flowwink is a **Business Operating System (BOS)** — an open-source, self-hoste
 
 ### The Three Eras of Business Software
 
-1. **Tools era** (1990s–2010s) — Separate apps. You operate each one manually.
-2. **SaaS era** (2010s–2020s) — Cloud platforms. Easier to use, still human-driven.
-3. **Agent era** (2025–) — AI operators. You set direction, the agent runs the business.
+First separate tools you operated by hand, then human-driven SaaS, now AI operators: you set direction, the agent runs the business. (The foreword covers the market this shift disrupts.)
 
 FlowWink is built for the agent era. It bundles **68 modules** that normally require 5-10 separate SaaS tools:
 
@@ -432,60 +430,31 @@ The lock is time-boxed (TTL) — if the agent crashes, the lock auto-expires. No
 
 ## Pattern Index — OpenClaw-Inspired Business Processes
 
-The rest of this handbook uses the OpenClaw reference model and Flowwink adaptation to illustrate a handful of concrete business patterns you can copy or adapt:
+The rest of this handbook turns the reference model into concrete, copyable patterns. Each has an owning chapter:
 
-- **Pattern 1: Specialist QA Claw for Your Product**  
-  Use OpenClaw as a dedicated QA agent for your own SaaS or internal tools. Define a `SOUL.md` and `AGENTS.md` focused on audits, expose a typed `/v1/responses` endpoint, and have your system call it after changes. The FlowPilot + QA Claw loop in chapter 3 shows this in production.
+- **Specialist QA Claw for your product** — a stock OpenClaw auditing your system over `/v1/responses`; chapter 3 shows it running in production.
+- **Agentic CMS/CRM (the FlowPilot pattern)** — soul, heartbeat, skills, and memory applied to a business platform; Part 2 above and the Flowwink chapters that follow.
+- **Role-based swarms** — multiple specialist Claws provisioned and routed as one workforce; the ClawClass chapter.
+- **Company-level orchestration** — Claws as employees, an orchestration layer (Paperclip) as the company setting objectives, budgets, and governance.
+- **Secure perimeter and governance** — sandboxing, scanning, and audit layers around the agent; chapter 6 maps the ecosystem, chapter 18 the failure modes.
 
-- **Pattern 2: Agentic CMS/CRM (FlowPilot Pattern)**  
-  Take the OpenClaw laws (soul, agents, heartbeat, skills, memory) and apply them to a self-hosted business platform. Flowwink/FlowPilot is one example: FlowPilot operates pages, blog, CRM, email, and analytics as a digital employee instead of a dashboard.
-
-- **Pattern 3: Role-Based Swarms on ClawClass**  
-  Run multiple specialist OpenClaw agents — QA, SEO, Dev, Research — as separate services on a VPS. Use ClawClass to provision and route them, and use `/v1/responses` + A2A to delegate work between them and your own systems.
-
-- **Pattern 4: Company-Level Orchestrator with Paperclip**  
-  Treat individual Claws as "employees" and use an orchestration layer (Paperclip) as the "company" that sets objectives, delegates tasks, and enforces budgets and governance across agents.
-
-- **Pattern 5: Secure Perimeter and Governance (NemoClaw, DefenseClaw)**  
-  Wrap personal or business agents in security and governance layers. NemoClaw adds sandboxing and policy controls around OpenClaw. DefenseClaw adds scanning, blocking, and audit logging for skills, MCP servers, and agent actions. This handbook references them as examples of how the ecosystem is hardening the same architectural patterns.
-
-You do not need to adopt these specific projects to use the patterns. The point is that once you understand the OpenClaw laws and the Flowwink adaptation, you can design your own OpenClaw-inspired business processes along the same lines.
-
-Taken together, these patterns form an operating system for OpenClaw-inspired business processes: agents for each function, a swarm layer to coordinate them, and a company layer to govern them.
+You don't need to adopt these specific projects. Once you understand the OpenClaw laws and the Flowwink adaptation, you can design your own patterns along the same lines.
 
 ---
 
 ## Open Questions for Agentic Layers
 
-This handbook is opinionated, but it is not the final word. The OpenClaw ecosystem, Flowwink, and related projects are all still discovering what "good" looks like for agentic systems. A few questions keep showing up in code, issues, and production stories:
+This handbook is opinionated, but the field is still discovering what "good" looks like. Three questions keep showing up in code, issues, and production stories. How much continuity can you give an agent before memory becomes an unbounded, un-auditable dump — files and tiered databases are two different answers to the same tension. How much freedom should an agent have to rewrite its own soul and skills, and how do you detect and roll back drift when it goes wrong. And when should an agent act unilaterally versus ask for approval, so that humans feel in control rather than out of the loop.
 
-- **Memory architecture.** How do we give agents enough continuity to feel reliable, without turning every prompt into an unbounded dump of history or creating opaque, un-auditable vector stores? OpenClaw's file-based memory and Flowwink's tiered database memory are two different answers to the same tension.
-- **Governance and self-modification.** How much freedom should an agent have to rewrite its own soul, skills, and protocols? Where should hard boundaries live (files, policies, approval flows), and how do we detect and roll back drift when it goes wrong?
-- **Multi-agent coordination.** When you move from one agent to swarms and company-level orchestrators, how should objectives, budgets, and memory be shared? OpenClaw's session tools, ClawClass swarms, and Paperclip-style control planes all explore different compositions.
-- **Model-agnostic orchestration.** If the agent layer is supposed to work across providers, how much normalization and fallback should it own? At what point does "supports any LLM" become too thin to be meaningful, and where is it worth specializing for a particular model's strengths?
-- **Heartbeats, scheduling, and health.** How often should autonomous loops run, what token and time budgets are acceptable, and how do we detect when an agent is stuck in an unproductive pattern? Flowwink's heartbeat budgets and health logging are one attempt; OpenClaw operators are actively asking for richer dashboards and stagnation detection.
-- **Observability and debugging.** What level of logging, tracing, and replay is needed so that operators can understand *why* an agent did something, not just *what* it did? Techniques from microservices (structured logs, traces, metrics) are only starting to be applied to agent runs.
-- **Human-in-the-loop experience.** When should the agent act unilaterally, when should it ask for approval, and how should proposed actions be presented so that humans feel in control rather than out of the loop?
-
-Clawable exists partly to host this conversation. The patterns in this chapter are a snapshot of what works today. The open questions above are an invitation for you—as a builder, operator, or leader—to push the architecture forward.
+Clawable exists partly to host this conversation. The patterns in this chapter are a snapshot of what works today; the questions are an invitation to push the architecture forward.
 
 ---
 
 ## Why This Architecture Works
 
-This architecture works because it separates concerns:
+Separation of concerns, applied at the architectural level. Surfaces handle I/O, the reasoning core handles cognition, skills handle capability, memory handles continuity, infrastructure handles reliability. Each layer evolves independently: add channels without touching the reasoning core, add skills without changing memory, upgrade the LLM without rewriting the surfaces. That independence is what makes agentic systems maintainable.
 
-1. **Surfaces** handle I/O (how the agent communicates)
-2. **Reasoning core** handles cognition (how the agent thinks)
-3. **Skills** handle capability (what the agent can do)
-4. **Memory** handles continuity (what the agent knows)
-5. **Infrastructure** handles reliability (how the agent runs)
-
-Each layer can evolve independently. You can add new channels without touching the reasoning core. You can add new skills without changing the memory system. You can upgrade the LLM without rewriting the surfaces.
-
-This is the principle that makes agentic systems maintainable: **separation of concerns at the architectural level.**
-
-OpenClaw proved the pattern with a very large GitHub star count (hundreds of thousands as of the April 2026 snapshot cited in `SOURCES.md`) and production deployments worldwide. Flowwink is a separate product — a self-hosted Business Operating System, agent-agnostic over MCP, that ships with FlowPilot as its built-in, opt-in operator layer.
+OpenClaw proved the pattern with production deployments worldwide (and a star count in the hundreds of thousands as of the April 2026 snapshot in `SOURCES.md`). Flowwink is a separate product — a self-hosted Business Operating System, agent-agnostic over MCP, shipping FlowPilot as its built-in, opt-in operator layer.
 
 ---
 

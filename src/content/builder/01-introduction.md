@@ -27,20 +27,6 @@ A fourth property is now becoming practical in production systems: **agentic eva
 
 Not all AI systems are equally agentic. There's a spectrum:
 
-```
-No Agency                     Full Agency
-    │                              │
-    ▼                              ▼
-┌────────┬────────┬────────┬────────┬────────┐
-│ Prompt │  Tool  │ Reactive│Autono- │ Self-  │
-│ Respon.│  Use   │ Agent  │mous   │Evolving│
-│        │        │        │Agent  │ Agent  │
-└────────┴────────┴────────┴────────┴────────┘
-    │         │        │        │        │
- ChatGPT   Cursor  Zapier   OpenClaw  FlowPilot
- (basic)   (code)  (triggers)(personal)(business)
-```
-
 | Level | Description | Example |
 |-------|-------------|---------|
 | **Prompt Response** | User sends a message, AI replies. No memory, no tools, no follow-through. | Basic ChatGPT (no history, no plugins) |
@@ -63,11 +49,7 @@ Three converging forces made agentic AI practical in 2025-2026:
 
 ### 1. Model Capability
 
-Modern frontier models (Claude Fable 5 and Sonnet 5, GPT-5.6, Gemini 3.5) can reliably:
-- Parse complex tool schemas
-- Make multi-step plans
-- Self-correct when tools return errors
-- Maintain coherent reasoning across 8+ tool iterations
+Frontier models can now reliably parse complex tool schemas, plan multi-step work, self-correct when tools return errors, and hold coherent reasoning across eight or more tool iterations. That reliability threshold — not raw intelligence — is what made autonomous loops viable.
 
 ### 2. Infrastructure Maturity
 
@@ -102,12 +84,7 @@ The key distinction: **agency requires the ability to say "I should do X now" wi
 
 ## The Business Case
 
-The business case for agentic AI isn't "save time on prompts." It's:
-
-- **Continuous operation** — Your agent works while you sleep, while you're in meetings, while you're on vacation.
-- **Compound learning** — Every interaction makes the system smarter. Unlike a human employee who might forget, the agent remembers everything.
-- **Consistent execution** — The agent follows the same quality standards on the 1,000th lead as on the first.
-- **Scale without headcount** — One agent can handle content, CRM, analytics, and customer support simultaneously.
+The business case for agentic AI isn't "save time on prompts." It's an operator that works while you sleep, remembers everything it learns, holds the same quality standard on the 1,000th lead as on the first, and scales across content, CRM, analytics, and support without adding headcount.
 
 The question isn't whether businesses will adopt agentic AI. It's how quickly they'll realize they need to.
 

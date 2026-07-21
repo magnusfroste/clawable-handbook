@@ -7,35 +7,15 @@ icon: "rocket-launch"
 
 ## What the Release Cadence Tells You
 
-**v2026.3.28** — 50+ contributors, substantial:
-- **Async tool approval** — agent waits for human approval without blocking the session. Critical for heartbeat workflows where humans approve hours later, not seconds later
-- **Plugin-level approval gating** — individual plugins can require approval before any tool call. Previously only individual tools could be gated; now entire plugin categories are controllable
-- **xAI / Grok + MiniMax image generation** — multi-modal agents are production, not experimental
-- **90+ fixes** across runtime, plugins, and approval flows
+The version-by-version details age fast; the pattern does not. Through spring 2026 the releases added production controls — async tool approval for heartbeat workflows, plugin-level approval gating, per-job tool allowlists — and when a rough week in late April (plugin dependency repair destabilizing gateways) hit some installs, the response was exactly right: core gets smaller, channels and optional integrations move to ClawHub, plugin boundaries get cleaner, an LTS release and an operational Foundation team follow. Steinberger's [post-mortem](https://openclaw.ai/blog/openclaw-rough-week) is worth reading — not as a concern about the architecture, but as a signal of what infrastructure-grade maturity actually requires.
 
-**v2026.4.1**:
-- `/tasks` as a chat-native background task board — agents can now surface work items into a visible queue without pushing to external systems
-- Bundled SearXNG support — web search without a third-party API key
-- `openclaw cron --tools` — per-job tool allowlists, so a scheduled job can be scoped to exactly the tools it needs and nothing else
-
-**v2026.4.29 — the rough week:** Plugin dependency repair ran in startup and update paths, causing gateway slowdowns and channel instability on some installs. Steinberger's [post-mortem](https://openclaw.ai/blog/openclaw-rough-week) is worth reading — not as a concern about the architecture, but as a signal of what infrastructure-grade maturity actually requires. The response: core is getting smaller, channels and optional integrations move to ClawHub, plugin boundaries get cleaner. **LTS release announced for late May 2026.** The OpenClaw Foundation is forming an operational team with support from OpenAI.
-
-**What the pattern reveals:** The codebase is maturing from "personal assistant" toward "always-on autonomous system with production-grade controls." Rough edges surface in public and get fixed in public. That is a healthy infrastructure trajectory. The architectural primitives — workspace files, heartbeat, skills, memory — are not in motion. The reliability layer around them is being built out.
+The durable takeaway: the codebase is maturing from "personal assistant" toward "always-on autonomous system with production-grade controls." The architectural primitives — workspace files, heartbeat, skills, memory — are not in motion. **The core is shrinking while the reliability layer around it matures.** Rough edges surface in public and get fixed in public. That is a healthy infrastructure trajectory.
 
 ---
 
-## The State of Production (April 2026)
+## The State of Production
 
-| Capability | Status |
-|------------|--------|
-| Personal agents | Production — OpenClaw, NemoClaw on RTX hardware |
-| Business agents | Production — FlowWink/FlowPilot, Salesforce Agentforce |
-| Agent-to-agent | Early production — A2A v0.3, Flowwink custom |
-| Self-healing | Production — backoff + quarantine patterns active |
-| Self-evolution | Early production — skill modification + soul updates with gates |
-| Agent ecosystems | Emerging — NemoClaw, NanoClaw, 4 major rewrites live |
-| Governance tooling | Forming — no dominant observability platform yet |
-| Regulatory response | Lagging — GDPR interpretation for agents still evolving |
+As of April 2026: personal and business agents run in production (OpenClaw, NemoClaw on RTX hardware, FlowWink/FlowPilot, Salesforce Agentforce), and self-healing — backoff plus quarantine — is live alongside them. Agent-to-agent communication (A2A v0.3) and gated self-evolution are in early production; agent ecosystems are emerging. The lagging edges are governance tooling — no dominant observability platform yet — and regulation, where GDPR interpretation for agents is still evolving.
 
 ---
 

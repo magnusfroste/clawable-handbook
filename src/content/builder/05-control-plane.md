@@ -24,16 +24,14 @@ This is not a subtle distinction. It is the central business and architectural q
 | **Claude Code** | Terminal agent | Agentic loop + React/Ink TUI | Claude-native, Messages API | Deep Anthropic integration, CLAUDE.md, Teams |
 | **OpenAI Codex** | Cloud coding agent | Async sandboxed tasks → diffs and PRs; ChatGPT-embedded + standalone macOS app (Feb 2026) | GPT-native | ChatGPT distribution, GitHub-native delegation |
 | **Google Antigravity** | Agent-first IDE | Parallel agents + manager view, browser-based verification, CLI | Gemini-native (launched with Gemini 3, Nov 2025) | Google ecosystem, multi-agent orchestration |
-| **Cursor** | AI-native IDE | Fork of VS Code + agent layer | Model-agnostic — Grok-default planned post-acquisition | IDE depth, codebase indexing; acquired by SpaceX for $60B (June 2026), Grok Build to ship inside |
-| **Windsurf** | AI-native IDE | Codeium-based IDE | OpenAI deal collapsed (Jul 2025); CEO/team to Google ($2.4B); IP to Cognition | Uncertain roadmap post-acquisition collapse |
-| **Cline** | VS Code extension | Agentic loop, XML tool format | Model-agnostic, 59k stars | Open-source, extensibility |
-| **Roo** | VS Code extension | Multi-agent, role-driven | Model-agnostic, 23k stars | Custom modes, agentic orchestration |
+| **Cursor** | AI-native IDE | Fork of VS Code + agent layer | Model-agnostic | IDE depth, codebase indexing; now inside SpaceX |
+| **Windsurf** | AI-native IDE | Codeium-based IDE | In transition — team to Google, IP to Cognition | Uncertain roadmap post-acquisition collapse |
+| **Cline** | VS Code extension | Agentic loop, XML tool format | Model-agnostic | Open-source, extensibility |
+| **Roo** | VS Code extension | Multi-agent, role-driven | Model-agnostic | Custom modes, agentic orchestration |
 | **GitHub Copilot** | IDE + chat | GitHub integration + agent | Mostly GPT-4o / o1 | GitHub ecosystem, enterprise distribution |
 | **Devin** | Autonomous coder | Full autonomy, cloud-hosted | Proprietary | Deep autonomy, long-horizon tasks |
 
-**The lab signal:** all three frontier labs now ship their own control plane — Anthropic's Claude Code, OpenAI's Codex, Google's Antigravity. Same layer, three philosophies: the terminal, the delegated cloud task, the agent-first IDE. When the companies that train the models each build an agent layer *on top of their own models*, the premise of this chapter stops being a thesis. It is the product strategy of the entire frontier.
-
-**The consolidation signal:** OpenAI agreed to acquire Windsurf for $3 billion (May 2025) but the deal collapsed in July 2025. Google then hired Windsurf's CEO and key engineers in a $2.4B talent and licensing deal; Cognition acquired the remaining product and IP. Then June 2026 removed all doubt about where the value sits: SpaceX acquired Anysphere — Cursor's parent — for **$60 billion in stock**, the largest venture-backed acquisition in history, at roughly fifteen times revenue. The strategic logic, per the deal coverage: compute plus data plus distribution — Cursor's coding data and enterprise reach, SpaceX's Colossus compute. The control plane layer is not just being fought over anymore. It is what the biggest checks in technology are written for.
+**The signal:** all three frontier labs now ship their own control plane — Anthropic's Claude Code, OpenAI's Codex, Google's Antigravity. Same layer, three philosophies: the terminal, the delegated cloud task, the agent-first IDE. When the companies that train the models each build an agent layer *on top of their own models*, the premise of this chapter stops being a thesis — it is the product strategy of the entire frontier. And the $60 billion Anysphere acquisition the foreword opened with is the market saying the same thing: the biggest checks in technology are now written for this layer.
 
 ---
 
@@ -120,13 +118,7 @@ This is why the most valuable products in this space all converge on the same an
 
 ### What That Looks Like in Practice
 
-**Cursor (acquired by SpaceX for $60B, June 2026):** An AI-native IDE built from scratch with deep codebase indexing. The moat is the IDE itself — once your team's workflows are embedded, switching costs are high. The agent operates inside an environment Cursor owns. The acquisition price confirmed what the moat was worth: the environment, the data, and the distribution — not the models underneath.
-
 **Claude Code:** Anthropic is the model provider, so disintermediation risk is zero. The product *is* the model's capabilities delivered through a control plane Anthropic controls. Every Claude improvement benefits Claude Code automatically.
-
-**Lovable, Bolt, v0:** Each has moved well beyond a thin wrapper. Lovable launched a full Agent Mode in July 2025 — codebase search, log inspection, iterative auto-fixing, a proper plan/execute separation. Bolt runs a "Claude Agent" layer on StackBlitz's WebContainers sandbox with Plan Mode and MCP support. Vercel's v0 describes their pipeline explicitly as multi-step agentic with streaming manipulation and deterministic autofixers. The moat for all three is the same: a **stateful sandbox plus deployment environment** that a browser tab in Claude.ai cannot replicate.
-
-**Cline/Roo (open-source):** The moat is ecosystem — thousands of MCP integrations, custom tools, and operator configurations that compound over time. No revenue model to defend; community ownership is the defensibility.
 
 **Flowwink/FlowPilot:** Business data as moat. The agent accumulates 18 months of your leads, your content performance, your customer interactions. That context is not portable. The model can be swapped; the learned business knowledge cannot.
 
@@ -146,19 +138,11 @@ This is why the architectural decisions in this chapter matter beyond engineerin
 
 ## "Anyone Could Have Built Claude Code"
 
-This observation deserves a direct answer, because it's both true and irrelevant.
+True — and irrelevant. The architecture is not complex; every concept in it (agentic loop, tool system, CLAUDE.md, permission model) is described in this handbook. But anyone could have built Airbnb after Craigslist proved demand for peer-to-peer rentals. The technical barrier is never the real barrier.
 
-Yes — technically, any developer with access to Anthropic's API and a few months of focused work could have built something in the direction of Claude Code. The architecture is not complex. The concepts (agentic loop, tool system, CLAUDE.md, permission model) are all described in this handbook.
+What matters is who recognized the problem worth solving, who made the considered design tradeoffs, who built the community, and who has the feedback loop of real usage at scale. Anthropic had all four.
 
-The same is true of most transformative products. Anyone could have built Spotify after the MP3 player existed. Anyone could have built Airbnb after Craigslist proved demand for peer-to-peer rentals. The technical barrier is not the real barrier.
-
-What matters is:
-- **Who recognized the problem worth solving:** Anthropic understood that models needed a properly architected terminal agent, not a chat plugin
-- **Who made the design decisions:** streaming-first, hook-extensible, layered permissions — each is a considered tradeoff, not obvious in advance
-- **Who built the community:** Claude Code's CLAUDE.md ecosystem, its MCP integrations, its operator community — these took time and focus
-- **Who has the feedback loop:** running at scale with real developers gives Anthropic signal no one else has
-
-**The real lesson:** the window to build a defensible agentic product is open right now precisely because the concepts are known but the implementations are still forming. The developer who reads this handbook and builds the equivalent of Claude Code for their vertical — healthcare, legal, manufacturing — before the foundation labs do it themselves, will own that space.
+**The real lesson:** the window to build a defensible agentic product is open right now, precisely because the concepts are known but the implementations are still forming. Build the equivalent of Claude Code for your vertical — healthcare, legal, manufacturing — before the foundation labs do, and you own that space.
 
 The window closes. It always does.
 
@@ -172,10 +156,7 @@ Looking across Claude Code, Cline, Roo, OpenClaw, and Flowwink, the same archite
 |---------|-------------|----------|----------|
 | Workspace config | `CLAUDE.md` | `AGENTS.md` | `agent_memory:agents` |
 | Soul/identity | Auto-memory | `SOUL.md` | `agent_memory:soul` |
-| Tool permissions | 5-layer model | `TOOLS.md` + policy | skill scope + approval gates |
 | Memory | `~/.claude/sessions/` | `memory/*.md` | PostgreSQL + pgvector |
-| Subagents | `Task` tool | `sessions_spawn` | `agent-execute` parallel |
-| Heartbeat | — | `HEARTBEAT.md` cron | Hourly Supabase cron |
 | Skills | MCP servers | `SKILL.md` + ClawHub | `agent_skills` DB table |
 
 These are not coincidences. This is the architecture of an autonomous agent. Everyone building in this space discovers it.

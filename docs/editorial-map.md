@@ -171,6 +171,16 @@ chapter owns (link instead); speculative tech not deployed anywhere; a pattern
 without a problem; anything that makes the reader a spectator instead of a
 builder.
 
+**The rot guard (added July 2026, after the dead-weight audit):** every piece
+of dead weight the July audit cut was market-watching — star counts,
+valuations, version changelogs, ecosystem tours, dated snapshots. The standing
+rule: **a market signal gets ONE home, an as-of date, and must survive the
+question "does this change what the reader builds?"** If it only changes what
+the reader *knows about the market*, it goes in a LinkedIn post, not the book.
+The monthly edition checklist includes a rot sweep: grep for star counts,
+valuations, model-version names, and "as of <month>" snapshots older than one
+edition — refresh with a date-stamp or cut.
+
 ---
 
 ## The Two Editions Together

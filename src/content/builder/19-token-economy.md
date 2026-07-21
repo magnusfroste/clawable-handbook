@@ -348,18 +348,9 @@ Monthly Cost = (heartbeat_runs/day × 30)
 | `avg_tokens_per_run` | From activity logs after first week | 8,000–15,000 |
 | `operate_sessions/day` | How often admin interacts | 2–10 |
 | `avg_tokens_per_session` | From activity logs | 3,000–8,000 |
-| `model_cost_per_token` | Provider pricing page | See table below |
+| `model_cost_per_token` | Provider pricing page | Changes monthly — always verify |
 
-### Reference Pricing (2026)
-
-| Model | Input $/M tokens | Output $/M tokens | Best for |
-|-------|-----------------|-------------------|----------|
-| gpt-4.1-mini | $0.40 | $1.60 | Heartbeat default, most operations |
-| gpt-4.1 | $2.00 | $8.00 | Complex planning, content generation |
-| gemini-2.5-pro | $1.25 | $10.00 | Long context, multimodal |
-| claude-3-5-haiku | $0.80 | $4.00 | Fast, capable, good tool use |
-
-*Prices change frequently — verify against current provider pricing.*
+For the price-per-token variable, go straight to the current provider pricing pages — rates change monthly, and the measured-cost section above carries the real story.
 
 ### Example: Small B2B Site
 
@@ -374,21 +365,6 @@ Reasoning tier (10% of runs for complex tasks):
   6 runs × 20,000 tokens × $2.00/M = $0.24/month
 
 Total: ~$0.78/month on fast model + occasional reasoning
-```
-
-### Example: Active Marketing Agency
-
-```
-Heartbeat: 4/day × 30 = 120 runs/month
-  @ 15,000 tokens avg × $0.40/M = $0.72/month
-
-Operate: 20/day × 30 = 600 sessions/month
-  @ 8,000 tokens avg × $0.40/M = $1.92/month
-
-Reasoning tier (30% of runs):
-  36 runs × 25,000 tokens × $2.00/M = $1.80/month
-
-Total: ~$4.44/month
 ```
 
 ### The Ceiling Check

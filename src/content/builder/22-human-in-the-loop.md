@@ -7,21 +7,7 @@ icon: "user-group"
 
 ## The Autonomy Spectrum
 
-Autonomy isn't binary. It's a spectrum, and different actions sit at different points:
-
-```
-Full Human Control ◄────────────────────────────────────────────────► Full Autonomy
-       │                        │                                              │
-   APPROVE                   NOTIFY                                          AUTO
-       │                        │                                              │
-  Newsletter send          Blog draft               Web search                │
-  Site settings            Memory write             Analytics query           │
-  Financial actions        Content proposal         Lead scoring              │
-  User management          A2A message sent         Reporting                 │
-       │                        │                                              │
-  Block until human        Execute, then            Execute silently,
-  confirms                 report to admin          log to activity
-```
+Autonomy isn't binary. It's a spectrum running from full human control to full autonomy — **approve** (block until a human confirms), through **notify** (execute, then report), to **auto** (execute silently, log to activity). Every skill sits somewhere on that line, and placing it deliberately is the design work of this chapter. The canonical placement table below shows where real skills land.
 
 ---
 
@@ -61,12 +47,12 @@ Is the action reversible?
 
 FlowPilot implements four execution modes, not two. The binary `requires_approval` flag is the simplified view. Mapping rule: `approve` = `requires_approval: true`; `auto` and `notify` = `requires_approval: false` (with different post-action reporting behavior). The full implementation has:
 
-| Tier | Value | Behavior | Example |
-|------|-------|----------|---------|
-| **Auto** | `auto` | Execute silently, log to activity | Web search, analytics lookup, lead scoring |
-| **Notify** | `notify` | Execute, then send report to admin | Blog draft created, memory written, A2A message sent |
-| **Approve** | `approve` | Block execution until admin confirms | Newsletter send, financial transaction, site settings |
-| **Blocked** | `blocked` | Disabled — excluded from skill scoring entirely | A skill taken out of service pending review |
+| Tier | Value | Behavior |
+|------|-------|----------|
+| **Auto** | `auto` | Execute silently, log to activity |
+| **Notify** | `notify` | Execute, then send report to admin |
+| **Approve** | `approve` | Block execution until admin confirms |
+| **Blocked** | `blocked` | Disabled — excluded from skill scoring entirely |
 
 ### Why Graduated Levels?
 
@@ -139,6 +125,8 @@ The policy is checked before skill execution and takes precedence over the skill
 
 ## Real-World Autonomy Decisions
 
+This is the canonical placement table — where production skills actually land on the spectrum, and why:
+
 | Skill | Trust Tier | Rationale |
 |-------|------------|-----------|
 | `search_web` | `auto` | No cost, no risk, read-only |
@@ -173,47 +161,11 @@ The automation layer is the most autonomous. The heartbeat can execute plan step
 
 ---
 
-## Building Trust Through Graduated Autonomy
+## Expanding Autonomy Over Time
 
-The recommended approach for new deployments:
+For new deployments, autonomy is earned in phases — observer, assistant, operator, director. Chapter 24 owns that rollout and the management practice behind it.
 
-```
-Phase 1 (Week 1-2): Observer
-  Agent analyzes, reports, suggests. No autonomous actions.
-  All skills: requires_approval = true
-
-Phase 2 (Week 3-4): Assistant
-  Agent drafts, proposes. Admin approves.
-  Low-risk skills: requires_approval = false
-  High-risk skills: requires_approval = true
-
-Phase 3 (Month 2+): Operator
-  Agent operates autonomously within guardrails.
-  Most skills: requires_approval = false
-  Destructive skills: requires_approval = true
-
-Phase 4 (Month 3+): Director
-  Agent proposes strategy, executes plans.
-  Only financial/reputation actions: requires_approval = true
-```
-
-This graduated approach builds trust. The admin sees the agent making good decisions before granting more autonomy.
-
----
-
-## The Human's Role
-
-The human doesn't disappear in an agentic system. Their role shifts:
-
-| Traditional | Agentic |
-|-------------|---------|
-| Execute tasks | Set objectives |
-| Monitor metrics | Review agent reports |
-| Make decisions | Approve/reject agent proposals |
-| Write content | Edit agent-drafted content |
-| Manage pipeline | Review agent-qualified leads |
-
-**The human becomes a director, not an operator.** They set the strategy. The agent executes the tactics.
+The human doesn't disappear in this system; their role shifts from executing tasks to setting objectives and reviewing what the agent proposes. Chapter 24 develops the full director-not-operator theme.
 
 ---
 

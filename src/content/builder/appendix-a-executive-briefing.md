@@ -154,5 +154,6 @@ Common failure: array properties without `items` definition. Claude tolerates it
 | Build skills and memory | 12, 15, 16, 18 |
 | Production hardening | 11, 25, 29, 30, 31, 32 |
 | Agent-to-agent coordination | 26, 27, 28 |
-| Multi-agent infrastructure | 33, 34 |
+| Multi-agent infrastructure | 33 |
+| Agent eyes on the web (Browser Operator) | 34 |
 | Governance and calibration | 22, 23, 24 |

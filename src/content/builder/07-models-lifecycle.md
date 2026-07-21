@@ -43,16 +43,7 @@ The model selection decision is inseparable from a data question: **who sees wha
 
 An autonomous agent doesn't just answer questions. It reads documents, processes customer data, reasons about financials, writes emails. Every piece of that data travels through the model's inference layer. If that layer is outside your control, so is your data.
 
-Think of it as a spectrum:
-
-```
-Full control ←────────────────────────────→ No control
-
-Your GPU        Partner GPU     Cloud API     Unknown
-on-prem         on-prem         (Anthropic)   provider
-
-100% yours      Shared trust    Provider's    No visibility
-```
+Think of it as a spectrum: from your own GPU on-premises (fully yours), through a partner's GPU on-premises (shared trust), to a cloud API (the provider's rules), to an unknown provider (no visibility at all).
 
 For personal agents handling non-sensitive data, cloud APIs are fine. For business agents touching customer records, you need to understand the data processing agreement. For regulated industries — healthcare, finance, legal, government — there is no choice: **data cannot leave your security perimeter**.
 
@@ -114,11 +105,9 @@ The Llama 4 episode in April 2025 made this concrete: Meta submitted a different
 A subtler version of the same problem shows up in how benchmarks are *presented*. Look at the chart below:
 
 ![Coding Performance Evaluation — producer bias example](/images/benchmarks.png)
-*The chart was produced by Zhipu AI — the same company behind GLM-5.1, the blue bar. The color choice is not neutral: all competitors are grey, the producer's own model is highlighted. GPT-5.4 leads at 58.0; GLM-5.1 sits at 54.9. All seven models fall within a 12.5-point range. Whether that gap matters for your agent depends entirely on what your agent does — and that is exactly what this chart cannot tell you.*
+*Produced by Zhipu AI — the company behind GLM-5.1, the one highlighted bar. GPT-5.4 leads at 58.0; GLM-5.1 sits at 54.9; all seven models fall within a 12.5-point range. Whether that gap matters for your agent depends entirely on what your agent does — and that is exactly what this chart cannot tell you.*
 
 A better signal: **run the model on your actual task**. Not a generic prompt, not a demo — your agent's specific mission. SiliconSoap uses model debates as a proxy: route two models into a structured debate on a complex topic and observe the quality of their arguments and counter-arguments. It is a better indicator of reasoning depth than any benchmark chart.
-
-In April 2026, Gemma 4 launched with a marketing claim of "50–80% better tool calling." A developer who benchmarked it against Qwen 2.5 32B on their actual workload found a 4% difference — and Qwen came out ahead on the specific parameter patterns their agent used. The marketing comparison was against Gemma 3, not Qwen. No general benchmark surfaced this. Only running both models on the real task did. *(source: Appendix E — Model Evaluation)*
 
 The practical method: use **OpenRouter** as your testbench. One API key, 100+ models, consistent format. Test your actual scenario across several candidates, score them on your criteria, pick a winner. Then — and only then — decide where to run it. Separate the model selection decision from the infrastructure decision. Find what works first.
 
@@ -126,14 +115,7 @@ The practical method: use **OpenRouter** as your testbench. One API key, 100+ mo
 
 ## The Economics of Running Models
 
-The cost equation changes fundamentally for agentic systems:
-
-```
-Traditional chatbot:    ~500 tokens per request
-Agentic loop:      5,000–20,000 tokens per request
-100 daily requests:     50K vs up to 2M tokens/day
-Monthly cloud cost:     ~$15 vs ~$900 (Claude pricing)
-```
+The cost equation changes fundamentally for agentic systems. Dimension 5 gave you the numbers: an agentic loop burns ten to forty times the tokens of a chatbot request, and at a hundred operations a day the monthly bill diverges by an order of magnitude.
 
 At low volume, cloud APIs win on convenience. At high volume or with sensitive data, own infrastructure wins decisively.
 
@@ -189,19 +171,6 @@ Model rankings change every few months. The specific models mentioned here will 
 The trust principle does not change: **data that cannot leave your infrastructure cannot go through a cloud model**. This is a structural constraint, not a temporary gap.
 
 Build your system to be model-agnostic from the start. OpenClaw did this. Flowwink did this. SiliconSoap did this. The pattern is consistent: the model is the engine, the agent is the car. Swap the engine when a better one appears — without rebuilding the car.
-
----
-
-## Summary
-
-| Question | Answer determines |
-|----------|-----------------|
-| Can data leave? | Cloud vs local |
-| Need frontier reasoning? | Closed vs open-weight |
-| How many tokens daily? | Cost architecture |
-| Is latency critical? | Local deployment |
-| Are you regulated? | Partner or on-prem |
-| Does it clear the floor? | Minimum denominators |
 
 The model you choose today will not be the best model in 12 months. The question is whether your system is built to swap when that happens — and whether it keeps your data exactly where it needs to be.
 

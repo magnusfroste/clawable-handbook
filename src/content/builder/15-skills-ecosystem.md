@@ -113,12 +113,10 @@ With 500+ skills, the token budget gets tight. The system compresses skill defin
 
 Skills can be bundled into packs for easy installation. Each pack groups related capabilities for a specific business function:
 
-| Pack | Skills Included | Status |
-|------|-----------------|--------|
-| **E-Commerce Pack** | manage_product, lookup_order, inventory alerts | Available |
-| **Content Marketing Pack** | research_content, write_blog_post, generate_content_proposal, send_newsletter | Available |
-| **CRM Nurture Pack** | add_lead, qualify_lead, manage_deal, enrich_company | Available |
-| **Analytics Pack** | site_stats, conversion_report, engagement_analysis | Planned |
+| Pack | Skills Included |
+|------|-----------------|
+| **Content Marketing Pack** | research_content, write_blog_post, generate_content_proposal, send_newsletter |
+| **CRM Nurture Pack** | add_lead, qualify_lead, manage_deal, enrich_company |
 
 Packs are installed via `skill_pack_install` and create the skills in the database. The agent can discover available packs via `skill_pack_list`.
 
@@ -151,47 +149,9 @@ The agent never sees a gated skill. It doesn't try to call it and fail — it si
 | **Role scope** | Caller has required permissions | Internal skills invisible in visitor scope |
 | **Environment** | Correct deployment environment | Debug skills only in development |
 
-### Implementation
-
-```typescript
-// When loading skills for a session
-const allSkills = await supabase.from('agent_skills').select('*').eq('enabled', true);
-
-// Filter by gates
-const availableSkills = allSkills.filter(skill => {
-  if (skill.requires_integration) {
-    const hasKey = integrations[skill.requires_integration]?.api_key != null;
-    if (!hasKey) return false; // Gated — invisible to agent
-  }
-  if (skill.requires_module) {
-    const moduleEnabled = modules[skill.requires_module]?.enabled;
-    if (!moduleEnabled) return false; // Gated — module not active
-  }
-  return true;
-});
-```
-
-### Why Gating Matters for UX
-
-Without gating, the agent will attempt to use skills it can't actually execute — then fail, retry, and generate confusing error logs. With gating, the skill simply doesn't exist from the agent's perspective. A cleaner model:
-
-- Agent never attempts `send_newsletter` without a configured email provider
-- Agent never tries to create a booking if the booking module is disabled
-- Agent instructions don't need to say "check if X is configured before calling Y"
+The mechanics are simple: when skills load for a session, anything with an unmet prerequisite — missing API key, disabled module — is filtered out before the prompt is assembled. The agent never fails, retries, or generates confusing error logs over a capability that has no backend, and skill instructions never need to say "check if X is configured before calling Y."
 
 Gating is a compile-time constraint. Trust levels are a runtime constraint. Both are necessary.
-
----
-
-## The Integration Reach Problem
-
-One of the quiet challenges in agentic business systems is external connectivity. An agent without real integrations can only reason about things it already knows. An agent with broad connectivity can act.
-
-The most mature approach in production is to route external integrations through a proxy layer rather than building direct connections per service. This gives the agent a consistent calling convention regardless of the underlying API, centralizes credential management, and allows new services to be added without touching the agent's core skills.
-
-When done well, a single integration module can reach hundreds of external services — CRMs, project tools, marketing platforms, communication channels — from one skill context. The agent doesn't need to know which specific API it's calling. It knows what it wants to accomplish.
-
-The practical implication: connectivity breadth is increasingly a commodity. What differentiates a capable agent from a narrow one is not how many APIs it can reach, but whether it has the business context to know when and why to use each one.
 
 ---
 
@@ -231,6 +191,8 @@ With instructions:
 ```
 
 The difference is not the tool. The difference is the knowledge.
+
+Chapter 24 shows the management view of this same principle: skill instructions as the training material you update when the agent underperforms.
 
 ---
 

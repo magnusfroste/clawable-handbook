@@ -58,13 +58,7 @@ Why single architect? Because quality feedback requires **context accumulation**
 
 ## Channel Role in 2026
 
-In the current architecture, OpenResponses operates alongside MCP and A2A:
-
-| Channel | Protocol | Current Role |
-|---------|----------|--------------|
-| **OpenResponses** (synchronous) | OpenAI Responses API | Bounded QA tasks with schema-locked outputs |
-| **A2A Swarm** (asynchronous) | JSON-RPC 2.0 | Dispatch, peer context, status checks |
-| **MCP** (tool/resources) | Streamable HTTP | Primary inspection and finding ingestion |
+The three-channel division of labor is laid out in [chapter 27](/builder/27-agent-driven-development): MCP for primary inspection and finding ingestion, A2A for dispatch and peer context, OpenResponses for bounded QA tasks with schema-locked outputs. What that division feels like in practice:
 
 ```
 "Review the skill registry for description quality"
@@ -90,27 +84,7 @@ A2A Swarm channel (port 18800)
 
 The key insight now is more precise: **use MCP for broad inspection, A2A for orchestration, and OpenResponses for bounded high-trust tasks.** Each channel has a distinct job in the loop.
 
-## Business Value: 30-Second Supplier Shortlist
-
-Why does this matter outside engineering teams? Because protocol-level agent federation compresses decision cycles that normally take days.
-
-A concrete procurement scenario:
-
-1. A buyer publishes a structured RFP request to participating supplier agents
-2. Supplier agents return schema-valid proposals (price, delivery window, SLA, compliance flags)
-3. A federated evaluator agent compares all responses using the same scoring rubric
-4. The procurement agent receives a ranked shortlist with audit trail
-
-Result: **in roughly 30 seconds, the buyer has a defensible shortlist** instead of spending days collecting PDF responses, normalizing formats, and manually comparing terms.
-
-The business value is not "agents talking to agents" as a technical novelty. The value is:
-
-- Faster cycle time from request to decision
-- Higher consistency (all responses in one schema)
-- Better governance (traceable scoring and rationale)
-- Lower coordination cost across organizations
-
-This is the same principle used in QA federation: protocols are how autonomous systems become operationally reliable across boundaries.
+For what this federation pattern is worth outside engineering — compressed decision cycles, schema-consistent responses, traceable scoring — see the agentic-web hypothesis in [chapter 26](/builder/26-a2a-communication).
 
 ---
 

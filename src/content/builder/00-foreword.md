@@ -22,7 +22,7 @@ Peter Steinberger had built it for fun. He wanted an AI assistant that lived on 
 
 He called it OpenClaw.
 
-The launch was quiet. His first posts about it barely registered — *"it almost felt like a challenge: why can't I explain how awesome this is?"* So he stopped explaining and started showing: a public Discord where anyone could watch him improve his agent, automate his house, throw weird problems at it. Showing worked. In January 2026 the project took off — 100,000 GitHub stars in weeks. Then 200,000. Then 346,000 — one of the fastest-growing open-source projects on record, according to coverage cited in `SOURCES.md`. Reports described lines outside tech offices in San Francisco and China; an SF community event drew 1,300 signups for a 500-person space. Jensen Huang took the GTC stage and called it "the operating system for personal AI — as big a deal as HTML, as big a deal as Linux." Sam Altman called. Lex Fridman wanted an episode. Mark Zuckerberg watched with interest. By mid-2026, roughly half a million systems worldwide were running it.
+The launch was quiet. His first posts about it barely registered — *"it almost felt like a challenge: why can't I explain how awesome this is?"* So he stopped explaining and started showing: a public Discord where anyone could watch him improve his agent, automate his house, throw weird problems at it. Showing worked. In January 2026 the project took off — 346,000 GitHub stars within weeks, one of the fastest-growing open-source projects on record, according to coverage cited in `SOURCES.md`. By mid-2026, roughly half a million systems worldwide were running it.
 
 Peter Steinberger thanked everyone, submitted his job application, and joined OpenAI — not to build a company, but to change the world faster. He works across product teams there, including Codex, building agent and multiagent systems: the man who designed the operator framework now builds the frontier's agent layer from the inside.
 
@@ -52,13 +52,7 @@ That is Steinberger's brilliant achievement: not the model, not the infrastructu
 
 We are living in a moment without historical parallel.
 
-Larry Ellison said it plainly on March 31, 2026, in remarks widely quoted alongside reports of large-scale Oracle job cuts: *"We can build more software in less time with fewer people using AI."* Whatever one thinks about it, the directional claim — more software with fewer people — is already shaping boardroom conversations.
-
-Harvard Business Review coined a new job title in February 2026: Agent Manager. Someone who leads, develops, and measures the results of AI agents — the same way a traditional manager leads human employees.
-
-McKinsey identified nine organizational shifts driven by autonomous agents. Nine. Not a trend. Not a feature. Nine fundamental changes in how companies are structured, how decisions are made, how accountability is distributed.
-
-The agentic layer — the control plane above the model — is one of the most valuable places in all of technology right now. OpenAI agreed to acquire Windsurf for $3 billion in May 2025, but the deal collapsed in July 2025 — Google ultimately hired Windsurf's CEO and key engineers in a $2.4 billion talent and licensing deal. Lovable has been valued around $6.6 billion. And in June 2026, the layer got its definitive price tag: **SpaceX acquired Cursor's parent Anysphere for $60 billion** — the largest acquisition of a venture-backed startup ever, roughly fifteen times revenue, days after SpaceX's own IPO. All of these companies sell fundamentally the same thing: **a well-constructed agent layer on top of models someone else builds.** Sixty billion dollars, for a company that trains no frontier models of its own.
+The agentic layer — the control plane above the model — is one of the most valuable places in all of technology right now. In June 2026 it got its definitive price tag: **SpaceX acquired Cursor's parent Anysphere for $60 billion** — the largest acquisition of a venture-backed startup ever, roughly fifteen times revenue. Sixty billion dollars, for a company that trains no frontier models of its own. What it sells is **a well-constructed agent layer on top of models someone else builds.**
 
 The model is not the product. The lantern around the model is.
 
@@ -91,6 +85,8 @@ We cover:
 - The two production failure modes teams repeatedly hit — stagnation and drift — and practical ways to manage both
 - Where this is heading next, based on recently verified sources and ecosystem signals
 
+**Short on time? These ten chapters are the machine.** The laws (9), the heartbeat (10), MCP under the hood (12), intent scoring (17), memory (18), the token economy (19), stagnation and drift (21), production patterns (25), resilience (31), and tool-hallucination recovery (32). Everything else is context, evidence, and ecosystem — valuable, but those ten are what you cannot get from a blog post. Read them in any order; each states the problem it solves.
+
 ### How FlowPilot Fits In
 
 This is a handbook, not a product brochure.
@@ -99,15 +95,11 @@ Flowwink is a self-hosted **Business Operating System (BOS)** — comparable to 
 
 ### The Market This Disrupts
 
-Business process software is one of the largest markets in technology. SAP, Salesforce, Microsoft Dynamics, Oracle, and Workday collectively represent hundreds of billions in market capitalization — built on a single premise: humans need software to manage their business operations.
+Business process software — SAP, Salesforce, Dynamics, Oracle, Workday — represents hundreds of billions in market capitalization, all built on one premise: a human logs in, decides, and clicks. That loop is the product.
 
-That premise is now in question.
+An autonomous agent breaks the loop. It doesn't log in and it doesn't wait to be asked — it operates the platform while the human sets direction and approves the exceptions. The software stops being the tool and becomes the agent's environment.
 
-Every one of those platforms was designed for a world where a human logs in, makes a decision, and clicks a button. The software executes. The human decides again. That loop is the product.
-
-An autonomous agent doesn't log in. It doesn't wait to be asked. It operates the platform — qualifying leads, publishing content, processing orders, generating reports — while the human sets direction and approves the exceptions. The software is no longer the tool. The agent is the operator, and the software is the agent's environment.
-
-This is not a feature that SAP or Salesforce can bolt on. It requires rethinking the architecture from the ground up — where the agent is a first-class component, not an afterthought. That is what Flowwink was designed to be.
+That is not a feature the incumbents can bolt on. It requires an architecture where the agent is a first-class component from the ground up — which is what Flowwink was designed to be.
 
 ---
 

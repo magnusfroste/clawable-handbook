@@ -9,15 +9,7 @@ icon: "sparkles"
 
 Automated testing is not new. CI pipelines, unit tests, integration tests, and regression suites have existed for decades.
 
-What changes in agentic systems is not the existence of tests — it is the shape of the loop:
-
-| Traditional Automated Testing | Agent-Driven Development |
-|------------------------------|--------------------------|
-| Human writes assertions | Agent discovers issues in live system context |
-| CI run checks pass/fail | External agent audits behavior, memory, and drift |
-| Report created | Structured findings become objectives automatically |
-| Human fixes instance issue | Triage decides runtime fix vs source fix |
-| Next release may regress | Source fixes raise baseline for future installs |
+What changes in agentic systems is not the existence of tests — it is the shape of the loop. In traditional automation, a human writes assertions, CI checks pass/fail, a report gets filed, a human fixes the instance, and the next release may regress anyway. Here, an agent discovers issues in live system context, structured findings become objectives automatically, and triage decides whether the fix lands in the runtime or in the source. (The full contrast is in the table under [The Three Layers](#the-three-layers) below.)
 
 The key distinction is **closed-loop remediation**. Findings do not end as reports. They become actions. Actions become permanent improvements. The system gets better cycle by cycle.
 
@@ -62,23 +54,17 @@ No human initiates the loop. No human routes the findings. The loop runs itself.
 
 ## The Three Channels
 
+[Chapter 26](/builder/26-a2a-communication) established the channel model — A2A for peers, MCP for tools. Here is the role each plays in the loop:
+
 | Channel | Transport | Role in the Loop |
 |---------|-----------|-----------------|
 | **A2A** | JSON-RPC 2.0 | FlowPilot dispatches assignment to ClawOne — includes MCP credentials and audit scope |
 | **MCP** | Streamable HTTP | ClawOne inspects platform data and reports findings directly |
 | **OpenResponses** | OpenAI Responses API | Bounded, schema-validated tasks when deterministic output is required |
 
-### Why A2A for Dispatch?
+A2A carries the dispatch because FlowPilot doesn't wait for ClawOne to connect — it actively sends the assignment: MCP credentials scoped per-assignment (never stored in ClawOne), inspection scope defined per cycle, every dispatch logged with timestamp, scope, and peer.
 
-The dispatch step matters. FlowPilot doesn't wait for ClawOne to connect — it actively sends the assignment. This means:
-
-- **Credential isolation** — MCP credentials are scoped per-assignment, not stored in ClawOne
-- **Scope control** — FlowPilot defines what ClawOne can inspect in this cycle
-- **Audit trail** — every dispatch is logged with timestamp, scope, and peer
-
-### Why MCP for Inspection?
-
-MCP gives ClawOne direct access to platform data without going through FlowPilot as an intermediary:
+MCP carries the inspection because it gives ClawOne direct access to platform data without FlowPilot as intermediary:
 
 | Resource | What ClawOne reads |
 |----------|--------------------|
@@ -198,15 +184,7 @@ This is not traditional QA with extra steps. It is a fundamentally different mod
 
 A fair question is: "isn't this just automated testing with new branding?"
 
-No. The difference is architectural:
-
-| Classic Test Automation | Agentic Quality Loop |
-|-------------------------|----------------------|
-| Static assertions against expected output | Adaptive inspection of live system behavior |
-| Test runner invokes system | One agent dispatches another agent |
-| Failures create reports/tickets | Findings become objectives and remediation workflows |
-| Focus on instance correctness | Focus on instance + template/source correctness |
-| Little memory across runs | Persistent peer memory across audit cycles |
+No. The difference is architectural. Classic automation runs static assertions against expected output; here, one agent dispatches another to adaptively inspect live behavior. Failures used to become reports and tickets; here, findings become objectives and remediation workflows. Correctness used to mean the instance; here it means instance *and* source. And where a test runner has no memory, the QA peer accumulates context across audit cycles.
 
 This is why the loop feels qualitatively different in practice. It does not just verify behavior. It evolves behavior.
 

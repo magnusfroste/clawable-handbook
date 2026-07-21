@@ -127,19 +127,7 @@ The Claw runs the task with its full agent context — workspace files, identity
 
 ## Two Communication Channels
 
-Every A2A-enabled Claw exposes two channels. They serve different coordination patterns.
-
-### Channel 1 — OpenResponses (top-down delegation)
-
-`POST /v1/responses` on port 18789. The caller is the orchestrator; the Claw is the worker. The message goes directly to the agent's LLM with full context. The caller defines the expected output format in the prompt.
-
-**Use this when:** Paperclip or Flowwink delegates a task with a clear expected output — a QA audit, a code review, a research brief.
-
-### Channel 2 — A2A (peer-to-peer collaboration)
-
-JSON-RPC on port 18800 via the A2A gateway plugin. Either side can initiate. Messages are serialized through the A2A protocol.
-
-**Use this when:** Two Claws coordinate as peers — neither is the boss — or when the communication is exploratory or conversational.
+Every A2A-enabled Claw exposes the two channels from [chapters 26](/builder/26-a2a-communication) and [28](/builder/28-federation-in-practice): OpenResponses on port 18789 for top-down delegation with a caller-defined output contract, and A2A on port 18800 for peer-to-peer coordination where either side can initiate. What matters here is the routing:
 
 | Scenario | Channel |
 |---|---|
@@ -148,7 +136,7 @@ JSON-RPC on port 18800 via the A2A gateway plugin. Either side can initiate. Mes
 | QA Claw notifies Dev Claw that work is complete | A2A |
 | Research Claw and SEO Claw compare findings | A2A |
 
-This dual-channel model maps exactly to how human organizations work: a manager assigns work through formal delegation (OpenResponses), while colleagues coordinate informally as peers (A2A).
+The dual-channel model maps exactly to how human organizations work: a manager assigns work through formal delegation (OpenResponses), while colleagues coordinate informally as peers (A2A).
 
 ---
 
@@ -165,11 +153,6 @@ The goal — currently in progress — is **swarm templates**: pre-composed sets
 - Dev Agent + QA Agent + Research Agent
 - Dev Agent initiates QA runs via A2A after code changes
 - Research Agent handles RFC summaries and dependency audits
-
-**Customer operations swarm:**
-- Support Agent + Research Agent
-- Support Agent delegates knowledge lookups to Research Agent
-- Support handles the customer; Research handles the facts
 
 ---
 

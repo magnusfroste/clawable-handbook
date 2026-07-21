@@ -88,7 +88,29 @@ No defense is complete. Defense-in-depth is the only viable strategy:
 | **Human approval gates** | High-risk actions require admin approval | Only as good as the admin's attention |
 | **Separate reasoning contexts** | Public chat and admin operate in separate edge functions with different skill sets | Flowwink's dual-agent architecture does this |
 
-**Flowwink's approach:** The dual-agent architecture is itself a security boundary. The public chat agent (`chat-completion`) has a restricted skill set (`scope: external`), no access to admin tools, and no ability to modify business data beyond creating leads. An injection via public chat cannot reach the admin skill set.
+### Scope Isolation — The Defense to Build First
+
+If your agent has one reasoning context for everything — admin operations and public chat — a visitor who phishes the agent can access internal capabilities. The solution is two separate agent surfaces with different permissions:
+
+```
+┌─────────────────────────────────────────────────┐
+│  FlowChat (visitor scope)                       │
+│  ├── Read-only tools                            │
+│  ├── Lead capture                               │
+│  ├── Booking                                    │
+│  └── Knowledge base Q&A                         │
+│                                                 │
+│  Admin Agent (internal scope)                   │
+│  ├── All content operations                     │
+│  ├── CRM operations                             │
+│  ├── Newsletter sends                           │
+│  └── A2A outbound                              │
+└─────────────────────────────────────────────────┘
+```
+
+**The key insight:** Scope isolation is an architectural decision, not a configuration flag. The public chat agent must be a separate reasoning process with its own system prompt, skill set, and execution context. It cannot be "the same agent with fewer tools" — because prompt injection can often escalate tools.
+
+**Flowwink's implementation:** Two Edge Functions, two skill tables, two system prompts. The public chat agent (`chat-completion`) has a restricted skill set (`scope: external`), no access to admin tools, and no ability to modify business data beyond creating leads. Public chat cannot call `agent-execute` with admin-scoped skills, however sophisticated the injection attempt.
 
 **OpenClaw's approach:** Channel allowlists control who can talk to the agent. But within an allowed channel, the agent has full access to all tools. NemoClaw addresses this with sandboxing — restricting what the agent can do at the OS level.
 
@@ -140,13 +162,51 @@ An agent's long-term memory shapes its future behavior. If an attacker can injec
 
 ## Threat 4: SSRF and Network Egress
 
-An agent with `webhook:` or `a2a:` handler access can potentially make HTTP requests to internal services or external endpoints.
+An agent with `webhook:` or `a2a:` handler access can make HTTP requests to anywhere — including internal services like `169.254.169.254` (cloud metadata), `localhost`, or private IP ranges.
 
 ### Defenses
 
-- **SSRF validation** — validate all URLs before requests. Block private IP ranges (10.x, 172.16-31.x, 192.168.x, 127.x, ::1, link-local). NemoClaw implements this in `nemoclaw/src/blueprint/ssrf.ts`
-- **Network policies** — restrict which domains the agent can contact. NemoClaw uses YAML network policies in `nemoclaw-blueprint/policies/`. Allow specific endpoints, deny everything else
-- **Egress allowlists** — in Flowwink, the `a2a_peers` table acts as an allowlist. The agent can only contact registered peers. New peers require admin registration
+The core defense is SSRF validation: check every URL before it leaves your infrastructure, in every handler that makes outbound requests (`webhook:`, `a2a:`, `http:`) — before the request leaves, not after.
+
+```typescript
+// From NemoClaw's ssrf.ts — the core check
+function isPrivateIP(url: string): boolean {
+  const host = new URL(url).hostname;
+  
+  // Block private ranges
+  if (/^10\./.test(host)) return true;
+  if (/^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(host)) return true;
+  if (/^192\.168\./.test(host)) return true;
+  if (/^127\./.test(host)) return true;
+  if (host === 'localhost') return true;
+  if (/^169\.254\./.test(host)) return true; // AWS metadata
+  if (/^0\./.test(host)) return true;       // link-local
+  if (host === '::1') return true;
+  
+  // Resolve and check resolved IPs too
+  const resolved = dns.resolve(host);
+  if (resolved.some(ip => isPrivateIP(resolved))) return true;
+  
+  return false;
+}
+```
+
+Layer network policies on top — restrict which domains the agent can contact at all. NemoClaw's YAML model:
+
+```yaml
+# nemoclaw-blueprint/policies/network.yaml
+allowed_domains:
+  - api.openai.com
+  - api.anthropic.com
+  - hooks.slack.com
+blocked_ranges:
+  - 10.0.0.0/8
+  - 172.16.0.0/12
+  - 192.168.0.0/16
+  - 169.254.0.0/16
+```
+
+And allowlist egress at the application layer: in Flowwink, the `a2a_peers` table is the allowlist — the agent can only contact registered peers, and new peers require admin registration.
 
 ---
 
@@ -168,6 +228,43 @@ Agents need API keys, tokens, and credentials to function. These must never leak
 | **Token hashing** | Store A2A tokens as hashes (`inbound_token_hash`), never as plaintext |
 | **Least-privilege API keys** | Use read-only keys where possible. Separate keys per skill/handler with minimal permissions |
 | **Supabase service role isolation** | Edge functions that need service-role access are separate from those that serve public requests |
+
+The sanitization defense deserves code, because a simple pattern match on `sk-` or `Bearer` in output can expose your entire integration landscape:
+
+```typescript
+// Scan agent output for credential patterns
+function sanitizeOutput(text: string): string {
+  const patterns = [
+    /sk-[a-zA-Z0-9]{48}/g,           // OpenAI keys
+    /sk-ant-[a-zA-Z0-9]{48}/g,       // Anthropic keys
+    /ya29\.[a-zA-Z0-9-_]{100,}/g,    // Google tokens
+    /ghp_[a-zA-Z0-9]{36}/g,          // GitHub tokens
+    /x-nango-[a-zA-Z0-9]{48}/g,     // Nango tokens
+    /Bearer\s+[a-zA-Z0-9\-_]+/g,     // Generic bearer tokens
+    /postgres:\/\/[^@]+:[^@]+@/g,    // DB connection strings
+  ];
+  
+  let sanitized = text;
+  for (const pattern of patterns) {
+    sanitized = sanitized.replace(pattern, '[REDACTED]');
+  }
+  
+  return sanitized;
+}
+```
+
+Run it before displaying output in chat, before saving to memory, before sending via A2A, and in skill handler responses. And keep secrets out of the agent's text surface entirely:
+
+```typescript
+// DON'T: Store secrets in skill instructions or soul files
+const skill = {
+  name: "send_email",
+  instructions: "Use API key sk-1234567890abcdef..."
+};
+
+// DO: Reference env vars, never hardcode
+const apiKey = Deno.env.get('EMAIL_PROVIDER_KEY');
+```
 
 ---
 
@@ -232,132 +329,6 @@ This is not future security architecture. It is the minimum viable security post
 ---
 
 *Legal note: this chapter describes security architecture patterns, not legal advice. Apply with jurisdiction-specific counsel.*
-
-## The Three Defenses You Need First
-
-If you are building your own agent and cannot deploy NemoClaw's full sandbox stack — start here. These three defenses address the most common and most damaging attack vectors. Everything else can come later.
-
-### 1. SSRF Validation — Block Internal Network Access
-
-The problem: An agent with `webhook:` or `a2a:` handler access can make HTTP requests to anywhere — including internal services like `169.254.169.254` (cloud metadata), `localhost`, or private IP ranges.
-
-The solution: Validate every URL before it leaves your infrastructure.
-
-```typescript
-// From NemoClaw's ssrf.ts — the core check
-function isPrivateIP(url: string): boolean {
-  const host = new URL(url).hostname;
-  
-  // Block private ranges
-  if (/^10\./.test(host)) return true;
-  if (/^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(host)) return true;
-  if (/^192\.168\./.test(host)) return true;
-  if (/^127\./.test(host)) return true;
-  if (host === 'localhost') return true;
-  if (/^169\.254\./.test(host)) return true; // AWS metadata
-  if (/^0\./.test(host)) return true;       // link-local
-  if (host === '::1') return true;
-  
-  // Resolve and check resolved IPs too
-  const resolved = dns.resolve(host);
-  if (resolved.some(ip => isPrivateIP(resolved))) return true;
-  
-  return false;
-}
-```
-
-**Where to add it:** In every handler that makes outbound HTTP requests — `webhook:`, `a2a:`, `http:`. Validate before the request leaves, not after.
-
-**The policy approach (NemoClaw's YAML model):**
-```yaml
-# nemoclaw-blueprint/policies/network.yaml
-allowed_domains:
-  - api.openai.com
-  - api.anthropic.com
-  - hooks.slack.com
-blocked_ranges:
-  - 10.0.0.0/8
-  - 172.16.0.0/12
-  - 192.168.0.0/16
-  - 169.254.0.0/16
-```
-
-### 2. Credential Sanitization — Never Leak Secrets
-
-The problem: An agent can accidentally expose API keys, tokens, or connection strings through chat output, memory entries, or A2A responses. A simple pattern match on "sk-" or "Bearer" in output can expose your entire integration landscape.
-
-The solution: Scan all output before it goes anywhere.
-
-```typescript
-// Scan agent output for credential patterns
-function sanitizeOutput(text: string): string {
-  const patterns = [
-    /sk-[a-zA-Z0-9]{48}/g,           // OpenAI keys
-    /sk-ant-[a-zA-Z0-9]{48}/g,       // Anthropic keys
-    /ya29\.[a-zA-Z0-9-_]{100,}/g,    // Google tokens
-    /ghp_[a-zA-Z0-9]{36}/g,          // GitHub tokens
-    /x-nango-[a-zA-Z0-9]{48}/g,     // Nango tokens
-    /Bearer\s+[a-zA-Z0-9\-_]+/g,     // Generic bearer tokens
-    /postgres:\/\/[^@]+:[^@]+@/g,    // DB connection strings
-  ];
-  
-  let sanitized = text;
-  for (const pattern of patterns) {
-    sanitized = sanitized.replace(pattern, '[REDACTED]');
-  }
-  
-  return sanitized;
-}
-```
-
-**Where to add it:** 
-- Before displaying output in chat (visitor-facing)
-- Before saving to memory
-- Before sending via A2A
-- In skill handler responses
-
-**Never do this:**
-```typescript
-// DON'T: Store secrets in skill instructions or soul files
-const skill = {
-  name: "send_email",
-  instructions: "Use API key sk-1234567890abcdef..."
-};
-```
-
-**Always do this:**
-```typescript
-// DO: Reference env vars, never hardcode
-const apiKey = Deno.env.get('EMAIL_PROVIDER_KEY');
-```
-
-### 3. Scope Isolation — Separate Reasoning Contexts
-
-The problem: If your agent has one reasoning context for everything — admin operations and public chat — a visitor who phishes the agent can access internal capabilities.
-
-The solution: Two separate agent surfaces with different permissions.
-
-```
-┌─────────────────────────────────────────────────┐
-│  FlowChat (visitor scope)                       │
-│  ├── Read-only tools                            │
-│  ├── Lead capture                               │
-│  ├── Booking                                    │
-│  └── Knowledge base Q&A                         │
-│                                                 │
-│  Admin Agent (internal scope)                   │
-│  ├── All content operations                     │
-│  ├── CRM operations                             │
-│  ├── Newsletter sends                           │
-│  └── A2A outbound                              │
-└─────────────────────────────────────────────────┘
-```
-
-**The key insight:** Scope isolation is an architectural decision, not a configuration flag. The public chat agent must be a separate reasoning process with its own system prompt, skill set, and execution context. It cannot be "the same agent with fewer tools" — because prompt injection can often escalate tools.
-
-**Flowwink's implementation:** Two Edge Functions, two skill tables, two system prompts. Public chat cannot call `agent-execute` with admin-scoped skills even if the injection attempt is sophisticated.
-
----
 
 ## Credential Patterns — Three Approaches in Production
 
@@ -448,29 +419,7 @@ const emailKey = {
 
 ## The Ecosystem's Tooling — DefenseClaw CodeGuard
 
-DefenseClaw's CodeGuard deserves special attention because it represents a new category of tooling: **static analysis for agent-generated and skill-sourced code**. This goes beyond credential scanning.
-
-CodeGuard catches code quality and security issues in anything the agent writes or includes:
-
-| Rule Category | What it detects | Why it matters |
-|-------------|-----------------|----------------|
-| **Hardcoded credentials** | AWS keys, API tokens, embedded private keys | Prevents accidental key leakage |
-| **Dangerous execution** | `os.system`, `eval`, `subprocess` with `shell=True`, `child_process.exec` | Prevents arbitrary code execution |
-| **Outbound networking** | HTTP calls to variable/untrusted URLs | Prevents data exfiltration |
-| **Unsafe deserialization** | `pickle.load`, `yaml.load` without safe loader | Prevents payload injection |
-| **SQL injection** | String-formatted queries | Standard SQLi, but from agent code |
-| **Weak cryptography** | MD5, SHA1 usage | Ensures cryptographic standards |
-| **Path traversal** | `../` sequences, `path.join` with `..` | Prevents filesystem attacks |
-
-CodeGuard runs automatically during skill and plugin scans, and is available as a standalone scan:
-
-```bash
-defenseclaw skill scan web-search        # scan and validate
-defenseclaw plugin scan code-review      # check plugin code
-POST /api/v1/scan/code                   # programmatic scan
-```
-
-**The key insight:** Agent-generated code is just as dangerous as skill-sourced code. A well-intentioned agent that writes a skill handler can introduce the same vulnerabilities as a malicious skill. CodeGuard addresses both vectors.
+DefenseClaw's CodeGuard represents a new tooling category: **static analysis for agent-generated and skill-sourced code**. It scans for hardcoded credentials, dangerous execution (`eval`, `shell=True`), outbound calls to untrusted URLs, unsafe deserialization, SQL injection, weak cryptography, and path traversal — automatically during skill and plugin scans, or standalone via `defenseclaw skill scan`. The key insight: agent-generated code is just as dangerous as skill-sourced code. A well-intentioned agent writing a skill handler can introduce the same vulnerabilities as a malicious skill. CodeGuard addresses both vectors.
 
 ---
 
@@ -548,29 +497,7 @@ For any agentic deployment, verify these before going to production:
 
 ## How the Ecosystem Is Addressing Security
 
-The OpenClaw ecosystem is actively building security layers:
-
-| Project | Focus | Approach |
-|---------|-------|----------|
-| **NemoClaw** (NVIDIA) | Sandboxing | OpenShell containers, YAML network policies, credential sanitization, SSRF validation |
-| **DefenseClaw** (Cisco) | Governance | Skill scanning, block/allow lists, audit logging, TUI dashboard, admission gate |
-| **NanoClaw** | Isolation | OS-level process isolation, minimal attack surface |
-| **openclaw-multitenant** | Instance isolation | Container isolation, encrypted vault, team sharing |
-
-These are complementary layers. You can run NemoClaw's sandboxing *and* DefenseClaw's scanning *and* Flowwink's scope isolation. Security is defense-in-depth — no single layer is sufficient.
-
----
-
-## NemoClaw in One Page
-
-NemoClaw is OpenClaw with additional runtime security layers around it — most importantly sandboxed tool execution (OpenShell), network policy enforcement, SSRF validation, credential sanitization, and runtime recovery.
-
-The practical takeaway for this handbook is simple:
-
-- Use NemoClaw directly when you need stronger OS/network isolation out of the box
-- Or copy the same primitives into your own stack (sandboxing + egress policy + recovery)
-
-NemoClaw is strongest as a containment layer: it limits blast radius *after* a bad reasoning step. It does not solve prompt injection by itself. You still need scope isolation, approval gates, and auditing at the architecture level.
+The OpenClaw ecosystem is building complementary security layers: NemoClaw (NVIDIA) for sandboxing — OpenShell containers, network policies, SSRF validation, credential sanitization; DefenseClaw (Cisco) for governance — skill scanning, block/allow lists, audit logging; NanoClaw for OS-level process isolation; openclaw-multitenant for instance isolation. Run them together — security is defense-in-depth, and no single layer is sufficient. NemoClaw in particular is strongest as a containment layer: it limits blast radius *after* a bad reasoning step, but does not solve prompt injection by itself. You still need scope isolation, approval gates, and auditing at the architecture level.
 
 ### The Honest Assessment
 

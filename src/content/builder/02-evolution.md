@@ -7,15 +7,7 @@ icon: "arrow-trending-up"
 
 ## Era 1: The Prompt-Response Model (2022-2023)
 
-The first generation of AI applications followed a simple pattern:
-
-```
-User → Prompt → LLM → Response → User
-```
-
-**What worked:** Natural language understanding, text generation, summarization.
-
-**What didn't:** The AI had no memory between conversations, no ability to take actions in the real world, and no way to improve over time. Every conversation started from zero.
+The first generation was a straight line: user prompts, model responds. Natural language understanding and text generation were suddenly real — but the AI had no memory between conversations, no way to act in the world, and no way to improve over time. Every conversation started from zero.
 
 This was the "talking to a very smart goldfish" era.
 
@@ -23,15 +15,7 @@ This was the "talking to a very smart goldfish" era.
 
 ## Era 2: Tool-Augmented Models (2023-2024)
 
-The introduction of function calling (OpenAI, then others) gave models the ability to use tools:
-
-```
-User → Prompt → LLM → Tool Call → Tool Result → LLM → Response
-```
-
-**What worked:** Code execution, web search, database queries. The AI could now *do* things, not just *say* things.
-
-**What didn't:** Tools were ephemeral. No memory between sessions. No ability to chain complex multi-step operations. The human had to initiate every interaction.
+Function calling gave models hands. The AI could execute code, search the web, query databases — *do* things, not just *say* things. But tools were ephemeral, memory ended with the session, and the human had to initiate every interaction.
 
 This was the "very smart intern who forgets everything overnight" era.
 
@@ -39,19 +23,7 @@ This was the "very smart intern who forgets everything overnight" era.
 
 ## Era 3: Agentic Coding — The Control Plane (2024-2025)
 
-Projects like Cursor, Claude Code, and early agent frameworks introduced a control plane layer:
-
-```
-User → Goal → Agent Loop (Reason → Act → Observe) → Result
-              │
-              ├── Tool calls
-              ├── Error recovery
-              └── Multi-step execution
-```
-
-**What worked:** Multi-file code editing, complex refactoring, autonomous debugging. The agent could chain operations and recover from errors.
-
-**What didn't:** Still session-bound. No persistent memory. No self-modification. No autonomous initiation. The agent waited for you to tell it what to do.
+Cursor, Claude Code, and the early agent frameworks added a control plane: a loop that reasons, acts, observes, recovers from errors, and chains multi-step work. Multi-file refactoring and autonomous debugging became normal. But the agent was still session-bound — no persistent memory, no self-modification, no initiative. It waited for you to tell it what to do.
 
 This was the "capable contractor who does great work but never shows initiative" era.
 
@@ -150,49 +122,13 @@ Agent-Driven Development (ADD) is a closed-loop quality architecture where one a
 
 The architectural breakthrough is **closed-loop remediation**. In traditional testing, findings end as reports. In ADD, findings become objectives. Objectives become fixes. Fixes raise the baseline for every future deployment. The system improves itself, cycle by cycle, with human judgment at the triage layer — not the execution layer.
 
-This is what distinguishes Era 5 from Era 4: not smarter agents, but agents that make other agents smarter.
-
-| | Era 4 (Autonomous Agent) | Era 5 (Agent-Driven Development) |
-|--|--------------------------|----------------------------------|
-| Who initiates improvement? | Human reviews logs | Agent dispatches audit |
-| Where do findings go? | Dashboard / report | Automatically become objectives |
-| Fix scope | This instance | Source — all future installs |
-| Human role | Executes fixes | Triages: dismiss / runtime / source |
+This is what distinguishes Era 5 from Era 4: not smarter agents, but agents that make other agents smarter. Chapter 27 owns the deep dive on ADD; this is the map, not the territory.
 
 ---
 
 ## The Pattern That Emerged
 
-Across all five eras, a clear architectural pattern emerged:
-
-```
-┌──────────────────────────────────────┐
-│         SURFACES (thin wrappers)     │
-│  Chat │ Admin │ API │ Voice │ ...   │
-└────────────────┬─────────────────────┘
-                 │
-                 ▼
-┌──────────────────────────────────────┐
-│         REASONING CORE               │
-│  Prompt Compiler │ ReAct Loop       │
-│  Tool Router │ Budget Manager       │
-└────────────────┬─────────────────────┘
-                 │
-                 ▼
-┌──────────────────────────────────────┐
-│         CAPABILITY LAYER             │
-│  Skills │ Memory │ Objectives       │
-│  Workflows │ A2A │ Automations      │
-└────────────────┬─────────────────────┘
-                 │
-                 ▼
-┌──────────────────────────────────────┐
-│         INFRASTRUCTURE               │
-│  Database │ Auth │ Storage │ AI     │
-└──────────────────────────────────────┘
-```
-
-Every successful agentic system converges on this four-layer stack. The surfaces change (WhatsApp, Slack, voice), the infrastructure changes (Node.js, Deno, Python), but the reasoning core and capability layer remain consistent.
+Across all five eras, every successful agentic system converges on the same four-layer stack — surfaces, reasoning core, capability layer, infrastructure. Chapter 4 dissects that stack in full. The short version: the surfaces change (WhatsApp, Slack, voice), the infrastructure changes (Node.js, Deno, Python), but the reasoning core and capability layer stay remarkably stable.
 
 ---
 
@@ -202,10 +138,6 @@ Every successful agentic system converges on this four-layer stack. The surfaces
 |------------|---------|-------|-------|-------|
 | Memory | None | Session only | Persistent | Persistent |
 | Initiation | User only | User only | Agent + User + System | Agent + Agent |
-| Self-modification | No | No | Yes | Yes + external audit |
-| Error recovery | Basic | Multi-step | Self-healing | Self-healing + QA loop |
-| Skill ecosystem | N/A | Built-in | Hot-reloadable | Audited + improved |
-| Multi-step plans | No | Yes | Yes + autonomous | Yes + closed-loop |
 | Quality assurance | Manual | CI/tests | Approval gates | Agents auditing agents |
 
 The jump from Era 3 to Era 4 isn't incremental — it's architectural. You can't bolt persistence and self-modification onto a session-bound system. The jump from Era 4 to Era 5 is equally significant: you can't bolt a quality loop onto a system not designed for structured A2A findings. You have to build it in.

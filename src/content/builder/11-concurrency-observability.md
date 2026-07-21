@@ -219,7 +219,7 @@ Every agent action is logged to `agent_activity` with a consistent schema:
 
 ## Self-Healing: Observability as Input
 
-The activity log isn't just for humans. During the self-heal phase of every heartbeat — chapter 10's step one, with the full quarantine implementation in chapter 31 — the agent queries its own last three days of activity, finds skills with three or more consecutive failures, quarantines them, disables their linked automations, and injects the healing report into its next prompt. This closes the observability loop: **the agent monitors itself and acts on what it sees.** A failing skill doesn't just generate alerts — it gets quarantined automatically.
+The activity log isn't just for humans. During the self-heal phase of every heartbeat — chapter 10's step one, with the full quarantine implementation in chapter 31 — **the agent monitors itself and acts on what it sees.** A failing skill doesn't just generate alerts; it gets quarantined automatically. And the uglier failure class — the model hallucinating tool calls that don't exist — gets a recovery pattern of its own in chapter 32.
 
 ---
 
@@ -237,12 +237,6 @@ All observability data surfaces in the admin UI through the "Engine Room" — a 
 | Objectives | `agent_objectives` | Progress on active goals |
 
 The Engine Room answers the operator's core question: **"What is my agent doing right now, and is it working?"**
-
----
-
-## Tool Hallucination Recovery
-
-LLMs sometimes "hallucinate" tool calls — requesting tools that don't exist or passing malformed parameters. Without recovery, this crashes the reasoning loop and leaves the agent in an undefined state. FlowPilot's answer — catch the unknown call, inject a `system`-role correction so the model reads it as infrastructure feedback, retry within a bounded loop, and force a summary when the budget runs out — is important enough to get its own chapter: the full pattern, layer by layer, is chapter 32.
 
 ---
 

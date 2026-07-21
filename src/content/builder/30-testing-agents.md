@@ -78,16 +78,7 @@ FlowWink's testing framework — developed in collaboration with the OpenClaw ar
 
 ## From Evaluation to Improvement
 
-Many teams now run strong evaluations but still miss the operational step: turning results into sustained improvement.
-
-| Evaluation-Only Pattern | Continuous Improvement Pattern |
-|-------------------------|-------------------------------|
-| Run benchmark or test suite | Run benchmark + ingest findings |
-| Publish report/dashboard | Create objectives from high-impact findings |
-| Fix ad hoc issues | Classify: dismiss / runtime fix / source fix |
-| Re-test occasionally | Re-verify in the next autonomous cycle |
-
-This handbook's thesis is that agentic testing should be a **control loop**, not a reporting loop.
+Many teams now run strong evaluations but still miss the operational step: turning results into sustained improvement. The difference is what happens after the run — findings become objectives, objectives get classified (dismiss / runtime fix / source fix), and fixes are re-verified in the next autonomous cycle. [Chapter 27](/builder/27-agent-driven-development) owns the full contrast; this handbook's thesis is that agentic testing should be a **control loop**, not a reporting loop.
 
 ## The Key Insight: From "Does It Run?" to "Does It Govern Itself?"
 
@@ -170,39 +161,7 @@ test('qualify_lead routes to module handler', () => {
 });
 ```
 
-### Prompt Assembly Tests
-
-The system prompt is the foundation of agent behavior. Test that it assembles correctly:
-
-```typescript
-test('system prompt includes grounding rules in layer 1', () => {
-  const prompt = assembleSystemPrompt(testConfig);
-  const firstSection = prompt.split('---')[0];
-  expect(firstSection).toContain('never exfiltrate');
-  expect(firstSection).toContain('never bypass approval');
-});
-
-test('skill list respects scope for public surface', () => {
-  const skills = loadSkillsForSurface('external');
-  const internalSkills = skills.filter(s => s.scope === 'internal');
-  expect(internalSkills).toHaveLength(0);
-});
-```
-
-### Memory Operation Tests
-
-Test that memory creation, retrieval, compression, and categorization work correctly:
-
-```typescript
-test('memory compression preserves key facts', () => {
-  const original = 'Customer John Smith from Acme Corp called about enterprise pricing...';
-  const compressed = compressMemory(original);
-  expect(compressed).toContain('John Smith');
-  expect(compressed).toContain('Acme Corp');
-  expect(compressed).toContain('enterprise pricing');
-  expect(compressed.length).toBeLessThan(original.length);
-});
-```
+The same shape covers the other unit-level surfaces: assert the system prompt assembles with grounding rules in layer 1 and that the public surface loads zero internal-scoped skills; assert that memory compression preserves key facts (names, companies, topics) while actually shrinking the text. Same pattern, different subject — no need to repeat the listing.
 
 ---
 
@@ -210,36 +169,9 @@ test('memory compression preserves key facts', () => {
 
 Contract tests verify that interfaces between components are honored. In an agentic system, the key contracts are:
 
-### Skill ↔ Handler Contract
+**Skill ↔ handler:** every skill's `handler` field must resolve to a real function that accepts the parameters the schema defines. **A2A ↔ Agent Card:** every skill the card claims must exist in the active external-scoped set. Both are the same assert-on-a-contract move — loop over the claims, verify each resolves.
 
-Every skill's `handler` field must resolve to a real handler. Every handler must accept the parameters the skill schema defines:
-
-```typescript
-test('all skills have resolvable handlers', async () => {
-  const skills = await getAllActiveSkills();
-  for (const skill of skills) {
-    const handler = resolveHandler(skill.handler);
-    expect(handler).toBeDefined();
-    expect(typeof handler).toBe('function');
-  }
-});
-```
-
-### A2A ↔ Agent Card Contract
-
-Your Agent Card claims certain skills. Verify they actually exist and respond:
-
-```typescript
-test('agent card skills match active skill set', async () => {
-  const card = await getAgentCard();
-  const activeSkills = await getActiveSkills({ scope: 'external' });
-  const activeNames = activeSkills.map(s => s.name);
-  
-  for (const cardSkill of card.skills) {
-    expect(activeNames).toContain(cardSkill.name);
-  }
-});
-```
+The contract worth showing in full is the one with a failure mode:
 
 ### responseSchema Contract
 
@@ -287,38 +219,7 @@ test('create_blog_post skill creates post and returns slug', async () => {
 });
 ```
 
-### Approval Gate Integration
-
-Test that approval-gated skills actually pause and require approval:
-
-```typescript
-test('send_newsletter skill triggers approval gate', async () => {
-  const result = await executeSkill('send_newsletter', {
-    campaign_id: testCampaignId
-  }, { surface: 'internal', siteId: testSiteId });
-  
-  expect(result.requires_approval).toBe(true);
-  expect(result.approval_request).toBeDefined();
-  expect(result.executed).toBe(false);
-});
-```
-
-### Self-Healing Integration
-
-Test that the quarantine mechanism works:
-
-```typescript
-test('skill is quarantined after 3 consecutive failures', async () => {
-  // Simulate 3 failures
-  for (let i = 0; i < 3; i++) {
-    await executeSkill('broken_skill', {}, { surface: 'internal', siteId: testSiteId });
-  }
-  
-  const skill = await getSkill('broken_skill');
-  expect(skill.status).toBe('quarantined');
-  expect(skill.quarantine_reason).toContain('consecutive failures');
-});
-```
+Two more integration paths deserve the same round-trip treatment, without needing their own listings: approval gates (executing a `requires_approval` skill must return `requires_approval: true` with `executed: false` — the action pauses, it does not run) and self-healing (three consecutive failures must flip a skill to `quarantined` with a reason recorded). Both are executions asserted against state, exactly like the round-trip above.
 
 ---
 
@@ -353,102 +254,17 @@ test('heartbeat cycle completes within budget', async () => {
 });
 ```
 
-### A2A Round-Trip Test
-
-Test a complete A2A cycle between two agents:
-
-```typescript
-test('QA Claw → FlowPilot A2A round-trip', async () => {
-  // 1. Send a QA task to the QA Claw
-  const qaResult = await callPeerAgent('qa-claw', {
-    task: 'Audit the booking page',
-    responseSchema: {
-      type: 'object',
-      properties: {
-        findings: { type: 'array', items: { type: 'object' } },
-        passed: { type: 'number' }
-      }
-    }
-  });
-  
-  // 2. Verify QA Claw responded with valid schema
-  expect(qaResult.findings).toBeDefined();
-  expect(Array.isArray(qaResult.findings)).toBe(true);
-  
-  // 3. Feed findings into FlowPilot
-  const objectives = await processQAFindings(qaResult.findings, testSiteId);
-  
-  // 4. Verify objectives were created for high-severity findings
-  const highFindings = qaResult.findings.filter(f => f.severity === 'high');
-  expect(objectives.length).toBeGreaterThanOrEqual(highFindings.length);
-});
-```
+The other E2E flow worth automating is the A2A round-trip: send a QA task to a peer with a `responseSchema`, assert the response validates, feed the findings into FlowPilot, and assert an objective exists for every high-severity finding. Four steps, same assert-on-a-contract shape as the heartbeat test — and it exercises the full L7 loop described above.
 
 ---
 
 ## The OpenClaw QA Symbiosis Pattern
 
-The Clawable project validates FlowPilot not just through internal tests, but through **external QA peers** — OpenClaw instances that run as autonomous testers. This is **L7** in the OMATS philosophy: multi-agent validation where one agent audits another.
+The Clawable project validates FlowPilot not just through internal tests, but through **external QA peers** — OpenClaw instances that run as autonomous testers. This is **L7** in the OMATS philosophy: multi-agent validation where one agent audits another. The loop itself is told in full in [chapter 27](/builder/27-agent-driven-development) (dispatch, inspection, triage) and [chapter 28](/builder/28-federation-in-practice) (the bounded OpenResponses lane); here it matters as a testing layer.
 
-### The Symbiosis Loop
+The short version: after every edge-function deploy, the QA Claw receives a task with a stable response schema, browses the affected user journeys — happy path, returning visitor, mobile viewport — and returns structured findings graded by severity. FlowPilot ingests them via A2A and creates objectives; the next heartbeat picks up the high-severity one, plans a fix, and flags it for admin approval. In production the cycle runs deploy-to-objectives in about four minutes. Issues that used to surface when a real customer complained now surface before the deploy has cooled — categorized, machine-actionable, already in the work queue.
 
-```
-┌─────────────────────────────────────────────────────────┐
-│              OPENCLAW QA SYMBIOSIS (A2A PEERS)            │
-│                                                         │
-│  OpenClaw (QA Peer)            FlowPilot (Operator)     │
-│  VPS · Docker · stock          Flowwink edge function   │
-│  A2A plugin enabled            A2A ingest/outbound      │
-│  ──────────────────            ──────────────────────   │
-│  Audits FlowPilot output ──►  Receives findings         │
-│  Runs conformance tests  ──►  Creates objectives        │
-│  Flags drift/stagnation  ──►  Reflects, adjusts           │
-│                                                         │
-│  ◄── Receives heartbeat logs   Sends heartbeat reports    │
-│  ◄── Receives performance data Pushes skill usage stats │
-│  ◄── Receives audit requests   Initiates QA tasks         │
-│                                                         │
-│  Both peers can initiate activities independently.        │
-└─────────────────────────────────────────────────────────┘
-```
-
-### A Real QA Cycle
-
-This pattern runs in production after every edge function deploy:
-
-```
-14:02  Flowwink deploys updated booking flow (agent-execute v2.4.1)
-
-14:03  QA Claw receives task via /v1/responses:
-       "Audit the booking flow on demo.flowwink.com.
-        Return { findings: [{ severity, location, description }] }"
-
-14:04  QA Claw browses the booking page, tests 3 user journeys:
-       - New visitor books a consultation (happy path)
-       - Returning visitor with existing contact record
-       - Mobile viewport booking with timezone mismatch
-
-14:06  QA Claw returns structured findings:
-       {
-         "findings": [
-           { "severity": "high",   "location": "/booking?service=consult",
-             "description": "Timezone selector defaults to UTC on mobile Safari" },
-           { "severity": "medium", "location": "/booking confirmation page",
-             "description": "Confirmation email references 'FlowWink' instead of custom brand" }
-         ],
-         "passed": 14,
-         "total_checks": 17
-       }
-
-14:07  FlowPilot receives findings via A2A → creates 2 objectives:
-       - OBJ-847: "Fix timezone default on mobile booking" (high)
-       - OBJ-848: "Replace hardcoded brand name in confirmation template" (medium)
-
-14:08  FlowPilot's next heartbeat picks up OBJ-847, plans a fix,
-       and flags it for admin approval.
-```
-
-**The result:** Issues that would have taken days or weeks to surface (when a real customer complained) now surface within 4 minutes of deploy, categorized by severity, with structured data that FlowPilot can act on autonomously.
+Two properties make this a testing layer rather than an integration. Both peers can initiate — FlowPilot requests audits, and the QA Claw pushes findings proactively from its own heartbeat. And findings persist as structured data, not chat transcripts, so each cycle can verify whether the previous cycle's issues were actually fixed.
 
 ### OpenClaw's Testing Philosophy
 

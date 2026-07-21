@@ -45,8 +45,6 @@ Think of Chat Completions as English: not the most elegant language, not the mos
 
 The mechanics: you send a list of messages (the conversation history), the model replies. Simple and stateless — the API remembers nothing between calls. You own the history and pass it along every time.
 
-In technical terms: `/v1/chat/completions` is the de facto standard endpoint. You send an array of messages, the model replies. Stateless by design. You own the conversation history and pass it with every request.
-
 ```json
 POST /v1/chat/completions
 {
@@ -279,15 +277,7 @@ This pattern gives:
 
 ## The Design Philosophy Divergence
 
-Looking at the three APIs together, the design philosophies are explicit:
-
-**OpenAI (Chat Completions):** *"Give developers a simple, stateless interface and let them build the orchestration."* Maximum developer control. Minimum assumptions about what the agent needs.
-
-**OpenAI (Responses API):** *"Move orchestration into the API for well-known agentic patterns."* Built-in tools, server-side state, reduced orchestration code. The API becomes an opinionated agentic loop.
-
-**Anthropic (Messages API):** *"Model responses should be typed, structured events — not text."* Every piece of the response (reasoning, tool calls, citations) is a first-class typed object. The agent can inspect, route, and audit each element independently.
-
-**What this means for agent builders:**
+Three APIs, three theories about where the agent logic lives — in your code, in the API layer, or inside the model's typed output. What that means for agent builders:
 
 1. If you're building a quick prototype or a multi-model system: **Chat Completions + LiteLLM**. Maximum portability, minimum lock-in.
 
@@ -369,16 +359,7 @@ The 10-second interval is conservative. Most proxies timeout at 30-60 seconds, s
 
 ## The Key Takeaway for Autonomous Agents
 
-The API format question is not academic. For long-running autonomous agents like FlowPilot — agents that run heartbeat cycles at 00:00 with critical business data — the format determines:
-
-- **Reliability:** Native `tool_use` blocks vs. parsed XML — the difference between a stuck loop and a clean tool call
-- **Cost:** Prompt caching on Messages API can cut token costs by 70-90% for repeated heartbeat context
-- **Auditability:** `thinking` blocks give you a human-readable trace of the agent's reasoning — critical for governance (chapter 20)
-- **Portability:** Direct API calls couple you to one provider; proxies let you route to the best available model
-
-The agents that perform best in production are built on the right API for their capability needs, wrapped in a proxy that preserves the escape hatch.
-
-The architecture should outlast any single model provider. If Claude disappears tomorrow, FlowPilot should keep running. The proxy layer is what makes that possible.
+For a long-running autonomous agent, the API format determines reliability (typed `tool_use` blocks versus parsed XML), cost (prompt caching cuts repeated heartbeat context by 70–90%), auditability (`thinking` blocks as a reasoning trace — governance, chapter 20), and portability (proxies keep the escape hatch open). Build on the right API for your capability needs, wrap it in a proxy, and the architecture outlasts any single provider. If Claude disappears tomorrow, FlowPilot keeps running.
 
 ---
 

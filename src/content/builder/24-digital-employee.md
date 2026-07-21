@@ -41,7 +41,7 @@ Review retrospectively. Read the Activity Feed. Catch patterns. Update the skill
 
 ## Skill Instructions Are the Training Material
 
-The `instructions` field on each skill is the primary lever for improving agent behavior. Rich, specific instructions produce reliable outputs. Vague instructions produce inconsistent ones.
+Chapter 15 introduced the principle — a skill is a teaching instrument, not just a tool definition. Here is what that means in management practice: the `instructions` field on each skill is the primary lever for improving agent behavior. Rich, specific instructions produce reliable outputs. Vague instructions produce inconsistent ones.
 
 ```typescript
 // Weak

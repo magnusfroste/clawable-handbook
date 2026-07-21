@@ -5,35 +5,13 @@ order: 20
 icon: "arrow-path"
 ---
 
-We've just established that agents have memory (chapter 15). They remember what happened, what worked, who they talked to. But memory alone is passive storage — it only becomes valuable if something uses it to *get better*.
-
-This chapter is specifically about **FlowPilot's production feedback loops inside Flowwink** — not a generic agent pattern. These loops are wired into CRM, content, pipeline, enrichment, and heartbeat operations that run daily in real business contexts.
-
-OpenClaw is still the foundation in spirit: persistent identity (`SOUL.md`), operating rules (`AGENTS.md`), and autonomous heartbeat cycles. FlowPilot extends that foundation into a business system with structured objectives, scoring models, and measurable outcome loops.
-
-That's what this chapter covers: the mechanisms that turn memory into improvement. They're the reason a well-designed agent in month six outperforms the same agent in month one — not because the model changed, but because the system learned from six months of real outcomes and fed that learning back into itself.
-
-This is also the chapter that separates "we deployed an agent" from "we built a compounding capability." The second one is what makes agentic AI genuinely different from any automation technology that came before it.
-
----
-
-## The Growth Loop Model
-
-Traditional software follows a funnel model: input → process → output. Agentic software follows a loop model: input → process → output → learn → improve → repeat.
-
-```
-         ┌──────────────────────────────────┐
-         │                                  │
-    Attract ──→ Capture ──→ Qualify ──→ Convert
-         │                                  │
-         └──── Learn ◄── Measure ◄──────────┘
-```
-
-Every interaction feeds back into the system. Every data point makes the next interaction smarter. Every loop iteration is more effective than the last.
+Agents have memory (chapter 18) — but memory alone is passive storage. This chapter covers what turns it into improvement: **FlowPilot's production feedback loops inside Flowwink**, wired into CRM, content, pipeline, enrichment, and heartbeat operations — the reason a well-designed agent in month six outperforms the same agent in month one, not because the model changed, but because the system learned from real outcomes and fed that learning back into itself.
 
 ---
 
 ## Five Feedback Loops in Production
+
+Traditional software is a funnel: input → process → output. Agentic software closes the loop — every interaction feeds back, and every iteration is smarter than the last. Five loops run in production.
 
 ### Loop 1: Capture & Qualify
 
@@ -58,44 +36,12 @@ When someone interacts with the business, the agent starts working:
 
 These signals compound. A contact who opened three newsletters, clicked two links, and registered for a webinar has a different profile than someone who filled out a form once.
 
-### Loop 2: Engage & Track
+### Loops 2–5: The Rest of the Circuit
 
-Every interaction is logged and scored. The agent reads the patterns:
-
-- Which content drives the most engagement?
-- Which channels convert best?
-- What time of day do prospects respond?
-
-This data feeds into the agent's content creation and outreach decisions.
-
-### Loop 3: Sell & Convert
-
-The sales pipeline is connected to marketing:
-
-- New deal → contact status updates automatically
-- Won deal → marks as customer, logs revenue
-- Lost deal → tracked for pattern analysis
-
-The agent sees the complete journey from first contact to signed contract.
-
-### Loop 4: Enrich & Understand
-
-AI enrichment fills in company profiles from a single domain:
-
-- Industry, company size, phone, website, address
-- This benefits every contact linked to that company
-- AI qualification uses company context for smarter summaries
-
-### Loop 5: Measure & Improve
-
-Every loop generates metrics:
-
-- **Capture:** Leads per source, channel conversion rates
-- **Engage:** Email open rates, content click-through rates
-- **Sell:** Pipeline value, win rate
-- **Enrich:** Company data completeness
-
-These aren't vanity metrics. They're actionable signals that tell the agent where to focus.
+- **Engage & Track** — every interaction is logged and scored; engagement patterns feed the agent's content and outreach decisions.
+- **Sell & Convert** — pipeline outcomes flow back: won deals mark customers and log revenue, lost deals feed pattern analysis.
+- **Enrich & Understand** — one domain fills a whole company profile, sharpening qualification for every linked contact.
+- **Measure & Improve** — each loop emits actionable metrics (leads per source, open rates, win rate) that tell the agent where to focus next.
 
 ---
 
@@ -139,41 +85,7 @@ The agent literally rewrites its own skill instructions based on what it learns.
 
 ## The Compound Effect
 
-Feedback loops compound. Here's how:
-
-```
-Week 1: Agent qualifies 10 leads
-  → Saves learnings about what makes a good lead
-
-Week 2: Agent qualifies 10 more leads
-  → Uses Week 1 learnings, gets better scores
-  → Saves new patterns
-
-Week 4: Agent qualifies 20 leads
-  → 4 weeks of accumulated knowledge
-  → Scores are significantly more accurate
-  → Conversion rate improves
-
-Week 8: Agent qualifies 40 leads
-  → 8 weeks of patterns
-  → Can predict which leads will convert
-  → Suggests proactive outreach to high-potential leads
-```
-
-The agent at Week 8 is fundamentally more capable than the agent at Week 1. Not because the model changed, but because the memory and skills evolved.
-
----
-
-## Designing Effective Feedback Loops
-
-| Principle | Implementation |
-|-----------|---------------|
-| **Measure everything** | Log all actions to `agent_activity` with input/output/timing |
-| **Score continuously** | Engagement scores update on every interaction |
-| **Reflect regularly** | `reflect()` runs every heartbeat cycle |
-| **Persist learnings** | Auto-save top learnings to `agent_memory` |
-| **Close the loop** | Learnings influence future decisions |
-| **Quarantine failures** | Self-healing prevents repeated mistakes |
+Feedback loops compound. The agent that qualifies ten leads in week one saves what it learned; by week eight it carries two months of accumulated patterns, scores leads far more accurately, and starts predicting which ones will convert. The Week 8 agent is fundamentally more capable than the Week 1 agent — not because the model changed, but because the memory and skills evolved. Chapter 16 showed the same compounding in skill self-creation; this is the operational side of the same curve.
 
 ---
 
