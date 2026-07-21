@@ -25,8 +25,6 @@ The key distinction is **closed-loop remediation**. Findings do not end as repor
 
 ## The Architecture: Three Channels, One Loop
 
-Flowwink exposes a three-channel architecture that lets an external agent act as a persistent development partner.
-
 Read this chapter with one framing in mind: this is not a feature-level QA integration. It is an operating model. The system can run autonomously, but legitimacy still comes from explicit boundaries and human judgment where intent is ambiguous.
 
 Flowwink exposes a three-channel architecture that lets an external agent act as a persistent development partner:

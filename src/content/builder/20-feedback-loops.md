@@ -120,15 +120,7 @@ The agent literally evaluates its own performance and saves lessons.
 
 ### Self-Healing
 
-```
-runSelfHealing()
-  │
-  ├── Skills with 3+ consecutive failures → quarantine
-  ├── Linked automations → disabled
-  └── Healing report → injected into next heartbeat
-```
-
-Failing components are automatically removed from the agent's available toolkit. This prevents the agent from repeatedly trying things that don't work.
+The quarantine mechanism from chapter 10 (full implementation in chapter 31) is itself a feedback loop: skills with three or more consecutive failures leave the agent's toolkit, their linked automations are disabled, and the healing report lands in the next heartbeat's context. The agent stops repeatedly trying things that don't work — because its own failure history is an input.
 
 ### Skill Evolution
 

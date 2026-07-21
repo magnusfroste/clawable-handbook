@@ -95,7 +95,7 @@ This is defensive by design. A malformed result from one tool doesn't prevent th
 
 ### Layer 3: Continuation Nudge
 
-After processing tool results, the system injects a nudge that prevents the LLM from "narrating" instead of acting:
+After processing tool results, the system injects the continuation nudge — the same mechanism chapter 10 introduced for the heartbeat loop, here on recovery duty — to prevent the LLM from "narrating" instead of acting:
 
 ```typescript
 conversationMessages.push({

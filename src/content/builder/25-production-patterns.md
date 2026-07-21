@@ -174,7 +174,7 @@ At 10 skills, you can send everything to the LLM. At 500+, you can't — you'd c
 
 ### The Pattern
 
-Dynamic, runtime degradation based on actual token consumption:
+Chapter 19 introduced the mechanism as part of the token economy — the full tier ladder including the 90 percent emergency exit. This is the pattern as it runs in production: dynamic, runtime degradation based on actual token consumption:
 
 ```
 Token budget used:     <50%          50-75%          >75%

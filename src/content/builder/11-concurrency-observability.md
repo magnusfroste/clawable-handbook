@@ -219,19 +219,7 @@ Every agent action is logged to `agent_activity` with a consistent schema:
 
 ## Self-Healing: Observability as Input
 
-The activity log isn't just for humans. The agent reads its own logs during the self-healing phase of every heartbeat:
-
-```
-SELF-HEAL phase:
-  1. Query agent_activity for last 3 days
-  2. Group by skill_name
-  3. Find skills with 3+ consecutive failures
-  4. Auto-disable failing skills
-  5. Disable linked automations
-  6. Inject healing report into prompt
-```
-
-This closes the observability loop: **the agent monitors itself and acts on what it sees.** A failing skill doesn't just generate alerts — it gets quarantined automatically.
+The activity log isn't just for humans. During the self-heal phase of every heartbeat — chapter 10's step one, with the full quarantine implementation in chapter 31 — the agent queries its own last three days of activity, finds skills with three or more consecutive failures, quarantines them, disables their linked automations, and injects the healing report into its next prompt. This closes the observability loop: **the agent monitors itself and acts on what it sees.** A failing skill doesn't just generate alerts — it gets quarantined automatically.
 
 ---
 
@@ -254,62 +242,7 @@ The Engine Room answers the operator's core question: **"What is my agent doing 
 
 ## Tool Hallucination Recovery
 
-LLMs sometimes "hallucinate" tool calls — requesting tools that don't exist or passing malformed parameters. Without recovery, this crashes the reasoning loop and leaves the agent in an undefined state.
-
-FlowPilot handles this with a structured recovery pattern:
-
-```
-1. LLM calls non-existent tool
-   → Catch the "unknown tool" error
-   → Do NOT abort the session
-
-2. Inject correction message into conversation:
-   "Tool 'X' doesn't exist. Available tools: [list of valid tool names]
-    Please try again with one of the available tools."
-
-3. Re-enter reasoning loop (max 2 retries)
-
-4. If still failing after retries:
-   → Log error with full details (tool name attempted, parameters, context)
-   → Exit gracefully with summary of what was accomplished
-   → Flag the stall in agent_activity for review
-```
-
-### Why This Happens
-
-Hallucinated tool calls are more common than you'd expect, especially when:
-- The agent has been given context about tools that no longer exist (stale skill definitions)
-- The model infers a tool should exist based on domain knowledge ("surely there's a `send_sms` skill")
-- The model confuses skill names across similar domains
-
-### The Recovery Loop
-
-```typescript
-for (let attempt = 0; attempt < MAX_TOOL_RETRIES; attempt++) {
-  const result = await executeTool(toolName, params);
-
-  if (result.error === 'UNKNOWN_TOOL') {
-    const availableTools = skills.map(s => s.name).join(', ');
-    conversation.push({
-      role: 'system',
-      content: `Tool '${toolName}' does not exist. Available tools: ${availableTools}. Please use one of these.`
-    });
-    continue; // Re-enter reasoning loop
-  }
-
-  if (result.error === 'INVALID_PARAMS') {
-    conversation.push({
-      role: 'system',
-      content: `Tool call failed: ${result.error}. Schema: ${JSON.stringify(skill.tool_definition)}`
-    });
-    continue;
-  }
-
-  break; // Success
-}
-```
-
-The recovery message is injected as a `system` role message — not a `user` message — so the agent understands it as infrastructure feedback, not user input.
+LLMs sometimes "hallucinate" tool calls — requesting tools that don't exist or passing malformed parameters. Without recovery, this crashes the reasoning loop and leaves the agent in an undefined state. FlowPilot's answer — catch the unknown call, inject a `system`-role correction so the model reads it as infrastructure feedback, retry within a bounded loop, and force a summary when the budget runs out — is important enough to get its own chapter: the full pattern, layer by layer, is chapter 32.
 
 ---
 

@@ -243,7 +243,7 @@ Flowwink runs on Supabase Edge Functions (Deno). Each function serves a specific
 |---------------|---------|---------|
 | `agent-operate` | Admin sends message | Interactive session — admin talks to FlowPilot |
 | `chat-completion` | Visitor sends message | Public chat — visitor talks to the public-facing agent |
-| `flowpilot-heartbeat` | Hourly cron (+ 5-min follow-through sweep) | Autonomous cycle — follow-through pre-pass, then the 7-step protocol (self-heal, propose, plan, advance, automate, reflect, remember) |
+| `flowpilot-heartbeat` | Cron, owner-set cadence (+ 5-min follow-through sweep) | Autonomous cycle — follow-through pre-pass, then the 7-step protocol (self-heal, propose, plan, advance, automate, reflect, remember) |
 | `agent-execute` | Called by reason core | Skill execution gateway — routes to correct handler, enforces approval gating |
 | `agent-reason` | Called by any surface | Shared reasoning core — ReAct loop, prompt compilation, tool routing |
 | `signal-ingest` | Webhook | External event ingestion — form submissions, payment events, etc. |

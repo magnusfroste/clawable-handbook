@@ -81,7 +81,7 @@ For developers and engineers, this is still the moment where the architecture is
 
 3. **The threshold for replacement is rising.** An agent that has been running for 12 months has accumulated context that cannot be transferred to a different system. Build the operator with the right architecture now and the switching cost compounds in your favour.
 
-4. **OpenClaw's philosophy survives scaling.** Three files, readable on a phone, editable in any text editor, version-controlled with the rest of your code. Every layer you add on top — NemoClaw security, enterprise RBAC, multi-tenant isolation — should preserve the principle: **the human is always in charge, the agent is always visible, trust is built on transparency not faith.**
+4. **OpenClaw's philosophy survives scaling.** The three files this book opened with — still readable on a phone, editable in any text editor, version-controlled with the rest of your code. Every layer you add on top — NemoClaw security, enterprise RBAC, multi-tenant isolation — should preserve the principle: **the human is always in charge, the agent is always visible, trust is built on transparency not faith.**
 
 That principle doesn't get less important as agents become more powerful. It gets more important.
 
