@@ -175,7 +175,7 @@ interface TokenBudget {
 
 The budget serves two purposes:
 
-1. **Cost control** — An autonomous heartbeat that runs 24 times/day must not burn unlimited API credits. Each run has a token ceiling.
+1. **Cost control** — An autonomous heartbeat that fires around the clock must not burn unlimited API credits. Each run has a token ceiling.
 
 2. **Graceful degradation** — When the budget runs low, the agent saves its progress and exits cleanly rather than crashing mid-task.
 
@@ -277,14 +277,14 @@ The key insight: **with a 500+ skill catalog, the system uses only ~25% of the c
 
 This headroom is not infinite. Here is where the architecture faces pressure:
 
-| Skill Count | Context Cost | Status | Required Action |
+| Skill Count | Context Cost (unfiltered) | Status | Required Action |
 |---|---|---|---|
-| **50-100** | ~5-8K tokens | ✅ Comfortable | Current filtering works |
+| **50-100** | ~5-8K tokens | ✅ Comfortable | Simple filtering works |
 | **100-200** | ~8-16K tokens | ⚠️ Manageable | Intent scoring must be aggressive |
-| **200-500** | ~16-40K tokens | 🔴 Critical | Need hierarchical skill registries — category → sub-skill lookup |
-| **500+** | ~40K+ tokens | 🚫 Architectural limit | Must move to multi-agent delegation or external skill index |
+| **200-500+** | ~16-50K tokens | 🔴 Critical without a scorer | Intent scoring + category grouping mandatory — never load the flat list |
+| **Thousands** | ~100K+ tokens | 🚫 Architectural limit | Multi-agent delegation or external skill index |
 
-The **200-skill threshold** is the most important planning milestone. Beyond it, the current flat-list-with-filtering approach starts competing with conversation history for context space.
+The **200-skill threshold** is the most important planning milestone: beyond it, a flat list without filtering starts competing with conversation history for context space. The platform crossed 500 skills in July 2026 and answered the question in production — with the intent scorer loading 30–80 skills per request, the 512-skill catalog runs at the same ~25 percent context use the table above shows. The limit is not the catalog size; it is how much of the catalog you let into the prompt.
 
 ---
 
@@ -294,7 +294,7 @@ The **200-skill threshold** is the most important planning milestone. Beyond it,
 |---|---|---|
 | Loading all skill instructions | 50K+ tokens before first message | Lazy instruction loading |
 | No intent filtering | All skills in every prompt | Category-based filtering |
-| Single model tier | $144/month for heartbeats | Fast/reasoning tiers |
+| Single model tier | ~$200/month for heartbeats | Cadence + tier dials |
 | No budget tracking | Runaway API costs | TokenBudget object |
 | Everything in context | Context overflow, truncation | Memory tiers + search |
 | No graceful degradation | Hard crashes at token limits | Progressive skill compression |
