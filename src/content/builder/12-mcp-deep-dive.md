@@ -39,6 +39,8 @@ FlowWink's surface gives the client three postures:
 
 The dispatch pair is the interesting one, because of what sits behind it: `search_skills` reuses the **same intent scorer** that narrows the catalog for FlowPilot's heartbeat turns. One scorer, two consumers — the embedded operator gets its ~25 filtered skills per turn, the external client gets its ranked handful per search, and an instruction improved once improves both paths. The convergence story from chapter 15, extended across the wire: the client operates against the full surface without the full surface ever entering its context.
 
+A note on status, because the distinction matters: the dispatch pair is a **best practice, not a standard**. Nothing in the MCP specification defines `search_skills` or `execute_skill` — the protocol happily lets a server advertise all 512 tools and watch the client drown. FlowWink chose the pattern deliberately, and the same two-tool shape keeps appearing across the ecosystem as every large surface hits the same wall — search-then-invoke is where the convention is heading. It has the look of a future standard; today it is a design choice you make on purpose. `hypothesis` on the standardization, `validated` on the mechanism running in production.
+
 ---
 
 ## Resources and Observability
