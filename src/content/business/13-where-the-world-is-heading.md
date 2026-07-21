@@ -41,7 +41,7 @@ A sales agent in your business receives a lead. It qualifies the lead and create
 
 None of this requires a human to initiate the coordination. The agents are already running. The protocols for communication between them already exist. The trust infrastructure — authentication, scope management, audit logging — is already being built into MCP and A2A.
 
-What does not yet exist in most businesses is the foundation: agents that are stable enough, contextual enough, and reliable enough to be trusted participants in a network. Building that foundation is the work of 2026. Participating in the network is the opportunity of 2028.
+The missing piece is the same one this chapter opened with — a foundation stable enough to be trusted in a network. Building it is the work of 2026. Participating is the opportunity of 2028.
 
 ---
 
@@ -53,7 +53,7 @@ The market found a name for this in mid-2026. Satya Nadella, in a post on the fu
 
 This distinction matters for how you measure early deployments. Before an agent has operated long enough to have context — before the workflows are tuned, before the edge cases have been surfaced and handled — output metrics will be noisy. Usage and adoption are the leading indicators. An agent that is actively running, being reviewed, and being corrected is building toward measurable return. An agent that has been deployed but not actively managed is not.
 
-The organizations that will lead in 2028 are not the ones that deployed the most capable agent in 2026. They are the ones that operated it most consistently — building the longitudinal picture of their business that cannot be purchased later and cannot be fast-forwarded. That picture is the return.
+The organizations that will lead in 2028 are not the ones that deployed the most capable agent in 2026. They are the ones that operated it most consistently — building the longitudinal picture of their business, cycle after cycle. That picture is the return.
 
 ---
 
@@ -123,7 +123,7 @@ HubSpot is first. Then a cross-section of 3 to 7 of the most common B2B SaaS pla
 
 That evidence matters more than the FlowWink proof for one reason: it will tell businesses not what is possible on a purpose-built platform, but what is possible on the stack they already have — and what gaps to pressure their vendors to close.
 
-The Clawable project is, at its core, a documentation effort. We run the experiments. We publish the logs. We name what works and what does not. The business that reads this handbook in May 2026 is reading the first chapter of that documentation. The business that reads the HubSpot edition will be reading the second.
+The Clawable project is, at its core, a documentation effort. We run the experiments. We publish the logs. We name what works and what does not. The business reading this handbook today is reading the first chapter of that documentation. The business that reads the HubSpot edition will be reading the second.
 
 ---
 
@@ -142,5 +142,3 @@ Assuming your answer is move: the last question is your role — what you actual
 ---
 
 *Next: [The Mandate Layer →](/business/14-the-mandate-layer)*
-
-*— The Clawable Project, April 2026*
