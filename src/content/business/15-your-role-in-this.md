@@ -11,7 +11,7 @@ The question every business leader asks when they encounter this material is: sh
 
 That is the wrong question. The right question is: what does our operation look like in eighteen months if we start now versus if we start then?
 
-The answer is not symmetric. Starting now means an operator that has seen your business through two quarters, knows your customers, has accumulated context about your pipeline patterns and your payment behavior and your content cadence. Starting in eighteen months means starting from zero, at the moment when your competitors are operating with eighteen months of accumulated intelligence.
+The answer is not symmetric. Starting now means that eighteen months from now, an operator has seen your business through six quarters — knows your customers, has accumulated context about your pipeline patterns and your payment behavior and your content cadence. Starting in eighteen months means starting from zero, at the moment when your competitors are operating with eighteen months of accumulated intelligence.
 
 The gap between those two scenarios is not measured in the cost of setup. It is measured in the compounding of operational knowledge that only time can build.
 
@@ -64,7 +64,7 @@ In the first week, the goal is not comprehensive automation. It is one working o
 
 Pick the process where the gap between what your team finds and what they should find is largest. Pipeline review, invoice aging, expense compliance, content health — any domain where the discovery work currently consumes hours that could be spent on the decisions those discoveries enable.
 
-Connect the operator to the MCP surface for that domain. Write a soul file that describes the business context the operator needs. Write a heartbeat that checks the things you want checked, on the schedule that matches how fast your business moves.
+Connect the operator to the MCP surface for that domain. Write the mandate first — chapter fourteen's two lists: what the operator may decide alone, what it must bring to you before acting. Then a soul file that describes the business context the operator needs, and a heartbeat that checks the things you want checked, on the schedule that matches how fast your business moves.
 
 Run the first cycle. Read the output. Adjust what the operator did not understand. Run again.
 
@@ -86,7 +86,7 @@ The Agent Manager role is not a job title that most businesses will create immed
 
 HBR identified six competencies that define effective Agent Managers in practice, validated against early deployments at Salesforce, ServiceNow, and a cross-section of mid-market companies (source: Appendix, `validated`):
 
-**1. AI operational literacy.** Understanding how agents work and how objectives affect outcomes — without needing to write code. A restaurant manager reads recipes without being a chef. The Agent Manager reads the SOUL file and HEARTBEAT log without being an engineer.
+**1. AI operational literacy.** Understanding how agents work and how objectives affect outcomes — without needing to write code. A restaurant manager reads recipes without being a chef. The Agent Manager reads the mandate file and the heartbeat log without being an engineer.
 
 **2. Functional depth.** Domain expertise outweighs AI expertise. The best Agent Managers come from the business function being automated. A finance Agent Manager needs to know what a correct period close looks like. An ops Agent Manager needs to know when a supply chain signal is noise versus risk. The agent handles the discovery. The domain expert handles the judgment.
 
