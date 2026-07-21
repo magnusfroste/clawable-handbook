@@ -23,77 +23,9 @@ One of the world's most valuable semiconductor companies shipping a security lay
 
 ## Not All Claws Are OpenClaw
 
-A critical insight for anyone building in this space: **"Claw" has become a naming convention as much as a technical specification.** Many projects with "Claw" in their name have little to do with OpenClaw's Node.js runtime or file-based architecture. They borrow the concepts — skills, memory, persona, autonomous cycles — and implement them on entirely different foundations.
+One naming caution before the map: **"Claw" has become a convention, not a specification.** Some projects run on OpenClaw's actual runtime (NemoClaw, DefenseClaw); others are independent builds that adopted its file formats — AGENTS.md, SKILL.md, a soul file — on entirely different foundations (NanoClaw on the Claude Agent SDK, FlowPilot on Supabase edge functions). That second group is the more interesting signal: when projects that share no code converge on the same formats, the formats have become a de facto standard. The three-files idea won beyond its own runtime.
 
-This matters because the ecosystem map is not a family tree. It's a constellation of independent projects that share a philosophy.
-
-### The Three Branches
-
-```
-┌───────────────────────────────────────────────────────────────────────┐
-│                    THE CLAW CONSTELLATION                             │
-│                                                                       │
-│  OPENCLAW-BASED                    INDEPENDENT, OPENCLAW-ADAPTED    │
-│  ┌────────────────────┐           ┌──────────────────────────────┐│
-│  │ NemoClaw (NVIDIA)  │           │ NanoClaw                     ││
-│  │ Security layer      │           │ Claude Agent SDK             ││
-│  │ on OpenClaw runtime │           │ Container isolation          ││
-│  ├────────────────────┤           ├──────────────────────────────┤│
-│  │ DefenseClaw (Cisco) │           │ Kilo Code                   ││
-│  │ Governance layer    │           │ Model-agnostic, 500+ models ││
-│  │ on OpenClaw runtime │           │ Adopts AGENTS.md/SKILL.md   ││
-│  ├────────────────────┤           ├──────────────────────────────┤│
-│  │ Flowwink/FlowPilot │           │ Paperclip                   ││
-│  │ DB-based adaptation │           │ Orchestration layer         ││
-│  │ Supabase edge funcs │           │ Own architecture            ││
-│  └────────────────────┘           └──────────────────────────────┘│
-│                                                                       │
-│  SHARES: OpenClaw runtime + files   │  SHARES: AGENTS.md/SKILL.md  │
-│                                      │  format, not OpenClaw itself │
-└───────────────────────────────────────────────────────────────────────┘
-```
-
-**The key distinction:** Some projects are built *on* OpenClaw. Others are independent projects that chose to adopt OpenClaw's file formats and conventions — a sign that those formats have become a de facto standard for agentic AI.
-
-### What They Share
-
-Despite different runtimes, these projects converge on the same core ideas:
-
-| Concept | Description | Projects that use it |
-|---------|-------------|----------------------|
-| **Persona files** | Text-based identity definition (SOUL.md or equivalent) | OpenClaw, NemoClaw, DefenseClaw, NanoClaw, Kilo Code |
-| **Skills** | Knowledge containers that define agent capabilities | All |
-| **Memory** | Persistent state across sessions | All |
-| **Heartbeat** | Scheduled autonomous cycles | OpenClaw, NemoClaw, FlowPilot |
-| **Approval gates** | Human checkpoints for high-risk actions | OpenClaw, FlowPilot, DefenseClaw |
-
-### What Differs
-
-| Aspect | OpenClaw (Node.js) | NanoClaw (Claude SDK) | Flowwink (Supabase) |
-|--------|--------------------|----------------------|--------------------|
-| **Runtime** | Node.js, own implementation | Claude Agent SDK | Edge Functions (Deno) |
-| **Identity storage** | Markdown files on disk | Per-group CLAUDE.md files | PostgreSQL |
-| **Skills format** | SKILL.md files | Claude Code skills | JSON in database |
-| **Credentials** | In files, protected | OneCLI Agent Vault | Supabase Vault |
-| **Security model** | Allowlists, pairing | Container isolation + proxy | Scope isolation + RLS |
-
-### The Imitation Problem
-
-OpenClaw's success created an incentive structure that has produced both genuine innovations and superficial copies:
-
-**Genuine innovation (OpenClaw-based):**
-- NemoClaw: OpenShell sandbox, policy YAML, runtime recovery
-- DefenseClaw: CodeGuard scanning, guardrail proxy, SIEM integration
-- FlowPilot: Database-backed multi-tenant architecture
-
-**Genuine innovation (different runtime):**
-- NanoClaw: OneCLI Agent Vault (credential proxy pattern), container-first design
-- Kilo Code: Model-agnostic workspace, 500+ model support
-
-**Surface imitation (dangerous):**
-- Projects that use "skills" and "soul" naming but lack the execution model, safety constraints, and operational discipline that make the concepts work
-
-**The judgment test:** If a project claims to be "like OpenClaw," ask what runtime it runs on, what the skill execution model looks like, and what the safety constraints are. The concepts alone are not the product.
+The judgment test, since imitation follows success: if a project claims to be "like OpenClaw," ask what runtime it runs on, what the skill execution model looks like, and what the safety constraints are. The concepts alone are not the product.
 
 ---
 
