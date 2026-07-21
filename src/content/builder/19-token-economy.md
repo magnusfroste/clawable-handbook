@@ -1,6 +1,6 @@
 ---
 title: "The Token Economy"
-description: "Context budget management — how to run 300+ skills without hitting the context ceiling. Prompt compilation, lazy loading, and graceful degradation."
+description: "Context budget management — how to run 500+ skills without hitting the context ceiling. Prompt compilation, lazy loading, and graceful degradation."
 order: 19
 icon: "calculator"
 ---
@@ -80,7 +80,7 @@ Each skill has two parts:
 1. **Metadata** — name, description, JSON schema (~100 tokens)
 2. **Instructions** — detailed usage guide, edge cases, decision tables (~500-2,000 tokens)
 
-With 300+ skills, loading all instructions would cost well over 100K tokens — most of the context window consumed by information the agent *might* need.
+With 500+ skills, loading all instructions would cost well over 150K tokens — most of the context window consumed by information the agent *might* need.
 
 ### The Solution
 
@@ -152,7 +152,7 @@ const intent = classifyIntent(userMessage);
 const relevantSkills = allSkills.filter(s =>
   intent.includes(s.category) || s.category === 'core'
 );
-// 300+ skills → typically 30-50 per request
+// 500+ skills → typically 30-50 per request
 ```
 
 This means the agent never sees all skills simultaneously. It sees 30-50 relevant skills plus core utilities, keeping the metadata cost around 5-8K tokens.
@@ -210,16 +210,22 @@ The default is always `fast`. Skills can specify a `preferred_provider` to overr
 }
 ```
 
-### The Math
+### The Math — Measured in Production, July 2026
 
-A heartbeat running hourly (24 times/day) with the `fast` tier:
-- ~10K tokens per run × 24 runs = 240K tokens/day
-- Cost: ~$0.10/day = **$2.90/month**
+The tier table above is theory. Production gave it numbers: an hourly heartbeat on the `reasoning` tier measured at roughly **3M prompt tokens per day — $6–7 per instance, around $200/month**. That single finding turned heartbeat cost into an explicit owner decision, with two dials per instance:
 
-The same heartbeat with `reasoning` for everything:
-- Cost: ~$4.80/day = **$144/month**
+- **Cadence** — `set_flowpilot_heartbeat_cadence()`. The default moved from hourly to **every three hours**; any instance can dial up or down.
+- **Tier** — `heartbeat_overrides.tier`. `fast` is roughly 5× cheaper; `reasoning` is the full brain.
 
-That's a 25x cost difference. The tier system isn't optional — it's existential for sustainable autonomy.
+Three named configurations cover the range:
+
+| Config | Cadence | Tier | When |
+|---|---|---|---|
+| **Economy** | 3h | fast | Steady-state default — a capable operator for ~$1–2/day |
+| **Proof** | 3h | reasoning | Measuring capability, not a cheap model's ceiling — the production proof week runs this |
+| **Peak observation** | hourly | reasoning | Densest signal, highest cost — short intensive audits only |
+
+The spread between economy and peak observation is close to an order of magnitude. The tier and cadence dials aren't optional — they're existential for sustainable autonomy.
 
 ---
 
@@ -249,7 +255,7 @@ This pattern — **pointers in context, data in memory** — is how you scale be
 
 ## The Context Stack — Where Every Token Goes
 
-Understanding the total context cost requires seeing the full stack. Here is a real breakdown from a FlowPilot instance running the 300+ skill catalog:
+Understanding the total context cost requires seeing the full stack. Here is a real breakdown from a FlowPilot instance running the 500+ skill catalog:
 
 ```
 Layer                                   Tokens     % of 128K
@@ -265,7 +271,7 @@ Conversation history                   ~5-15K     4-12%
 Total:                                 ~25-35K    ~20-27%
 ```
 
-The key insight: **with a 300+ skill catalog, the system uses only ~25% of the context window** — because the scorer loads a filtered fraction, never the catalog. This leaves 75% for the model's reasoning chain and tool call responses.
+The key insight: **with a 500+ skill catalog, the system uses only ~25% of the context window** — because the scorer loads a filtered fraction, never the catalog. This leaves 75% for the model's reasoning chain and tool call responses.
 
 ### Scaling Thresholds
 
@@ -338,7 +344,7 @@ Monthly Cost = (heartbeat_runs/day × 30)
 
 | Variable | How to Estimate | Typical Range |
 |----------|----------------|--------------|
-| `heartbeat_runs/day` | Admin-configured schedule | 24 (hourly default) |
+| `heartbeat_runs/day` | Owner-set cadence dial | 8 (three-hourly default) — 24 at peak |
 | `avg_tokens_per_run` | From activity logs after first week | 8,000–15,000 |
 | `operate_sessions/day` | How often admin interacts | 2–10 |
 | `avg_tokens_per_session` | From activity logs | 3,000–8,000 |

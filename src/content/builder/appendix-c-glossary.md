@@ -40,7 +40,7 @@ appendix: true
 
 | Term | Definition |
 |------|-----------|
-| **Flowwink** | The self-hosted **Business Operating System (BOS)** — 60+ modules and 300+ skills exposed over MCP, operable by any agent. Ships with FlowPilot but is agent-agnostic: bring your own operator, or run it as pure SaaS with humans. Each business runs its own isolated instance. |
+| **Flowwink** | The self-hosted **Business Operating System (BOS)** — 68 modules and 500+ skills exposed over MCP, operable by any agent. Ships with FlowPilot but is agent-agnostic: bring your own operator, or run it as pure SaaS with humans. Each business runs its own isolated instance. |
 | **FlowPilot** | Flowwink's flagship **opt-in operator module** — soul, objectives, heartbeat, memory, reflection, and trust gating layered on top of the always-on platform. The included default operator, swappable for any external agent. |
 | **FlowChat** | The always-on chat surface beneath FlowPilot (Platform → FlowChat → FlowPilot). Runs in two scopes: admin (internal skills) and visitor (external, read-only + booking). FlowPilot drives the same reasoning loop FlowChat uses — the difference is who initiates the turn. |
 | **Edge Function** | A serverless function running on Supabase (Deno runtime). Flowwink's agent surfaces, heartbeat, and A2A communication are all implemented as edge functions. |

@@ -23,7 +23,7 @@ There is another model. And understanding the difference between them is the mos
 
 ## Inside the System: The Embedded Agent
 
-FlowWink built an embedded agent called FlowPilot. It lived inside the platform — sharing its database, its authentication layer, its runtime. It had direct access to every table, governed by the same row-level security policies as human users. It ran a heartbeat loop every hour without being asked: evaluate objectives, plan actions, execute, reflect, remember. It could qualify a lead, publish content, detect a stale contract, and fix its own failing skills — all without any external trigger.
+FlowWink built an embedded agent called FlowPilot. It lived inside the platform — sharing its database, its authentication layer, its runtime. It had direct access to every table, governed by the same row-level security policies as human users. It ran a heartbeat loop on an owner-set cadence — from hourly down to a few times a day — without being asked: evaluate objectives, plan actions, execute, reflect, remember. It could qualify a lead, publish content, detect a stale contract, and fix its own failing skills — all without any external trigger.
 
 This is what embedded depth looks like. Sub-millisecond database access. No network hops. A persistent memory across sessions. Objective-driven autonomy that does not wait to be called.
 
@@ -67,7 +67,7 @@ This is not an argument against embedded agents. It is an argument about what ea
 
 ## The Real Cost Question
 
-Building FlowPilot took weeks of dedicated, AI-assisted engineering — not the year it would have demanded a generation of tooling ago: an agent brain running the platform's full 300+ skill catalog, its own memory system, safety rails, self-healing, and dozens of custom connections into the platform's machinery. Estimated effort: six to twelve weeks of focused development. (The full architecture is documented in the Builder Edition.)
+Building FlowPilot took weeks of dedicated, AI-assisted engineering — not the year it would have demanded a generation of tooling ago: an agent brain running the platform's full 500+ skill catalog, its own memory system, safety rails, self-healing, and dozens of custom connections into the platform's machinery. Estimated effort: six to twelve weeks of focused development. (The full architecture is documented in the Builder Edition.)
 
 Connecting Clawable to the same platform via MCP required the surface the platform already ships, registering as a peer, and writing tool descriptions. Estimated effort: one to two weeks.
 

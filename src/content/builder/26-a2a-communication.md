@@ -293,7 +293,7 @@ OpenClaw receives:
 
 ## MCP — Model Context Protocol (Universal Channel)
 
-**MCP** is Flowwink's third channel — designed for external AI clients rather than agent-to-agent communication. It exposes the platform's shared skill catalog to tools like Cursor, Claude Desktop, and other MCP-compatible clients — the same 300+ skills FlowPilot scores internally.
+**MCP** is Flowwink's third channel — designed for external AI clients rather than agent-to-agent communication. It exposes the platform's shared skill catalog to tools like Cursor, Claude Desktop, and other MCP-compatible clients — the same 500+ skills FlowPilot scores internally.
 
 ### How MCP Differs from A2A
 

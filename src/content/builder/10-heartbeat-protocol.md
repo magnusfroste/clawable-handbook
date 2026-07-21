@@ -269,7 +269,7 @@ The heartbeat frequency is admin-configurable:
 | `automation-dispatcher` | Every minute | Fixed |
 | `publish-scheduled-pages` | Every minute | Fixed |
 
-**Why hourly, not faster?** The reasoning cycle is the expensive part — an hourly cadence keeps a lead qualified within hours, not days, without burning tokens on empty cycles. What must not wait an hour is completing what a human already approved: that is the follow-through sweep's job, and it runs every five minutes as a deterministic pass — no reasoning, no tokens, just finishing the chain. (FlowPilot 2.0 also runs the same follow-through as a pre-pass at the start of every heartbeat, so the operator sees the completed results in its own context.)
+**Why a cadence dial, not a fixed pulse?** The reasoning cycle is the expensive part, and in July 2026 production put a number on it: an hourly heartbeat on the full reasoning tier burns roughly three million prompt tokens a day — $6–7 per instance. That measurement turned the cadence into an owner decision with two dials: how often the heartbeat fires (default is now every three hours) and which model tier it wakes up with (`fast`, about five times cheaper, or `reasoning`, the full brain). Three named configurations cover the range — economy (three-hourly × fast, ~$1–2/day), proof (three-hourly × reasoning — what the production proof week runs), and peak observation (hourly × reasoning, for short intensive audits). What must never wait on the dial is completing what a human already approved: that is the follow-through sweep's job, and it runs every five minutes as a deterministic pass — no reasoning, no tokens, just finishing the chain. (FlowPilot 2.0 also runs the same follow-through as a pre-pass at the start of every heartbeat, so the operator sees the completed results in its own context.)
 
 ---
 
@@ -338,7 +338,7 @@ A common source of confusion: **autonomous operation** and **automations** are n
 |--|----------------------|-------------|
 | **Who decides?** | The agent reasons about what to do | A predefined rule triggers execution |
 | **What runs?** | The full ReAct loop (reason → plan → act) | A specific skill with stored parameters |
-| **When?** | On schedule (hourly cron) | When due (cron, event, signal) |
+| **When?** | On schedule (cron, owner-set cadence) | When due (cron, event, signal) |
 | **Example** | "I notice leads are dropping — let me research and write a blog post" | "Every day at 09:00, qualify new leads" |
 | **Thinking** | Full LLM reasoning | None — deterministic execution |
 

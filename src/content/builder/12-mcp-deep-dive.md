@@ -86,7 +86,7 @@ workflows:
             value: $inputs.lead_id
 ```
 
-**Why this is directly relevant to FlowWink's MCP surface:** The 300+ skills across 60+ modules represent orchestration opportunities — but an agent reasoning freshly about how to sequence invoice creation, contract signing, and CRM status updates on every heartbeat cycle is less reliable than an agent following an Arazzo workflow that encodes the proven sequence. As FlowWink's operation surface matures, Arazzo workflows become the mechanism for crystallizing operational knowledge into reusable, auditable procedures.
+**Why this is directly relevant to FlowWink's MCP surface:** The 500+ skills across 68 modules represent orchestration opportunities — but an agent reasoning freshly about how to sequence invoice creation, contract signing, and CRM status updates on every heartbeat cycle is less reliable than an agent following an Arazzo workflow that encodes the proven sequence. As FlowWink's operation surface matures, Arazzo workflows become the mechanism for crystallizing operational knowledge into reusable, auditable procedures.
 
 **The agent as workflow author:** Nordic APIs reports that AI agents are beginning to author Arazzo workflows themselves — discovering a sequence that works, and persisting it as a formal workflow specification. This closes a loop between agentic execution and documented process: the agent that successfully runs a multi-step recovery procedure can write the Arazzo spec for that procedure, making it available for deterministic replay. This is the self-documenting operator — a thread that runs through the self-learning architecture described in The Learning Operator (Book 3).
 
@@ -114,7 +114,7 @@ The businesses deploying external operators like Clawable are making implicit ch
 
 SaaS vendors who have built for MCP are positioning themselves as components in the agentic stack rather than islands that require manual human operation. The long-term competitive dynamic favors platforms that are legible to agents: they get the workflow integrations, the automation use cases, and the stickiness that comes from being deeply embedded in how the business operates.
 
-FlowWink built its MCP surface before the market demanded it. The consequence is 300+ exposed skills, stable schema definitions, and a running external operator that demonstrates what the platform can do in autonomous operation. That surface — the proof that the platform is genuinely agent-ready — is now part of how FlowWink differentiates itself.
+FlowWink built its MCP surface before the market demanded it. The consequence is 500+ exposed skills, stable schema definitions, and a running external operator that demonstrates what the platform can do in autonomous operation. That surface — the proof that the platform is genuinely agent-ready — is now part of how FlowWink differentiates itself.
 
 The vendors who build the same surface in 2026 will have it ready when the market expects it in 2027. The vendors who wait for the market to demand it will build it at exactly the moment when it is no longer a differentiator.
 

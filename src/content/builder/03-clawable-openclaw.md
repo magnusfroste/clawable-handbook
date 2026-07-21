@@ -45,7 +45,7 @@ All three are part of the same story: **building a production agentic system, th
 │                                                         │
 │  QA Claw (OpenClaw)            FlowPilot (Operator)     │
 │  VPS · Docker · stock          Flowwink edge function   │
-│  A2A plugin enabled            60+ modules · 300+ skills│
+│  A2A plugin enabled             68 modules · 500+ skills│
 │  ──────────────────            ─────────────────────────│
 │  Audits FlowPilot output ──►  Receives findings         │
 │  Runs conformance tests  ──►  Creates objectives        │
@@ -117,7 +117,7 @@ OpenClaw connects to Flowwink via three channels, each serving a different purpo
 |---------|-----------|---------|
 | **A2A** | `a2a-ingest` / `a2a-outbound` | Async peer-to-peer — findings, heartbeat reports, status updates |
 | **OpenResponses** | `POST /v1/responses` | Synchronous structured tasks — audits with typed JSON output |
-| **MCP** | Streamable HTTP | External developer access — the shared 300+ skill catalog via Cursor, Claude Desktop |
+| **MCP** | Streamable HTTP | External developer access — the shared 500+ skill catalog via Cursor, Claude Desktop |
 
 The A2A channel is what makes this a *peer relationship* rather than a client calling a service. Either agent can initiate. FlowPilot can request an audit. OpenClaw can push a finding. Neither is waiting for the other.
 

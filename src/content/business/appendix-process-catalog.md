@@ -36,7 +36,7 @@ This appendix is a snapshot. The full catalog lives in the open — every proces
 
 **[github.com/magnusfroste/flowwink → docs/processes](https://github.com/magnusfroste/flowwink/tree/main/docs/processes)**
 
-The funnel is deliberate: this handbook explains the paradigm, the catalog shows where it runs today, and the gap lists show where you can build. FlowWink is the reference implementation — native agent-first, 300+ skills across 60+ modules — but the process list itself is universal. Map your own stack against it, whatever your platforms are, and you have your deployment plan.
+The funnel is deliberate: this handbook explains the paradigm, the catalog shows where it runs today, and the gap lists show where you can build. FlowWink is the reference implementation — native agent-first, 500+ skills across 68 modules — but the process list itself is universal. Map your own stack against it, whatever your platforms are, and you have your deployment plan.
 
 ---
 

@@ -220,4 +220,4 @@ Agent-created skills inherit the scope of their creator. An external-facing chat
 
 *Self-creation is what separates an agent from a script. A script does what it was told. An agent learns what to do. The accounting template system is a small example of a large principle: the most valuable agent is the one that makes itself more valuable over time.*
 
-*Next: how the agent routes 300+ skills to the right one in under 1ms. [Intent Scoring →](/builder/17-intent-scoring)*
+*Next: how the agent routes 500+ skills to the right one in under 1ms. [Intent Scoring →](/builder/17-intent-scoring)*

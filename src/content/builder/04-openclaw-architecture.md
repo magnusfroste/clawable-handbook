@@ -15,7 +15,7 @@ Flowwink is a **Business Operating System (BOS)** — an open-source, self-hoste
 2. **SaaS era** (2010s–2020s) — Cloud platforms. Easier to use, still human-driven.
 3. **Agent era** (2025–) — AI operators. You set direction, the agent runs the business.
 
-FlowWink is built for the agent era. It bundles **60+ modules** that normally require 5-10 separate SaaS tools:
+FlowWink is built for the agent era. It bundles **68 modules** that normally require 5-10 separate SaaS tools:
 
 | Category | Modules |
 |----------|---------|
@@ -395,7 +395,7 @@ The concept categories (`soul`, `identity`, `agents`, `facts`, `preferences`) mi
 
 In Flowwink:
 - Interactive = `agent-operate` (admin) / `chat-completion` (visitor)
-- Autonomous = `flowpilot-heartbeat` (hourly cron, plus a 5-minute follow-through sweep)
+- Autonomous = `flowpilot-heartbeat` (cron on an owner-set cadence — default every three hours — plus a 5-minute follow-through sweep)
 - External = `signal-ingest` (webhook endpoint)
 
 **All three surfaces share the same reasoning core.** This is LAW 10: Unified Reasoning Core. No logic duplication.

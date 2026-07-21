@@ -45,7 +45,7 @@ The point is not to achieve perfect coverage before deploying. The point is to k
 
 ## What One Audit Found — Logged
 
-In June 2026 we pointed a stock operator at a freshly provisioned FlowWink instance with one instruction: map what you can reach. On paper the surface was impressive — 59 of 62 modules active, 300+ tools exposed over MCP. The audit took an afternoon. `validated`
+In June 2026 we pointed a stock operator at a freshly provisioned FlowWink instance with one instruction: map what you can reach. On paper the surface was impressive — 59 of 62 modules active, 500+ tools exposed over MCP. The audit took an afternoon. `validated`
 
 **Fully operational.** Lead, deal, and product operations worked end to end. A visitor form submission became a lead, the lead became a deal, the deal moved through stages, the weekly CFO digest compiled. Deployment-ready.
 

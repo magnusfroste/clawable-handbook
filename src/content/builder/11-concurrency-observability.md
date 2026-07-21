@@ -12,7 +12,7 @@ Think of it as two people editing the same Google Doc at the same time — neith
 An autonomous agent isn't one process. It's multiple surfaces sharing the same database, the same skills, and the same memory:
 
 ```
-Surface 1: HEARTBEAT        (cron, hourly)
+Surface 1: HEARTBEAT        (cron, owner-set cadence)
 Surface 2: AGENT-OPERATE    (admin interaction)
 Surface 3: CHAT-COMPLETION  (visitor chat)
 Surface 4: WEBHOOKS          (external triggers)
