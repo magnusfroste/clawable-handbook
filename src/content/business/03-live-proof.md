@@ -9,7 +9,7 @@ faq:
   - q: "Is this a demo or real production behavior?"
     a: "Logged production behavior. Clawable ran on a live FlowWink instance on April 19 with no human direction, no special privileges, and no prompt beyond 'operate the business.' Session files are published in the sources appendix with timestamps for every action. The April 22 SIM test — seeded with four planted anomalies — found three of four using one open sentence prompt."
   - q: "What is the biggest thing workflows cannot do that agents can?"
-    a: "Cross-module correlation. Workflows fire on events inside a single system. Agents reason across systems. The €950,000 in draft contracts was visible only because the operator connected contract status to open pipeline deals — two modules, one pattern. Workflows have no mechanism to detect that pattern because no event exists for 'three systems are simultaneously in bad shape.'"
+    a: "Cross-module correlation. Workflows fire on events inside a single view. Agents reason across the seams. The €950,000 in draft contracts was visible only because the operator connected contract status to open pipeline deals — two modules, one pattern. Workflows have no mechanism to detect that pattern because no event exists for 'three modules are simultaneously in bad shape.'"
   - q: "What does an operator fleet prove over time that a single session cannot?"
     a: "Convergent evidence and persistent threading. In May 2026, three independent operators with no shared memory each flagged the same overdue invoice across five separate runs spanning seven weeks — because the data warranted it, not because they coordinated. The same fleet surfaced five platform bugs by operating, not testing, and tracked a single 23,125 SEK invoice to a 422,400 SEK renewal outcome — 18.3x ROI — across a cascade that included two platform bugs, a false-success tool response, and an empty contract that nobody had ever written. A workflow either completes or fails. An operator finds the wall, names it, and keeps the thread alive until the wall is removed."
 ---
@@ -22,7 +22,7 @@ Most AI demonstrations show you what might happen. This one shows you what did.
 
 There are two different things an autonomous operator can prove.
 
-The first is detection: reading a live business and surfacing what matters — risks hiding across systems, patterns invisible to any single dashboard, the absence that should have triggered something but didn't. That proof matters because it answers the question: *is it actually looking?*
+The first is detection: reading a live business and surfacing what matters — risks hiding in the seams no single view covers, patterns invisible to any dashboard, the absence that should have triggered something but didn't. That proof matters because it answers the question: *is it actually looking?*
 
 The second is operation: running the business cycle end to end — inbound inquiry, negotiation, governance, execution, proactive sweep, concurrent prioritisation. That proof matters because it answers the harder question: *can it actually do the work?*
 

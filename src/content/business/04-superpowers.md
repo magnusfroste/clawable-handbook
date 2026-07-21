@@ -75,7 +75,7 @@ Each one found a different piece of the picture. The finance operator confirmed 
 
 No single operator had the full picture. No single module contained enough information to raise the finding. The invoice was either a test of whether the company pays invoices without checking, a fabricated document exploiting a known PO format, or an off-system transaction that bypassed procurement entirely. The operators could not determine which. But they stopped the payment, filed a CRITICAL finding, and produced a coordinated assessment before any money moved.
 
-The vendor account was created the same day as the invoice. No rule exists for that pattern. No threshold catches it. A workflow that validates invoice fields would have approved the payment — the amounts were formatted correctly, the fields were populated. The semantic judgment — *this timing is wrong, this relationship does not exist, this reference matches someone else's naming convention* — required reading across three systems and knowing what normal looks like in each of them.
+The vendor account was created the same day as the invoice. No rule exists for that pattern. No threshold catches it. A workflow that validates invoice fields would have approved the payment — the amounts were formatted correctly, the fields were populated. The semantic judgment — *this timing is wrong, this relationship does not exist, this reference matches someone else's naming convention* — required reading across three domains of the business and knowing what normal looks like in each of them.
 
 That is not rule-based fraud detection. That is judgment.
 

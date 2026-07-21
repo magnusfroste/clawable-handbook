@@ -43,7 +43,7 @@ Clawable, operating FlowWink from the outside, found things FlowPilot could not 
 
 It can connect to FlowWink and Fortnox simultaneously. It can see the lead in the CRM and the unpaid invoice in accounting and understand that they are the same risk. It can benchmark one platform against industry standards because it has seen other platforms. It can coordinate a process from lead qualification through order fulfillment through invoicing without stopping at any system boundary.
 
-The tradeoff is shallowness. It sees only what MCP tools expose. It cannot run proactive loops inside platforms it does not own. It does not persist memory between sessions the way a native agent does. It reacts; it does not initiate.
+The tradeoff is shallowness of access. It sees only what MCP tools expose — the surface, never the tables beneath it. Every operation is a network call. And its proactivity runs on its own schedule, not the platform's: it cannot react to an in-platform event the moment it fires, only on its next sweep. It initiates — the April 19 pass proved exactly that — but from outside, on its own heartbeat.
 
 ---
 
@@ -69,7 +69,7 @@ This is not an argument against embedded agents. It is an argument about what ea
 
 Building FlowPilot took weeks of dedicated, AI-assisted engineering — not the year it would have demanded a generation of tooling ago: an agent brain running the platform's full 300+ skill catalog, its own memory system, safety rails, self-healing, and dozens of custom connections into the platform's machinery. Estimated effort: six to twelve weeks of focused development. (The full architecture is documented in the Builder Edition.)
 
-Connecting Clawable to the same platform via MCP required deploying the MCP server FlowPilot had already built, registering as a peer, and writing tool descriptions. Estimated effort: one to two weeks.
+Connecting Clawable to the same platform via MCP required the surface the platform already ships, registering as a peer, and writing tool descriptions. Estimated effort: one to two weeks.
 
 For most businesses — and this is the uncomfortable truth the embedded model tends not to advertise — the question is not which architecture is superior. It is which capabilities you actually need, how fast you need them, and whether you control the platform you want to deploy inside.
 

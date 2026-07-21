@@ -7,9 +7,9 @@ icon: "chart-bar"
 
 > The ceiling is not the tool. The ceiling is that we still run tools like advanced Excel sheets, just with webhooks.
 
-Marcus — a composite drawn from multiple sales leaders interviewed for this handbook — is VP Sales at a 40-person B2B company. He pays 2,400 dollars a month for Salesforce. His salespeople spend 29 percent of their time on actual selling. He has known this for three years. He has bought add-ons. He has built automations. Reminders fire automatically. Deals get flagged when they stagnate. The Monday report generates itself.
+Henrik — a composite drawn from multiple sales leaders interviewed for this handbook — is VP Sales at a 40-person B2B company. He pays 2,400 dollars a month for Salesforce. His salespeople spend 29 percent of their time on actual selling. He has known this for three years. He has bought add-ons. He has built automations. Reminders fire automatically. Deals get flagged when they stagnate. The Monday report generates itself.
 
-And yet. 71 percent of his team's time disappears into the system. 84 percent missed quota last year. Not because they are bad salespeople. Because the system — despite everything — still requires a human to hold the whole picture together. Salesforce sees Salesforce. It does not see the unpaid invoice that explains why the deal went cold, or the support ticket that explains why the customer stopped responding.
+And yet. 71 percent of his team's time disappears into the system. 84 percent missed quota. Not because they are bad salespeople. Because the system — despite everything — still requires a human to hold the whole picture together. Salesforce sees Salesforce. It does not see the unpaid invoice that explains why the deal went cold, or the support ticket that explains why the customer stopped responding.
 
 This is not a technology problem. It is a structural one. And it has a name.
 
@@ -84,7 +84,7 @@ The field-level research mirrors that boardroom signal. As chapter one documente
 
 Some of your competitors are already deploying autonomous operators. The ones who are not are evaluating them.
 
-That operator qualifies leads at 3am. It notices that three contracts are sitting in draft with a combined value of €950,000 and creates a task before Monday's standup. It sees that the deal that went cold last Tuesday correlates with an overdue invoice from six weeks ago — and flags it as a collections risk, not a sales problem.
+That operator qualifies leads at 3am. It notices that three contracts are sitting in draft with a combined value of €950,000 and creates a task before Monday's standup. (If that number sounds oddly specific, it is — you will meet it again, logged and timestamped, in the next chapter.) It sees that the deal that went cold last Tuesday correlates with an overdue invoice from six weeks ago — and flags it as a collections risk, not a sales problem.
 
 It does not clock out. It does not miss context that lives in a different tab.
 
@@ -124,13 +124,13 @@ History offers a sense of scale for how fast this kind of transition moves once 
 
 You are facing a structural shift of comparable speed. Not in transport. In operations.
 
-Peter Steinberger, creator of OpenClaw, described MCP — the standardized protocol that connects agents to business software — as USB-C for AI. One standard. Any tool. Any system. The plug fits.
+MCP — the standardized protocol that connects agents to business software — is best understood as USB-C for AI. One standard. Any tool. Any system. The plug fits.
 
 Jensen Huang said at GTC 2026 that agentic AI is not the future. It is now.
 
 The automation ceiling is real. It has been there since 1999. The difference is that now, for the first time, there is something that can break through it.
 
-But you do not have to take that on faith. On April 19, 2026, an autonomous operator ran against a live production business with a single open prompt — no checklist, no target. What it found in 44 seconds, across systems that had never been looked at simultaneously, is logged in full in the next chapter.
+But you do not have to take that on faith. On April 19, 2026, an autonomous operator ran against a live production business with a single open prompt — no checklist, no target. What it found in 44 seconds, in corners of the business no one had ever read at once, is logged in full in the next chapter.
 
 ---
 

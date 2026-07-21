@@ -66,7 +66,7 @@ What this produces is not a smaller team doing the same work. It is a fundamenta
 
 On April 19, 2026, this was not a concept. It was running in production.
 
-A stock agent instance — no internal privileges, no back channel, no custom engineering — was given access to a live B2B SaaS business through its standard public API. One instruction. No checklist. No target. What it surfaced in forty-four seconds, across systems that had never been looked at simultaneously, is documented in full in chapter three. The number is over a million euros. The finding that mattered most was not the amount. It was that no one had looked.
+A stock agent instance — no internal privileges, no back channel, no custom engineering — was given access to a live B2B SaaS business through its standard public API. One instruction. No checklist. No target. What it surfaced in forty-four seconds, across parts of the business no one had ever looked at together, is documented in full in chapter three. The number is over a million euros. The finding that mattered most was not the amount. It was that no one had looked.
 
 That is the Business Operating System in operation. Not a dashboard that someone needs to remember to check. A continuous operator that never stops watching.
 
@@ -83,10 +83,10 @@ The chapters that follow address each of the questions the Business Operating Sy
 - **Chapters four through seven** cover architecture and deployment — how to choose between embedded and external operators, how to audit what your systems can already do, and how to select the right operator for your stack.
 - **Chapter eight** names the vendor trap: why the path of least resistance leads to lock-in, and how to avoid it.
 - **Chapter nine** documents the failure modes that end agent programs before they deliver value.
-- **Chapters ten through twelve** cover the business case, the accountability structure, and what to demand from your SaaS vendors.
-- **Chapters thirteen through fifteen** address what comes next — where the market is heading, how to maintain momentum, and the role you play in this.
+- **Chapters ten through twelve** cover the architecture at enterprise scale, the business case and accountability structure, and what to demand from your SaaS vendors.
+- **Chapters thirteen through fifteen** address what comes next — where the market is heading, the governance boundary that makes autonomy trustworthy, and the role you play in this.
 
-**If you build a SaaS platform:** chapter twelve is written specifically for you — the moat paradox, what agent-readiness requires, and why 2026 is the year that determines 2028 positioning. Read this chapter, then go straight to twelve.
+**If you build a SaaS platform:** chapter twelve is written specifically for you — what agent-readiness requires, what your customers are about to demand, and why 2026 is the year that determines 2028 positioning. Read this chapter, then go straight to twelve.
 
 The question is whether you engage with it in 2026, while the architecture is still being defined and the first-mover advantage is real — or whether you wait until it is table stakes.
 

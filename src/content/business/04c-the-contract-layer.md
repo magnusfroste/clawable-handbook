@@ -33,11 +33,11 @@ The agent's role in this model is not to replace legal judgment. It is to ensure
 
 ---
 
-## The Experiment
+## The Experiment Nobody Designed
 
-In May 2026, we deliberately removed the contract templates from the system.
+In May 2026, chapter three's cascade hit a wall that turned out to be the perfect stress test of the contract layer — no deliberate setup required. The templates simply did not exist. Nobody had ever created them.
 
-The scenario was a standard renewal: Apexira AB, an existing managed-services customer, two-year extension at 211,200 SEK per year. The renewal contract existed in the database as a metadata record — counterparty, value, dates, status — but the body was empty. No template was linked. The previous contracts for the same customer were also empty, created as records at deal close but never populated with text.
+The scenario was a standard renewal: Apexira AB, an existing managed-services customer, two-year extension at 211,200 SEK per year. The renewal contract existed in the database as a metadata record — counterparty, value, dates, status — but the body was empty. No template was linked. The previous contracts for the same customer were also empty, created as records at deal close but never populated with text. Chapter three told this moment as the end of the seven-week cascade; here it is examined as what it also was: a floor-test of what the operator can do with nothing.
 
 We sent one operator in with a mandate to complete the renewal.
 
@@ -65,7 +65,7 @@ The lawyer's task with this draft: confirm three fields, verify the liability ca
 
 Without the operator: draft from blank document. Pull last year's contract. Update manually. Estimated time: ninety minutes — on a good day.
 
-The experiment was designed to test degraded conditions — no templates, no history. That is not the normal state. Normal operations have templates, and templates reduce the lawyer's involvement on a standard renewal to effectively zero. The experiment established the floor: even at worst-case baseline, the agent produces a legally competent draft that a lawyer can finalise in a fraction of the time it would take to draft from scratch.
+The episode tested exactly the degraded conditions a deliberate experiment would have designed — no templates, no history. That is not the normal state. Normal operations have templates, and templates reduce the lawyer's involvement on a standard renewal to effectively zero. What the episode established is the floor: even at worst-case baseline, the agent produces a legally competent draft that a lawyer can finalise in a fraction of the time it would take to draft from scratch.
 
 ---
 
@@ -101,15 +101,15 @@ The only thing that changes is how many hours a lawyer spends reading text that 
 
 A contract does not become a liability the moment it is drafted incorrectly. It becomes a liability the moment it is never signed.
 
-In May 2026, a consulting engagement with a major automotive company had been running for thirty-three days. Two senior DevOps consultants on site. One platform engineer at sixty percent. Invoices accumulating. Work product delivered. No signed contract.
+You have already met this contract. Norrvind Motors — the 1,800,000 SEK engagement chapter three watched stall at twelve days pending signature, then seventeen. By day thirty-three it was still unsigned, and the engagement it covered had been running the whole time: two senior DevOps consultants on site, one platform engineer at sixty percent, invoices accumulating, work product delivered. No signed contract.
 
-The engagement had been agreed. The contract had been drafted — a complete twelve-section document covering scope, pricing, IP ownership, confidentiality, termination, and governing law. It was sitting in the system with one status: `pending_signature`. Nobody had sent it. Nobody had noticed it had not been sent.
+The engagement had been agreed. The contract had been drafted — a complete twelve-section document covering scope, pricing, IP ownership, confidentiality, termination, and governing law. It was sitting in the system with one status: `pending_signature`. Earlier sweeps had flagged it, chased the counterparty, filed findings — but the document itself had never been dispatched, because sending a contract takes contract-scope authority, and the operators that kept finding it did not carry that scope. (Chapter fourteen returns to why that wall exists on purpose.)
 
-An operator swept the contract layer.
+Then an operator with the right mandate swept the contract layer.
 
 It read the contract, confirmed the document was complete and ready to execute, and sent it for signature. A signing URL was generated and dispatched to the counterparty contact. An email went out — professional, direct, with the link and a clear explanation that the engagement had been running without a formal agreement in place. A deal record was created in the CRM to make the 1,800,000 SEK visible to the pipeline. A critical finding was filed: thirty-three days of billable work without legal basis.
 
-Total time: one sweep.
+Total time: one sweep. The thread chapter three left hanging closes here.
 
 The point is not the contract. The point is that the unsigned contract was invisible to every other system in the business. The finance system saw no alert — there was no invoice yet. The CRM saw no problem — the deal had not been formally opened. The calendar saw no flag — there was no missed deadline, just an absence of one. The only place where "a contract exists, work has started, and no one has confirmed it is signed" is a problem is inside an agent that holds the contract layer, the CRM, and the calendar simultaneously and knows what the combination implies.
 
