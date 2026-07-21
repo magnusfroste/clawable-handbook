@@ -284,7 +284,7 @@ This headroom is not infinite. Here is where the architecture faces pressure:
 | **200-500+** | ~16-50K tokens | 🔴 Critical without a scorer | Intent scoring + category grouping mandatory — never load the flat list |
 | **Thousands** | ~100K+ tokens | 🚫 Architectural limit | Multi-agent delegation or external skill index |
 
-The **200-skill threshold** is the most important planning milestone: beyond it, a flat list without filtering starts competing with conversation history for context space. The platform crossed 500 skills in July 2026 and answered the question in production — with the intent scorer loading 30–80 skills per request, the 512-skill catalog runs at the same ~25 percent context use the table above shows. The limit is not the catalog size; it is how much of the catalog you let into the prompt.
+The **200-skill threshold** is the most important planning milestone: beyond it, a flat list without filtering starts competing with conversation history for context space. The platform crossed 500 skills in July 2026 and answered the question in production — with the intent scorer loading 30–80 skills per request, the 512-skill catalog runs at the same ~25 percent context use the table above shows. The limit is not the catalog size; it is how much of the catalog you let into the prompt. The same discipline extends across the wire: external MCP clients get chapter 12's dispatch pair — two meta-tools standing in for the whole catalog — so their context stays clean too.
 
 ---
 

@@ -199,6 +199,8 @@ The intent scorer embodies a specific philosophy about agent architecture:
 
 4. **Observable** — The scorer logs its work: `[intent-scorer] 500+ skills → 25 (18 intent-matched, expanded: 12 terms)`. You can always see what happened and why.
 
+Since the July 2026 catalog convergence, the scorer also has a second consumer: the MCP surface exposes it to external clients as the `search_skills` meta-tool (chapter 12), so the same ranking that narrows FlowPilot's heartbeat turns answers an outside agent's discovery query. Improve the scorer once, and both paths get sharper.
+
 ---
 
 *The best routing is invisible routing. The user types in their language, about their problem, and the right skill appears — not because someone wrote a routing rule, but because the skill described itself well and the scorer found the match. That's the difference between a brittle chatbot and a resilient agent.*

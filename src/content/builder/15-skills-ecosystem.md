@@ -122,7 +122,7 @@ Skills can be bundled into packs for easy installation. Each pack groups related
 
 Packs are installed via `skill_pack_install` and create the skills in the database. The agent can discover available packs via `skill_pack_list`.
 
-As of July 2026, FlowPilot's library and the MCP surface are one and the same: a single shared catalog of 500+ skills, one set of metadata, two consumers. The embedded operator scores them per heartbeat turn; the external agent searches them over MCP. The convergence is the payoff of Law 2 — when the fix is always better metadata, an instruction improved once serves every agent that will ever call the skill, embedded or external. The catalog is organized by business function; a new deployment typically starts with the Content Marketing + CRM Nurture packs, then adds E-Commerce and Analytics as the business grows.
+As of July 2026, FlowPilot's library and the MCP surface are one and the same: a single shared catalog of 500+ skills, one set of metadata, two consumers. The embedded operator scores them per heartbeat turn; the external agent searches them over MCP — through the same intent scorer, exposed as the `search_skills`/`execute_skill` dispatch pair (chapter 12), so an external client reaches all 500+ skills while holding just two tool definitions in context. The convergence is the payoff of Law 2 — when the fix is always better metadata, an instruction improved once serves every agent that will ever call the skill, embedded or external. The catalog is organized by business function; a new deployment typically starts with the Content Marketing + CRM Nurture packs, then adds E-Commerce and Analytics as the business grows.
 
 ---
 

@@ -27,6 +27,20 @@ The practical implication is governance: because every tool call is logged at th
 
 ---
 
+## Two Tools, Five Hundred Skills
+
+A 500-skill surface creates a problem on the *client's* side of the wire: every tool definition the server advertises lands in the client model's context. Ship the full catalog and you have spent tens of thousands of tokens before the agent has read a single business record — most MCP clients have a tool budget, and 512 definitions blow straight through it. Chapter 19 covers this economy for the embedded operator; the MCP surface needs an answer for external clients too.
+
+FlowWink's surface gives the client three postures:
+
+1. **The full list** — every skill as a first-class tool. Right for narrow deployments and tool-picker UIs; wrong for a reasoning loop.
+2. **Group filtering** — `?groups=sales,finance` pulls only that toolkit (built-in groups: marketing, sales, operations, support, finance, content). The client curates a subset once, at connection time.
+3. **The dispatch pair** — two meta-tools that stand in for the entire catalog: `search_skills(query)` returns the ranked handful of skill definitions relevant to the task, and `execute_skill(name, arguments)` runs the chosen one. The client's model holds *two* tool definitions in context — and can still reach all 512.
+
+The dispatch pair is the interesting one, because of what sits behind it: `search_skills` reuses the **same intent scorer** that narrows the catalog for FlowPilot's heartbeat turns. One scorer, two consumers — the embedded operator gets its ~25 filtered skills per turn, the external client gets its ranked handful per search, and an instruction improved once improves both paths. The convergence story from chapter 15, extended across the wire: the client operates against the full surface without the full surface ever entering its context.
+
+---
+
 ## Resources and Observability
 
 MCP tools are write-capable — they can create, update, and delete data. MCP resources are the read-only complement — structured views of the system's current state that an agent can inspect without risk of modification.
