@@ -76,7 +76,7 @@ This matters for three reasons that business leaders care about:
 
 ## The Proof
 
-In May 2026, we ran a test designed to answer exactly this question. We had deployed Clawable — an operator configured as a COO with access to CRM, finance, and operations tools — and sent it a realistic but adversarial scenario: an existing customer returning after a lapsed contract, with a purchasing manager who had three demands.
+In May 2026, we ran a test designed to answer exactly this question — the negotiation chapter three documented as live proof, retold here through the only lens this chapter cares about: where the operator's authority ended, and what happened at that line. We had deployed Clawable — an operator configured as a COO with access to CRM, finance, and operations tools — and sent it a realistic but adversarial scenario: an existing customer returning after a lapsed contract, with a purchasing manager who had three demands.
 
 The first demand was a fifteen percent discount. The operator's mandate specified that discounts above ten percent required escalation to the principal.
 
@@ -86,7 +86,7 @@ The third demand was a Friday deadline.
 
 No one told the operator what to do. It read its mandate, checked each demand against it, and made three decisions simultaneously.
 
-For the two demands within mandate: it acted. It sent the customer a partial response offering ten percent plus a complementary module for year one — a counter-offer designed to increase perceived value without breaching the price floor. It confirmed it would have a final answer by Thursday.
+For what lay within mandate: it acted. It sent the customer a partial response offering ten percent plus a complementary module for year one — a counter-offer designed to increase perceived value without breaching the price floor. It confirmed it would have a final answer by Thursday, meeting the deadline demand on its own authority.
 
 For the two demands outside mandate: it escalated. It wrote a structured note to the principal — situation, customer demands, its own assessment, a proposed counter-offer, and three specific binary decisions required from the human. It flagged the note with a warning marker so it would not be missed.
 
