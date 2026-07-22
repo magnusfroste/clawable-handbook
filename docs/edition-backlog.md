@@ -15,17 +15,10 @@ cutoff (ch 7), BCG AI at Work 2026 (chs 11, 15), all-four-payment-giants
 
 ## For August (strongest candidates)
 
-0a. **The two tiers of tool metadata (Builder ch 15 + Book-3 case).** The
-    description is what the model sees when it *decides*; instructions are
-    what it sees when it *executes* — so a behavioral rule that lives only
-    in lazily-loaded instructions is invisible at the exact moment it should
-    change the decision. Rule: "decides → description; executes →
-    instructions." Log-verified incident (the 24-second guessed blog post,
-    the instructions-fix that didn't bite, the compiler quote that explains
-    why), fix deployed + guardrail-locked (flowwink `e721f407`). Full draft
-    exists (flowwink-local). **GATED on round 3:** weave the moment the
-    retest log shows `search_web` before `write_blog_post` — the section is
-    about verify-don't-trust and doesn't ship with an unverified ending.
+0a. ~~The two tiers of tool metadata~~ **WOVEN 2026-07-22** (Builder ch 15
+    "The Two Tiers of Tool Metadata" + ch 9/19 pointers) — round 3 verified
+    the ending same day. Remaining for Book 3: the incident retold as a
+    full operator-loop story (guess → challenge → log → fix → guardrail).
     See `docs/fieldreport-two-tiers-2026-07.md`.
 
 00. **EXPERIMENT — Live Proof II: the seams between vendors.** The book's

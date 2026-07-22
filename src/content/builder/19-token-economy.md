@@ -114,6 +114,8 @@ const instructions = await fetchSkillInstructions(supabase, skillName);
 
 The agent sees 80 skill *summaries* (8K tokens) and only loads the 2-4 skill *manuals* it actually needs (2-8K tokens). Total skill cost: **10-16K tokens** instead of 58K.
 
+One placement rule follows from this economy: anything that must change what the agent *decides* has to live in the always-visible description — the lazily-loaded manual arrives after the choice is made (chapter 15's two-tier principle, with the logged case).
+
 ---
 
 ## Skill Budget Degradation

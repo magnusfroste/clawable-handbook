@@ -73,6 +73,8 @@ Phase 3 (budget): Compress or drop skills as context fills up
 
 **The anti-pattern:** Loading all 500+ skill instructions into the system prompt. You'll hit context limits before the first tool call.
 
+**The consequence to respect:** lazily-loaded instructions are invisible at decision time — a rule that must change what the agent *decides* belongs in the description, not the instructions. Chapter 15's two-tier principle covers where rules must live.
+
 ---
 
 ## Law 4: The Agent MUST Be Able to Evolve

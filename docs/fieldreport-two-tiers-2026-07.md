@@ -1,7 +1,7 @@
 # Field report: The two tiers of tool metadata (description vs instructions)
 
 **Source:** flowwink-local session (Claude, FlowWink dev), delivered via Magnus 2026-07-22
-**Status:** fix deployed + guardrail-locked (commit `e721f407` in flowwink, 1083 tests green, synced liteit/autoversio/demo+dev). **Round 3 behavioral retest PENDING** — the "fixed the behavior" claim is NOT yet log-verified.
+**Status:** WOVEN 2026-07-22. Round 3 verified same day: `search_web` 17:01:13 (query hit clawable.org via SearXNG) → `write_blog_post` 17:01:41, post grounded and source-linked — only change was the sentence's location. Section lives in Builder ch 15 ("The Two Tiers of Tool Metadata"), one-line pointers in chs 9 and 19, changelog entry filed. Fix commit `e721f407` in flowwink (1083 tests green, synced liteit/autoversio/demo+dev).
 **Chapter mapping:** Builder ch 15 (skills ecosystem — the skill-anatomy home) as the section's home; one-line consequence notes in ch 9 (Law 3, lazy loading) and ch 19 (lazy instruction loading) at weave time. Learning Operator edition (Book 3 / Autumn) gets the incident as an operator-loop case with a cross-ref box.
 
 ## The finding (log-verified parts)
