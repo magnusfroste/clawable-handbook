@@ -178,14 +178,14 @@ The obvious fix — a grounding rule in the skill's **instructions** ("if the br
 The third run moved one sentence from the instructions into the description. Nothing else changed — same model, same loop, same skill, same prompt. The log:
 
 ```
-17:01:13  search_web       {"query": "agent-ready websites definition …"}
-                           → results from the actual site (via the
+17:01:13  search_web       {"query": "agent-ready websites definition clawable.org"}
+                           → results from clawable.org (via the
                              instance's own SearXNG)
 17:01:41  write_blog_post  → post grounded in the fetched article,
                              source linked
 ```
 
-Twenty-eight seconds of research before writing, and the published post cites the page it found. The rule had simply been standing in the wrong room.
+Twenty-eight seconds of research before writing, and the published post cites the page it found — which happens to be a chapter of the book you are reading. The rule had simply been standing in the wrong room.
 
 ### When an Agent Ignores a Rule
 
@@ -193,7 +193,7 @@ Twenty-eight seconds of research before writing, and the published post cites th
 2. **Match the rule's tier to the behavior it targets.** A decision-shaping rule in a lazily-loaded tier is a no-op.
 3. **Lock it with a test.** This regression is silent — the agent doesn't error, it quietly guesses. A guardrail asserting the cue exists in every description copy turns the next drift into a failing CI run instead of a plausible blog post.
 
-The incident is also one full turn of the operator loop — agent guessed, human challenged, the *log* (not the agent's own account) revealed the cause, the fix landed where the decision is made, and a guardrail made the silent version impossible. The Learning Operator (Book 3) tells that loop as its own story; this chapter keeps the principle.
+The incident is also one full turn of the operator loop — agent guessed, human challenged, the *log* (not the agent's own account) revealed the cause, the fix landed where the decision is made, and a guardrail made the silent version impossible. The lesson wasn't that the agent was wrong — it's that *verification found the architecture*. The Learning Operator (Book 3) tells that loop as its own story; this chapter keeps the principle.
 
 ---
 
