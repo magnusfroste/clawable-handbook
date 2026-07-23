@@ -30,6 +30,7 @@ The builder edition carries a wider technical vocabulary. This glossary covers o
 | **A2A (Agent-to-Agent)** | The protocol that lets one agent call another and receive a structured response. How an external operator delegates to a native agent. |
 | **Skill** | A single callable capability the operator can invoke — qualify a lead, create an invoice, publish a post. Each skill has a description, a schema, and a trust level. |
 | **MCP Surface** | The full set of tools a platform exposes to agents. FlowWink's MCP surface is 500+ skills at the time of writing. |
+| **Harness** | The scaffolding around an AI model that turns it into a working agent — the loop, the tools, the permissions, the memory. When the press says "the harness matters more than the model," it is making this book's core argument: the value lives in the system around the intelligence, not the intelligence alone. |
 
 ---
 

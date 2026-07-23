@@ -165,6 +165,16 @@ The question is not whether you'll arrive at this architecture. It's whether you
 
 ---
 
+## The Word the Industry Settled On: Harness
+
+This chapter was written before the vocabulary converged. Through 2026, the industry settled on a name for everything it describes: **the harness** — from software testing, where a harness is the scaffolding that runs code under controlled conditions. In agent terms: the loop, the tool dispatch, the permission model, the context management, the memory, the tracing. Everything around the model. What this book has called the control plane since chapter 4's "the agent is not the model — the agent is the system around the model."
+
+Anthropic uses the word for its own stack — the Claude Agent SDK is "a powerful, general-purpose agent harness" — and its engineering guidance on long-running agents (context compaction, clean state handoffs between sessions, incremental scaffolding) reads as a harness-design manual. `validated` The term's breakout moment was involuntary: on March 31, 2026, Anthropic accidentally shipped Claude Code's source to the public npm registry — roughly 513,000 lines of unobfuscated TypeScript — and what the world saw confirmed this chapter's thesis from the inside: the value was the scaffolding, not the model behind the API. `validated` Chapter 35's Meta-Harness result then gave it numbers: same models, different harness, materially different system.
+
+So when you meet "harness engineering" in the discourse, translate freely: the harness is the control plane. OpenClaw is a general-purpose harness. FlowPilot's heartbeat-and-reason loop is an embedded one. The ten laws of chapter 9 are harness-design laws. This book was betting on the harness before the word arrived — the industry naming it is the thesis being accepted.
+
+---
+
 *The control plane is the product. The model is the commodity. The developer who understands what goes in the control plane — and builds it deeply, with real data and real integrations — is the developer who builds something that lasts.*
 
 *Next: the broader ecosystem that has grown up around OpenClaw — NemoClaw, NanoClaw, 68,000 forks, and what it means for where you build. [The Claw Ecosystem →](/builder/06-claw-ecosystem)*
