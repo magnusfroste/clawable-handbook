@@ -85,7 +85,7 @@ We cover:
 - The two production failure modes teams repeatedly hit — stagnation and drift — and practical ways to manage both
 - Where this is heading next, based on recently verified sources and ecosystem signals
 
-**Short on time? These ten chapters are the machine.** The laws (9), the heartbeat (10), MCP under the hood (12), intent scoring (17), memory (18), the token economy (19), stagnation and drift (21), production patterns (25), resilience (31), and tool-hallucination recovery (32). Everything else is context, evidence, and ecosystem — valuable, but those ten are what you cannot get from a blog post. Read them in any order; each states the problem it solves.
+**Short on time? These eleven chapters are the machine.** Start with the harness (5b) — it is the map of all the others: the laws (9), the heartbeat (10), MCP under the hood (12), intent scoring (17), memory (18), the token economy (19), stagnation and drift (21), production patterns (25), resilience (31), and tool-hallucination recovery (32). Everything else is context, evidence, and ecosystem — valuable, but those eleven are what you cannot get from a blog post. Read them in any order; each states the problem it solves.
 
 ### How FlowPilot Fits In
 

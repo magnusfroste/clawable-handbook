@@ -240,7 +240,7 @@ The Engine Room answers the operator's core question: **"What is my agent doing 
 
 ### The Next Surface: The Trace
 
-There is a harder question the dashboard does not answer: *why did the agent do that?* Everything needed is already recorded — trace IDs correlate a run, the activity log holds verbatim inputs and outcomes, the approval queue holds what a human gated. What is missing is a read model that assembles them into one story per run:
+This is the harness's observability component (H10, chapter 5b) at its data layer. There is a harder question the dashboard does not answer: *why did the agent do that?* Everything needed is already recorded — trace IDs correlate a run, the activity log holds verbatim inputs and outcomes, the approval queue holds what a human gated. What is missing is a read model that assembles them into one story per run:
 
 ```
 trigger (heartbeat / cron / chat / external agent)
