@@ -173,6 +173,34 @@ Anthropic uses the word for its own stack — the Claude Agent SDK is "a powerfu
 
 So when you meet "harness engineering" in the discourse, translate freely: the harness is the control plane. OpenClaw is a general-purpose harness. FlowPilot's heartbeat-and-reason loop is an embedded one. The ten laws of chapter 9 are harness-design laws. This book was betting on the harness before the word arrived — the industry naming it is the thesis being accepted.
 
+### The Harness, Named — Eleven Components
+
+Naming the thing is not the same as knowing its parts. In July 2026 the reference platform's engineering lead mapped its own harness component by component — and the exercise is worth stealing, because most teams discover they have ten of these and can't point at any of them. Map your own system against it: `validated`
+
+| # | Component | What it does |
+|---|---|---|
+| H1 | **Loop** | The reason→act cycle; heartbeat cadence |
+| H2 | **Skill selection** | Ranks the full catalog down to the handful this turn needs |
+| H3 | **Context assembly** | Compiles the prompt: identity, objectives, memory, retrieval |
+| H4 | **Memory** | Persistent institutional memory, distilled by the learn cycle |
+| H5 | **Policy / guardrails** | Trust dial, scope gating, cadence guard |
+| H6 | **Verification** | Objectives close on logged evidence, never on model prose |
+| H7 | **Self-correction** | Errors enriched so the next turn recovers |
+| H8 | **Escalation** | Approval queue and staged operations above the trust threshold |
+| H9 | **Learning** | The Curator proposes better instructions; a human approves |
+| H10 | **Observability** | Every action, verbatim input and outcome, tokens, trace records |
+| H11 | **Resumption** | Pause a multi-step chain and resume exactly where it stopped |
+
+Three design rulings came with the map, and they generalize beyond any one platform.
+
+**The harness is a platform primitive, not a feature of the agent module.** It is consumed by the embedded operator *and* by every external agent arriving through the MCP surface. Bury it inside the operator and it disappears the moment a customer switches that operator off — which is the same mistake as burying the skill catalog there (chapter 15).
+
+**The harness is model-agnostic by construction.** Every component sits between the model and the world, so swapping engines changes exactly that: the engine. The chassis is unaffected. This is what makes chapter 7's model portability a dial rather than a migration.
+
+**Every incident becomes a harness component, permanently.** Each bug class that survives production gets fixed *and* assigned a component and a regression test — H5 gains a guard, H7 gains an enriched error. The harness does not decay with age; it hardens. Remember that line — it is the whole architecture of the operator that improves itself, and the third book is built on it.
+
+Of the eleven, H6 is the one most teams skip and most regret. **Objectives close on evidence from the activity log, never on the model's own account of what it did.** An agent that grades its own homework will pass. Verification is not a discipline you apply to a harness; it is a component of one.
+
 ---
 
 *The control plane is the product. The model is the commodity. The developer who understands what goes in the control plane — and builds it deeply, with real data and real integrations — is the developer who builds something that lasts.*

@@ -238,6 +238,23 @@ All observability data surfaces in the admin UI through the "Engine Room" — a 
 
 The Engine Room answers the operator's core question: **"What is my agent doing right now, and is it working?"**
 
+### The Next Surface: The Trace
+
+There is a harder question the dashboard does not answer: *why did the agent do that?* Everything needed is already recorded — trace IDs correlate a run, the activity log holds verbatim inputs and outcomes, the approval queue holds what a human gated. What is missing is a read model that assembles them into one story per run:
+
+```
+trigger (heartbeat / cron / chat / external agent)
+  └─ context loaded    (objectives in scope, memories hit, knowledge retrieved)
+      └─ skills surfaced (the ranked shortlist — and why each one ranked)
+          └─ model chose  (skill + arguments, verbatim)
+              └─ policy    (each guard: passed, gated, or escalated — and why)
+                  └─ result (the verified outcome, not the model's summary)
+```
+
+This is worth building for a reason bigger than debugging convenience. Reading the harness's own logs is how production bugs actually get found — it is the method that produced most of the war stories in this book. Making that method a surface turns it from a skill a few engineers have into something anyone can do. `partial` — the data layer is shipped, the surface is the next build.
+
+And it is what makes the accountability promise real. Every deployment tells its customers *"audit the agent the way you audit an employee."* Without a trace view, that is a slogan: the data exists, but reading it takes hand-written SQL. With one, it is a click — every autonomous action, why it was chosen, what gated it, what a human approved.
+
 ---
 
 ## The Anti-Patterns

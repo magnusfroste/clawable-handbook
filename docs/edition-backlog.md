@@ -15,7 +15,9 @@ cutoff (ch 7), BCG AI at Work 2026 (chs 11, 15), all-four-payment-giants
 
 ## For August (strongest candidates)
 
-0b. **The named harness (H1–H11) + the Trace.** flowwink-local named and mapped
+0b. ~~The named harness (H1–H11) + the Trace~~ **WOVEN 2026-08-13** into Builder
+    chs 5/11/14 — see the field report. Remaining: nothing for Builder; the
+    "every incident becomes a harness component" line is Book 3's spine. flowwink-local named and mapped
     the harness the same day this session added the harness bridge to Builder
     ch 5 — independently. Weavable now: the component map as the concrete
     instantiation of "harness = control plane"; the ruling that the harness is

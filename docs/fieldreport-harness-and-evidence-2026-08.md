@@ -46,6 +46,14 @@ already has one, unnamed and scattered." Two sessions, no coordination, same con
 **Weave gate:** shipped rows are weavable now; the Trace must be described as the next build
 (`partial`), not as a live surface.
 
+**WOVEN 2026-08-13** (editorial call: Builder gets what is built and reusable; Book 3 gets
+what is about the operator learning). Ch 5 "The Harness, Named — Eleven Components" (the
+H1–H11 map + the three rulings + H6 as the component most teams skip); ch 11 "The Next
+Surface: The Trace" tagged `partial`; ch 14 the resumption/idempotency rule from the
+double-fire proof run. Component names generalised (no internal file paths); "every incident
+becomes a harness component, permanently" placed in ch 5 with a forward-pointer to Book 3,
+which is built on it.
+
 ---
 
 ## Finding 2 — `docs/architecture/evidence-ledger.md` (2026-08-04) · PROPOSED, no code
