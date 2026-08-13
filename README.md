@@ -33,7 +33,7 @@ An evidence-based field report for CEOs, CFOs, and CPOs. What autonomous agents 
 ### [Builder Edition](https://clawable.org/builder) — for CTOs and engineers
 *"Your AI agent is a chatbot. It should be a digital employee."*
 
-The technical architecture guide. OpenClaw internals, heartbeat protocols, memory architecture, skill taxonomy, A2A federation, agent-driven development, security patterns, and production resilience. 37 chapters and appendices covering the complete stack.
+The technical architecture guide. OpenClaw internals, heartbeat protocols, memory architecture, skill taxonomy, A2A federation, agent-driven development, security patterns, and production resilience. 38 chapters and appendices covering the complete stack.
 
 → **[clawable.org/builder](https://clawable.org/builder)**
 
