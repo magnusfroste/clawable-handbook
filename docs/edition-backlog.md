@@ -15,6 +15,31 @@ cutoff (ch 7), BCG AI at Work 2026 (chs 11, 15), all-four-payment-giants
 
 ## For August (strongest candidates)
 
+0b. **The named harness (H1–H11) + the Trace.** flowwink-local named and mapped
+    the harness the same day this session added the harness bridge to Builder
+    ch 5 — independently. Weavable now: the component map as the concrete
+    instantiation of "harness = control plane"; the ruling that the harness is
+    a platform primitive (not a module feature) consumed by internal AND
+    external agents; "the harness is model-agnostic — swapping the model
+    changes the engine, not the chassis"; "every incident becomes a harness
+    component, permanently"; and H6 — objectives close on evidence from the
+    activity log, never on model prose (verify-don't-trust as architecture).
+    Hold the Trace as `partial` (data layer shipped, product surface next) and
+    the H11 double-fire war story for ch 14's follow-through section.
+    See `docs/fieldreport-harness-and-evidence-2026-08.md`.
+
+0c. **The evidence ledger — the third gate.** Trust levels gate the *call*,
+    approval requests gate the *action*, the evidence ledger gates the
+    *claim*. Typed observations priced in one reviewable table
+    (`human.entered` 0.95 → `model.inference` 0.25, `contradiction` 0) and the
+    rule that makes it work: **no self-graded confidence** — "a model asked to
+    grade its own certainty will, and it will be wrong in the direction that
+    makes it look useful." Motivating bug is perfect drift-frame material
+    (enrichment overwriting a rep's notes with an `og:description`, a verified
+    phone with a regex hit). **GATED: proposed, no code written** — weave when
+    it ships, or tag `hypothesis` explicitly. Also the substantive reply to
+    the Olaf Paap authority/Sub-Origin thread (write-path half only).
+
 0a. ~~The two tiers of tool metadata~~ **WOVEN 2026-07-22** (Builder ch 15
     "The Two Tiers of Tool Metadata" + ch 9/19 pointers) — round 3 verified
     the ending same day. Remaining for Book 3: the incident retold as a
