@@ -26,7 +26,7 @@ In April 2026, an external autonomous operator made a single unprompted pass acr
 ### [Business Edition](https://clawable.org/business) — for C-level leaders
 *"It is not a pitch. It is a report."*
 
-An evidence-based field report for CEOs, CFOs, and CPOs. What autonomous agents are doing to business operating systems right now — with real numbers, timestamps, and verified sources. Fifteen chapters plus appendices covering the Business Operating System thesis, live production proof, the Vendor Agent Trap, security, the Agent Manager role, the mandate layer, and what the first week of deployment looks like.
+An evidence-based field report for CEOs, CFOs, and CPOs. What autonomous agents are doing to business operating systems right now — with real numbers, timestamps, and verified sources. Sixteen chapters plus appendices covering the Business Operating System thesis, live production proof, the Vendor Agent Trap, security, the Agent Manager role, the mandate layer, and what the first week of deployment looks like.
 
 → **[clawable.org/business](https://clawable.org/business)**
 
