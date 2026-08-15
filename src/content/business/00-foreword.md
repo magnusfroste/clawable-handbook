@@ -7,8 +7,8 @@ icon: "book-open"
 
 ## About This Edition
 
-- **Edition:** July 2026
-- **Last reviewed:** July 2026
+- **Edition:** August 2026
+- **Last reviewed:** August 2026
 - **Update cadence:** monthly scheduled review, with fast patches for major ecosystem changes — see the [Revision History](/business/appendix-changelog) for what changed and when
 - **Agent-readable:** this handbook practices what it preaches — it can be read by AI agents, not just people. If you run one, the one-line connect instruction is on the front page of [clawable.org](https://www.clawable.org)
 - **Companion volume:** *The Agentic Handbook (Builder Edition)* — architecture, skills, memory, governance internals for teams building their own agentic platform
