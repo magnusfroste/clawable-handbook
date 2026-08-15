@@ -111,11 +111,10 @@ To **you** who read this far — for taking the time to understand at depth. Tha
 
 ---
 
-*Clawable is a living document. It updates when reality does — which right now is approximately every two weeks.*
+*Clawable is a living document. It updates when reality does — see the [Revision History](/business/appendix-changelog) for what changed in each edition, both tracks.*
 
 *Source code, documentation, and all chapters are available at [github.com/clawable](https://github.com/clawable).*
 
 *The claw is the law.*
 
 *— The Clawable Project*
-*April 2026*

@@ -6,7 +6,7 @@ icon: "arrow-path"
 appendix: true
 ---
 
-> This handbook is a living document, reviewed monthly with fast patches for major ecosystem changes. This page is its activity log. If the systems we describe keep an audit trail, so should we.
+> This handbook is a living document, reviewed monthly with fast patches for major ecosystem changes. This page is its activity log — **for both editions**, Business and Builder. If the systems we describe keep an audit trail, so should we.
 
 ---
 
