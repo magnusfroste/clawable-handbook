@@ -27,11 +27,7 @@ The experiment it reports is simple: take a stock OpenClaw instance, give it no 
 
 ## A Note on the Scenarios
 
-The cases and scenarios in this handbook run on **FlowWink** — a next-generation business operating system built natively for the agent era. FlowWink combines CRM, ERP, and CMS in a single self-hosted platform: deal pipeline and lead management, quote-to-cash and accounting, content and contract publishing — all on one data model, all exposed via MCP. 500+ skills across CRM, finance, orders, contracts, content, HR, analytics, and accounting. It is self-hosted, open source, and built on Lovable — a production-grade stack that previously required months of engineering, now accessible to any team. If you want to know what an agent-ready business operating system looks like from the inside, FlowWink is the reference implementation.
-
-The significant fact for anyone reading this handbook in 2026: FlowWink is available today. Free. Open source. Self-hosted in minutes. While every major SaaS vendor — Salesforce, HubSpot, SAP, ServiceNow — is in the process of retrofitting agent support onto platforms built for a different era, FlowWink was built for this era from line one. Any team running an autonomous agent — OpenClaw, Hermes, Claude Code, Paperclip, Cofounder — can connect to FlowWink and run the same experiments documented here. Not in a sandbox. Against a production-grade, fully operational MCP surface, today. No vendor negotiation. No integration sprint. No waitlist.
-
-That is what makes the proof in this handbook reproducible — and what makes FlowWink the fastest path from "we want to understand autonomous agents" to "we are running one."
+The cases and scenarios in this handbook run on **FlowWink** — a self-hosted business operating system combining CRM, ERP, and CMS on a single data model, with every capability exposed over MCP. It is open source and self-hostable, and at this point in the book that is the only thing about it that matters: it makes the proof in these pages reproducible rather than anecdotal. Anyone running an autonomous agent can point it at the same surface and repeat the experiments documented here.
 
 The data used in these scenarios is representative: structured to reflect the operational reality of a mid-market B2B company, not sourced from a client under NDA. **All customer, supplier, and person names appearing in the scenarios are synthetic.** Any resemblance to real companies or individuals, in Sweden or elsewhere, is coincidental and unintended.
 
