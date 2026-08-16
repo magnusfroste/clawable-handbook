@@ -11,7 +11,7 @@ icon: "book-open"
 - **Last reviewed:** August 2026
 - **Update cadence:** monthly scheduled review, with fast patches for major ecosystem changes — see the [Revision History](/business/appendix-changelog) for what changed and when
 - **Agent-readable:** this handbook practices what it preaches — it can be read by AI agents, not just people. If you run one, the one-line connect instruction is on the front page of [clawable.org](https://www.clawable.org)
-- **Companion volume:** *The Agentic Handbook (Builder Edition)* — architecture, skills, memory, governance internals for teams building their own agentic platform
+- **Companion volume:** *The Agentic AI Handbook (Builder Edition)* — architecture, skills, memory, governance internals for teams building their own agentic platform
 
 ---
 
@@ -58,7 +58,7 @@ This is a logged production claim, not a vision statement. Every chapter that fo
 ## Who This Book Is For
 
 - **Business leaders and operators** — if you run a company on SaaS and want to understand what autonomous operation looks like in practice, start here.
-- **Agent Managers** — if you have been given responsibility for agent deployments and need an operating model rather than a product manual, chapters 6 through 10 are the core.
+- **Agent Managers** — if you have been given responsibility for agent deployments and need an operating model rather than a product manual, chapters 7 through 10 are the core, with the mandate layer in fourteen as the piece you will use most.
 - **Board members and advisors** — if you need a defensible read on what is real in agentic AI versus what is still narrative, the evidence structure in chapters 2, 3, and 9 is designed for your fact-check.
 
 If you build the platforms themselves — if your job is to make a SaaS agent-ready from the source code level — this is the wrong book. Read the builder edition instead.
@@ -69,9 +69,9 @@ One assumption about the reader, stated openly: most people this book is written
 
 ## How to Read This Handbook
 
-Chapters 2–5 make the business case — the automation ceiling, the live proof, the architecture choice, and the skill audit that tells you what your stack can already do. Read these if you need to understand *why* before you understand *how*.
+Chapters 2–6 make the business case — the automation ceiling, the live proof, the four superpowers and the contract layer where they converge, the embedded-versus-external choice, and the skill audit that tells you what your stack can already do. Read these if you need to understand *why* before you understand *how*.
 
-Chapters 6–10 cover deployment — choosing an operator, connecting MCP, configuring the heartbeat, and the enterprise view including governance and cost. Read these if you are ready to move.
+Chapters 7–10 cover the decisions — choosing an operator, the vendor agent trap, why agent programs fail, and the architecture that holds when one agent per platform is not enough. Read these if you are ready to move.
 
 Chapters 11–15 go deeper — the enterprise-scale picture and business case, what to demand from your vendors, where the world is heading, how to design the governance boundary that makes autonomy trustworthy, and what your role looks like in practice. Read these if you want the full picture.
 
