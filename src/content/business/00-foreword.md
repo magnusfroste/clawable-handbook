@@ -27,7 +27,7 @@ The experiment it reports is simple: take a stock OpenClaw instance, give it no 
 
 ## A Note on the Scenarios
 
-The cases and scenarios in this handbook run on **FlowWink** — a self-hosted business operating system combining CRM, ERP, and CMS on a single data model, with every capability exposed over MCP. It is open source and self-hostable, and at this point in the book that is the only thing about it that matters: it makes the proof in these pages reproducible rather than anecdotal. Anyone running an autonomous agent can point it at the same surface and repeat the experiments documented here.
+Every case and scenario in this handbook runs on the FlowWink instance described above. One property of it matters here: it is open source and self-hostable, which is what makes the proof in these pages reproducible rather than anecdotal — anyone running an autonomous agent can point it at the same MCP surface and repeat these experiments. It is one implementation of the pattern this book describes, not the only one, and certainly not the one you have to adopt.
 
 The data used in these scenarios is representative: structured to reflect the operational reality of a mid-market B2B company, not sourced from a client under NDA. **All customer, supplier, and person names appearing in the scenarios are synthetic.** Any resemblance to real companies or individuals, in Sweden or elsewhere, is coincidental and unintended.
 
@@ -35,7 +35,7 @@ What is not constructed is Clawable's behaviour. The agent operates on standing 
 
 Some SIM tests in chapter three used a single open prompt to probe specific reasoning capabilities. Even those prompts contained no targets, no categories of risk to investigate, and no guidance on what to find.
 
-The SIM frameworks and objectives are documented in the sources appendix. The experiment is reproducible by anyone running FlowWink.
+The SIM frameworks and objectives are documented in the sources appendix.
 
 The proof is in the reasoning, not in whose name was on the contract.
 
