@@ -13,6 +13,10 @@ verified against arXiv 2603.28052), agent cost governance / FT cost-capping
 cutoff (ch 7), BCG AI at Work 2026 (chs 11, 15), all-four-payment-giants
 (ch 13).
 
+> **Book 3 material does not belong in this file.** *The Learning Operator*
+> has its own home: `docs/book3-inbox.md`. This backlog is for the two
+> published editions only.
+
 ## For August (strongest candidates)
 
 0b. ~~The named harness (H1–H11) + the Trace~~ **WOVEN 2026-08-13** into Builder

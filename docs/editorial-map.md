@@ -189,4 +189,6 @@ Business says: *the agent is your new operator — govern it.*
 Builder says: *the control plane is your product — own it.*
 The cross-sell is built in: business ch 15 sends the CTO to the Builder
 Edition; the builder foreword sends the manager to chapters 23/27. Book 3
-(*The Learning Operator* / Hermes) is seeded in both closings.
+(*The Learning Operator* / Hermes) is seeded in both closings — and all of its
+material is collected in `docs/book3-inbox.md`, which is where anything
+Book-3-shaped belongs.
