@@ -71,6 +71,10 @@ The industry is converging on an answer, and it is strikingly unglamorous: plain
 
 Per Clingweld of AI Sweden gave the readiness question its sharpest form: an agent without the right context is just *"a very confident intern with access to the wrong binder."* The model does not lack intelligence. It lacks context. So alongside the skill audit, ask the knowledge question: is our operational knowledge clear, current, linked, and usable by something that reads it literally? Call the discipline, as Clingweld does, **knowledge hygiene**. The organizations that have it will extract compounding value from the same models everyone else buys.
 
+One consolation for the leader looking at that work and seeing a new budget line: it is not one. Classifying what is fact and what is interpretation, knowing where sensitive material is quietly being pasted into public tools, and requiring that every answer can show what it was grounded in — those are the same three moves a competent security officer is already making, arriving from the other direction. Readiness for an operator and mature information handling are not two projects. They are one, described twice.
+
+And a sequencing note that survives contact with real organizations: build the cheap thing first. A small working surface — an agent answering grounded questions about a narrow slice of the business — costs little and shows the potential to people who will otherwise never fund the unglamorous part. The knowledge work is what makes an operator trustworthy; the demonstration is what makes the knowledge work fundable.
+
 ---
 
 ## The Principle

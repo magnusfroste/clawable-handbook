@@ -34,7 +34,9 @@ cutoff (ch 7), BCG AI at Work 2026 (chs 11, 15), all-four-payment-giants
     the H11 double-fire war story for ch 14's follow-through section.
     See `docs/fieldreport-harness-and-evidence-2026-08.md`.
 
-0d. **Organizational readiness — the broken nerve thread.** A full chapter
+0d. ~~Organizational readiness — the broken nerve thread~~ **JUDGED & WOVEN 2026-08-21.** Three of five passages taken (ch 9 the mirror, ch 6 the CSO parallel + embryo ordering, ch 7 the shadow-AI cure); the nerve-thread image DROPPED as a fourth telling of what chs 2/5/8 already own. No new chapter. Draft retained in `docs/fieldreport-nerve-thread-2026-08.md`. Original entry below for the record:
+
+0d-orig. **Organizational readiness — the broken nerve thread.** A full chapter
     draft from flowwink-local, triaged out of the Book 3 inbox because it
     answers what must be true *before* an operator can run. Best material:
     the nerve-thread image ("five systems is not five problems, it is one" →

@@ -44,6 +44,18 @@ The process-fit failure is the hardest to see in advance, because the pilot look
 
 ---
 
+## The Questions Nobody Ever Answered
+
+There is a quieter version of process failure, and it surfaces after deployment rather than before it.
+
+Every organization runs on questions it has never formally settled. Which segments do we actually sell to — the three in the pitch, or the five in the CRM? Are we a supplier or a partner in our own words, and did anyone decide that? Who owns the response-time promise: the page that happened to publish it first, or the company? These questions can stay open for decades without visible cost, because people close them silently, one judgment call at a time, and the organization never notices it is doing it.
+
+An agent does not do that. It executes what is written, including the silences. So every unresolved question stops being invisible and starts being visible — in the agent's behaviour, in front of a customer, at three in the morning.
+
+Read that as failure and you will pull the agent. Read it correctly and it is the most valuable audit the business has ever had: the ambiguity was always there, always costing something, and this is the first time anyone could see it. The fix is not a better prompt. It is a decision someone should have made years ago, now finally forced into daylight.
+
+---
+
 ## The Observability Black Hole
 
 The agent runs. It makes decisions. It modifies data. It sends emails. And no one can see any of it — not because the system is opaque, but because no one built the window. The agent's logs exist, technically. They live in a session file, in a directory that no one at the company has ever opened. There is no dashboard. There is no daily summary that a human actually reads. There is no alert when the agent's behavior pattern shifts. The agent operates in a sealed box, and the company's only visibility into that box is whether the process still seems to work from the outside.
