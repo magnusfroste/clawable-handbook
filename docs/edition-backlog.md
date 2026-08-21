@@ -34,23 +34,7 @@ cutoff (ch 7), BCG AI at Work 2026 (chs 11, 15), all-four-payment-giants
     the H11 double-fire war story for ch 14's follow-through section.
     See `docs/fieldreport-harness-and-evidence-2026-08.md`.
 
-0d. ~~Organizational readiness — the broken nerve thread~~ **JUDGED & WOVEN 2026-08-21.** Three of five passages taken (ch 9 the mirror, ch 6 the CSO parallel + embryo ordering, ch 7 the shadow-AI cure); the nerve-thread image DROPPED as a fourth telling of what chs 2/5/8 already own. No new chapter. Draft retained in `docs/fieldreport-nerve-thread-2026-08.md`. Original entry below for the record:
-
-0d-orig. **Organizational readiness — the broken nerve thread.** A full chapter
-    draft from flowwink-local, triaged out of the Book 3 inbox because it
-    answers what must be true *before* an operator can run. Best material:
-    the nerve-thread image ("five systems is not five problems, it is one" →
-    "a severed agent is not a stupid one"), the mirror line ("an agent does
-    not smooth things over — every unanswered question becomes visible in its
-    behaviour"), the CSO parallel (readiness and mature infosec are one
-    project, not two), the shadow-AI cure (make the sanctioned path better,
-    not forbidden), and embryo-before-master-data as a deployment sequence.
-    Homes: ch 6 (the information-layer equivalent of the skill audit — the
-    clearest gap), ch 9 (organizational failure), ch 12 (vendor side).
-    Client identifiers removed 2026-08-21 (Magnus's call) — the case is a
-    generic five-system company and must stay one. **One call left: weave into
-    chs 6/9/12, or a `06b-` readiness chapter?** Swedish draft — needs
-    rewriting, not translating. See `docs/fieldreport-nerve-thread-2026-08.md`.
+0d. ~~Organizational readiness — the broken nerve thread~~ **JUDGED & WOVEN 2026-08-21.** Three of five passages taken (ch 9 the mirror, ch 6 the CSO parallel + embryo ordering, ch 7 the shadow-AI cure); the nerve-thread image DROPPED as a fourth telling of what chs 2/5/8 already own. No new chapter. Draft deleted once spent — the decision is recorded in the changelog and the full text remains in git history. Original entry below for the record:
 
 0c. **The evidence ledger — the third gate.** Trust levels gate the *call*,
     approval requests gate the *action*, the evidence ledger gates the
@@ -68,7 +52,7 @@ cutoff (ch 7), BCG AI at Work 2026 (chs 11, 15), all-four-payment-giants
     "The Two Tiers of Tool Metadata" + ch 9/19 pointers) — round 3 verified
     the ending same day. Remaining for Book 3: the incident retold as a
     full operator-loop story (guess → challenge → log → fix → guardrail).
-    See `docs/fieldreport-two-tiers-2026-07.md`.
+    Detail now lives in `docs/book3-inbox.md` (item 1); intake file deleted once spent.
 
 00. **EXPERIMENT — Live Proof II: the seams between vendors.** The book's
     strongest remaining proof to produce. The April 19 finding was
