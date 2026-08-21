@@ -45,9 +45,10 @@ cutoff (ch 7), BCG AI at Work 2026 (chs 11, 15), all-four-payment-giants
     not forbidden), and embryo-before-master-data as a deployment sequence.
     Homes: ch 6 (the information-layer equivalent of the skill audit — the
     clearest gap), ch 9 (organizational failure), ch 12 (vendor side).
-    **BLOCKED on two Magnus calls:** client confidentiality (the draft names a
-    real engagement) and weave-vs-new-chapter. Swedish draft — needs rewriting,
-    not translating. See `docs/fieldreport-nerve-thread-2026-08.md`.
+    Client identifiers removed 2026-08-21 (Magnus's call) — the case is a
+    generic five-system company and must stay one. **One call left: weave into
+    chs 6/9/12, or a `06b-` readiness chapter?** Swedish draft — needs
+    rewriting, not translating. See `docs/fieldreport-nerve-thread-2026-08.md`.
 
 0c. **The evidence ledger — the third gate.** Trust levels gate the *call*,
     approval requests gate the *action*, the evidence ledger gates the

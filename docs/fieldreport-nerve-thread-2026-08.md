@@ -39,10 +39,16 @@ true in the organization and its data. That is Business Edition territory.
 
 ## Open questions — Magnus only
 
-- **Confidentiality.** "Optic-intaget", "svartfiber", "1:1 fiber per kund", segment
-  definitions: this reads as a real client engagement, and the book's standing rule is that
-  every customer in the scenarios is synthetic. Nothing from here ships until Magnus says
-  what may be told and in whose name — or the case is genericized to "a five-system company".
+- ~~Confidentiality~~ **HANDLED 2026-08-21 (Magnus's call).** The draft arrived carrying a
+  client name and two industry-specific examples that were individually harmless but
+  jointly traceable. Both are gone: the engagement is now "ett kundintag", and the
+  unanswered-question examples were rewritten to universal equivalents that teach the same
+  point — segment definitions that differ between the pitch and the CRM, whether the company
+  calls itself supplier or partner in its own copy, and who owns a response-time promise.
+  They are stronger for it: an industry term makes the reader think "not my industry",
+  while all three replacements are questions every company has failed to answer.
+  **Note for whoever writes this up:** the case is now a generic five-system company, and
+  must stay one — the book promises synthetic customers in the foreword.
 - **Chapter or weave?** A new business chapter is expensive (see the 6-point checklist in
   CLAUDE.md) and the track just cut 10,000 words. My recommendation: weave passages 1–5 into
   chs 6, 9 and 12 rather than add a chapter — unless Magnus wants readiness as its own
@@ -54,13 +60,13 @@ true in the organization and its data. That is Business Edition territory.
 
 ## The draft as delivered (verbatim, unedited)
 
-### 2026-08-21 — Kapitelutkast: "Att operera med rätt förutsättningar" (ur Optic-intaget)
+### 2026-08-21 — Kapitelutkast: "Att operera med rätt förutsättningar"
 
 *Räddat ur en flowwink-sessions scratchpad (skrivet 2026-08-17). Helt utkast, inklistrat i sin helhet — inget av det är placerat.*
 
 # Att operera med rätt förutsättningar
 
-*Utkast till handbokskapitel — ur Optic-intaget, augusti 2026.*
+*Utkast till handbokskapitel — ur ett kundintag, augusti 2026. Anonymiserat.*
 
 ## Nervtråden
 
@@ -122,10 +128,11 @@ riktigt.
 
 Sedan kom **masterdatan**: ett internt genomarbetat referensdokument. Och det
 är här det verkliga arbetet börjar, för masterdokumentet lyfter frågor man
-kanske inte har svar på. Vilka segment gäller egentligen? Står vi för termen
-"svartfiber" eller förhåller vi oss till den? Vad besvarar vi aldrig publikt,
-och varför? Vem äger påståendet "1:1 fiber per kund" — sidan som råkade skriva
-det först, eller identiteten?
+kanske inte har svar på. Vilka segment gäller egentligen — de tre vi säger i
+pitchen eller de fem som ligger i CRM:et? Är vi "leverantör" eller "partner" i
+vår egen text, och bestämde någon det eller blev det bara så? Vad besvarar vi
+aldrig publikt, och varför? Vem äger löftet om svarstid — sidan som råkade
+skriva det först, eller identiteten?
 
 De frågorna fanns före AI:n. Skillnaden är att de förr kunde förbli obesvarade
 i decennier, för människor jämkar. En agent jämkar inte: den gör exakt det
