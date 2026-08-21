@@ -34,6 +34,21 @@ cutoff (ch 7), BCG AI at Work 2026 (chs 11, 15), all-four-payment-giants
     the H11 double-fire war story for ch 14's follow-through section.
     See `docs/fieldreport-harness-and-evidence-2026-08.md`.
 
+0d. **Organizational readiness — the broken nerve thread.** A full chapter
+    draft from flowwink-local, triaged out of the Book 3 inbox because it
+    answers what must be true *before* an operator can run. Best material:
+    the nerve-thread image ("five systems is not five problems, it is one" →
+    "a severed agent is not a stupid one"), the mirror line ("an agent does
+    not smooth things over — every unanswered question becomes visible in its
+    behaviour"), the CSO parallel (readiness and mature infosec are one
+    project, not two), the shadow-AI cure (make the sanctioned path better,
+    not forbidden), and embryo-before-master-data as a deployment sequence.
+    Homes: ch 6 (the information-layer equivalent of the skill audit — the
+    clearest gap), ch 9 (organizational failure), ch 12 (vendor side).
+    **BLOCKED on two Magnus calls:** client confidentiality (the draft names a
+    real engagement) and weave-vs-new-chapter. Swedish draft — needs rewriting,
+    not translating. See `docs/fieldreport-nerve-thread-2026-08.md`.
+
 0c. **The evidence ledger — the third gate.** Trust levels gate the *call*,
     approval requests gate the *action*, the evidence ledger gates the
     *claim*. Typed observations priced in one reviewable table

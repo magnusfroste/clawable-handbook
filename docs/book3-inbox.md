@@ -81,3 +81,12 @@ that step.
 
 *(Append below. Newest at the bottom. Nothing here is committed to the book.)*
 
+
+### 2026-08-21 — Kapitelutkast "Att operera med rätt förutsättningar" · **TRIAGED OUT**
+
+Not Book 3: it answers what must be true *before* an operator can run, which is Business
+Edition material (chs 6, 9, 12). Moved with full triage notes to
+`docs/fieldreport-nerve-thread-2026-08.md`. Two open questions there need Magnus:
+client confidentiality, and weave-vs-new-chapter.
+
+*The inbox worked as intended — material arrives here, gets placed, and leaves.*
