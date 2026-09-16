@@ -75,15 +75,19 @@ Chapters 11–15 go deeper — the enterprise-scale picture and business case, w
 
 ## Why I Built This
 
-I have seen this movie before. More than once.
+I have seen this movie before. More than once. The first time, I was the one being told it was a toy.
+
+In 1996, for our undergraduate thesis in economics at Uppsala, a fellow student and I did something the department had not asked for. I had taken a course in neural networks over at the computer science department, and it seemed obvious that a network could learn from a time series the way the econometric models were trying to. So we trained one — at most ten hidden neurons, in Matlab — to forecast Swedish household consumption, set it against the discipline's own linear models, and allowed it only the data that had actually existed at each point in time. The network won. It did not even need the data seasonally adjusted; it learned the seasons by itself.
+
+We were nearly failed for it. The professor's verdict was that neural networks did not belong in economics — brute force, with no explanatory model behind it, and the discipline rested on models that explain. We could not explain how ours worked. Only that it predicted better.
+
+Thirty years later, nobody can fully explain it either. The capability this book is about — reasoning that emerges from training at enormous scale — still cannot be read off its weights. What has changed is not the explanation. It is what we do instead of one: log what the system does, verify the outcome against evidence, and govern its actions rather than pretend to understand its mechanism. That is the answer I did not have in 1996. It is most of what this book is.
 
 In 2003 I was at IP-Only, a Swedish challenger operator, when two open-source projects — Asterisk and SIP Express Router — made it possible to deliver business telephony over the internet. The incumbents called it a toy. We shipped SIP trunking to enterprise customers as the first operator in the market — five to seven years before every operator offered it. Then the same pattern repeated with software-defined networking: we were delivering intelligent, software-based enterprise networks years before the industry had agreed on a name for them.
 
-The pattern is always the same. An open protocol appears and quietly removes the expensive, proprietary part of an industry. The incumbents dismiss it — too immature, too risky, not enterprise-grade. And the organizations that move early build a lead measured in years, because the thing they accumulate — operational experience — cannot be bought later.
-
 I should be honest about what "moving early" actually looks like, because I have paid for that lesson too. In 2010 I started minting digital money on spare servers, for no better reason than that the idea was too interesting to leave untested: what if you could send value the way you send email? It became an expensive education. A hard drive crashed with the coins on it. A trading bot I built spawned thousands of transactions nothing could reconcile. Exchanges disappeared overnight and took their balances with them. I lost the coins. I kept the lesson — because the signal underneath the mess was real, and the world knows today what Bitcoin became. Early is not a visionary on a keynote stage. Early is a crashed disk at two in the morning. **Early costs tuition. Late costs rent. Tuition ends. Rent does not.**
 
-I spent the decades in between at the customer–product–technology interface — startups, scale-ups, and, most recently, large enterprise — scaling digital services across the Nordics: partner programs, product launches, P&L. Enough years across that whole range to know exactly how each of them responds to a shift like this one — and how expensive "let's wait until it matures" turns out to be for the ones that wait.
+The decades in between I spent at the customer–product–technology interface — startups, scale-ups, and, most recently, large enterprise — close enough to each to know exactly how expensive "let's wait until it matures" turns out to be for the ones that wait.
 
 In early 2024 the signal arrived, the way it always does — quietly, and dismissed as a toy. Meta had released its model weights openly, and I downloaded one onto my own Mac. Getting it to run locally was an engineering project back then: compile, convert, quantize, hope. What it did once it ran was not.
 

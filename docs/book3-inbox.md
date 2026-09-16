@@ -90,3 +90,137 @@ Edition material (chs 6, 9, 12). Moved with full triage notes to
 client confidentiality, and weave-vs-new-chapter.
 
 *The inbox worked as intended — material arrives here, gets placed, and leaves.*
+
+### 2026-08-22 — A day of silent half-successes: five findings from the FlowWink fleet
+
+Nine parallel agents, one platform, one day. The findings kept rhyming, and the rhyme
+is probably the chapter.
+
+**1. The error was written for a model. It reached a human.**
+
+An admin asked the in-app agent chat to build a page. The agent proposed it, the human
+approved, and nothing happened. The write had failed fail-closed with an excellent
+message: *"missing required field [title] … Fix the named fields and retry — nothing was
+written."*
+
+That sentence is addressed to a model. And in the platform's own autonomous loop it works
+perfectly — the error comes back as a tool result and the model fixes it on the next turn.
+But the approval gate ends the loop. By the time the write executes, the model has left
+the building. The self-correcting instruction arrived at a person, after the decision,
+in a `<p className="text-xs">`, and vanished on reload.
+
+*Same error. Self-correcting in a loop, terminal behind a gate.*
+
+The fix wasn't a better message — the message was already good. It was moving the
+bounce **in front of** the human, so the model gets its turn back. A gate that a human
+stands in front of must not be the first place reality speaks.
+
+*Ending: verified. The page built on the next attempt.*
+
+**2. Tools versus senses.**
+
+The user asked a sharper question than he knew: how can an external agent (me, in a
+coding harness) build a whole website when the platform's own operator can't — aren't
+they the same skills?
+
+Not the same skills, but that isn't the difference. Four asymmetries, none of them
+intelligence: I read the renderer's source, it reads a *description* of the renderer.
+I re-run and see the error dozens of times a minute, it gets one turn. I hold the whole
+repo, it holds ~25 scored skills. And the one that decides it: **I opened the page in a
+browser and read it. It never sees what it built.**
+
+The agent writes blind. Not a knowledge problem — a *sense* problem.
+
+Which reframes the whole tooling question. A new skill helps the tasks that skill covers.
+A sensor helps everything written after it, including skills not built yet. That is why
+the render sensor belongs among the platform primitives and not inside the operator
+module: senses compound, capabilities don't.
+
+*Ending: unverified. Sensor is being built as this is written.*
+
+**3. A textual rewrite can only correct policies that already express a thought.**
+
+Two previous sweeps had moved every access policy onto the role matrix. Both missed nine
+tables in the same family — including one where a customer portal account could read a
+competitor's entire signed contract, token included.
+
+The sweeps worked by searching for `is_staff(auth.uid())` and substituting the matrix
+call. A policy whose entire expression is `true` contains nothing to substitute. It
+passed untouched, twice.
+
+The sweep didn't fail. It measured the wrong population — it corrected every policy that
+already had an opinion, and was structurally blind to the ones that had none.
+
+Generalizes past SQL: when you roll a fix out broadly, the question is not *did the sweep
+cover everything*. It is **what can this sweep not see**. Ask it before, not after.
+
+Corollary from the same day: the rule adopted after the *previous* incident —
+"revoke execute from PUBLIC on every new function" — turned out to be necessary and not
+sufficient. The platform's default privileges grant the anonymous role execute on every
+new function at creation. Revoking PUBLIC removes the world entry and leaves the explicit
+one standing. **The function is born reachable while the migration reads as if it isn't.**
+A hardening rule that reads as closed and isn't is worse than no rule, because it stops
+people looking.
+
+*Ending: verified. Negative-tested with live tokens on two instances.*
+
+**4. We taught it grammar, not writing.**
+
+Once the agent could write pages correctly, it wrote bad ones: six blocks, two of them
+raw prose, no visual element anywhere. Good sentences, wrong artifact.
+
+Everything we had given it was about correctness — which types exist, which fields are
+required, what the naming convention is. Nothing said what *good* looks like. It thought
+the job was to write, when the job was to build.
+
+The instructive part is what fixed it. Not design advice — a **measurement of the house's
+own corpus**. Across eleven shipped templates: 70 hand-built pages, 444 blocks. Plain
+prose blocks are 2.9% of everything. Fifty-seven of seventy pages contain none. *Not one
+page anywhere contains two* — the agent's page used two of six. And ten of the thirteen
+prose blocks are the entire page: privacy policy, terms of service. Prose is what a legal
+document is made of, not what a landing page is made of.
+
+So the agent hadn't made a thin landing page. It had made a page in the wrong *genre*,
+and about eight blocks too short.
+
+The guidance that came out of that is not "add variety". It is: *if you have written a
+paragraph and cannot name which structured block it belongs in, the paragraph has the
+wrong shape.* Derived from the artifact, not from taste.
+
+What was deliberately refused is as interesting: no canned skeleton, no
+"landing page = hero > stats > features". That would be a hardcoded template wearing
+metadata's clothes, and every page would come out identical. Name the smell, not the
+recipe.
+
+*Ending: partially verified. The guidance is measured; whether it produces better pages
+is not yet observed.*
+
+**5. Evidence that maintains itself.**
+
+The guardrail protecting finding 4 doesn't grep for the phrasing. It **re-counts the
+corpus** and asserts that the numbers quoted in the guidance still match reality. Change
+the templates and the claim stops being true — and the test says so, on the spot.
+
+Set that beside the same day's other finding: a UI banner rendering a live countdown to
+"every day at 06:00", computed client-side from a hardcoded hour. The real schedule was
+05:30 in one place and 04:00 in another. The countdown was ticking down to a time that
+existed nowhere.
+
+Two ways to state a fact about a system. One decays silently and keeps looking confident.
+The other fails loudly the moment it stops being true. The difference is not accuracy at
+the time of writing — both were accurate once. It's whether the claim is **wired to the
+thing it claims about**.
+
+*Ending: verified.*
+
+**The rhyme.** Every one of these is the same shape: the mechanism was present and the
+truth underneath it had moved. A guard whose expression is `true` but whose *name* is
+`voicemail_admin_read`. A signature hash computed over an empty line list, under a
+certificate stating that a matching hash proves the document unaltered. A skill-sync that
+answers "unchanged" because it compared the artifact's checksum instead of the database's
+contents, while 251 skills were missing. A revoke that reads as a locked door.
+
+None of these are bugs of *action*. They are bugs of *report*. The system did something
+and then described it wrongly — to a user, to an operator, to the next engineer, or to
+itself. And a system that reports wrongly to itself cannot learn, which is the part that
+should worry an autonomy book most.
