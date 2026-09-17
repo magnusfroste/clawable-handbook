@@ -23,20 +23,11 @@ That work is made possible by two partners who don't just fund the project, but 
 
 > *"Liteit tar ledarskapet till nästa nivå — den digitala medarbetaren är här."*
 
-LiteIT is a Swedish consulting and transformation firm with an unusual thesis: the next frontier of leadership is not managing people better — it's knowing how to lead **digital employees** alongside human ones.
+LiteIT is a Swedish consulting and transformation firm with an unusual thesis: the next frontier of leadership is not managing people better — it is knowing how to lead **digital employees** alongside human ones.
 
-The company has deep roots in leadership development. Long before agentic AI existed, LiteIT was training managers in group dynamics and self-leadership. That background now shapes a very specific product offer: helping organizations implement autonomous agents not as IT projects, but as a **leadership transformation**.
+The firm has deep roots in leadership development; long before agentic AI existed, it trained managers in group dynamics and self-leadership. That background shapes how it approaches agents — not as an IT project but as a leadership transformation, built on open-source software that runs on the organization's own data.
 
-Their platform is **AgentHotel** (formerly ClawClass) — the same infrastructure described in chapter 33 of this handbook. On top of it, LiteIT builds what they call a *digital company*: AI agents with goals, memory, and the ability to learn, working autonomously across processes from first customer contact through quote, delivery, and follow-up. The organisation's "digital employees" are OpenClaw instances, each with a soul, an identity, and a mandate. Paperclip sits on top as the orchestrating layer — the CEO that delegates.
-
-**What LiteIT offers:**
-
-- **Autonomous agents** — implement digital employees powered by OpenClaw technology, working toward their own goals, remembering context, and self-improving over time
-- **Consulting** — specialists in product development, process management, and digital transformation, from strategy through implementation
-- **Human + AI leadership** — guidance on role division and accountability between human leaders and digital agents, so technology and leadership reinforce each other rather than conflict
-- **Process efficiency** — identifying where the potential is greatest, then removing unnecessary work through automation
-
-This aligns closely with the "Agent Manager" role HBR described in February 2026 — moving from concept to operational practice in client organizations.
+Two of the tools it works with appear in this handbook. **FlowWink** is the process layer, where agents in different roles can run and simulate a business's flows autonomously. **AgentHotel** (chapter 33) is how a fleet of those agents gets set up and operated. Both are open source, and neither requires LiteIT to use.
 
 **→ [liteit.se](https://www.liteit.se)**
 
