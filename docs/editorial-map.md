@@ -143,7 +143,7 @@ chapter must state which problem it solves.
 | Operations | 20–25 | "How does it improve — and decay?" | Feedback loops, stagnation & drift, HITL, governance, management, production patterns |
 | Federation | 26–28 | "How do agents work together?" | A2A/MCP/OpenResponses, agent-driven development, bounded QA |
 | Hardening | 29–32 | "How does it not blow up?" | Security, testing, resilience, hallucination recovery |
-| Scale | 33–34 | "How do I run many, and give them eyes?" | ClawClass swarms, browser operator |
+| Scale | 33–34 | "How do I run many, and give them eyes?" | AgentHotel fleets, browser operator |
 | Trajectory | 35–37 | "Where next?" | Control-plane filter, closing, partners |
 
 **How we answer (method):**

@@ -86,7 +86,7 @@ cutoff (ch 7), BCG AI at Work 2026 (chs 11, 15), all-four-payment-giants
    drift) held, sidebar at most. Await days 2–10 before weaving.
 1. **Sierra's monolith counterargument** — "if you want a multi-agent
    system so each team can own an agent, you're shipping your org chart."
-   The builder track (ch 33 ClawClass) presents swarms without this
+   The builder track (ch 33 AgentHotel) presents swarms without this
    counterweight; adding the tension makes the swarm argument stronger.
    Also: outcome-based pricing for high-value agent work.
 2. **The verification funnel / evaluation gap** (MIT Sloan/Demirer via FT

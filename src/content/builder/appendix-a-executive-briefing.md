@@ -76,14 +76,14 @@ Apply the soul + heartbeat + skill architecture to a self-hosted business platfo
 - Skills cover every business-critical operation (lead qualify, invoice approve, content publish)
 - Agent runs the platform autonomously; human sets direction via objectives
 
-### 3. Role-Based Swarm (ClawClass)
+### 3. Agent Fleet (AgentHotel)
 
 Multiple specialist agents as services on shared infrastructure:
 
 - One agent per role: QA Claw, Dev Claw, Research Claw, Support Claw
 - Each has isolated `SOUL.md` / `AGENTS.md` and scoped skill set
-- ClawClass provisions containers, TLS, routing, A2A wiring
-- Delegation via `/v1/responses` (top-down) and A2A (peer-to-peer)
+- AgentHotel provisions containers, TLS, routing and per-agent resource caps — for Hermes, OpenClaw or any Docker image
+- Delegation via MCP (`ask_agent`), `/v1/responses` (top-down) or A2A (peer-to-peer)
 - **Key principle:** one agent per role, not one model doing everything
 
 ### 4. Orchestrated Fleet (Paperclip)

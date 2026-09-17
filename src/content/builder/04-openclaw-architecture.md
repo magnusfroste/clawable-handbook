@@ -434,7 +434,7 @@ The rest of this handbook turns the reference model into concrete, copyable patt
 
 - **Specialist QA Claw for your product** — a stock OpenClaw auditing your system over `/v1/responses`; chapter 3 shows it running in production.
 - **Agentic CMS/CRM (the FlowPilot pattern)** — soul, heartbeat, skills, and memory applied to a business platform; Part 2 above and the Flowwink chapters that follow.
-- **Role-based swarms** — multiple specialist Claws provisioned and routed as one workforce; the ClawClass chapter.
+- **Agent fleets** — multiple specialist agents, on any runtime, hosted and delegated to as one workforce; the AgentHotel chapter.
 - **Company-level orchestration** — Claws as employees, an orchestration layer (Paperclip) as the company setting objectives, budgets, and governance.
 - **Secure perimeter and governance** — sandboxing, scanning, and audit layers around the agent; chapter 6 maps the ecosystem, chapter 18 the failure modes.
 

@@ -69,7 +69,7 @@ No API key needed. Tools: `list_chapters`, `read_chapter`, `search_handbook`. Ev
 |---------|-----------|
 | [OpenClaw](https://github.com/openclaw/openclaw) | The reference operator framework (346k+ stars) |
 | [FlowWink](https://github.com/magnusfroste/flowwink) | The SaaS ERP platform used as test environment |
-| [ClawClass](https://github.com/magnusfroste/clawclass) | Self-hosted OpenClaw swarm infrastructure |
+| [AgentHotel](https://github.com/magnusfroste/agenthotel) | Self-hosted control panel for running a fleet of AI agents (Hermes, OpenClaw, Odysseus, any Docker image) — formerly ClawClass |
 | [Lovable](https://lovable.dev) | The platform FlowWink was built with |
 
 ---

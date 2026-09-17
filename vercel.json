@@ -1,0 +1,7 @@
+{
+  "redirects": [
+    { "source": "/builder/33-clawclass", "destination": "/builder/33-agenthotel", "permanent": true },
+    { "source": "/builder/33-clawclass/", "destination": "/builder/33-agenthotel", "permanent": true },
+    { "source": "/raw/builder/33-clawclass.md", "destination": "/raw/builder/33-agenthotel.md", "permanent": true }
+  ]
+}

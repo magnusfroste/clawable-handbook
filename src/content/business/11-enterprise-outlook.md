@@ -278,7 +278,7 @@ After four days: 24 leads, four closed deals worth 860,000 SEK in ARR, six invoi
 
 The monthly cost of the thing that did this is the right-hand column above.
 
-> *Evidence note.* The cost table above is `partial` — the operator column reflects observed ClawClass deployment costs; the human column uses public European salary data. Individual business results will vary. The 2027 and 2028 market claims that open and close this chapter are `hypothesis` — directional forecasts anchored to McKinsey's agentic-organization framing and the Agent Manager trajectory, not observed outcomes.
+> *Evidence note.* The cost table above is `partial` — the operator column reflects observed ClawClass (today AgentHotel) deployment costs; the human column uses public European salary data. Individual business results will vary. The 2027 and 2028 market claims that open and close this chapter are `hypothesis` — directional forecasts anchored to McKinsey's agentic-organization framing and the Agent Manager trajectory, not observed outcomes.
 
 ---
 
