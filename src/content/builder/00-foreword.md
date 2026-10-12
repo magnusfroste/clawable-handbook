@@ -145,3 +145,7 @@ How large is the opportunity for those who actually understand how it works?
 
 > **How to read this:**
 > Start with chapters 1–4 for conceptual grounding. Jump to chapters 5 and 5b (the Control Plane and the Harness) if you're a builder who wants the architecture fast — 5b maps the whole machine in eleven components. Read chapter 23 (Governance) if you're a manager or Agent Manager. Read chapter 27 (Agent-Driven Development) if you want to understand how agents improve agents. Read all of it if you want the full picture — it's written as a coherent argument, not just a reference.
+
+---
+
+*Next: [What Is Agentic AI? →](/builder/01-introduction)*

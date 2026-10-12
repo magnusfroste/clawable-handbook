@@ -13,6 +13,8 @@ icon: "book-open"
 - **Agent-readable:** this handbook practices what it preaches — it can be read by AI agents, not just people. If you run one, the one-line connect instruction is on the front page of [clawable.org](https://www.clawable.org)
 - **Companion volume:** *The Agentic AI Handbook (Builder Edition)* — architecture, skills, memory, governance internals for teams building their own agentic platform
 
+> **In a hurry? Start with the proof.** Chapter three is the logged April 19 sweep: an agent nobody prompted went through a live business and surfaced over €1 million in exposure — 44 seconds to the first finding. Read [Live Proof](/business/03-live-proof) first, then come back here for why it works and what to do about it.
+
 ---
 
 ## What This Book Is
@@ -113,3 +115,7 @@ When you have seen the pattern enough times, you recognize the window while it i
 *The platform is self-hosted, open source, and available at [github.com/magnusfroste/flowwink](https://github.com/magnusfroste/flowwink).*
 
 *The claw is the law.*
+
+---
+
+*Next: [The Second Digital Acceleration →](/business/01-the-awakening)*
