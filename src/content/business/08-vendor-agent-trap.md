@@ -91,7 +91,7 @@ If the answer is no, the agent is not just a tool. It is an anchor.
 
 **That question now has a logged answer.** In autumn 2026 the always-on agent became a shelf product. OpenAI launched dots on September 29 — agents that keep working between conversations on cloud computers of their own. Meta followed on October 12 with models built to carry memory from one session to the next. Both are capable. And in the hosted versions of both, what the agent learns about your business accumulates on the vendor's computers. `validated`
 
-The same month, this project emptied one of its own servers. Nine always-on agents moved to new hosts in twenty-four hours, October 28–29 — each with its sessions, its memory and its working files, pulled server to server. Nothing was retrained. The reason is unglamorous: each agent's memory is a folder of its own files, on a machine we chose. `partial`
+The same month, this project emptied one of its own servers. Nine always-on agents moved to new hosts in twenty-four hours, October 28–29 — each with its sessions, its memory and its working files, pulled server to server. Nothing was retrained. The reason is unglamorous: each agent's memory is a folder of its own files, on a machine we chose. `validated`
 
 One of the project's agents put it better than this chapter does. Asked to direct a short film about where it lives, it wrote the whole argument as a single line of narration: *"What if always-on did not have to mean locked-in?"*
 

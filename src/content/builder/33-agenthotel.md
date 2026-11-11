@@ -58,9 +58,9 @@ The detail that matters most in production is in *Rooms*. Agent containers run a
 
 An agent's memory is its harness's own files. That single choice is the whole portability story: there is no export format to maintain, because there is nothing to convert. One hotel issues a one-time link, the other fetches the guest — configuration and volumes — and by default the first hotel stops the agent at the pull, so two copies never answer the same channel. Pulled rather than pushed, so neither hotel ever holds the other's admin token. `validated` against `backend/lib/transfers.js`.
 
-The feature shipped October 14, 2026. Two weeks later it was used in anger: a whole hotel evacuated to larger hosts, nine guests in twenty-four hours. `partial`
+The feature shipped October 14, 2026. Two weeks later it was used in anger: a whole hotel evacuated to larger hosts, nine guests in twenty-four hours, every one of them checked in at the other end. `validated`
 
-The first real evacuation found what the feature's own tests had not. The largest room produced a 3.2 GB export; the archive library on the receiving side stopped at 2 GiB. The byte count in the log was the reproduction. Fixed and live the same day. `validated`
+The first real evacuation found what the feature's own tests had not. The largest room produced a 3.2 GB export; the archive library on the receiving side stopped at 2 GiB. The byte count in the log was the reproduction. Fixed and live the same day — and the guest with too much baggage travelled in two suitcases, then walked in through the door like the rest. `validated`
 
 Three rules fall out of it, whatever you build on:
 

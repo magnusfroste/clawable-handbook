@@ -160,7 +160,7 @@ All major claims in this handbook are sourced. This appendix lists primary sourc
 |-------|--------|--------|
 | Move to another hotel: one-time ticket, pulled server to server, agent stopped at the pull by default; shipped October 14, 2026 | [`backend/lib/transfers.js`](https://github.com/magnusfroste/agenthotel/blob/main/backend/lib/transfers.js), commit `cbabf61` | `validated` |
 | A 3.2 GB export failed on a 2 GiB archive limit at import; fixed October 29, 2026 | [agenthotel #18](https://github.com/magnusfroste/agenthotel/pull/18) — "an export over 2 GiB can be imported" | `validated` |
-| A whole hotel evacuated: nine guests in twenty-four hours, October 28–29, 2026 | The sending hotel's event ledger; receiving-side confirmation for the largest guest pending | `partial` |
+| A whole hotel evacuated: nine guests in twenty-four hours, October 28–29, 2026 | The sending hotel's event ledger; arrival of all nine confirmed by the author, November 11, 2026 — the largest guest's data was split in two for the move | `validated` |
 
 ---
 
