@@ -232,6 +232,17 @@ All findings attributed to Clawable operating FlowWink live can be cross-checked
 
 ---
 
+## The Always-On Agent Products and the Exit Test (Ch 8)
+
+| Claim | Source | Status |
+|-------|--------|--------|
+| OpenAI launched dots at DevDay, September 29, 2026: agents that keep working between conversations on cloud computers of their own | [TechCrunch](https://techcrunch.com/2026/09/29/openai-launches-dots-its-bubbly-agentic-avatar/); [Quartz](https://qz.com/openai-dots-always-on-ai-agents-chatgpt-092926); [BetaNews](https://betanews.com/article/openai-dots-agents-chatgpt/) | `validated` |
+| Meta released Muse Wonder on October 12, 2026, with Active Memory carrying context across sessions | [Meta research blog](https://research.meta.ai/blog/muse-wonder) | `validated` |
+| Nine always-on agents moved from one AgentHotel to new hosts, October 28–29, 2026, each with sessions, memory and workspace files | The sending hotel's event ledger (every agent logged as pulled "with its data"); the receiving hosts' confirmation for the largest guest is not yet read into this registry | `partial` |
+| "What if always-on did not have to mean locked-in?" | Narration of *AgentHotel: A Home for Always-On AI Agents* (75 s, October 28, 2026), storyboard written by the project's Hermes agent — [take.clawable.org](https://take.clawable.org/watch/d7c8138937484761be025e323a49a7ec) | `validated` |
+
+---
+
 ## Evidence Discipline
 
 If a chapter makes a claim and it is not traceable to a row in this appendix or a SIM log, the claim is either:

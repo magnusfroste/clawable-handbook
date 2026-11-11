@@ -10,6 +10,14 @@ appendix: true
 
 ---
 
+## November 2026 Edition
+
+**The exit edition.** Always-on agents became a shelf product this autumn. The handbook did not add a market tour — it added the one question that outlasts the product names, and the day this project answered it on its own servers.
+
+- **Where the folder is** (Business ch 8): the chapter already asked what happens when you need to switch platforms. It now has a logged answer. The always-on agent arrived as a product from the largest vendors in September and October — and the same month, this project emptied one of its own servers, moving nine always-on agents to new hosts in twenty-four hours with their memory intact. The chapter's test is rewritten around that: not how capable the agent is, but where its memory lives and whether it can leave. One of the project's agents supplied the line that carries it, from a film it directed about its own hosting.
+- **Moving Hotels** (Builder ch 33): a new section on portability as a design property rather than a promise. How an agent moves between two AgentHotel instances, checked against the code; the evacuation that tested it for real; the one limit the largest guest found, fixed the same day; and three rules that hold whatever you build on. The hotel table gains its missing row: check out.
+- **No September or October edition.** The handbook was patched, not re-issued, in those months — the October 12 foreword patch is logged under August, where it was made. The dates on the covers now say what is true.
+
 ## August 2026 Edition
 
 **The harness edition.** The industry settled on a word for what this handbook has argued since the first edition — and the reference platform mapped its own, component by component. Both landed in the book the same month.

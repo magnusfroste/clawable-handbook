@@ -45,11 +45,30 @@ The metaphor is not decoration. It is how the panel is built:
 | **Rooms** | Each agent runs capped at its own RAM and CPU, so no guest starves the others — or the hotel. |
 | **No vacancy** | The panel warns you before you overbook the host, not after. |
 | **Guests remember** | Sessions, memory and workspace files live in volumes that survive restarts and redeploys. |
+| **Check out** | One hotel issues a one-time link; another pulls the agent from it, server to server — memory included. |
 | **Room keys** | Provider API keys are configured once and injected into the agents that need them. |
 | **Housekeeping** | Unused images and build cache are reclaimed on a schedule; agent data never is. |
 | **The ledger** | Health, uptime, resource use and events — in the UI or over MCP. |
 
 The detail that matters most in production is in *Rooms*. Agent containers run at low CPU priority and are first in line if the host runs out of memory; the panel's own containers sit at the opposite end of both. Priority only bites under saturation, so agents still use all the idle capacity they want — but when the host is under pressure, the kernel sacrifices a guest before it sacrifices the front desk. The panel stays reachable, so you can always stop whatever is misbehaving. `validated` against the repository's container configuration.
+
+---
+
+## Moving Hotels
+
+An agent's memory is its harness's own files. That single choice is the whole portability story: there is no export format to maintain, because there is nothing to convert. One hotel issues a one-time link, the other fetches the guest — configuration and volumes — and by default the first hotel stops the agent at the pull, so two copies never answer the same channel. Pulled rather than pushed, so neither hotel ever holds the other's admin token. `validated` against `backend/lib/transfers.js`.
+
+The feature shipped October 14, 2026. Two weeks later it was used in anger: a whole hotel evacuated to larger hosts, nine guests in twenty-four hours. `partial`
+
+The first real evacuation found what the feature's own tests had not. The largest room produced a 3.2 GB export; the archive library on the receiving side stopped at 2 GiB. The byte count in the log was the reproduction. Fixed and live the same day. `validated`
+
+Three rules fall out of it, whatever you build on:
+
+1. **Keep agent state in the harness's own files, in volumes — never in the panel's database.** State the host owns is state that cannot leave.
+2. **Make the move a pull against a one-time ticket.** No host ever holds another host's credentials.
+3. **Rehearse the exit with your largest guest, not your smallest.** Limits live at the top of the size range.
+
+This is the builder's half of an argument the Business Edition makes in [chapter 8](/business/08-vendor-agent-trap): an always-on agent lives somewhere, and the decision that lasts is whether it can leave.
 
 ---
 
