@@ -16,6 +16,13 @@ function stripSlug(id: string): string {
   return id.replace(/\.md$/, '');
 }
 
+function chapterLabel(id: string): string {
+  const m = stripSlug(id).match(/^(\d+)([a-z]?)-/);
+  if (!m) return '';
+  const n = parseInt(m[1], 10);
+  return n === 0 ? 'Start here' : `Chapter ${n}${m[2]}`;
+}
+
 const icons: Record<string, string> = {
   'document-text': '📄',
   'sparkles': '✨',
@@ -72,7 +79,7 @@ const structuredData = {
   <Nav edition="business" />
   <main>
     <!-- Hero -->
-    <section class="relative pt-32 pb-20 overflow-hidden">
+    <section class="relative pt-24 md:pt-32 pb-20 overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-b from-biz-500/5 via-transparent to-transparent pointer-events-none" />
       <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-biz-500/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -83,22 +90,18 @@ const structuredData = {
             Business Edition &middot; For C-level Leaders &middot; November 2026
           </div>
 
-          <h1 class="text-5xl md:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6">
+          <h1 class="text-4xl md:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6">
             The Agentic AI<br />
             <span class="bg-gradient-to-r from-biz-400 to-biz-600 bg-clip-text text-transparent">Business Edition</span>
           </h1>
 
           <p class="text-xl md:text-2xl text-white leading-relaxed mb-4 max-w-2xl">
-            Your competitor is not planning to hire more salespeople.<br />
-            <strong class="bg-gradient-to-r from-biz-400 to-biz-600 bg-clip-text text-transparent">They are deploying an autonomous operator.</strong>
+            On April 19, 2026, an agent nobody prompted went through a live business.<br />
+            <strong class="bg-gradient-to-r from-biz-400 to-biz-600 bg-clip-text text-transparent">It surfaced over €1.1 million in exposure. First finding: 44 seconds.</strong>
           </p>
 
-          <p class="text-base md:text-lg text-dark-400 leading-relaxed mb-4 max-w-2xl">
-            This is not a prediction. It is a report on what has already happened — logged, timestamped, and verifiable against a production B2B SaaS platform.
-          </p>
-
-          <p class="text-base md:text-lg text-dark-400 leading-relaxed mb-10 max-w-2xl">
-            On April 19, 2026, an autonomous operator surfaced over <strong class="text-white">€1.1 million in risk, revenue, and operational exposure</strong> from a single unprompted pass across a live ERP. No checklist. No target. One instruction.
+          <p class="text-base md:text-lg text-dark-400 leading-relaxed mb-8 max-w-2xl">
+            This is not a prediction. It is a report on what has already happened — logged, timestamped, and verifiable against a production B2B SaaS platform. No checklist. No target. No prompt beyond its standing objectives.
           </p>
 
           <div class="flex flex-wrap gap-4">
@@ -149,10 +152,10 @@ const structuredData = {
             <div class="text-white text-base font-medium mb-1">Evidence &amp; Economics</div>
             <div class="text-sm text-dark-400">Live Proof → The Contract Layer → Superpowers → SaaS Agent-Ready (chapters 3–4, 12)</div>
           </a>
-          <a href="/business/06-choose-operator" class="group rounded-xl bg-dark-900/30 border border-dark-800/50 hover:border-biz-500/30 p-5 transition-all">
+          <a href="/business/07-choose-operator" class="group rounded-xl bg-dark-900/30 border border-dark-800/50 hover:border-biz-500/30 p-5 transition-all">
             <div class="text-biz-400 text-sm font-semibold mb-2">Agent Manager</div>
             <div class="text-white text-base font-medium mb-1">Operations &amp; Governance</div>
-            <div class="text-sm text-dark-400">Choose Operator → Why Programs Fail → External/Hybrid → Enterprise Outlook → The CFO Case (chapters 6–11b)</div>
+            <div class="text-sm text-dark-400">Choose Operator → Why Programs Fail → External/Hybrid → Enterprise Outlook → The CFO Case (chapters 7–11b)</div>
           </a>
           <a href="/business/12-making-saas-agent-ready" class="group rounded-xl bg-dark-900/30 border border-dark-800/50 hover:border-biz-500/30 p-5 transition-all">
             <div class="text-biz-400 text-sm font-semibold mb-2">CPO / SaaS Leader</div>
@@ -187,7 +190,7 @@ const structuredData = {
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </div>
-              <div class="mb-1 font-mono text-xs text-dark-600">{stripSlug(chapter.id)}</div>
+              <div class="mb-1 text-xs font-medium uppercase tracking-wide text-dark-600">{chapterLabel(chapter.id)}</div>
               <h3 class="text-base font-semibold text-white group-hover:text-biz-300 transition-colors mb-1">
                 {chapter.data.title}
               </h3>

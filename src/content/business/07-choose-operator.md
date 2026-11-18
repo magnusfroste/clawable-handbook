@@ -1,6 +1,6 @@
 ---
 title: "Choose Your Operator"
-description: "Build it yourself, buy a proprietary platform, or use the open-source framework the market has converged on — and how to think about the trade-off."
+description: "Build it yourself, buy a proprietary platform, or run an open runtime you own — and how to think about the trade-off."
 order: 7
 icon: "compass"
 ---

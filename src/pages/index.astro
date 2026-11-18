@@ -35,32 +35,42 @@ const structuredData = [
   <Nav />
   <main>
     <!-- Umbrella Hero -->
-    <section class="relative pt-32 pb-20 overflow-hidden">
+    <section class="relative pt-24 md:pt-32 pb-20 overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-b from-white/2 via-transparent to-transparent pointer-events-none" />
       <div class="absolute top-20 left-1/4 w-[600px] h-[600px] bg-biz-500/4 rounded-full blur-3xl pointer-events-none" />
       <div class="absolute top-20 right-1/4 w-[600px] h-[600px] bg-claw-500/4 rounded-full blur-3xl pointer-events-none" />
 
       <div class="relative max-w-6xl mx-auto px-6 text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-dark-300 text-sm font-medium mb-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-dark-300 text-sm font-medium mb-6 md:mb-8">
           <span class="w-2 h-2 rounded-full bg-white/40 animate-pulse" />
           Open Source &middot; Free Forever &middot; Updated November 2026
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6">
+        <h1 class="text-4xl md:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6">
           The Agentic AI<br />
           <span class="bg-gradient-to-r from-biz-400 via-white to-claw-400 bg-clip-text text-transparent">Handbook</span>
         </h1>
 
-        <p class="text-xl md:text-2xl text-dark-300 leading-relaxed mb-4 max-w-2xl mx-auto">
-          The open-source field report on autonomous agents — built for the leaders who need to decide, the builders who need to ship, and the operators who are asking what comes next.
+        <p class="text-xl md:text-2xl text-dark-300 leading-relaxed mb-6 max-w-2xl mx-auto">
+          On April 19, 2026, an agent nobody prompted went through a live business and surfaced over <strong class="text-white">€1.1 million in exposure</strong>. First finding: 44 seconds.
         </p>
 
+        <div class="flex flex-wrap justify-center gap-3 mb-6">
+          <a href="/business/03-live-proof" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-biz-500 hover:bg-biz-600 text-white font-semibold transition-colors">
+            Read the proof
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="#editions" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-dark-800 hover:bg-dark-700 text-white font-semibold transition-colors border border-dark-700">
+            Choose your edition
+          </a>
+        </div>
+
         <p class="text-base text-dark-500 mb-16 max-w-xl mx-auto">
-          One event in January 2026 changed the architecture of every business running on SaaS. Three handbooks map what happened, how to build it, and what operators learn when they run long enough.
+          The open-source field report on autonomous agents: what happened, why it works, and how to build it — logged, evidence-tagged, and free.
         </p>
 
         <!-- Edition cards -->
-        <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div id="editions" class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto scroll-mt-24">
           <!-- Business Edition -->
           <a href="/business" class="group relative rounded-2xl overflow-hidden border border-biz-500/20 hover:border-biz-500/50 bg-gradient-to-br from-dark-900/80 to-biz-950/30 hover:from-dark-900/60 hover:to-biz-950/50 transition-all duration-300 p-8 text-left">
             <div class="absolute inset-0 bg-gradient-to-br from-biz-500/5 to-transparent pointer-events-none" />
@@ -74,7 +84,7 @@ const structuredData = [
                 Business Edition
               </h2>
               <p class="text-dark-400 leading-relaxed mb-6 text-sm">
-                An evidence-based field report — not a pitch. What autonomous agents are doing to business operating systems right now, proven in production with real numbers and timestamps. Built for CEOs, CFOs, and CPOs who need to understand what just changed and whether to move in 2026.
+                An evidence-based field report — not a pitch. What autonomous agents are doing to business operating systems right now, proven in production with real numbers and timestamps. Built for CEOs, CFOs, and CPOs who need to understand what just changed and what to do about it.
               </p>
 
               <div class="grid grid-cols-3 gap-3 mb-6">
@@ -144,7 +154,7 @@ const structuredData = [
             <div class="absolute top-4 right-4">
               <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-learn-500/10 border border-learn-500/20 text-learn-400 text-xs font-medium">
                 <span class="w-1.5 h-1.5 rounded-full bg-learn-400 animate-pulse" />
-                Coming Autumn 2026
+                In research
               </span>
             </div>
             <div class="relative">
@@ -162,16 +172,16 @@ const structuredData = [
 
               <div class="grid grid-cols-3 gap-3 mb-6">
                 <div class="rounded-lg bg-learn-500/8 border border-learn-500/10 p-3">
-                  <div class="text-lg font-bold text-dark-400">144k</div>
-                  <div class="text-xs text-dark-600">Hermes stars</div>
+                  <div class="text-lg font-bold text-dark-400">Hermes</div>
+                  <div class="text-xs text-dark-600">Open runtime</div>
                 </div>
                 <div class="rounded-lg bg-learn-500/8 border border-learn-500/10 p-3">
                   <div class="text-lg font-bold text-dark-400">Learning</div>
                   <div class="text-xs text-dark-600">Built-in loop</div>
                 </div>
                 <div class="rounded-lg bg-learn-500/8 border border-learn-500/10 p-3">
-                   <div class="text-lg font-bold text-dark-400">Aut 2026</div>
-                   <div class="text-xs text-dark-600">Publication</div>
+                   <div class="text-lg font-bold text-dark-400">In research</div>
+                   <div class="text-xs text-dark-600">Status</div>
                 </div>
               </div>
 
@@ -190,10 +200,10 @@ const structuredData = [
       <div class="max-w-4xl mx-auto px-6 text-center">
         <p class="text-dark-500 text-sm uppercase tracking-widest font-medium mb-6">What happened in January 2026</p>
         <p class="text-xl md:text-2xl text-dark-300 leading-relaxed mb-8 max-w-2xl mx-auto">
-          An Austrian developer pushed three text files to GitHub. In six weeks it passed 346,000 stars. Jensen Huang called it the operating system for personal AI. OpenAI adopted the protocol within months.
+          An Austrian developer pushed three text files to GitHub. In six weeks it passed 346,000 stars. OpenAI adopted the protocol within months.
         </p>
         <p class="text-dark-400 leading-relaxed max-w-2xl mx-auto">
-           Any SaaS platform that exposes MCP can now be operated autonomously by an agent. Not with months of custom integration. With a standard protocol and a configuration file. The Business Edition explains what that means for your company. The Builder Edition explains how to build it. The third handbook — coming Autumn 2026 — documents what the operator learns from live Business Operating System simulations running right now.
+           Any SaaS platform that exposes MCP can now be operated autonomously by an agent. Not with months of custom integration. With a standard protocol and a configuration file. The Business Edition explains what that means for your company. The Builder Edition explains how to build it. The third handbook, now in research, will document what the operator learns once it has been running long enough.
         </p>
       </div>
     </section>
