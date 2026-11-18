@@ -11,7 +11,7 @@ OpenClaw's April 2026 release introduced nested scoping and cross-agent routing 
 
 This is not a roadmap item. It is code in beta, running in production deployments. The infrastructure for agent-to-agent federation exists. What does not exist yet, for most businesses, is the foundation layer that federation requires: a business that has its own autonomous operator, connected to its own systems, operating with enough stability and context to be a reliable participant in a federated network.
 
-The businesses building that foundation layer in 2026 will be the ones positioned to participate in federation when it becomes standard. The businesses that haven't started will need to build the foundation at exactly the moment when the ecosystem has moved on to the layer above it.
+The businesses building that foundation layer now will be the ones positioned to participate in federation when it becomes standard. The businesses that haven't started will need to build the foundation at exactly the moment when the ecosystem has moved on to the layer above it.
 
 ---
 
@@ -41,7 +41,7 @@ A sales agent in your business receives a lead. It qualifies the lead and create
 
 None of this requires a human to initiate the coordination. The agents are already running. The protocols for communication between them already exist. The trust infrastructure — authentication, scope management, audit logging — is already being built into MCP and A2A.
 
-The missing piece is the same one this chapter opened with — a foundation stable enough to be trusted in a network. Building it is the work of 2026. Participating is the opportunity of 2028.
+The missing piece is the same one this chapter opened with — a foundation stable enough to be trusted in a network. Building it is this year's work. Participating is the opportunity that follows.
 
 ---
 
@@ -53,7 +53,7 @@ The market found a name for this in mid-2026. Satya Nadella, in a post on the fu
 
 This distinction matters for how you measure early deployments. Before an agent has operated long enough to have context — before the workflows are tuned, before the edge cases have been surfaced and handled — output metrics will be noisy. Usage and adoption are the leading indicators. An agent that is actively running, being reviewed, and being corrected is building toward measurable return. An agent that has been deployed but not actively managed is not.
 
-The organizations that will lead in 2028 are not the ones that deployed the most capable agent in 2026. They are the ones that operated it most consistently — building the longitudinal picture of their business, cycle after cycle. That picture is the return.
+The organizations that will lead are not the ones that deployed the most capable agent first. They are the ones that operated it most consistently — building the longitudinal picture of their business, cycle after cycle. That picture is the return.
 
 ---
 
@@ -71,7 +71,7 @@ Two implications deserve the leadership table now, not in 2029:
 
 **The laggard inversion.** The companies that never completed the cloud journey — still on legacy installations, systems that could never go multi-tenant without ripping out their heart — have spent a decade being told they are behind. In a post-SaaS direction, their position quietly inverts: no SaaS contracts to unwind, no per-seat dependencies, data already inside their own perimeter. Like the markets that skipped landlines and went straight to mobile, the stragglers may skip the era everyone else has to exit. Their lag is becoming optionality. `hypothesis`
 
-**The renewal as a bet.** This is not an IT question, because the decisions that price this direction are made in commercial contracts, not in architecture reviews. Every multi-year SaaS renewal signed in 2026 is a wager that the application still earns its subscription in 2030. The leadership moves that keep the option open cost almost nothing: shorter renewal terms, data-exit clauses as standard, process definitions written as files you own regardless of platform — they migrate; the app does not — and one post-SaaS pilot in one domain: a data layer, an operator, and peepholes. Not rip-and-replace. Optionality.
+**The renewal as a bet.** This is not an IT question, because the decisions that price this direction are made in commercial contracts, not in architecture reviews. Every multi-year SaaS renewal signed today is a wager that the application still earns its subscription on the day the term ends. The leadership moves that keep the option open cost almost nothing: shorter renewal terms, data-exit clauses as standard, process definitions written as files you own regardless of platform — they migrate; the app does not — and one post-SaaS pilot in one domain: a data layer, an operator, and peepholes. Not rip-and-replace. Optionality.
 
 The five-year picture, stated plainly so it can be wrong in public: operations run as processes, executed by agents directly against a data layer you own, governed by mandate files, with interfaces built only where humans decide — and every employee starting the day with a briefing instead of eleven logins. `hypothesis` Perhaps it takes ten years. Perhaps the vendors absorb it. But twenty-five years ago the industry laughed at reusable rockets, and the laughing stopped when the first one landed. The first landing for post-SaaS operations already happened — chapter three logged it.
 
@@ -129,15 +129,15 @@ The Clawable project is, at its core, a documentation effort. We run the experim
 
 ## What It Means to Have Moved Early
 
-The businesses that deploy autonomous operators in 2026 are not just saving time on individual processes. They are building something that compounds: an agent that has operated the business for eighteen months has seen patterns, held context, and developed operational knowledge that cannot be purchased by deploying later.
+The businesses that deploy autonomous operators now are not just saving time on individual processes. They are building something that compounds: an agent that has operated the business for eighteen months has seen patterns, held context, and developed operational knowledge that cannot be purchased by deploying later.
 
-By 2028, the gap between a business with eighteen months of operational agent history and a business starting fresh is not eighteen months of saved time. It is eighteen months of accumulated pattern recognition — the difference between an agent that knows your customers, your processes, and your failure modes, and an agent that is starting from zero.
+Eighteen months on, the gap between a business with that operating history and a business starting fresh is not eighteen months of saved time. It is eighteen months of accumulated pattern recognition — the difference between an agent that knows your customers, your processes, and your failure modes, and an agent that is starting from zero.
 
 Building that foundation now means eighteen months of compounding intelligence before the market expects it as standard. That gap does not stay available indefinitely.
 
 The question for every business reading this handbook is the same question it was in chapter one: is this the year you move, or the year you watch?
 
-Assuming your answer is move: the last question is your role — what you actually do on Monday morning when the operator is running.
+Assuming your answer is move, two things remain: the boundary that makes an operator trustworthy, and your own role once it is running. The boundary comes first.
 
 ---
 

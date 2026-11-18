@@ -5,7 +5,7 @@ order: 9
 icon: "skull"
 faq:
   - q: "Why do autonomous agent deployments fail?"
-    a: "Six failure modes in this handbook: governance vacuum (no clear accountability), wrong process selection (automating the wrong thing), observability black hole (can't see what the agent is doing), security blind spot (unrestricted tool access), mandate gaps (agent acts where it should escalate), and stagnation/drift (agent degrades over time). Each produces a distinct pattern that can be diagnosed before month six."
+    a: "Six failure modes in this handbook. Three arrive early: governance vacuum (no clear accountability), wrong process selection (automating the wrong thing, or exposing questions the business never settled), and the observability black hole (nobody can see what the agent is doing). A fourth hides until an incident: the security blind spot (unrestricted outbound behaviour). Two arrive over the first year: stagnation (the agent stops keeping up with the business) and drift (it moves away from its mandate on its own). Each produces a distinct pattern that can be diagnosed before month six."
   - q: "What does Gartner say about agentic AI project cancellation rates?"
     a: "Gartner forecasts that over 40% of agentic AI projects will be cancelled by the end of 2027. The primary reasons: escalating costs with unclear ROI, inappropriate risk controls, and hype-driven approaches — projects initiated to demonstrate AI engagement rather than solve a specific, measurable business problem."
   - q: "What is the single most common mistake teams make in week one?"
@@ -18,7 +18,7 @@ The pilot was perfect. The CTO set it up over a weekend. The agent found overdue
 
 This is not a hypothetical story. It is the pattern the enterprise AI wave of 2023–2025 established — the chatbots, the copilots, the proof-of-concepts that demoed brilliantly and then stopped mattering — and the agent projects of 2025–2026 are now repeating it, faster and with bigger budgets. Gartner's February 2026 analysis forecasts that more than 40 percent of agentic AI projects will be cancelled by end of 2027 — due to escalating costs, unclear business value, and inadequate risk controls (`partial` — Gartner strategic predictions, Feb 2026; forward projection, not observed outcome). Most die not with a bang, but with a budget review. The technology worked. The demos worked. So what kills them?
 
-Three things, consistently. Not technical failures — organizational ones. And the companies that fail never diagnose them, because the failures do not look like failures. They look like silence.
+Three things kill them early, consistently — and three more arrive later. Not technical failures — organizational ones. And the companies that fail never diagnose them, because the failures do not look like failures. They look like silence.
 
 ---
 
@@ -36,7 +36,7 @@ And an empty room is not just a governance problem. It is where the business cas
 
 The second failure mode is seductive because it feels like success. The agent gets connected to a process that is already well-automated. Invoice generation. Email routing. Lead scoring by source. These processes have rules. They have SLAs. They have dashboards. The agent arrives, adds marginal improvement — maybe 10 percent faster, maybe slightly better prioritization — and everyone nods. The pilot succeeded. The numbers moved. Ship it.
 
-But the agent was built for the 20 percent of work that rules cannot handle — the exceptions, the cross-system patterns, the judgment calls. Deploying it on the 80 percent that a Zapier workflow already covers is like hiring a surgeon to file paperwork. The technology works. The ROI does not. The agent costs money to run. It consumes tokens. It requires monitoring. And it is spending all of that capacity on work that a three-line Python script could do. When the CFO asks what the agent actually contributed last quarter, the answer is: slightly faster invoices. That is not a business case. That is a rounding error.
+But the agent was built for the 20 percent of work that rules cannot handle — the exceptions, the cross-system patterns, the judgment calls. Deploying it on the 80 percent that a Zapier workflow already covers wastes exactly what it is for. The technology works. The ROI does not. The agent costs money to run. It consumes tokens. It requires monitoring. And it is spending all of that capacity on work that a three-line Python script could do. When the CFO asks what the agent actually contributed last quarter, the answer is: slightly faster invoices. That is not a business case. That is a rounding error.
 
 This failure mode is a century old. When factories first replaced their steam engines with electric motors, most measured no productivity gain at all — they had bolted the new power source onto the old architecture: one giant motor turning the same overhead shafts, the same leather belts, the same floor plan. The transformation arrived only when engineers redesigned the factory around what electricity actually made possible — a small motor at every workstation, machines arranged by workflow instead of by distance to the drive shaft. Same technology; trivial or transformative depending entirely on whether the process was rebuilt around it. An agent wired into an already-automated workflow is a steam-era factory with an electric motor bolted on: technically modern, structurally unchanged, and the balance sheet knows it.
 
@@ -59,6 +59,8 @@ Read that as failure and you will pull the agent. Read it correctly and it is th
 ## The Observability Black Hole
 
 The agent runs. It makes decisions. It modifies data. It sends emails. And no one can see any of it — not because the system is opaque, but because no one built the window. The agent's logs exist, technically. They live in a session file, in a directory that no one at the company has ever opened. There is no dashboard. There is no daily summary that a human actually reads. There is no alert when the agent's behavior pattern shifts. The agent operates in a sealed box, and the company's only visibility into that box is whether the process still seems to work from the outside.
+
+This is the common case, not the careless one. In a May 2026 survey of more than 400 IT leaders at large US enterprises, 70 percent said they had faced an agent failure their teams could not trace. `partial`
 
 This is fine until it is not. The agent encounters an API change. It starts getting error responses. It retries. It escalates. It files a task. The task goes to a queue no one monitors. The agent keeps retrying. The token spend doubles. The findings degrade. Three weeks later, someone notices that the weekly report has been empty. They open the session logs. They find three weeks of retries, failed calls, and degraded reasoning — all invisible because no one was watching. The agent did not fail silently. It failed loudly, into a void.
 
@@ -116,7 +118,7 @@ The pattern to watch for is not any single signal. It is *"this feels different 
 
 The tension is structural: the more autonomous the agent, the more it can improve on its own — and the more it can drift from original intent. There is no perfect balance. There is only the discipline of periodic recalibration: read the output, notice when the voice changes, redirect when needed. The agent does the work. You keep the agent being the agent you hired.
 
-The discipline is simple: read the last ten reports side-by-side with the first ten. Run that comparison weekly, monthly, quarterly. The difference is usually visible within minutes.
+Run that comparison on a schedule. Monthly is enough, and it takes minutes.
 
 ---
 
@@ -128,9 +130,7 @@ Every technology that changed the world was, at some point, demonstrably not rea
 
 Agentic AI is in 1997. The Mythos incident is the moment the industry documented what it is dealing with. NemoClaw is the first serious engineered response at the runtime layer. The controls being discussed in this chapter — outbound limits, approval gates, tamper-proof audit trails — are the equivalent of early HTTPS adoption: not perfect, but sufficient to make the technology deployable responsibly, right now.
 
-The companies that deploy in 2026 with appropriate controls will have built eighteen months of operational pattern recognition by the time the security baseline hardens. The companies that wait for the security baseline to harden before deploying will start from zero at the moment when the baseline is standard — not a differentiator.
-
-The companies deploying with appropriate controls in 2026 will have operational history that late movers simply cannot compress into calendar time.
+The companies that deploy now, with appropriate controls, will have built eighteen months of operational pattern recognition by the time the security baseline hardens. The companies that wait for the baseline to harden before deploying will start from zero at the moment when the baseline is standard — not a differentiator. Operational history cannot be compressed into calendar time.
 
 ---
 

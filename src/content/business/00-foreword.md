@@ -1,77 +1,11 @@
 ---
 title: "Foreword"
-description: "Who this handbook is for, what it proves, and why the window to act is still open in 2026."
+description: "Who this handbook is for, what it proves, and why the window to act is still open."
 order: 0
 icon: "book-open"
 ---
 
-## About This Edition
-
-- **Edition:** November 2026
-- **Last reviewed:** November 2026
-- **Update cadence:** monthly scheduled review, with fast patches for major ecosystem changes — see the [Revision History](/business/appendix-changelog) for what changed and when
-- **Agent-readable:** this handbook practices what it preaches — it can be read by AI agents, not just people. If you run one, the one-line connect instruction is on the front page of [clawable.org](https://www.clawable.org)
-- **Companion volume:** *The Agentic AI Handbook (Builder Edition)* — architecture, skills, memory, governance internals for teams building their own agentic platform
-
 > **In a hurry? Start with the proof.** Chapter three is the logged April 19 sweep: an agent nobody prompted went through a live business and surfaced over €1 million in exposure — 44 seconds to the first finding. Read [Live Proof](/business/03-live-proof) first, then come back here for why it works and what to do about it.
-
----
-
-## What This Book Is
-
-This is a handbook for business leaders who already run on SaaS and want to understand what it means to operate it with an autonomous agent instead of a team of clickers.
-
-It is not a pitch. It is a report. Every finding in these chapters is logged, timestamped, and verifiable in a production session file. Every claim about what agents can and cannot do is either tagged `validated` against live evidence, `partial` where only part of the behavior has been observed, or `hypothesis` where the thesis is directional and waiting for data.
-
-The experiment it reports is simple: take a stock OpenClaw instance, give it no internal privileges, connect it to a production B2B SaaS via the same public API surface any integration would use, and let it operate the business. Two things built the experiment: **FlowWink** (the business — a self-hosted business operating system: CRM, ERP, and CMS in one) and **Clawable** (the external OpenClaw operator running above it). Chapter three introduces both. None of it is a fork, none of it is a back channel. What you read is what happens when the protocol the industry agreed on in 2026 is actually pointed at a working business.
-
----
-
-## A Note on the Scenarios
-
-Every case and scenario in this handbook runs on the FlowWink instance described above. One property of it matters here: it is open source and self-hostable, which is what makes the proof in these pages reproducible rather than anecdotal — anyone running an autonomous agent can point it at the same MCP surface and repeat these experiments. It is one implementation of the pattern this book describes, not the only one, and certainly not the one you have to adopt.
-
-The data used in these scenarios is representative: structured to reflect the operational reality of a mid-market B2B company, not sourced from a client under NDA. **All customer, supplier, and person names appearing in the scenarios are synthetic.** Any resemblance to real companies or individuals, in Sweden or elsewhere, is coincidental and unintended.
-
-What is not constructed is Clawable's behaviour. The agent operates on standing objectives configured in its `HEARTBEAT.md` — a file that defines what it checks on each scheduled cycle. The April 19 sweep that surfaced over €1 million in exposure was not triggered by a human prompt. Clawable woke up on its own schedule, read its objectives, and went through the business. No one was watching.
-
-Some SIM tests in chapter three used a single open prompt to probe specific reasoning capabilities. Even those prompts contained no targets, no categories of risk to investigate, and no guidance on what to find.
-
-The SIM frameworks and objectives are documented in the sources appendix.
-
-The proof is in the reasoning, not in whose name was on the contract.
-
----
-
-## The Thesis
-
-A business running on SaaS does not need a human to operate it continuously. It needs an autonomous operator — an external agent that reads the live state of the business, reasons about what it sees, and acts on what matters. The human role shifts from discovery and execution to direction and approval.
-
-**Business runs itself. Employees assist.**
-
-This is a logged production claim, not a vision statement. Every chapter that follows is proof, context, or instruction.
-
----
-
-## Who This Book Is For
-
-- **Business leaders and operators** — if you run a company on SaaS and want to understand what autonomous operation looks like in practice, start here.
-- **Agent Managers** — if you have been given responsibility for agent deployments and need an operating model rather than a product manual, chapters 7 through 10 are the core, with the mandate layer in fourteen as the piece you will use most.
-- **Board members and advisors** — if you need a defensible read on what is real in agentic AI versus what is still narrative, the evidence structure in chapters 2, 3, and 9 is designed for your fact-check.
-
-If you build the platforms themselves — if your job is to make a SaaS agent-ready from the source code level — this is the wrong book. Read the builder edition instead.
-
-One assumption about the reader, stated openly: most people this book is written for are expected to have opinions about AI in rooms where they privately hold mostly questions. In 2026, that is not a gap — it is the universal starting position, at every level of every organization. This book is designed to be read from exactly there.
-
----
-
-## How to Read This Handbook
-
-Chapters 2–6 make the business case — the automation ceiling, the live proof, the four superpowers and the contract layer where they converge, the embedded-versus-external choice, and the skill audit that tells you what your stack can already do. Read these if you need to understand *why* before you understand *how*.
-
-Chapters 7–10 cover the decisions — choosing an operator, the vendor agent trap, why agent programs fail, and the architecture that holds when one agent per platform is not enough. Read these if you are ready to move.
-
-Chapters 11–15 go deeper — the enterprise-scale picture and business case, what to demand from your vendors, where the world is heading, how to design the governance boundary that makes autonomy trustworthy, and what your role looks like in practice. Read these if you want the full picture.
 
 ---
 
@@ -103,6 +37,74 @@ When you have seen the pattern enough times, you recognize the window while it i
 
 *— Magnus Froste, Stockholm, 2026*
 *[linkedin.com/in/froste](https://linkedin.com/in/froste) · [github.com/magnusfroste](https://github.com/magnusfroste)*
+
+---
+
+## What This Book Is
+
+This is a handbook for business leaders who already run on SaaS and want to understand what it means to operate it with an autonomous agent instead of a team of clickers.
+
+It is not a pitch. It is a report. Every finding in these chapters is logged, timestamped, and verifiable in a production session file. Every claim about what agents can and cannot do is either tagged `validated` against live evidence, `partial` where only part of the behavior has been observed, or `hypothesis` where the thesis is directional and waiting for data.
+
+The experiment it reports is simple: take a stock OpenClaw instance, give it no internal privileges, connect it to a production B2B SaaS via the same public API surface any integration would use, and let it operate the business. Two things built the experiment: **FlowWink** (the business — a self-hosted business operating system: CRM, ERP, and CMS in one) and **Clawable** (the external OpenClaw operator running above it). Chapter three introduces both. None of it is a fork, none of it is a back channel. What you read is what happens when the protocol the industry agreed on in 2026 is actually pointed at a working business.
+
+---
+
+## The Thesis
+
+A business running on SaaS does not need a human to operate it continuously. It needs an autonomous operator — an external agent that reads the live state of the business, reasons about what it sees, and acts on what matters. The human role shifts from discovery and execution to direction and approval.
+
+**Business runs itself. Employees assist.**
+
+This is a logged production claim, not a vision statement. Every chapter that follows is proof, context, or instruction.
+
+---
+
+## Who This Book Is For
+
+- **Business leaders and operators** — if you run a company on SaaS and want to understand what autonomous operation looks like in practice, start here.
+- **Agent Managers** — if you have been given responsibility for agent deployments and need an operating model rather than a product manual, chapters 7 through 10 are the core, with the mandate layer in fourteen as the piece you will use most.
+- **Board members and advisors** — if you need a defensible read on what is real in agentic AI versus what is still narrative, the evidence structure in chapters 2, 3, and 9 is designed for your fact-check.
+
+If you build the platforms themselves — if your job is to make a SaaS agent-ready from the source code level — this is the wrong book. Read the builder edition instead.
+
+One assumption about the reader, stated openly: most people this book is written for are expected to have opinions about AI in rooms where they privately hold mostly questions. Right now, that is not a gap — it is the universal starting position, at every level of every organization. This book is designed to be read from exactly there.
+
+---
+
+## How to Read This Handbook
+
+Chapters 2–6 make the business case — the automation ceiling, the live proof, the four superpowers and the contract layer where they converge, the embedded-versus-external choice, and the skill audit that tells you what your stack can already do. Read these if you need to understand *why* before you understand *how*.
+
+Chapters 7–10 cover the decisions — choosing an operator, the vendor agent trap, why agent programs fail, and the architecture that holds when one agent per platform is not enough. Read these if you are ready to move.
+
+Chapters 11–15 go deeper — the enterprise-scale picture and business case, what to demand from your vendors, where the world is heading, how to design the governance boundary that makes autonomy trustworthy, and what your role looks like in practice. Read these if you want the full picture.
+
+---
+
+## A Note on the Scenarios
+
+Every case and scenario in this handbook runs on the FlowWink instance described above. One property of it matters here: it is open source and self-hostable, which is what makes the proof in these pages reproducible rather than anecdotal — anyone running an autonomous agent can point it at the same MCP surface and repeat these experiments. It is one implementation of the pattern this book describes, not the only one, and certainly not the one you have to adopt.
+
+The data used in these scenarios is representative: structured to reflect the operational reality of a mid-market B2B company, not sourced from a client under NDA. **All customer, supplier, and person names appearing in the scenarios are synthetic.** Any resemblance to real companies or individuals, in Sweden or elsewhere, is coincidental and unintended.
+
+What is not constructed is Clawable's behaviour. The agent operates on standing objectives configured in its `HEARTBEAT.md` — a file that defines what it checks on each scheduled cycle. The April 19 sweep that surfaced over €1 million in exposure was not triggered by a human prompt. Clawable woke up on its own schedule, read its objectives, and went through the business. No one was watching.
+
+Some SIM tests in chapter three used a single open prompt to probe specific reasoning capabilities. Even those prompts contained no targets, no categories of risk to investigate, and no guidance on what to find.
+
+The SIM frameworks and objectives are documented in the sources appendix.
+
+The proof is in the reasoning, not in whose name was on the contract.
+
+---
+
+## About This Edition
+
+- **Edition:** November 2026
+- **Last reviewed:** November 2026
+- **Update cadence:** monthly scheduled review, with fast patches for major ecosystem changes — see the [Revision History](/business/appendix-changelog) for what changed and when
+- **Agent-readable:** this handbook practices what it preaches — it can be read by AI agents, not just people. If you run one, the one-line connect instruction is on the front page of [clawable.org](https://www.clawable.org)
+- **Companion volume:** *The Agentic AI Handbook (Builder Edition)* — architecture, skills, memory, governance internals for teams building their own agentic platform
 
 ---
 

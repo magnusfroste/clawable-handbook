@@ -27,7 +27,7 @@ There is a simpler way to say it: **on the IT backlog, this is a project with an
 
 What "on the agenda" means in practice — four activities, none of which require a single line of code:
 
-1. **A standing item with a named owner — measured in value, not activity.** Thirty minutes a month at leadership level. The future Agent Manager reports here — not to a steering group, to you. (The accountability model in chapter eleven gives you the structure.) And measure the right thing: not pilots launched, licenses bought, or inspiration sessions held, but four questions — *what time was freed up, which decisions got better, which flows got shorter, what quality was raised?* If the standing item cannot answer those, it is measuring maturity theater, not maturity.
+1. **A standing item with a named owner — measured in value, not activity.** Thirty minutes a month at leadership level. The future Agent Manager reports here — not to a steering group, to you. (The accountability model in the CFO case gives you the structure.) And measure the right thing: not pilots launched, licenses bought, or inspiration sessions held, but four questions — *what time was freed up, which decisions got better, which flows got shorter, what quality was raised?* If the standing item cannot answer those, it is measuring maturity theater, not maturity.
 2. **The mirror test as pre-read.** Before the first session, every function head names their 20 percent — the things that die quietly between systems in their domain (chapter two). The combined list is your process-selection shortlist, and it will surprise you.
 3. **One boundary decision per quarter.** First process. First mandate. First expansion of autonomy. Small, explicit, minuted decisions — the graduated-trust curve from chapter fourteen, run at board pace.
 4. **The data question, decided at the top.** Where is your operator allowed to think? When the work touches customer data, financials, or personal information, private AI — self-hosted or sovereign infrastructure — is not a preference; it is the compliance and security precondition for letting an operator near the data at all. That is a jurisdiction and risk decision, which makes it a leadership decision, not a procurement line. Implementation partners exist for the build; the *decision* cannot be outsourced.
@@ -35,6 +35,8 @@ What "on the agenda" means in practice — four activities, none of which requir
 One more discipline for that standing item — borrow this handbook's own. Every claim in these pages carries a tag: `validated`, `partial`, or `hypothesis`. Nobody has mistaken the tags for weakness; they are why the validated claims get believed. Run the leadership conversation the same way. Tag what you collectively know, what you partially know, and what is still a guess — out loud, in the minutes. When *"we do not know yet"* is a category rather than a confession, it costs nothing to say, and the distance from not-knowing to finding-out collapses from a quarter to a week. The teams that learn fastest are not the ones with the most answers in the room. They are the ones where the questions get said out loud.
 
 And when the operator starts producing findings, hold on to this: **the day it finds ten problems is a better day than the day it finds none — the problems were there yesterday too. Yesterday, nobody knew.** A leadership team that celebrates findings gets an organization that surfaces its problems; one that punishes them gets an organization that hides them. In an evidence-led operation, the finding is not the setback. The finding is the progress.
+
+One date belongs on that agenda, because it moved. The EU's AI Act was due to apply its obligations for the systems it classes as high-risk in August 2026; an amendment in force since July 2026 pushed that to December 2027. `validated` Read it as time to prepare, not as permission to wait. What the regulation asks of a system that acts — a defined purpose, human oversight, a record of what it did — is what the mandate, the approval gate and the audit trail in this book already are. The deadline moved. The work did not.
 
 The companies that treat this as strategy will spend leadership time on it. The companies that treat it as IT will spend budget on it. Only one of them ends up with the operating model.
 
@@ -100,7 +102,7 @@ HBR identified six competencies that define effective Agent Managers in practice
 
 That person's job shifts in a specific way: less time discovering problems, more time evaluating the agent's interpretation of them. Less time assembling context from multiple systems, more time making decisions with the context the agent has already assembled.
 
-The Agent Manager who builds these competencies in 2026 will be a significant organizational asset in 2028 — when fleets of agents become standard and coordination across them becomes the primary source of operational complexity.
+The Agent Manager who builds these competencies now will be a significant organizational asset within two years — when fleets of agents become standard and coordination across them becomes the primary source of operational complexity.
 
 ---
 
@@ -122,7 +124,7 @@ This chapter opened with a question: what does your operation look like in eight
 
 What is gone from this office: the Monday panic, the status meetings, the two hours of morning discovery, the quarter-end archaeology. What is louder: customer conversations, judgment calls, the questions said out loud. The people are not managing software. The software is not managing people. The operator runs the business's *attention* — and the humans spend theirs where it compounds.
 
-None of this is a vision slide. The briefing is chapter three. The kanban of decisions is the approval gate from chapter fourteen. The text-file boundary change is the mandate layer. The workhorse is chapter eleven. The calibration quarter-hour is this chapter. Every mechanism in this scene is already running somewhere, logged. The only thing missing is your eighteen months — and they only start when you do.
+None of this is a vision slide. The briefing is chapter three. The kanban of decisions is the approval gate from chapter fourteen. The text-file boundary change is the mandate layer. The workhorse is the CFO case. The calibration quarter-hour is this chapter. Every mechanism in this scene is already running somewhere, logged. The only thing missing is your eighteen months — and they only start when you do.
 
 ---
 
@@ -156,7 +158,7 @@ The protocol is open. The framework is open. The moat, if there is one, is opera
 
 ## What the Operator Becomes Next
 
-The operator you deploy in 2026 runs your business. It finds what your team was missing. It doesn't sleep, doesn't forget, and doesn't lose context when someone leaves.
+The operator you deploy now runs your business. It finds what your team was missing. It doesn't sleep, doesn't forget, and doesn't lose context when someone leaves.
 
 That is the promise of this handbook — and it is kept.
 
@@ -176,9 +178,9 @@ The question Book 3 answers is not *whether* to deploy an autonomous operator. Y
 >
 > 1. Which single process in your business — right now — has the largest gap between what your team finds and what they should find? Not the most complex. The one where the discovery work is most mechanical and most expensive in senior time. That is where the first operator goes.
 >
-> 2. You have read the evidence. You understand the architecture. You know the window is not permanent. What is the specific reason you have not started yet — and is that reason structural (we lack the technical capability, the budget, the governance) or habitual (we are not sure it is ready, we want to see more evidence, we are waiting for Q3 planning)?
+> 2. You have read the evidence. You understand the architecture. You know the window is not permanent. What is the specific reason you have not started yet — and is that reason structural (we lack the technical capability, the budget, the governance) or habitual (we are not sure it is ready, we want to see more evidence, we are waiting for the next planning cycle)?
 >
-> 3. The businesses that will look back on 2026 as the year they moved are not the ones with the most sophisticated AI strategy. They are the ones that ran the first cycle, read the output, adjusted, and ran again. What is the smallest version of that first cycle you could run in the next ten days?
+> 3. The businesses that will look back on this as the year they moved are not the ones with the most sophisticated AI strategy. They are the ones that ran the first cycle, read the output, adjusted, and ran again. What is the smallest version of that first cycle you could run in the next ten days?
 
 ---
 

@@ -33,7 +33,7 @@ In the FlowWink deployment documented in chapter three, the quoting tool failed 
 
 The MCP ecosystem grew not because vendors volunteered. It grew because customers demanded it. The open-source community built MCP servers for platforms that did not provide them natively. But native support is always superior: better maintained, better documented, aligned with the vendor's own roadmap.
 
-The leverage you have as a customer is greater than you think. Every enterprise renewal in 2026 is an opportunity to add agent-readiness to the evaluation criteria. The vendors who hear it from enough customers will prioritize it. The ones who do not will lose to the ones who do.
+The leverage you have as a customer is greater than you think. Every enterprise renewal is an opportunity to add agent-readiness to the evaluation criteria. The vendors who hear it from enough customers will prioritize it. The ones who do not will lose to the ones who do.
 
 This is not a technical demand. It is a procurement demand. And procurement demands change vendor roadmaps faster than any technology blog post.
 
@@ -85,7 +85,7 @@ The decision is not "is the vendor behind?" — nearly everyone is behind. The d
 - **Capability lag** — no MCP yet, but engaged, dated roadmap, tolerant of community wrappers: *stay and bridge.* The wrapper buys you operations today and evidence for the next negotiation.
 - **Strategic closure** — blocking wrappers in their terms of service, per-action pricing on agent access to *your own data*, shipping their own agent while refusing yours: *start the migration plan.* Not as punishment — as risk management. A vendor whose business model depends on your operator staying blind has told you where this ends.
 
-And when the CFO asks whether this is worth the disruption, the answer comes from chapter eleven's numbers: the tier-1 processes leak €30,000–90,000 per month while the door stays closed. A vendor conversation that shortens that by one quarter pays for itself before the first meeting ends.
+And when the CFO asks whether this is worth the disruption, the answer comes from the CFO case: cross-module silence leaks €30,000–90,000 per month while the door stays closed. A vendor conversation that shortens that by one quarter pays for itself before the first meeting ends.
 
 ---
 

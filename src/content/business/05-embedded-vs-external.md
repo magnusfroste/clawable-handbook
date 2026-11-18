@@ -11,7 +11,7 @@ Chapters three and four established what an autonomous operator finds — and wh
 
 The proof came from an external operator with zero internal privileges. That result raises an immediate design question: when does embedded depth beat external breadth, and when does it not?
 
-When Salesforce shipped Einstein Copilot, SAP shipped Joule, and Microsoft shipped Copilot, they all made the same architectural bet: embed the agent deep inside the platform, give it direct access to the data model, and let it optimize from within.
+When Salesforce shipped Einstein Copilot — since rebuilt and renamed Agentforce — SAP shipped Joule, and Microsoft shipped Copilot, they all made the same architectural bet: embed the agent deep inside the platform, give it direct access to the data model, and let it optimize from within.
 
 It is not a bad bet. But it is a limited one.
 
@@ -23,11 +23,11 @@ There is another model. And understanding the difference between them is the mos
 
 ## Inside the System: The Embedded Agent
 
-FlowWink built an embedded agent called FlowPilot. It lived inside the platform — sharing its database, its authentication layer, its runtime. It had direct access to every table, governed by the same row-level security policies as human users. It ran a heartbeat loop on an owner-set cadence — from hourly down to a few times a day — without being asked: evaluate objectives, plan actions, execute, reflect, remember. It could qualify a lead, publish content, detect a stale contract, and fix its own failing skills — all without any external trigger.
+FlowWink has an embedded agent called FlowPilot. It lives inside the platform — sharing its database, its authentication layer, its runtime. It has direct access to every table, governed by the same row-level security policies as human users. It runs a heartbeat loop on an owner-set cadence — from hourly down to a few times a day — without being asked: evaluate objectives, plan actions, execute, reflect, remember. It can qualify a lead, publish content, detect a stale contract, and fix its own failing skills — all without any external trigger.
 
 This is what embedded depth looks like. Sub-millisecond database access. No network hops. A persistent memory across sessions. Objective-driven autonomy that does not wait to be called.
 
-The cost is narrow field of vision. FlowPilot knew everything about FlowWink. It knew nothing about Fortnox. It could not see that the deal going cold in the CRM correlated with an overdue invoice in the accounting system. It optimized within its own model of reality, which is not the same thing as optimizing for the business.
+The cost is narrow field of vision. FlowPilot knows everything about FlowWink. It knows nothing about Fortnox. It cannot see that the deal going cold in the CRM correlates with an overdue invoice in the accounting system. It optimizes within its own model of reality, which is not the same thing as optimizing for the business.
 
 When every SaaS vendor ships its own embedded agent, you end up with five platforms, five agents, and five silos — each one brilliant inside its domain and blind outside it. No single agent can answer: what is the true acquisition cost across all channels? Why is this customer at risk? The patterns that matter most live at the seams between systems.
 

@@ -36,7 +36,7 @@ On April 19, 2026, Clawable operated FlowWink autonomously for a full day. No hu
 
 Forty-four seconds after the cycle started, it returned its first finding. We had not planned for what it found.
 
-FlowWink is a business operating system — CRM, ERP, and CMS in one platform — covering the full operational stack of a mid-size company: deal pipeline, quote-to-cash, contracts, expenses, accounting (AP, AR, GL, bank reconciliation, VAT, budget), timesheets, content publishing, and recruitment. Over 500 MCP skills across 68 modules — the same surface any external operator connects through.
+FlowWink is a business operating system — CRM, ERP, and CMS in one platform — covering the full operational stack of a mid-size company: deal pipeline, quote-to-cash, contracts, expenses, accounting (AP, AR, GL, bank reconciliation, VAT, budget), timesheets, content publishing, and recruitment. Over 600 MCP skills across 68 modules — the same surface any external operator connects through.
 
 ### What Workflows Cannot Do
 
@@ -65,6 +65,8 @@ We also ran the opposite: a prescriptive prompt with six explicit categories, sp
 The lesson: **give it objectives, not checklists. Let it read the business. Don't tell it where to look.**
 
 That proof settled the detection question. The next question was harder.
+
+If you read no further than this, take three numbers with you — each one is logged in the acts that follow. A renewal negotiated inside a written mandate: 422,400 SEK. A new customer answered before a same-day board deadline: 588,000 SEK a year. And one overdue invoice of 23,125 SEK, traced to the renewal it was blocking — an 18.3x return, found by three operators who never spoke to each other.
 
 ---
 
@@ -281,63 +283,21 @@ No human had calculated that. No dashboard showed it. The relationship between a
 
 ---
 
-### What Broke Next
+### What Stood in the Way
 
-The invoice was marked paid. The cascade should have run.
+The invoice was marked paid. The cascade should have run. It did not — and how the operators handled that is the second proof this chapter offers.
 
-It did not — and the reason it did not is the second proof this chapter offers.
+The finance operator told the platform to send the renewal contract for signature. The platform answered: success. The operator then checked the record against what success should look like. Sent: never. Signature link: never created. Its finding was precise: *"The send tool reports success, but the contract was never sent and no signature link was created. This is a platform bug. Manual intervention required."*
 
-The finance operator told the platform to send the renewal contract for signature. The platform answered: success. The operator confirmed completion, filed a finding, and marked the task done.
+You cannot write an automation rule for "check whether the success you just received was real." The operator checked because its mandate included verifying the state it expected to have changed, not just trusting the tool's response. The bug was reported with reproduction steps and fixed within days — one of five tools this fleet caught doing less than they claimed, each one found by operating rather than by testing.
 
-It then ran a verification check against the database.
+With the tool fixed, the contract went out — and the signing link opened an empty document. The renewal existed as a record with a title, a value and a counterparty, and no text. Nobody had ever written the agreement. The operator named the difference in its finding: *"This is a data quality gap, not a platform error."* A platform bug has a vendor fix. A missing document is the business's own gap — and telling the two apart is what makes a finding something a human can act on.
 
-Sent: never. Signature link: never created.
-
-The tool had reported success. The record showed nothing had happened. The operator caught the discrepancy because it checked — because its mandate included verifying the state it expected to have changed, not just trusting the tool's response.
-
-That behavior is not in any workflow spec. You cannot write an automation rule for "check whether the success you just received was real." The agent checked because it understood what success should look like and noticed when the record did not match.
-
-The finding it filed was precise: *"The send tool reports success, but the contract was never sent and no signature link was created. This is a platform bug. Manual intervention required."*
-
-It was the third platform bug this fleet had surfaced in two weeks — each one a tool that accepted a call and quietly did less than it claimed, and each one found not by a tester running test scripts, but by an operator trying to do real work and noticing when the outcome did not match the expectation.
-
-Every bug was reported to the platform vendor. Every one was fixed. The agents had become the platform's most effective QA layer — not because they were tasked with testing, but because they were tasked with operating.
+So the finance operator wrote the agreement: twelve sections, in Swedish, from what the record held. It marked what it could not know with explicit placeholders, proofread its own draft, and sent it for signature. The contract-layer chapter returns to that draft and what it means for legal work. Here it is enough that the signing link was confirmed active.
 
 ---
 
-### The Data Quality Problem
-
-With the platform bugs fixed, the cascade ran again.
-
-The invoice was marked paid — confirmed. The contract was sent again — and this time the database updated: sent for real, signature link created.
-
-But the signing URL pointed to an empty document.
-
-The renewal contract — 674b4819, 422,400 SEK, Apexira AB Förvaltningsavtal 2026–2028 — had a title, a value, a counterparty, and a status. It had no body. The contract had been created as a metadata record when the deal was won. No one had ever written the actual agreement text. Neither had any prior operator — the same was true for the two historical Apexira AB contracts in the system. Every contract the company held with this customer was an empty shell.
-
-This was not a platform bug. Platform bugs have a fix: the vendor ships a patch. This was a process gap — a failure of the business itself to create the documents it needed. The platform had faithfully stored what it was given. It had been given nothing.
-
-The distinction matters. When the finance operator first tried to send the contract and was blocked, it reported the block as a data quality finding, not a tool failure: *"Contract 674b4819 cannot be sent. body_markdown is null. No historical contract text exists to use as a basis. This is a data quality gap, not a platform error."*
-
-An operator with broken tools cannot make this distinction. It sees a failure and cannot tell whether the failure is in the tool or in the data. With working tools, the operator can verify the state directly — and report the real cause.
-
----
-
-### The Cascade Completes
-
-The finance operator was dispatched to resolve it.
-
-It read the contract record. It found no historical text to extract. It generated a complete twelve-section förvaltningsavtal in Swedish from the information available: the counterparty's name and email, the contract value, the service description, the two-year term. Structure: parties, background, scope, term, services, pricing, payment terms, intellectual property, confidentiality, liability, termination, governing law. The contract language was correct. The liability cap was set — the only substantive error was a drafting judgment no database field could supply.
-
-The `[to be filled in]` placeholders in the parties section were not a failure. They were the agent correctly representing the boundary of its knowledge. It knew the email address. It did not know the registered organisational number. It wrote what it knew and flagged what it did not — explicitly, with a bracket marker a reviewer could find in thirty seconds.
-
-The operator then caught two of its own typos during a proofreading pass. It corrected them. It updated the contract. It sent it for signature.
-
-The signing URL was confirmed active.
-
----
-
-### The Numbers
+### The Timeline
 
 | Event | Operator | Elapsed |
 |---|---|---|

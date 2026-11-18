@@ -80,7 +80,7 @@ The field-level research mirrors that boardroom signal. As chapter one documente
 
 ---
 
-## What 2027 Looks Like
+## What Comes Next
 
 Some of your competitors are already deploying autonomous operators. The ones who are not are evaluating them.
 
@@ -88,9 +88,7 @@ That operator qualifies leads at 3am. It notices that three contracts are sittin
 
 It does not clock out. It does not miss context that lives in a different tab.
 
-You will read about this in a LinkedIn post. And then the window will have closed.
-
-The good news: that window is still open. The infrastructure exists. The protocols are standardized. The only remaining question is timing — and whether you answer it in 2026 or from the sidelines in 2027.
+The good news: the window is open. The infrastructure exists. The protocols are standardized. The only remaining question is timing — and the advantage goes to whoever's operator has been reading their business the longest.
 
 ---
 
@@ -124,13 +122,11 @@ History offers a sense of scale for how fast this kind of transition moves once 
 
 You are facing a structural shift of comparable speed. Not in transport. In operations.
 
-MCP — the standardized protocol that connects agents to business software — is best understood as USB-C for AI. One standard. Any tool. Any system. The plug fits.
-
-Jensen Huang said at GTC 2026 that agentic AI is not the future. It is now.
+MCP — the standardized protocol that connects agents to business software — is what makes that layer possible. One standard. Any tool. Any system.
 
 The automation ceiling is real. It has been there since 1999. The difference is that now, for the first time, there is something that can break through it.
 
-But you do not have to take that on faith. On April 19, 2026, an autonomous operator ran against a live production business with a single open prompt — no checklist, no target. What it found in 44 seconds, in corners of the business no one had ever read at once, is logged in full in the next chapter.
+But you do not have to take that on faith. On April 19, 2026, an autonomous operator ran against a live production business on its own schedule — no checklist, no target. What it found in 44 seconds, in corners of the business no one had ever read at once, is logged in full in the next chapter.
 
 ---
 

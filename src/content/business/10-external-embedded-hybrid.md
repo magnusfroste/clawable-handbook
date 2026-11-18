@@ -15,7 +15,7 @@ Chapter eight established the problem: five platforms, five native agents, five 
 
 Adding a native AI agent to each platform does not solve the silo problem. It deepens it. Each agent optimizes within its own system, potentially making decisions that conflict with what is happening in adjacent systems.
 
-Einstein might recommend an aggressive upsell push on the customer that Joule's financial data shows is already financially stretched. Now Assist might escalate their IT ticket to high priority just as the account manager is planning a call. Each decision is locally reasonable. Together they create a customer experience that feels incoherent — because it is incoherent, produced by systems that are not coordinating.
+Agentforce might recommend an aggressive upsell push on the customer that Joule's financial data shows is already financially stretched. Now Assist might escalate their IT ticket to high priority just as the account manager is planning a call. Each decision is locally reasonable. Together they create a customer experience that feels incoherent — because it is incoherent, produced by systems that are not coordinating.
 
 The enterprise that deploys an AI agent in every platform without deploying a coordination layer has not become more intelligent. It has become faster at producing internally consistent but externally contradictory outputs.
 
@@ -23,7 +23,7 @@ The enterprise that deploys an AI agent in every platform without deploying a co
 
 ## The Coordination Layer
 
-The answer is not to remove the native agents. Einstein is genuinely better at CRM operations than any external agent will be. Joule has ERP context that cannot be replicated from the outside. The depth these agents provide is real and worth keeping.
+The answer is not to remove the native agents. Agentforce is genuinely better at CRM operations than any external agent will be. Joule has ERP context that cannot be replicated from the outside. The depth these agents provide is real and worth keeping.
 
 The answer is to add a coordination layer above them — an external orchestrator that can read across all five systems, see the patterns that span them, and direct the native agents toward coherent collective action.
 
@@ -31,7 +31,7 @@ This is federated specialization. Native agents are domain experts: deep, proact
 
 The market has settled on vocabulary for this split, worth adopting in your own leadership conversations: the embedded platform agents are **vertical agents** — deep in one domain, walled by design — and the operator above the stack is a **horizontal agent**. Every vendor pitch you hear this year is selling you a vertical. This chapter is about who coordinates them — and chapter eleven maps where each kind pays off fastest.
 
-In practice, the federated architecture works like this. The orchestrator holds the cross-system view — customer health across CRM, payment status across accounting, support load across IT service management. When the orchestrator identifies a customer at risk — overdue payment, escalating ticket, cooling renewal — it does not try to take action in all three systems directly. It surfaces the pattern to the relevant humans and, where appropriate, delegates specific actions to the native agents that already know how to operate in those systems. Einstein creates the renewal task. Joule flags the invoice for expedited review. Now Assist holds the escalation pending the account call.
+In practice, the federated architecture works like this. The orchestrator holds the cross-system view — customer health across CRM, payment status across accounting, support load across IT service management. When the orchestrator identifies a customer at risk — overdue payment, escalating ticket, cooling renewal — it does not try to take action in all three systems directly. It surfaces the pattern to the relevant humans and, where appropriate, delegates specific actions to the native agents that already know how to operate in those systems. Agentforce creates the renewal task. Joule flags the invoice for expedited review. Now Assist holds the escalation pending the account call.
 
 The orchestrator handles the intelligence. The native agents handle the execution. Every delegation is logged, auditable, and reversible. Nothing happens in the dark.
 
@@ -105,7 +105,7 @@ Each time the external orchestrator surfaces a cross-system pattern, the humans 
 
 This does not happen when each native agent optimizes independently. It only happens when there is a layer that reads across all of them, cycle after cycle, building a longitudinal understanding of the business as a whole.
 
-The enterprise that starts in 2026 will have two years of operational pattern recognition by 2028. The one that starts in 2028 will not. That gap is not recovered by deploying a better model — it is only closed by time. (`hypothesis` — directional; no longitudinal deployment comparison data exists yet.)
+The enterprise that starts now will have two years of operational pattern recognition two years from now. The one that starts then will not. That gap is not recovered by deploying a better model — it is only closed by time. (`hypothesis` — directional; no longitudinal deployment comparison data exists yet.)
 
 ---
 
@@ -119,7 +119,7 @@ Add a third platform — support, logistics, or HR depending on the business —
 
 The full federated architecture is the destination. A single external operator connected to two platforms is the starting point. The gap between them is measured in months of configuration, not years of development.
 
-You have the architecture. Now you need the business case that gets it funded — and the competitive reframe that makes waiting feel more expensive than moving. The next chapter builds the CFO argument: what the Business Operating System actually costs to run, what it prevents, and what the intelligence gap looks like between the companies deploying in 2026 and the ones planning to read about it in 2027.
+You have the architecture. Now you need the case that gets it funded. The next two chapters build it: first the map — which platforms are ready, and where the value concentrates — then the CFO's version: what the Business Operating System costs to run, what it prevents, and who answers for it.
 
 ---
 

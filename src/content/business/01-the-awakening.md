@@ -1,6 +1,6 @@
 ---
 title: "The Second Digital Acceleration"
-description: "What is happening right now, why it is moving faster than anything before, and why a C-level who skips this chapter will regret it by next quarter."
+description: "What is happening right now, why it is moving faster than anything before, and what it changes for the people who run a business."
 order: 1
 icon: "sparkles"
 ---
@@ -9,7 +9,7 @@ icon: "sparkles"
 
 Something is happening right now that has few historical parallels in the speed of its arrival — and none in the breadth of what it touches simultaneously.
 
-Not the internet. Not SaaS. Not mobile. Each of those transformed industries over five to ten years, giving executives time to observe, debate, and decide. What is unfolding in 2026 is compressing that cycle into months — and the leaders who treat it as another technology trend to evaluate at the next strategy offsite are already behind.
+Not the internet. Not SaaS. Not mobile. Each of those transformed industries over five to ten years, giving executives time to observe, debate, and decide. What is unfolding now is compressing that cycle into months — too fast for the old rhythm of watching a trend until the next strategy offsite.
 
 This is not a prediction. It is a report on what has already happened.
 
@@ -66,7 +66,7 @@ What this produces is not a smaller team doing the same work. It is a fundamenta
 
 On April 19, 2026, this was not a concept. It was running in production.
 
-A stock agent instance — no internal privileges, no back channel, no custom engineering — was given access to a live B2B SaaS business through its standard public API. One instruction. No checklist. No target. What it surfaced in forty-four seconds, across parts of the business no one had ever looked at together, is documented in full in chapter three. The number is over a million euros. The finding that mattered most was not the amount. It was that no one had looked.
+A stock agent instance — no internal privileges, no back channel, no custom engineering — was given access to a live B2B SaaS business through its standard public API. No prompt beyond its standing objectives. No checklist. No target. What it surfaced in forty-four seconds, across parts of the business no one had ever looked at together, is documented in full in chapter three. The number is over a million euros. The finding that mattered most was not the amount. It was that no one had looked.
 
 That is the Business Operating System in operation. Not a dashboard that someone needs to remember to check. A continuous operator that never stops watching.
 
@@ -86,9 +86,9 @@ The chapters that follow address each of the questions the Business Operating Sy
 - **Chapters ten through twelve** cover the architecture at enterprise scale, the business case and accountability structure, and what to demand from your SaaS vendors.
 - **Chapters thirteen through fifteen** address what comes next — where the market is heading, the governance boundary that makes autonomy trustworthy, and the role you play in this.
 
-**If you build a SaaS platform:** chapter twelve is written specifically for you — what agent-readiness requires, what your customers are about to demand, and why 2026 is the year that determines 2028 positioning. Read this chapter, then go straight to twelve.
+**If you build a SaaS platform:** chapter twelve is written specifically for you — what agent-readiness requires, what your customers are about to demand, and why the next eighteen months decide positioning for years. Read this chapter, then go straight to twelve.
 
-The question is whether you engage with it in 2026, while the architecture is still being defined and the first-mover advantage is real — or whether you wait until it is table stakes.
+The question is whether you engage with it now, while the architecture is still being defined and the first-mover advantage is real — or whether you wait until it is table stakes.
 
 **The automation ceiling — and what finally breaks it — is in the next chapter.**
 

@@ -7,7 +7,7 @@ icon: "trap"
 
 > The trap does not look like a trap. It looks like the thing you were already going to buy.
 
-You use Salesforce. Salesforce announces Einstein Copilot. You use HubSpot. HubSpot announces ChatSpot. You use Fortnox. Fortnox announces AI features built directly into the platform. The message is consistent: your trusted vendor already understands your business, already has your data, already has the integrations. Why look elsewhere?
+You use Salesforce. Salesforce announces Agentforce. You use HubSpot. HubSpot announces Breeze. You use Fortnox. Fortnox announces AI features built directly into the platform. The message is consistent: your trusted vendor already understands your business, already has your data, already has the integrations. Why look elsewhere?
 
 Because the question is not whether the vendor's agent works. It is what happens when the agent works *too well* inside one platform and *not at all* outside it.
 
@@ -25,7 +25,7 @@ Every vendor agent is built on the same structural foundation. Understanding tha
 
 Your existing SaaS lock-in is real but bounded. You can migrate data out of Salesforce, or HubSpot, or any platform. It is expensive, but it is possible. The data is data. The workflows are workflows.
 
-Agent-layer lock-in is different. When your agent has been trained on your specific processes, has learned your business patterns, has established the operational rhythms that your team depends on — that institutional knowledge does not export. The agent *is* the lock-in. Its understanding of your business, built over months or years of operation, cannot be packaged and moved to another platform.
+Agent-layer lock-in is different. When your agent has absorbed your specific processes, has learned your business patterns, has established the operational rhythms that your team depends on — that institutional knowledge does not export. The agent *is* the lock-in. Its understanding of your business, built over months or years of operation, cannot be packaged and moved to another platform.
 
 This is lock-in at the level of organizational memory, not just data.
 
@@ -97,9 +97,9 @@ One of the project's agents put it better than this chapter does. Asked to direc
 
 So the test is not how capable the agent is. It is where the folder is — and whether it can leave.
 
-**Ask: who trains this agent on our business?**
+**Ask: whose business does this agent learn?**
 
-A vendor agent trains on aggregate data across all its customers. Your specific processes, your specific patterns, your specific edge cases are averaged into a model optimized for the median user. The external agent layer — whether Clawable or another orchestrator — trains on *your* business specifically. The difference between a general-purpose assistant and a business-specific operator is the difference between a tool that helps and a system that operates.
+A vendor agent is tuned on aggregate data across all its customers. Your specific processes, your specific patterns, your specific edge cases are averaged into a model optimized for the median user. The external agent layer — whether Clawable or another orchestrator — accumulates memory of *your* business specifically. The difference between a general-purpose assistant and a business-specific operator is the difference between a tool that helps and a system that operates.
 
 **Ask: what is the total cost of agent lock-in?**
 
@@ -125,7 +125,7 @@ The vendor agent trap is avoidable. The escape path has three elements:
 
 The vendor agent trap is not a product problem. It is an architecture problem. And architecture decisions made early become structural facts that are very expensive to change later.
 
-The organizations that get this right in 2026 will evaluate vendor AI features against a clear standard: does this make my orchestrator's job easier, or does it pull operational capability back into a single platform? The answer to that question determines whether you are building a Business Operating System or buying the next generation of lock-in.
+The organizations that get this right will evaluate vendor AI features against a clear standard: does this make my orchestrator's job easier, or does it pull operational capability back into a single platform? The answer to that question determines whether you are building a Business Operating System or buying the next generation of lock-in.
 
 The pace of consolidation is accelerating. In early 2026, Google renamed its entire AI cloud platform to the Gemini Enterprise Agent Platform — absorbing Vertex AI and Agentspace into a single branded surface. It is a useful illustration of the dynamic: every major vendor is now building the walls higher, while simultaneously making the interior more capable. The external orchestration layer that reads across all of them is not competing with that consolidation. It depends on it — and it is the only layer that sits above it.
 

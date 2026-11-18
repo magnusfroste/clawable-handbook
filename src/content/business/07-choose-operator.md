@@ -11,7 +11,7 @@ You've audited your systems. You know what they can do. You know the embedded ag
 
 Now the question becomes: who? What operator do you actually connect to your MCP servers?
 
-This isn't a theoretical question anymore. In 2026, there are real options on the table, and they're not all equal. The choice you make here determines whether your external operator becomes a genuine business advantage or just another integration project that looked good on the architecture diagram.
+This isn't a theoretical question anymore. There are real options on the table, and they're not all equal. The choice you make here determines whether your external operator becomes a genuine business advantage or just another integration project that looked good on the architecture diagram.
 
 ---
 
@@ -23,7 +23,7 @@ Right now, you have three paths.
 
 **Buy a proprietary platform.** Microsoft Copilot Studio, Google Vertex AI Agent Builder, various enterprise AI platforms — these offer managed agent infrastructure with varying degrees of flexibility. You get vendor support and polished tools. You also get licensing fees, vendor lock-in, and a roadmap you don't control.
 
-**Use OpenClaw.** An open-source agent framework built specifically for this architecture: an external operator that connects to SaaS systems via MCP, runs 24/7, and can be configured in hours, not months. Free, transparent, and the framework the industry converged on — the one OpenAI validated by adopting its core primitives in April 2026.
+**Use an open runtime.** An open-source agent framework built for this architecture: an external operator that connects to SaaS systems via MCP, runs 24/7, and is configured in hours, not months. OpenClaw is the one this handbook's proofs ran on — free, transparent, and the framework whose core primitives OpenAI adopted in April 2026.
 
 Let's walk through what each path actually looks like in practice — not in marketing language, but in the language of a Tuesday morning when something breaks.
 
@@ -53,7 +53,7 @@ The deeper problem is the roadmap. When Microsoft decides to change how Copilot 
 
 ---
 
-## The OpenClaw Path
+## The Open-Runtime Path
 
 OpenClaw takes a different approach. Instead of building everything from scratch or buying a managed platform, it gives you a ready-made operator framework that you configure, not code.
 
@@ -64,6 +64,8 @@ Setup time: about an hour to a working operator. You install OpenClaw, write you
 Cost: free. Open source. No licensing fees. No per-user charges. No vendor lock-in. If OpenClaw disappears tomorrow, the code is on your machine and the MCP servers are still running.
 
 But "free" isn't the real argument. The real argument is the community. That ecosystem signal matters for a practical reason — thousands of developers are building, testing, and improving the framework. MCP servers for popular SaaS platforms are being contributed by the community. When you hit a problem in production, someone has almost certainly already solved it.
+
+One thing changed in the autumn of 2026 that belongs in this decision. OpenClaw is no longer the only open runtime worth the name — this project's own fleet now runs more than one, on the same hosts. What they have in common is what matters: the operator's mandate is a file in an open standard (chapter fourteen), and its memory is a folder you hold (chapter eight). So read this path as a choice of *kind*, not of brand: an open runtime, with the operator's files in your own hands.
 
 The risk, of course, is maturity. OpenClaw moves fast. APIs change. The community is enthusiastic but not always conservative. If you need enterprise-grade stability guarantees — SLAs, dedicated support, certified integrations — the open-source path requires you to provide those yourself or find a partner who does.
 
@@ -104,7 +106,7 @@ Then there is Microsoft — not a frontier lab, but the largest software distrib
 
 Which raises the question a leadership team should actually sit with: does that replace the operator decision this chapter is about? No — it doubles it. The agent in the chat client is a *personal* surface: it acts for the employee holding the conversation, inside one vendor's walls, on that vendor's models. Your business operator is a *standing* surface: objectives in version control, a heartbeat, an audit trail, a mandate — working whether anyone is chatting or not. The convergence will normalize agents for your whole workforce faster than any internal program could. It also means every seat in the company is about to have an agent attached, whether leadership decided anything or not — which makes the governance chapters of this book more urgent, not less. And the answer to the unsanctioned version of that is never a ban: people reach for outside tools when the inside ones do not help them. The sanctioned path has to be the better one, or it will simply be the ignored one. And the CFO will see both lines in the same budget: per-seat agentic chat that scales with headcount, and the operator that scales with work. Knowing which line buys which capability is the difference between an AI budget and an AI strategy.
 
-It also answers the question this chapter would otherwise leave hanging: if the giants are all shipping agents, why does this handbook run its proofs on OpenClaw? Because every lab agent is bound to its maker — its models, its walls, its pricing, its roadmap. Cursor was model-neutral in May; by July it had a default. The standing operator this book describes has to be model-agnostic, auditable, and yours — and in 2026, that describes exactly one mature option: the open framework the labs themselves keep validating, primitive by primitive.
+It also answers the question this chapter would otherwise leave hanging: if the giants are all shipping agents, why does this handbook run its proofs on OpenClaw? Because every lab agent is bound to its maker — its models, its walls, its pricing, its roadmap. Cursor was model-neutral in May; by July it had a default. The standing operator this book describes has to be model-agnostic, auditable, and yours. When this book's proofs were run, that described exactly one mature option: the open framework the labs themselves kept validating, primitive by primitive. It now describes a small family of open runtimes — which is the point. The requirement is the test, not the brand.
 
 ### What June 2026 Settled
 
