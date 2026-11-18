@@ -116,7 +116,7 @@ All findings attributed to Clawable operating FlowWink live can be cross-checked
 
 | Source | Type |
 |--------|------|
-| `/root/flowwink/docs/modules/` | Module surface documentation (500+ skills) |
+| `/root/flowwink/docs/modules/` | Module surface documentation (600+ skills) |
 | `/root/openclaw/` | OpenClaw local fork — architecture claims verified here |
 | FlowWink production deployment | Edge functions, skills, MCP server |
 | `clawthree.froste.eu` / `clawwink.froste.eu` | Clawable operator deployments on ClawClass (predecessor of AgentHotel) |
@@ -161,7 +161,7 @@ All findings attributed to Clawable operating FlowWink live can be cross-checked
 | Claim | Source | Status |
 |-------|--------|--------|
 | The author's 1996 thesis trained a neural network to forecast Swedish consumption and outperformed the linear models (foreword) | Nord, M. & Froste, M. (1996), *Forecasting consumption with nonlinear Artificial Neural Networks*, C-uppsats i nationalekonomi, Uppsala: ANN with up to 10 hidden units vs ARMA/ARMAX on unrevised quarterly data 1963–1989, ex ante procedure; forecast R² not below 0.85, best 0.969 (durables); ANN required no seasonal adjustment | `validated` — document and Matlab sources in the author's archive |
-| FlowWink exposes 500+ MCP skills at time of writing | MCP server `tools/list` call against `https://<project-ref>.supabase.co/functions/v1/mcp-server` — enumeration across Commerce/Finance, CRM, Content, Communication, Analytics, Growth, System, Search/Web, Automation, Infrastructure, and Accounting domains; confirmed by a July 2026 recount from the shipped artifact: 512 skills across 68 modules | `validated` — live endpoint enumeration + artifact recount (2026-07-21) |
+| FlowWink exposes 600+ MCP skills at time of writing | MCP server `tools/list` call against `https://<project-ref>.supabase.co/functions/v1/mcp-server` — enumeration across Commerce/Finance, CRM, Content, Communication, Analytics, Growth, System, Search/Web, Automation, Infrastructure, and Accounting domains; confirmed by recounts from the shipped artifact: 512 skills across 68 modules in July 2026; 674 module-owned skills (681 declared, counting platform primitives) across 68 modules in November 2026 | `validated` — live endpoint enumeration + artifact recounts (2026-07-21, 2026-11-18) |
 | Earlier references cited lower counts | Platform surface expanded continuously since original SIM runs (April 19–20, 2026); accounting modules and cross-module skills added in subsequent updates | `validated` — reflects platform evolution |
 
 ---

@@ -240,7 +240,7 @@ OpenClaw receives:
 
 ## MCP — The Third Channel
 
-**MCP** is Flowwink's third channel — for external AI clients rather than agent peers. It exposes the same 500+ skill catalog FlowPilot scores internally to Cursor, Claude Desktop, and any MCP-compatible client, over Streamable HTTP with SHA-256-hashed API keys. The `mcp-server` edge function dynamically publishes skills where `mcp_exposed = true`; the admin controls exposure per skill via the shield toggle in the Engine Room UI.
+**MCP** is Flowwink's third channel — for external AI clients rather than agent peers. It exposes the same 600+ skill catalog FlowPilot scores internally to Cursor, Claude Desktop, and any MCP-compatible client, over Streamable HTTP with SHA-256-hashed API keys. The `mcp-server` edge function dynamically publishes skills where `mcp_exposed = true`; the admin controls exposure per skill via the shield toggle in the Engine Room UI.
 
 The contrast with A2A is audience, not engine. A2A is agent-to-agent collaboration; MCP is human-to-agent collaboration through external tools. Both invoke the same skill engine underneath — the channel just changes who can call it. [Chapter 12](/builder/12-mcp-deep-dive) owns the full MCP surface, including client configuration.
 

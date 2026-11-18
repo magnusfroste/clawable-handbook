@@ -25,19 +25,21 @@ The practical implication is governance: because every tool call is logged at th
 
 ---
 
-## Two Tools, Five Hundred Skills
+## Three Tools, Six Hundred Skills
 
-A 500-skill surface creates a problem on the *client's* side of the wire: every tool definition the server advertises lands in the client model's context. Ship the full catalog and you have spent tens of thousands of tokens before the agent has read a single business record — most MCP clients have a tool budget, and 512 definitions blow straight through it. Chapter 19 covers this economy for the embedded operator; the MCP surface needs an answer for external clients too.
+A 600-skill surface creates a problem on the *client's* side of the wire: every tool definition the server advertises lands in the client model's context. Ship the full catalog and you have spent tens of thousands of tokens before the agent has read a single business record — most MCP clients have a tool budget, and more than 600 definitions blow straight through it. Chapter 19 covers this economy for the embedded operator; the MCP surface needs an answer for external clients too.
 
 FlowWink's surface gives the client three postures:
 
 1. **The full list** — every skill as a first-class tool. Right for narrow deployments and tool-picker UIs; wrong for a reasoning loop.
 2. **Group filtering** — `?groups=sales,finance` pulls only that toolkit (built-in groups: marketing, sales, operations, support, finance, content). The client curates a subset once, at connection time.
-3. **The dispatch pair** — two meta-tools that stand in for the entire catalog: `search_skills(query)` returns the ranked handful of skill definitions relevant to the task, and `execute_skill(name, arguments)` runs the chosen one. The client's model holds *two* tool definitions in context — and can still reach all 512.
+3. **The dispatch trio** — three meta-tools that stand in for the entire catalog: `search_skills(query)` returns the ranked handful of skill definitions relevant to the task, `read_skill(name)` fetches a skill's full instructions when it has them, and `execute_skill(name, arguments)` runs the chosen one. The client's model holds *three* tool definitions in context — and can still reach all 600+.
 
-The dispatch pair is the interesting one, because of what sits behind it: `search_skills` reuses the **same intent scorer** that narrows the catalog for FlowPilot's heartbeat turns. One scorer, two consumers — the embedded operator gets its ~25 filtered skills per turn, the external client gets its ranked handful per search, and an instruction improved once improves both paths. The convergence story from chapter 15, extended across the wire: the client operates against the full surface without the full surface ever entering its context.
+The dispatch trio is the interesting one, because of what sits behind it: `search_skills` reuses the **same intent scorer** that narrows the catalog for FlowPilot's heartbeat turns. One scorer, two consumers — the embedded operator gets its ~25 filtered skills per turn, the external client gets its ranked handful per search, and an instruction improved once improves both paths. The convergence story from chapter 15, extended across the wire: the client operates against the full surface without the full surface ever entering its context.
 
-A note on status, because the distinction matters: the dispatch pair is a **best practice, not a standard**. Nothing in the MCP specification defines `search_skills` or `execute_skill` — the protocol happily lets a server advertise all 512 tools and watch the client drown. FlowWink chose the pattern deliberately, and the same two-tool shape keeps appearing across the ecosystem as every large surface hits the same wall — search-then-invoke is where the convention is heading. It has the look of a future standard; today it is a design choice you make on purpose. `hypothesis` on the standardization, `validated` on the mechanism running in production.
+The middle tool arrived second, and the reason is worth keeping. The surface shipped as a pair in July 2026. In August an external agent, working through that pair, produced contract templates that were technically valid and blind to the process around them. The cause was structural, not prompt quality: the embedded operator reads a skill's full instructions before it executes; the gateway delivered only description and schema. One skill contract, two consumers, and one of them had no path to the instructions at all. `read_skill` closed that — live on August 8, proven end to end by an external agent authoring a template from the delivered guide alone. `validated` The rule it leaves behind: whatever tier of a skill your embedded agent can read, your external agents must be able to reach too.
+
+A note on status, because the distinction matters: the dispatch trio is a **best practice, not a standard**. Nothing in the MCP specification defines `search_skills`, `read_skill` or `execute_skill` — the protocol happily lets a server advertise all 600+ tools and watch the client drown. FlowWink chose the pattern deliberately, and the same search-then-invoke shape keeps appearing across the ecosystem as every large surface hits the same wall — search-then-invoke is where the convention is heading. It has the look of a future standard; today it is a design choice you make on purpose. `hypothesis` on the standardization, `validated` on the mechanism running in production.
 
 ---
 
@@ -65,7 +67,7 @@ MCP was not the first attempt at a standard for AI-to-software communication. It
 
 ## What It Means for SaaS Vendors
 
-A platform with a good MCP surface is a platform agents can use; one without is a platform that gets worked around — or replaced. The long-term dynamic favors software that is legible to agents, and FlowWink built its surface before the market asked: 500+ exposed skills, stable schemas, and a running external operator proving the platform in autonomous operation.
+A platform with a good MCP surface is a platform agents can use; one without is a platform that gets worked around — or replaced. The long-term dynamic favors software that is legible to agents, and FlowWink built its surface before the market asked: 600+ exposed skills, stable schemas, and a running external operator proving the platform in autonomous operation.
 
 ---
 

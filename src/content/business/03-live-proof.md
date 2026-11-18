@@ -193,7 +193,7 @@ What makes this generalisable: **any SaaS platform can activate this.** Build an
 
 The pattern is not unique to FlowWink. Atonom, a B2B startup, used the same architecture to replace a $40,000 annual Salesforce contract: they built a purpose-built CRM on Lovable in three hours, exposed it via MCP, and had a Clawable operator running against it the same week. The case is documented in the sources appendix.
 
-The FlowWink MCP surface exposes 500+ skills across 68 modules. The operator used sixteen of them across five scenarios. It used the right ones at the right moments because it read its mandate, read the situation, and decided — not because anyone mapped a workflow.
+The FlowWink MCP surface exposes 600+ skills across 68 modules. The operator used sixteen of them across five scenarios. It used the right ones at the right moments because it read its mandate, read the situation, and decided — not because anyone mapped a workflow.
 
 ---
 

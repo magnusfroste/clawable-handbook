@@ -1,6 +1,6 @@
 ---
 title: "Production Patterns — Battle-Tested in Production"
-description: "Six architectural patterns that emerged from running an autonomous agent with 500+ skills, 68 modules, and real business traffic. Not theory — production code."
+description: "Six architectural patterns that emerged from running an autonomous agent with 600+ skills, 68 modules, and real business traffic. Not theory — production code."
 order: 25
 icon: "wrench"
 ---
@@ -170,7 +170,7 @@ Without these layers, we observed:
 
 ### The Problem
 
-At 10 skills, you can send everything to the LLM. At 500+, you can't — you'd consume most of your context window before the agent starts reasoning. But static truncation is too blunt: it doesn't know which skills matter for the current task.
+At 10 skills, you can send everything to the LLM. At 600+, you can't — you'd consume most of your context window before the agent starts reasoning. But static truncation is too blunt: it doesn't know which skills matter for the current task.
 
 ### The Pattern
 
@@ -181,7 +181,7 @@ Token budget used:     <50%          50-75%          >75%
                         │              │               │
                    ┌────┴────┐   ┌────┴────┐    ┌────┴────┐
                    │  FULL   │   │ COMPACT  │    │  DROP   │
-                   │All 500+ │   │ All 500+ │    │ Top 20  │
+                   │All 600+ │   │ All 600+ │    │ Top 20  │
                    │ skills  │   │ truncated│    │ compact │
                    │ w/full  │   │ desc (80 │    │ format  │
                    │ desc    │   │ chars)   │    │ only    │
@@ -218,8 +218,8 @@ if (newTier !== currentTier) {
 
 | Tier | Skills loaded | Tokens consumed | % of 128K budget |
 |------|--------------|-----------------|-------------------|
-| Full | 500+ | ~50,000+ | ~39% |
-| Compact | 500+ | ~20,000+ | ~16% |
+| Full | 600+ | ~60,000+ | ~47% |
+| Compact | 600+ | ~24,000+ | ~19% |
 | Drop | 20 | ~800 | 0.6% |
 
 The difference between Full and Drop is significant — enough for ~15 additional conversation turns or a full plan decomposition.

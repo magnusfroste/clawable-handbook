@@ -1,6 +1,6 @@
 ---
 title: "The Token Economy"
-description: "Context budget management — how to run 500+ skills without hitting the context ceiling. Prompt compilation, lazy loading, and graceful degradation."
+description: "Context budget management — how to run 600+ skills without hitting the context ceiling. Prompt compilation, lazy loading, and graceful degradation."
 order: 19
 icon: "calculator"
 ---
@@ -80,7 +80,7 @@ Each skill has two parts:
 1. **Metadata** — name, description, JSON schema (~100 tokens)
 2. **Instructions** — detailed usage guide, edge cases, decision tables (~500-2,000 tokens)
 
-With 500+ skills, loading all instructions would cost well over 150K tokens — most of the context window consumed by information the agent *might* need.
+With 600+ skills, loading all instructions would cost well over 150K tokens — most of the context window consumed by information the agent *might* need.
 
 ### The Solution
 
@@ -154,7 +154,7 @@ const intent = classifyIntent(userMessage);
 const relevantSkills = allSkills.filter(s =>
   intent.includes(s.category) || s.category === 'core'
 );
-// 500+ skills → typically 30-50 per request
+// 600+ skills → typically 30-50 per request
 ```
 
 This means the agent never sees all skills simultaneously. It sees 30-50 relevant skills plus core utilities, keeping the metadata cost around 5-8K tokens.
@@ -257,7 +257,7 @@ This pattern — **pointers in context, data in memory** — is how you scale be
 
 ## The Context Stack — Where Every Token Goes
 
-Understanding the total context cost requires seeing the full stack. Here is a real breakdown from a FlowPilot instance running the 500+ skill catalog:
+Understanding the total context cost requires seeing the full stack. Here is a real breakdown from a FlowPilot instance, measured in July 2026 when the catalog stood at 500+ skills:
 
 ```
 Layer                                   Tokens     % of 128K
@@ -273,7 +273,7 @@ Conversation history                   ~5-15K     4-12%
 Total:                                 ~25-35K    ~20-27%
 ```
 
-The key insight: **with a 500+ skill catalog, the system uses only ~25% of the context window** — because the scorer loads a filtered fraction, never the catalog. This leaves 75% for the model's reasoning chain and tool call responses.
+The key insight: **with a 500+ skill catalog, the system uses only ~25% of the context window** — because the scorer loads a filtered fraction, never the catalog. The catalog has since passed 600 skills; the stack above does not move, for the same reason. This leaves 75% for the model's reasoning chain and tool call responses.
 
 ### Scaling Thresholds
 
@@ -283,10 +283,10 @@ This headroom is not infinite. Here is where the architecture faces pressure:
 |---|---|---|---|
 | **50-100** | ~5-8K tokens | ✅ Comfortable | Simple filtering works |
 | **100-200** | ~8-16K tokens | ⚠️ Manageable | Intent scoring must be aggressive |
-| **200-500+** | ~16-50K tokens | 🔴 Critical without a scorer | Intent scoring + category grouping mandatory — never load the flat list |
+| **200-600+** | ~16-60K tokens | 🔴 Critical without a scorer | Intent scoring + category grouping mandatory — never load the flat list |
 | **Thousands** | ~100K+ tokens | 🚫 Architectural limit | Multi-agent delegation or external skill index |
 
-The **200-skill threshold** is the most important planning milestone: beyond it, a flat list without filtering starts competing with conversation history for context space. The platform crossed 500 skills in July 2026 and answered the question in production — with the intent scorer loading 30–80 skills per request, the 512-skill catalog runs at the same ~25 percent context use the table above shows. The limit is not the catalog size; it is how much of the catalog you let into the prompt. The same discipline extends across the wire: external MCP clients get chapter 12's dispatch pair — two meta-tools standing in for the whole catalog — so their context stays clean too.
+The **200-skill threshold** is the most important planning milestone: beyond it, a flat list without filtering starts competing with conversation history for context space. The platform crossed 500 skills in July 2026 and 600 by November, and answered the question in production — with the intent scorer loading 30–80 skills per request, the catalog runs at the same ~25 percent context use the table above shows, at either size. The limit is not the catalog size; it is how much of the catalog you let into the prompt. The same discipline extends across the wire: external MCP clients get chapter 12's dispatch trio — three meta-tools standing in for the whole catalog — so their context stays clean too.
 
 ---
 

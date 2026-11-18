@@ -151,6 +151,8 @@ All major claims in this handbook are sourced. This appendix lists primary sourc
 | `autoversio.ai` / `autoversio.com` | Partner — private AI on-premise (Uppsala, Sweden) |
 | `/Users/mafr/Code/github/openclaw` | OpenClaw local fork — all source code claims verified here |
 | Flowwink production deployment | Edge functions, skills, memory architecture |
+| FlowWink repository, generated skill manifest | Skill and module count, recounted 2026-11-18: 68 modules, 674 module-owned skills (681 declared, counting platform primitives) — the book's "600+ skills, 68 modules" |
+| FlowWink repository, change of August 8, 2026 | `read_skill` joins `search_skills` and `execute_skill` as the dispatch surface's third tool (Ch 12): the finding, the structural cause and the end-to-end proof by an external agent are recorded in the change itself |
 
 ---
 

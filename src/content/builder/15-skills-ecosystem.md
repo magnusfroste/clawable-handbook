@@ -103,7 +103,7 @@ Skills with 3+ consecutive failures are automatically quarantined. The agent can
 
 ## Skill Budget Management
 
-With 500+ skills, the token budget gets tight. The system compresses skill definitions dynamically in three tiers — full, compact, drop — as the context fills up, re-evaluated on every iteration of the reasoning loop. Chapter 19 covers the mechanism in full as part of the token economy.
+With 600+ skills, the token budget gets tight. The system compresses skill definitions dynamically in three tiers — full, compact, drop — as the context fills up, re-evaluated on every iteration of the reasoning loop. Chapter 19 covers the mechanism in full as part of the token economy.
 
 **The implication for the skill system:** popular skills stay available, unused skills get dropped. This creates a natural selection pressure — skills the agent finds useful survive, skills it doesn't use get pruned.
 
@@ -120,7 +120,7 @@ Skills can be bundled into packs for easy installation. Each pack groups related
 
 Packs are installed via `skill_pack_install` and create the skills in the database. The agent can discover available packs via `skill_pack_list`.
 
-As of July 2026, FlowPilot's library and the MCP surface are one and the same: a single shared catalog of 500+ skills, one set of metadata, two consumers. The embedded operator scores them per heartbeat turn; the external agent searches them over MCP — through the same intent scorer, exposed as the `search_skills`/`execute_skill` dispatch pair (chapter 12), so an external client reaches all 500+ skills while holding just two tool definitions in context. The convergence is the payoff of Law 2 — when the fix is always better metadata, an instruction improved once serves every agent that will ever call the skill, embedded or external. The catalog is organized by business function; a new deployment typically starts with the Content Marketing + CRM Nurture packs, then adds E-Commerce and Analytics as the business grows.
+Since July 2026, FlowPilot's library and the MCP surface have been one and the same: a single shared catalog — 600+ skills by November — with one set of metadata and two consumers. The embedded operator scores them per heartbeat turn; the external agent searches them over MCP — through the same intent scorer, exposed as the `search_skills`/`read_skill`/`execute_skill` dispatch trio (chapter 12), so an external client reaches all 600+ skills while holding just three tool definitions in context. The convergence is the payoff of Law 2 — when the fix is always better metadata, an instruction improved once serves every agent that will ever call the skill, embedded or external. The catalog is organized by business function; a new deployment typically starts with the Content Marketing + CRM Nurture packs, then adds E-Commerce and Analytics as the business grows.
 
 ---
 
@@ -210,7 +210,7 @@ OpenClaw uses file-based `SKILL.md` files with automatic discovery. Flowwink use
 | Multi-instance | No (single user) | Yes (RLS per instance) |
 | Versioning | Git | Database history |
 | Loading | Lazy: model reads `SKILL.md` on demand | Full tool definitions injected per session |
-| Registry | ClawHub marketplace | Shared 500+ skill catalog (one metadata set, embedded + external consumers) |
+| Registry | ClawHub marketplace | Shared 600+ skill catalog (one metadata set, embedded + external consumers) |
 
 Both patterns work. The file-based approach is simpler for personal use. The database approach is necessary for business operations.
 
