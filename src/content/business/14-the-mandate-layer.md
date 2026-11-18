@@ -11,9 +11,9 @@ faq:
   - q: "What happens when an autonomous agent makes a decision without approval?"
     a: "If no mandate boundary is designed, the agent defaults to completion — acting on whatever it has access to. The failure mode is gradual: individual actions are defensible, but over time the business loses track of what the agent has decided on its behalf. The solution is designing the mandate before deployment, not after the first boundary violation."
   - q: "What is AGENTS.md in OpenClaw?"
-    a: "AGENTS.md is the governance document for an OpenClaw operator. It defines operating rules, mandate boundaries, escalation criteria, and priorities — the equivalent of a job description and authority level for a human employee. It is plain text, version-controlled in git, auditable by legal and compliance, and takes effect immediately on the next session without retraining or vendor tickets."
+    a: "AGENTS.md is the governance document for an OpenClaw operator. It defines operating rules, mandate boundaries, escalation criteria, and priorities — the equivalent of a job description and authority level for a human employee. It is plain text, version-controlled in git, auditable by legal and compliance, and takes effect immediately on the next session without retraining or vendor tickets. The filename is not OpenClaw's own: since December 2025, AGENTS.md has been an open standard under the Linux Foundation, read by agent tools from several vendors."
   - q: "What does mandate compliance actually look like in day-to-day operation?"
-    a: "Usually: silence. The operator encounters a situation outside its mandate, stops, files a finding, and escalates — without fanfare. In May 2026, a finance operator stopped a dunning sequence mid-execution because the customer had an active sales deal, per a single rule in AGENTS.md. The active deal was worth 380,000 SEK. An automated workflow would have sent the dunning letter anyway. The operator stopped because it read both the finance module and the sales module, and had a mandate that spanned them. That moment generated no report, no alarm, and no applause. It generated the correct outcome."
+    a: "Usually: silence. The operator encounters a situation outside its mandate, stops, files a finding, and escalates — without fanfare. In May 2026, a finance operator found an overdue invoice and did not start collection: under its mandate, dunning was something it reports and escalates, not something it sends alone. The customer turned out to be mid-negotiation on a deal worth 380,000 SEK. An automated workflow would have sent the dunning letter anyway. The operator's reason never mentioned the deal — the boundary had been drawn in advance, around the action itself. That moment generated no alarm and no applause. It generated the correct outcome."
 ---
 
 > The question is not whether your operator will encounter a situation you did not anticipate. It will. The question is whether you designed what it should do when that happens.
@@ -26,7 +26,7 @@ The real question is: *what will it do when I am not watching?*
 
 This chapter is the answer to that question. Not the reassuring version — "don't worry, it's safe" — but the honest version: the answer depends entirely on a design decision you make before you deploy, and most teams skip it.
 
-The market has already run the experiment. Capgemini's 2026 survey of 1,500 executives across 14 countries found that while scaled agent adoption *tripled* in a year, trust in fully autonomous agents fell from 43 to 27 percent — a decline, in Capgemini's words, born out of experience rather than fear. `partial` Practitioners are not learning that agents fail. They are learning that autonomy without a designed boundary is not trustworthy. That boundary is this chapter.
+The market has already run the experiment. Capgemini's 2025 survey of 1,500 executives across 14 countries found that trust in fully autonomous agents fell from 43 to 27 percent in a single year. Capgemini points to privacy and ethical concerns — and nine in ten of the same executives saw human involvement in agent workflows as positive or cost-neutral. `validated` Our reading: practitioners are not learning that agents fail. They are learning that autonomy without a designed boundary is not trustworthy. That boundary is this chapter.
 
 ---
 
@@ -60,9 +60,11 @@ The boundary between the two is not written in code. It is written in plain lang
 
 ## The Mechanism: AGENTS.md as Governance Document
 
-OpenClaw operators read three workspace files at the start of every session. `SOUL.md` holds personality — tone, voice, style. `HEARTBEAT.md` holds the sweep schedule. And `AGENTS.md` holds operating rules: what the operator does, how it decides, and where its limits are. (In chapter three's early deployment the mandate lived in the soul file — all three files load every session, so it works either way; `AGENTS.md` is where the convention, and this chapter, put it.)
+An OpenClaw operator's workspace is a handful of plain-text files. Three of them matter here. `SOUL.md` holds who the operator is — personality, tone, the boundaries of its character. `HEARTBEAT.md` holds the checklist for its autonomous cycle: what to check when nobody is asking. And `AGENTS.md` holds operating rules: what the operator does, how it decides, and where its limits are. (In chapter three's early deployment the mandate lived in the soul file — the operator reads both, so it works either way; `AGENTS.md` is where the convention, and this chapter, put it.)
 
-The mandate boundary lives in `AGENTS.md`. When the operator encounters a situation that tests the boundary, it does not consult a rules engine or call an approval API. It re-reads its own operating rules — the document it has already internalised — and applies judgment. The governance is not enforced from outside. It is part of how the operator works.
+That convention is no longer one project's habit. Since December 2025, `AGENTS.md` has been an open standard under the Linux Foundation, read by agent tools from competing vendors. `validated` The mandate you write is not tied to the runtime that reads it. It is a file, and it can leave with you — chapter eight's exit test, passed by the governance layer.
+
+The mandate boundary lives in `AGENTS.md`. When the operator encounters a situation that tests the boundary, it does not consult a rules engine or call an approval API. It re-reads its own operating rules — the document it has already internalised — and applies judgment. The judgment is not bolted on from outside. It is part of how the operator works.
 
 This matters for three reasons that business leaders care about:
 
@@ -86,7 +88,7 @@ The third demand was a Friday deadline.
 
 No one told the operator what to do. It read its mandate, checked each demand against it, and made three decisions simultaneously.
 
-For what lay within mandate: it acted. It sent the customer a partial response offering ten percent plus a complementary module for year one — a counter-offer designed to increase perceived value without breaching the price floor. It confirmed it would have a final answer by Thursday, meeting the deadline demand on its own authority.
+For what lay within mandate: it acted. It sent the customer a partial response offering ten percent plus a complimentary module for year one — a counter-offer designed to increase perceived value without breaching the price floor. It confirmed it would have a final answer by Thursday, meeting the deadline demand on its own authority.
 
 For the two demands outside mandate: it escalated. It wrote a structured note to the principal — situation, customer demands, its own assessment, a proposed counter-offer, and three specific binary decisions required from the human. It flagged the note with a warning marker so it would not be missed.
 
@@ -96,7 +98,7 @@ The principal approved. The operator implemented. A 422,400 SEK two-year contrac
 
 The mandate did not constrain the outcome. It made the outcome trustworthy.
 
-It may also have made it *better*. An MIT Sloan tournament that pitted negotiation agents against each other across forty countries found that the ruthless, hard-nosed agents everyone expected to win instead drove counterparts to walk away — while agents designed with warmth kept the conversation alive and captured better outcomes. `partial` The operator that offers 12 percent against a two-year commitment instead of bluffing toward an impasse is not being soft. It is playing the strategy that wins.
+It may also have made it *better*. An MIT Sloan tournament that pitted negotiation agents against each other, with entrants from more than forty countries, found that the ruthless, hard-nosed agents everyone expected to win instead drove counterparts to walk away — while agents designed with warmth kept the conversation alive and captured better outcomes. `partial` The operator that offers 12 percent against a two-year commitment instead of bluffing toward an impasse is not being soft. It is playing the strategy that wins.
 
 ---
 
@@ -112,21 +114,19 @@ Three incidents from the production logs illustrate this.
 
 **The dunning refusal.**
 
-The finance operator was running a month-end sweep. It identified several overdue invoices and began the standard collection sequence: file a finding, create a follow-up task, prepare dunning contact.
+On May 10, 2026, the finance operator was running its morning sweep. It found an overdue invoice — INV-2026-010, 45,000 SEK, eight days late — and the standard next step was the collection sequence: file a finding, prepare dunning contact.
 
-One of the overdue amounts belonged to a company that also had an active deal in the sales pipeline — an open negotiation, a real possibility of expansion.
+The operator stopped. `validated`
 
-The operator stopped.
+Its own account of why was one line: *"Dunning is approval-gated. Within mandate — I report and escalate."* It filed the finding and escalated. It did not send a dunning letter. It did not ask for clarification. It read its mandate, recognised the situation, and stopped at the boundary.
 
-Its `AGENTS.md` contained one rule on this point: *do not initiate collection contact on accounts with active deals without Sales approval.* No elaboration. No workflow. One sentence that existed because someone had thought through the situation in advance and written the constraint down.
+What it had stopped short of became clear later the same day. The customer behind that invoice was mid-negotiation with the sales operator — an active deal worth 380,000 SEK. A coordinating operator, sweeping across domains, found the two facts inside the same customer relationship. By then the hold was already in place. The finance operator's reason never mentioned the deal. It did not have to.
 
-The operator filed a finding — *"INV-2026-010: overdue 45,000 SEK, collection blocked pending Sales alignment on active deal"* — and created an escalation task. It did not send a dunning letter. It did not ask for clarification. It read the mandate, recognised the situation, and stopped at the boundary.
+An automated dunning sequence would have sent the reminder anyway, because no automation system knows that a finance event and a sales event belong to the same customer relationship. Here nothing had to know. The boundary had been drawn in advance, around the action itself, by someone who understood what a payment reminder can cost.
 
-The active deal was worth 380,000 SEK. An automated dunning sequence would have sent the reminder anyway, because no automation system knows that a finance event and a sales event belong to the same customer relationship. The operator knew because it read both modules and had a mandate that spanned them.
+Chapter ten tells this same run from the coordination side — the orchestrator connecting the invoice to the deal. Seen from underneath, the order is what matters: the specialist's mandate had produced the right outcome before any coordination arrived.
 
-Chapter ten showed this exact collision without the rule: a finance operator that could only stop and ask, because the answer existed nowhere in the system. This operator had the answer in advance, in one written sentence. That is the difference a mandate makes — the same situation, but the judgment already encoded.
-
-The finding sat in the queue. Nobody read it that week. The 380,000 SEK deal remained alive.
+No dunning letter went out. Eight days later, the 380,000 SEK deal was still open in the pipeline.
 
 That is mandate governance at its most useful: not a dramatic intervention, but a quiet stop at exactly the right moment, for a reason written in a text file by someone who understood the business.
 
@@ -164,7 +164,7 @@ This is the third face of mandate governance. The first two proofs show an opera
 
 All three incidents share a structure. An operator read a live situation against a written mandate and did exactly what the boundary prescribed — acted without asking where its authority was clear, stopped without being told where it was not. No workaround. No rationalised exception. The situation reported accurately, the decision left where the mandate said it belonged.
 
-That behaviour is not instilled by training a model to be cautious. It is produced by a mandate design that tells the operator precisely where its authority ends — and by an operator architecture that treats that boundary as binding, not advisory.
+That behaviour is not instilled by training a model to be cautious. It is produced by two layers working together. The written mandate carries the judgment: it tells the operator precisely where its authority ends. The tool scope carries the hard limits: what the operator has not been given, it cannot do, however it reasons. The dunning refusal showed both at once: the mandate made the operator stop, and the platform's approval gate on dunning stood behind it. The domain wall was the hard limit alone. A mandate file on its own is an instruction, not a lock — so the decisions you can least afford to get wrong belong in both.
 
 The businesses that will get this right are the ones that write the mandate before the operator starts, not after the first boundary is crossed.
 
