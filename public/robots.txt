@@ -29,5 +29,5 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
-Sitemap: https://clawable.org/sitemap-index.xml
-LLMs: https://clawable.org/llms.txt
+Sitemap: https://www.clawable.org/sitemap-index.xml
+LLMs: https://www.clawable.org/llms.txt
